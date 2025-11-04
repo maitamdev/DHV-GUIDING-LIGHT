@@ -23,6 +23,7 @@ import FAQ from './pages/FAQ';
 import Blog from './pages/Blog';
 import InstructorDashboard from './pages/InstructorDashboard';
 import CreateCourse from './pages/CreateCourse';
+import StudentDashboard from './pages/StudentDashboard';
 
 function App() {
   return (
@@ -48,6 +49,11 @@ function App() {
             <Route path="instructor-dashboard" element={
               <ProtectedRoute>
                 <InstructorDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="student-dashboard" element={
+              <ProtectedRoute>
+                <StudentDashboard />
               </ProtectedRoute>
             } />
             <Route path="create-course" element={

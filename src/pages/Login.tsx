@@ -32,6 +32,8 @@ const Login = () => {
         const userData = userDoc.data();
         if (userData.role === 'instructor' || userData.role === 'Giảng viên') {
           navigate('/instructor-dashboard');
+        } else if (userData.role === 'student' || userData.role === 'Học viên') {
+          navigate('/student-dashboard');
         } else {
           navigate('/courses');
         }

@@ -26,6 +26,8 @@ const Signup = () => {
       // Redirect based on role
       if (formData.role === 'instructor' || formData.role === 'Giảng viên') {
         navigate('/instructor-dashboard');
+      } else if (formData.role === 'student' || formData.role === 'Học viên') {
+        navigate('/student-dashboard');
       } else {
         navigate('/courses');
       }

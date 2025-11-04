@@ -27,7 +27,7 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav className="bg-white dark:bg-gray-900 shadow-lg sticky top-0 z-50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -60,8 +60,8 @@ const Navbar = () => {
               to="/" 
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 isActive('/') 
-                  ? 'text-[#06BBCC] bg-[#06BBCC]/10' 
-                  : 'text-gray-700 hover:text-[#06BBCC] hover:bg-gray-50'
+                  ? 'text-[#06BBCC] bg-[#06BBCC]/10 dark:text-[#06BBCC] dark:bg-[#06BBCC]/20' 
+                  : 'text-gray-700 dark:text-gray-200 hover:text-[#06BBCC] hover:bg-gray-50 dark:hover:bg-gray-800'
               }`}
             >
               Trang Chủ
@@ -70,11 +70,11 @@ const Navbar = () => {
               to="/about" 
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 isActive('/about') 
-                  ? 'text-[#06BBCC] bg-[#06BBCC]/10' 
-                  : 'text-gray-700 hover:text-[#06BBCC] hover:bg-gray-50'
+                  ? 'text-[#06BBCC] bg-[#06BBCC]/10 dark:text-[#06BBCC] dark:bg-[#06BBCC]/20' 
+                  : 'text-gray-700 dark:text-gray-200 hover:text-[#06BBCC] hover:bg-gray-50 dark:hover:bg-gray-800'
               }`}
             >
-              Chúng Tôi
+              Giới Thiệu
             </Link>
             <Link 
               to="/courses" 
