@@ -2,8 +2,7 @@
 Nền tảng web kết nối **mentor – mentee** dành cho sinh viên Trường Đại học Hùng Vương TP.HCM, giúp sinh viên được đào tạo năng lực 1:1, hỏi đáp định hướng nghề nghiệp và tiếp cận người đi trước (giảng viên, cựu sinh viên, chuyên gia).
 
 Dự án được xây dựng trên **React + TypeScript + Vite** và sử dụng **Firebase** cho xác thực và lưu trữ, triển khai lên **Vercel**.
-
-> Demo: *(update link nếu cần)*  
+ 
 > https://dhv-guiding-light.vercel.app
 
 ---
