@@ -40,7 +40,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
             
-            {/* Protected Routes - Phải đăng nhập */}
+            {/* Protected Routes */}
             <Route path="roadmap" element={
               <ProtectedRoute>
                 <Roadmap />

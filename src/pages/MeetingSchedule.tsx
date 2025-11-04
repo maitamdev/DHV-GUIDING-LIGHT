@@ -148,7 +148,7 @@ const MeetingSchedule = () => {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2"></label>
+                  <label className="block text-gray-700 font-semibold mb-2">Ng�y</label>
                   <input type="date" value={newMeeting.date} onChange={(e) => setNewMeeting({...newMeeting, date: e.target.value})} className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none" required />
                 </div>
                 <div>
