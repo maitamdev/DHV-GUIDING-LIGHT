@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { DarkModeProvider } from './context/DarkModeContext';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
@@ -20,12 +21,15 @@ import MeetingRoom from './pages/MeetingRoom';
 import MeetingSchedule from './pages/MeetingSchedule';
 import FAQ from './pages/FAQ';
 import Blog from './pages/Blog';
+import InstructorDashboard from './pages/InstructorDashboard';
+import CreateCourse from './pages/CreateCourse';
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
+    <DarkModeProvider>
+      <AuthProvider>
+        <Router>
+          <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
@@ -41,6 +45,16 @@ function App() {
             <Route path="signup" element={<Signup />} />
             
             {/* Protected Routes */}
+            <Route path="instructor-dashboard" element={
+              <ProtectedRoute>
+                <InstructorDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="create-course" element={
+              <ProtectedRoute>
+                <CreateCourse />
+              </ProtectedRoute>
+            } />
             <Route path="roadmap" element={
               <ProtectedRoute>
                 <Roadmap />
@@ -75,6 +89,7 @@ function App() {
         </Routes>
       </Router>
     </AuthProvider>
+    </DarkModeProvider>
   );
 }
 

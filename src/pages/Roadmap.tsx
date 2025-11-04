@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { FaCode, FaMobile, FaDatabase, FaRobot, FaServer, FaChartLine } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaCode, FaMobile, FaDatabase, FaRobot, FaServer, FaChartLine, FaBook, FaClock, FaArrowRight, FaStar } from 'react-icons/fa';
 
 const roadmaps = [
   {
@@ -60,71 +61,177 @@ const roadmaps = [
 
 const Roadmap = () => {
   return (
-    <div className="pt-20">
-      {/* Header */}
-      <section className="bg-gradient-to-r from-[#06BBCC] to-[#05a3b3] text-white py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-5xl font-bold text-center mb-4">Lộ trình học tập</h1>
-          <p className="text-xl text-center text-gray-100">
-            Chọn lộ trình phù hợp với mục tiêu nghề nghiệp của bạn
-          </p>
+    <div className="pt-20 min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-cyan-50">
+      {/* Header with Enhanced Design */}
+      <section className="relative bg-gradient-to-r from-[#0066FF] via-[#06BBCC] to-[#FF0000] text-white py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.h1 
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-6xl md:text-7xl font-extrabold text-center mb-6 drop-shadow-2xl"
+          >
+            🚀 Lộ Trình Học Tập
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-2xl text-center text-white drop-shadow-lg max-w-3xl mx-auto"
+          >
+            Chọn lộ trình phù hợp với mục tiêu nghề nghiệp của bạn. Mỗi lộ trình được thiết kế bởi chuyên gia hàng đầu!
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex justify-center gap-6 mt-10"
+          >
+            <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-8 py-4 text-center">
+              <p className="text-4xl font-bold">6+</p>
+              <p className="text-sm">Lộ Trình</p>
+            </div>
+            <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-8 py-4 text-center">
+              <p className="text-4xl font-bold">68+</p>
+              <p className="text-sm">Khóa Học</p>
+            </div>
+            <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-8 py-4 text-center">
+              <p className="text-4xl font-bold">37+</p>
+              <p className="text-sm">Tháng Nội Dung</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Roadmaps Grid */}
-      <section className="py-16">
+      {/* Roadmaps Grid with Enhanced Cards */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {roadmaps.map((roadmap) => {
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
+          >
+            {roadmaps.map((roadmap, index) => {
               const Icon = roadmap.icon;
               return (
-                <Link
+                <motion.div
                   key={roadmap.id}
-                  to={`/roadmap/${roadmap.id}`}
-                  className="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="group"
                 >
-                  <div className={`${roadmap.color} p-8 text-white`}>
-                    <Icon className="text-6xl mb-4" />
-                    <h3 className="text-2xl font-bold mb-2">{roadmap.title}</h3>
-                    <p className="text-gray-100">{roadmap.description}</p>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex justify-between items-center mb-4">
-                      <div className="flex items-center text-gray-600">
-                        <i className="fas fa-book mr-2"></i>
-                        <span>{roadmap.courses} khóa học</span>
+                  <Link
+                    to={`/roadmap/${roadmap.id}`}
+                    className="block bg-white rounded-3xl shadow-2xl overflow-hidden hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-500 border-4 border-transparent hover:border-[#06BBCC]"
+                  >
+                    {/* Icon Header with Gradient */}
+                    <div className={`${roadmap.color} relative p-10 text-white bg-gradient-to-br from-current to-transparent overflow-hidden`}>
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
+                      <Icon className="text-8xl mb-4 drop-shadow-2xl relative z-10 group-hover:scale-110 transition-transform duration-500" />
+                      <h3 className="text-3xl font-extrabold mb-3 relative z-10">{roadmap.title}</h3>
+                      <p className="text-gray-100 text-lg relative z-10">{roadmap.description}</p>
+                    </div>
+
+                    {/* Info Section with Better Layout */}
+                    <div className="p-8 bg-gradient-to-br from-white to-gray-50">
+                      <div className="flex justify-between items-center mb-6">
+                        <div className="flex items-center gap-2 text-gray-700">
+                          <FaBook className="text-[#06BBCC] text-2xl" />
+                          <div>
+                            <p className="text-sm text-gray-500">Khóa học</p>
+                            <p className="text-xl font-bold">{roadmap.courses}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-700">
+                          <FaClock className="text-[#06BBCC] text-2xl" />
+                          <div>
+                            <p className="text-sm text-gray-500">Thời gian</p>
+                            <p className="text-xl font-bold">{roadmap.duration}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-700">
+                          <FaStar className="text-yellow-500 text-2xl" />
+                          <div>
+                            <p className="text-sm text-gray-500">Đánh giá</p>
+                            <p className="text-xl font-bold">4.9</p>
+                          </div>
+                        </div>
                       </div>
-                      <div className="flex items-center text-gray-600">
-                        <i className="fas fa-clock mr-2"></i>
-                        <span>{roadmap.duration}</span>
+
+                      {/* Progress Bar */}
+                      <div className="mb-6">
+                        <div className="flex justify-between text-sm mb-2">
+                          <span className="text-gray-600">Độ phổ biến</span>
+                          <span className="font-semibold text-[#06BBCC]">{85 + index * 2}%</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                          <motion.div 
+                            initial={{ width: 0 }}
+                            animate={{ width: `${85 + index * 2}%` }}
+                            transition={{ duration: 1.5, delay: index * 0.1 + 0.5 }}
+                            className="bg-gradient-to-r from-[#06BBCC] to-[#0066FF] h-3 rounded-full"
+                          />
+                        </div>
+                      </div>
+
+                      {/* CTA Button with Arrow */}
+                      <div className="flex items-center justify-between py-4 px-6 bg-gradient-to-r from-[#06BBCC] to-[#0066FF] text-white rounded-2xl font-bold text-lg group-hover:from-[#0066FF] group-hover:to-[#FF0000] transition-all duration-500 shadow-lg">
+                        <span>Xem Chi Tiết</span>
+                        <FaArrowRight className="group-hover:translate-x-2 transition-transform duration-300" />
                       </div>
                     </div>
-                    <div className="w-full py-3 bg-[#06BBCC] text-white text-center rounded-full font-semibold">
-                      Xem chi tiết
-                    </div>
-                  </div>
-                </Link>
+                  </Link>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-light">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-dark mb-4">
-            Chưa chắc chắn về lộ trình của mình?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Đặt lịch tư vấn miễn phí với chuyên gia của chúng tôi
-          </p>
-          <Link
-            to="/contact"
-            className="inline-block px-8 py-4 bg-[#06BBCC] text-white rounded-full font-semibold hover:bg-[#05a3b3] transition-colors duration-300"
+      {/* Enhanced CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-[#0066FF] via-[#06BBCC] to-[#FF0000] relative overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-2xl"
           >
-            Đặt lịch tư vấn
-          </Link>
+            Chưa Chắc Chắn Về Lộ Trình? 🤔
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-2xl text-white mb-10 max-w-3xl mx-auto drop-shadow-lg"
+          >
+            Đặt lịch tư vấn <span className="font-bold">MIỄN PHÍ</span> với chuyên gia của chúng tôi. Chúng tôi sẽ giúp bạn chọn lộ trình phù hợp nhất!
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+          >
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-white text-[#06BBCC] rounded-full font-bold text-xl hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:scale-110 hover:shadow-[0_20px_50px_rgba(255,255,255,0.5)]"
+            >
+              <FaArrowRight /> Đặt Lịch Tư Vấn Ngay
+            </Link>
+            <Link
+              to="/courses"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-transparent border-4 border-white text-white rounded-full font-bold text-xl hover:bg-white hover:text-[#06BBCC] transition-all duration-300 shadow-2xl hover:scale-110"
+            >
+              <FaBook /> Xem Tất Cả Khóa Học
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>

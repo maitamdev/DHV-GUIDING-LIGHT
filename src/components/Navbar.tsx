@@ -1,12 +1,14 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { FaUser, FaBars, FaTimes, FaChevronDown, FaSignOutAlt } from 'react-icons/fa';
+import { FaUser, FaBars, FaTimes, FaChevronDown, FaSignOutAlt, FaMoon, FaSun } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
+import { useDarkMode } from '../context/DarkModeContext';
 
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { currentUser, logout } = useAuth();
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -29,18 +31,27 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2" onClick={closeMenu}>
-            <img src="/img/icon.png" alt="Logo" className="h-12 w-12" />
-            <span 
-              className="text-2xl font-extrabold"
-              style={{
-                background: 'linear-gradient(to right, #0066FF, #FF0000)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}
-            >
-              GUILDING LIGHT
-            </span>
+          <Link to="/" className="flex items-center space-x-3 group" onClick={closeMenu}>
+            <div className="relative">
+              <img 
+                src="/img/icon.png" 
+                alt="DHV Logo" 
+                className="h-16 w-16 md:h-20 md:w-20 object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-lg" 
+              />
+            </div>
+            <div className="flex flex-col">
+              
+              <span 
+                className="text-xl md:text-3xl font-extrabold tracking-tight"
+                style={{
+                  background: 'linear-gradient(135deg, #0066FF 0%, #06BBCC 50%, #FF0000 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
+                GUIDING LIGHT
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Menu */}
@@ -142,6 +153,19 @@ const Navbar = () => {
             >
               Liên hệ
             </Link>
+            {/* Dark Mode Toggle */}
+            <button
+              onClick={toggleDarkMode}
+              className="ml-2 p-3 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+              title={isDarkMode ? 'Chế độ sáng' : 'Chế độ tối'}
+            >
+              {isDarkMode ? (
+                <FaSun className="text-xl text-yellow-500" />
+              ) : (
+                <FaMoon className="text-xl text-gray-700" />
+              )}
+            </button>
+
             {currentUser ? (
               <button
                 onClick={handleLogout}

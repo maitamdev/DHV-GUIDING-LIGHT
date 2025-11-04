@@ -23,7 +23,12 @@ const Signup = () => {
 
     try {
       await signup(formData.email, formData.password, formData.displayName, formData.role);
-      navigate('/');
+      // Redirect based on role
+      if (formData.role === 'instructor' || formData.role === 'Giảng viên') {
+        navigate('/instructor-dashboard');
+      } else {
+        navigate('/courses');
+      }
     } catch (err: any) {
       setError('Đăng ký thất bại. Email có thể đã được sử dụng.');
       console.error(err);
