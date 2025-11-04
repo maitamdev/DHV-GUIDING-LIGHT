@@ -308,14 +308,14 @@ const Home = () => {
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Courses</h6>
-            <h1 className="text-4xl font-bold">Popular Courses</h1>
+            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Khóa Học</h6>
+            <h1 className="text-4xl font-bold">Khóa Học Phổ Biến</h1>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { img: 'course-1.jpg', price: '$149.00', rating: 5, reviews: 123, title: 'Web Design & Development Course for Beginners', instructor: 'John Doe', students: 30 },
-              { img: 'course-2.jpg', price: '$149.00', rating: 5, reviews: 123, title: 'Web Design & Development Course for Beginners', instructor: 'John Doe', students: 30 },
-              { img: 'course-3.jpg', price: '$149.00', rating: 5, reviews: 123, title: 'Web Design & Development Course for Beginners', instructor: 'John Doe', students: 30 }
+              { img: 'course-1.jpg', price: '3.490.000đ', rating: 5, reviews: 123, title: 'Khóa Học Thiết Kế & Phát Triển Web Cho Người Mới', instructor: 'Trần Văn Minh', students: 30 },
+              { img: 'course-2.jpg', price: '2.990.000đ', rating: 5, reviews: 98, title: 'React & Node.js Full Stack Development', instructor: 'Lê Thị Hương', students: 45 },
+              { img: 'course-3.jpg', price: '4.290.000đ', rating: 5, reviews: 156, title: 'UI/UX Design Chuyên Nghiệp Với Figma', instructor: 'Phạm Đức Anh', students: 67 }
             ].map((course, index) => (
               <motion.div 
                 key={index}
@@ -372,15 +372,15 @@ const Home = () => {
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Instructors</h6>
-            <h1 className="text-4xl font-bold">Expert Instructors</h1>
+            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Giảng Viên</h6>
+            <h1 className="text-4xl font-bold">Đội Ngũ Giảng Viên Chuyên Nghiệp</h1>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { img: 'team-1.jpg', name: 'Instructor Name', designation: 'Designation' },
-              { img: 'team-2.jpg', name: 'Instructor Name', designation: 'Designation' },
-              { img: 'team-3.jpg', name: 'Instructor Name', designation: 'Designation' },
-              { img: 'team-4.jpg', name: 'Instructor Name', designation: 'Designation' }
+              { img: 'team-1.jpg', name: 'Trần Văn Minh', designation: 'Senior Full Stack Developer' },
+              { img: 'team-2.jpg', name: 'Lê Thị Hương', designation: 'UI/UX Design Lead' },
+              { img: 'team-3.jpg', name: 'Phạm Đức Anh', designation: 'AI/ML Engineer' },
+              { img: 'team-4.jpg', name: 'Ngô Thị Mai', designation: 'Mobile Developer' }
             ].map((member, index) => (
               <motion.div 
                 key={index}
@@ -420,8 +420,8 @@ const Home = () => {
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Testimonial</h6>
-            <h1 className="text-4xl font-bold">Our Students Say!</h1>
+            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Phản Hồi</h6>
+            <h1 className="text-4xl font-bold">Học Viên Nói Gì Về Chúng Tôi!</h1>
           </motion.div>
           <Swiper
             modules={[Autoplay, Pagination]}
@@ -437,15 +437,15 @@ const Home = () => {
             className="pb-16"
           >
             {[
-              { name: 'Client Name', profession: 'Profession', img: 'testimonial-1.jpg' },
-              { name: 'Client Name', profession: 'Profession', img: 'testimonial-2.jpg' },
-              { name: 'Client Name', profession: 'Profession', img: 'testimonial-3.jpg' },
-              { name: 'Client Name', profession: 'Profession', img: 'testimonial-4.jpg' }
+              { name: 'Nguyễn Văn An', profession: 'Full Stack Developer', img: 'testimonial-1.jpg', feedback: 'Khóa học rất chất lượng, giảng viên tận tâm. Sau 3 tháng học tôi đã có công việc mơ ước tại công ty công nghệ hàng đầu!' },
+              { name: 'Trần Thị Bình', profession: 'UI/UX Designer', img: 'testimonial-2.jpg', feedback: 'Nền tảng học tập tuyệt vời! Giao diện thân thiện, nội dung cập nhật liên tục. Mentor rất nhiệt tình hỗ trợ.' },
+              { name: 'Lê Hoàng Cường', profession: 'Data Analyst', img: 'testimonial-3.jpg', feedback: 'Tôi đã thử nhiều nền tảng nhưng DHV Guiding Light là tốt nhất. Dự án thực tế giúp tôi tự tin hơn rất nhiều!' },
+              { name: 'Phạm Thị Diễm', profession: 'Mobile Developer', img: 'testimonial-4.jpg', feedback: 'Khóa học React Native giúp tôi chuyển đổi sự nghiệp thành công. Cảm ơn đội ngũ giảng viên và mentor!' }
             ].map((testimonial, index) => (
               <SwiperSlide key={index}>
                 <div className="bg-white rounded-lg shadow-lg p-8 text-center">
                   <i className="fa fa-quote-left fa-3x text-[#06BBCC] mb-4"></i>
-                  <p className="text-gray-600 mb-6">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                  <p className="text-gray-600 mb-6">{testimonial.feedback}</p>
                   <img className="w-20 h-20 rounded-full mx-auto mb-4 object-cover" src={`/img/${testimonial.img}`} alt={testimonial.name} />
                   <h5 className="text-xl font-bold">{testimonial.name}</h5>
                   <p className="text-gray-600">{testimonial.profession}</p>

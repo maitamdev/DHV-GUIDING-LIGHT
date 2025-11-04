@@ -1,13 +1,24 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap } from 'react-icons/fa';
+import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap, FaRobot, FaPaperPlane, FaLightbulb } from 'react-icons/fa';
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'profile' | 'mentors' | 'schedule' | 'courses'>('profile');
+  const [activeTab, setActiveTab] = useState<'profile' | 'mentors' | 'aiSuggest' | 'schedule' | 'courses'>('profile');
   const [editMode, setEditMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  
+  // AI Suggestion State
+  const [aiFormData, setAiFormData] = useState({
+    skills: '',
+    interests: '',
+    goals: '',
+    experience: '',
+    preferredFields: ''
+  });
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiSuggestions, setAiSuggestions] = useState<any>(null);
   const [profileData, setProfileData] = useState({
     name: 'Nguyễn Văn A',
     email: 'student@email.com',
@@ -178,8 +189,9 @@ const StudentDashboard = () => {
         <div className="bg-white rounded-xl shadow-lg mb-8">
           <div className="flex border-b-2 border-gray-200 overflow-x-auto">
             {[
-              { id: 'profile', label: 'Hồ Sơ Cá Nhân', icon: FaUser },
+              { id: 'profile', label: 'Hồ Sơ', icon: FaUser },
               { id: 'mentors', label: 'Tìm Mentor', icon: FaSearch },
+              { id: 'aiSuggest', label: 'Hỏi AI', icon: FaRobot },
               { id: 'schedule', label: 'Lịch Hẹn', icon: FaCalendar },
               { id: 'courses', label: 'Khóa Học Của Tôi', icon: FaBook }
             ].map((tab) => (
@@ -487,6 +499,242 @@ const StudentDashboard = () => {
                       </button>
                     </motion.div>
                   ))}
+                </div>
+              </div>
+            )}
+
+            {/* AI Suggestion Tab */}
+            {activeTab === 'aiSuggest' && (
+              <div>
+                <h3 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
+                  <FaRobot className="text-[#06BBCC]" />
+                  Hỏi AI Gợi Ý Mentor Phù Hợp
+                </h3>
+                <p className="text-gray-600 mb-8">
+                  💡 Nhập thông tin về kỹ năng, sở thích và mục tiêu của bạn. AI sẽ phân tích và gợi ý những mentor phù hợp nhất!
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                  {/* Form Input */}
+                  <div className="bg-gradient-to-br from-blue-50 to-cyan-100 rounded-2xl p-8 shadow-xl">
+                    <h4 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                      <FaLightbulb className="text-yellow-500" />
+                      Thông Tin Của Bạn
+                    </h4>
+                    
+                    <div className="space-y-5">
+                      <div>
+                        <label className="block text-gray-700 font-semibold mb-2">🎯 Kỹ Năng Hiện Tại</label>
+                        <textarea
+                          value={aiFormData.skills}
+                          onChange={(e) => setAiFormData({ ...aiFormData, skills: e.target.value })}
+                          placeholder="VD: React, Node.js, Python, UI/UX Design..."
+                          rows={3}
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-gray-700 font-semibold mb-2">❤️ Sở Thích & Lĩnh Vực Quan Tâm</label>
+                        <textarea
+                          value={aiFormData.interests}
+                          onChange={(e) => setAiFormData({ ...aiFormData, interests: e.target.value })}
+                          placeholder="VD: Web Development, Mobile Apps, AI/ML, Game Development..."
+                          rows={3}
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-gray-700 font-semibold mb-2">🚀 Mục Tiêu Nghề Nghiệp</label>
+                        <textarea
+                          value={aiFormData.goals}
+                          onChange={(e) => setAiFormData({ ...aiFormData, goals: e.target.value })}
+                          placeholder="VD: Trở thành Full Stack Developer, Làm việc tại công ty công nghệ lớn..."
+                          rows={3}
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-gray-700 font-semibold mb-2">📊 Trình Độ Hiện Tại</label>
+                        <select
+                          value={aiFormData.experience}
+                          onChange={(e) => setAiFormData({ ...aiFormData, experience: e.target.value })}
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
+                        >
+                          <option value="">-- Chọn trình độ --</option>
+                          <option value="beginner">Mới Bắt Đầu</option>
+                          <option value="intermediate">Trung Cấp</option>
+                          <option value="advanced">Nâng Cao</option>
+                          <option value="expert">Chuyên Gia</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-gray-700 font-semibold mb-2">🎓 Lĩnh Vực Ưu Tiên</label>
+                        <input
+                          type="text"
+                          value={aiFormData.preferredFields}
+                          onChange={(e) => setAiFormData({ ...aiFormData, preferredFields: e.target.value })}
+                          placeholder="VD: Backend, Frontend, DevOps, Data Science..."
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
+                        />
+                      </div>
+
+                      <button
+                        onClick={async () => {
+                          if (!aiFormData.skills || !aiFormData.goals) {
+                            alert('⚠️ Vui lòng nhập ít nhất Kỹ Năng và Mục Tiêu!');
+                            return;
+                          }
+                          
+                          setAiLoading(true);
+                          try {
+                            // Call Groq API
+                            const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                              method: 'POST',
+                              headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${import.meta.env.VITE_GROQ_API_KEY || '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'}`
+                              },
+                              body: JSON.stringify({
+                                model: 'mixtral-8x7b-32768',
+                                messages: [{
+                                  role: 'user',
+                                  content: `Bạn là chuyên gia tư vấn nghề nghiệp. Dựa trên thông tin sau của mentee, hãy gợi ý 3 mentor phù hợp nhất:
+                                  
+Kỹ năng: ${aiFormData.skills}
+Sở thích: ${aiFormData.interests}
+Mục tiêu: ${aiFormData.goals}
+Trình độ: ${aiFormData.experience}
+Lĩnh vực ưu tiên: ${aiFormData.preferredFields}
+
+Hãy trả lời theo format JSON như sau:
+{
+  "suggestions": [
+    {
+      "mentorName": "Tên mentor",
+      "title": "Chức danh",
+      "reason": "Lý do phù hợp",
+      "focus": "Lĩnh vực chuyên môn",
+      "recommendation": "Gợi ý học tập"
+    }
+  ],
+  "overallAdvice": "Lời khuyên chung cho mentee"
+}`
+                                }],
+                                temperature: 0.7,
+                                max_tokens: 1500
+                              })
+                            });
+
+                            const data = await response.json();
+                            const content = data.choices[0].message.content;
+                            
+                            // Parse JSON from response
+                            const jsonMatch = content.match(/\{[\s\S]*\}/);
+                            if (jsonMatch) {
+                              const result = JSON.parse(jsonMatch[0]);
+                              setAiSuggestions(result);
+                            } else {
+                              setAiSuggestions({ error: 'Không thể phân tích kết quả', raw: content });
+                            }
+                          } catch (error: any) {
+                            console.error('Groq API Error:', error);
+                            setAiSuggestions({ 
+                              error: 'Có lỗi xảy ra khi kết nối AI',
+                              message: error.message 
+                            });
+                          }
+                          setAiLoading(false);
+                        }}
+                        disabled={aiLoading}
+                        className="w-full px-8 py-4 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white rounded-xl font-bold text-lg hover:from-blue-600 hover:to-purple-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg"
+                      >
+                        {aiLoading ? (
+                          <>
+                            <div className="animate-spin w-6 h-6 border-4 border-white border-t-transparent rounded-full"></div>
+                            Đang Phân Tích...
+                          </>
+                        ) : (
+                          <>
+                            <FaPaperPlane />
+                            Gợi Ý Mentor Cho Tôi
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* AI Results */}
+                  <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl p-8 shadow-xl">
+                    <h4 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                      <FaStar className="text-yellow-500" />
+                      Gợi Ý Từ AI
+                    </h4>
+
+                    {!aiSuggestions ? (
+                      <div className="text-center py-12">
+                        <FaRobot className="text-6xl text-gray-400 mx-auto mb-4" />
+                        <p className="text-gray-600 text-lg">
+                          Điền thông tin bên trái và nhấn nút để nhận gợi ý từ AI! 🤖
+                        </p>
+                      </div>
+                    ) : aiSuggestions.error ? (
+                      <div className="bg-red-100 border-l-4 border-red-500 p-6 rounded-lg">
+                        <p className="text-red-700 font-semibold mb-2">❌ {aiSuggestions.error}</p>
+                        <p className="text-red-600 text-sm">{aiSuggestions.message || aiSuggestions.raw}</p>
+                      </div>
+                    ) : (
+                      <div className="space-y-6">
+                        {aiSuggestions.suggestions?.map((suggestion: any, index: number) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.2 }}
+                            className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500"
+                          >
+                            <div className="flex items-start gap-4 mb-4">
+                              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                {index + 1}
+                              </div>
+                              <div className="flex-1">
+                                <h5 className="text-xl font-bold text-gray-800 mb-1">{suggestion.mentorName}</h5>
+                                <p className="text-[#06BBCC] font-semibold">{suggestion.title}</p>
+                              </div>
+                            </div>
+                            
+                            <div className="space-y-3 pl-16">
+                              <div>
+                                <span className="font-semibold text-gray-700">✅ Lý do phù hợp:</span>
+                                <p className="text-gray-600 mt-1">{suggestion.reason}</p>
+                              </div>
+                              <div>
+                                <span className="font-semibold text-gray-700">🎯 Chuyên môn:</span>
+                                <p className="text-gray-600 mt-1">{suggestion.focus}</p>
+                              </div>
+                              <div>
+                                <span className="font-semibold text-gray-700">💡 Gợi ý:</span>
+                                <p className="text-gray-600 mt-1">{suggestion.recommendation}</p>
+                              </div>
+                            </div>
+                          </motion.div>
+                        ))}
+
+                        {aiSuggestions.overallAdvice && (
+                          <div className="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-xl p-6 border-l-4 border-yellow-500">
+                            <h5 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                              <FaLightbulb className="text-yellow-600" />
+                              Lời Khuyên Chung
+                            </h5>
+                            <p className="text-gray-700 leading-relaxed">{aiSuggestions.overallAdvice}</p>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             )}

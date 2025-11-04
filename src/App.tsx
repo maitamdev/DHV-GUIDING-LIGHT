@@ -34,8 +34,16 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
-            <Route path="courses" element={<Courses />} />
-            <Route path="course/:courseId" element={<CourseDetail />} />
+            <Route path="courses" element={
+              <ProtectedRoute>
+                <Courses />
+              </ProtectedRoute>
+            } />
+            <Route path="course/:courseId" element={
+              <ProtectedRoute>
+                <CourseDetail />
+              </ProtectedRoute>
+            } />
             <Route path="contact" element={<Contact />} />
             <Route path="testimonial" element={<Testimonial />} />
             <Route path="team" element={<Team />} />

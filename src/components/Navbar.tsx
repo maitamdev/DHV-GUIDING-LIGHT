@@ -1,14 +1,12 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { FaUser, FaBars, FaTimes, FaChevronDown, FaSignOutAlt, FaMoon, FaSun } from 'react-icons/fa';
+import { FaUser, FaBars, FaTimes, FaChevronDown, FaSignOutAlt } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
-import { useDarkMode } from '../context/DarkModeContext';
 
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { currentUser, logout } = useAuth();
-  const { isDarkMode, toggleDarkMode } = useDarkMode();
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -153,30 +151,18 @@ const Navbar = () => {
             >
               Liên hệ
             </Link>
-            {/* Dark Mode Toggle */}
-            <button
-              onClick={toggleDarkMode}
-              className="ml-2 p-3 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
-              title={isDarkMode ? 'Chế độ sáng' : 'Chế độ tối'}
-            >
-              {isDarkMode ? (
-                <FaSun className="text-xl text-yellow-500" />
-              ) : (
-                <FaMoon className="text-xl text-gray-700" />
-              )}
-            </button>
 
             {currentUser ? (
               <>
                 <Link
                   to="/student-dashboard"
-                  className="ml-2 px-6 py-3 rounded-lg font-semibold bg-[#06BBCC] text-white hover:bg-[#05a3b3] transition-all"
+                  className="text-gray-700 dark:text-gray-200 hover:text-[#06BBCC] hover:bg-gray-50 dark:hover:bg-gray-800 px-3 py-2 rounded transition-colors"
                 >
                   Tìm Mentor
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="ml-2 px-6 py-3 rounded-lg font-semibold bg-white text-[#06BBCC] hover:bg-gray-100 transition-all flex items-center gap-2"
+                  className="ml-2 px-4 py-2 rounded-lg font-medium text-gray-700 dark:text-gray-200 hover:text-red-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center gap-2"
                 >
                   <FaSignOutAlt />
                   <span className="hidden sm:inline">Đăng xuất</span>
