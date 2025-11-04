@@ -560,3 +560,10 @@
     padding-right: 0;
     border-right: none;
 }
+.navbar .nav-link {
+    color: #160679 !important;        /* màu mặc định */
+}
+
+.navbar .nav-link:hover {
+    color: #190474 !important;        /* màu khi hover */
+}

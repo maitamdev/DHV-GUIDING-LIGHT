@@ -1,0 +1,71 @@
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+
+const Navbar = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Initialize Bootstrap after component mount
+    if (typeof window !== 'undefined' && (window as any).bootstrap) {
+      const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
+      dropdownElementList.forEach((dropdown) => {
+        new (window as any).bootstrap.Dropdown(dropdown);
+      });
+    }
+  }, []);
+
+  return (
+    <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+      <Link to="/" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <p className="m-0 fw-bold" style={{ fontSize: '25px' }}>
+          <img src="/img/icon.png" alt="" height="50px" />
+          <span style={{
+            background: 'linear-gradient(to right, #0066FF, #FF0000)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            fontWeight: 800
+          }}>GUILDING LIGHT</span>
+        </p>
+      </Link>
+      <button 
+        type="button" 
+        className="navbar-toggler me-4" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarCollapse"
+        style={{ border: 'none' }}
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarCollapse">
+        <div className="navbar-nav ms-auto p-4 p-lg-0">
+          <Link to="/" className={`nav-item nav-link ${location.pathname === '/' ? 'active' : ''}`}>
+            Trang Chủ
+          </Link>
+          <Link to="/about" className={`nav-item nav-link ${location.pathname === '/about' ? 'active' : ''}`}>
+            Chúng Tôi
+          </Link>
+          <Link to="/courses" className={`nav-item nav-link ${location.pathname === '/courses' ? 'active' : ''}`}>
+            Khóa Học
+          </Link>
+          <div className="nav-item dropdown">
+            <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Trang</a>
+            <div className="dropdown-menu fade-down m-0">
+              <Link to="/roadmap" className="dropdown-item">Lộ Trình</Link>
+              <Link to="/meeting" className="dropdown-item">Phòng Học</Link>
+              <Link to="/team" className="dropdown-item">Đội Ngũ</Link>
+              <Link to="/testimonial" className="dropdown-item">Đánh Giá</Link>
+            </div>
+          </div>
+          <Link to="/contact" className={`nav-item nav-link ${location.pathname === '/contact' ? 'active' : ''}`}>
+            Liên hệ
+          </Link>
+          <Link to="/login" className="nav-item nav-link">
+            <i className="fa fa-user"></i>
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
