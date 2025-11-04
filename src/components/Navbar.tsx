@@ -167,17 +167,25 @@ const Navbar = () => {
             </button>
 
             {currentUser ? (
-              <button
-                onClick={handleLogout}
-                className="ml-2 px-4 py-2 rounded-lg font-medium text-gray-700 hover:text-red-500 hover:bg-gray-50 transition-colors flex items-center gap-2"
-              >
-                <FaSignOutAlt />
-                <span className="hidden sm:inline">Đăng xuất</span>
-              </button>
+              <>
+                <Link
+                  to="/student-dashboard"
+                  className="ml-2 px-6 py-3 rounded-lg font-semibold bg-[#06BBCC] text-white hover:bg-[#05a3b3] transition-all"
+                >
+                  Tìm Mentor
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="ml-2 px-6 py-3 rounded-lg font-semibold bg-white text-[#06BBCC] hover:bg-gray-100 transition-all flex items-center gap-2"
+                >
+                  <FaSignOutAlt />
+                  <span className="hidden sm:inline">Đăng xuất</span>
+                </button>
+              </>
             ) : (
               <Link 
                 to="/login" 
-                className="ml-2 px-4 py-2 rounded-lg font-medium text-gray-700 hover:text-[#06BBCC] hover:bg-gray-50 transition-colors"
+                className="ml-2 px-4 py-2 rounded-lg font-medium text-gray-700 dark:text-gray-200 hover:text-[#06BBCC] hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
               >
                 <FaUser className="text-lg" />
               </Link>

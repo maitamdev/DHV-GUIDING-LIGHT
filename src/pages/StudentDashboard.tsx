@@ -12,10 +12,17 @@ const StudentDashboard = () => {
     name: 'Nguyễn Văn A',
     email: 'student@email.com',
     phone: '0901234567',
+    university: 'Đại học Bách Khoa Hà Nội',
+    major: 'Công nghệ thông tin',
+    year: 'Năm 3',
+    gpa: '3.5/4.0',
     skills: 'React, TypeScript, Node.js',
-    bio: 'Sinh viên năm 3 ngành CNTT, đam mê lập trình web',
-    goals: 'Trở thành Full Stack Developer trong 6 tháng',
-    projects: 'E-commerce website, Blog cá nhân'
+    bio: 'Sinh viên năm 3 ngành CNTT, đam mê lập trình web và có kinh nghiệm thực tế qua các dự án freelance. Luôn tìm kiếm cơ hội học hỏi và phát triển kỹ năng mới.',
+    goals: 'Trở thành Full Stack Developer trong 6 tháng tới, thành thạo React và Node.js, tham gia các dự án thực tế để tích lũy kinh nghiệm chuyên môn.',
+    projects: 'E-commerce Website (React + Node.js), Blog cá nhân (Next.js), Task Management App (React Native)',
+    certifications: 'AWS Cloud Practitioner, Google UX Design Certificate',
+    languages: 'Tiếng Việt (Bản ngữ), Tiếng Anh (IELTS 7.0)',
+    achievements: '🏆 Giải Nhì Hackathon 2024\n🥇 Top 10% sinh viên xuất sắc\n📜 5+ dự án hoàn thành'
   });
 
   // Danh sách Mentor
@@ -217,84 +224,171 @@ const StudentDashboard = () => {
                   )}
                 </div>
 
-                <div className="bg-gradient-to-br from-blue-50 to-cyan-100 rounded-xl p-8 space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-gray-700 font-semibold mb-2">Họ và Tên</label>
-                      <input
-                        type="text"
-                        value={profileData.name}
-                        onChange={(e) => setProfileData({ ...profileData, name: e.target.value })}
-                        disabled={!editMode}
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-100"
-                      />
+                <div className="space-y-8">
+                  {/* Avatar & Basic Info Section */}
+                  <div className="bg-gradient-to-r from-[#06BBCC] to-blue-600 rounded-2xl p-8 text-white shadow-xl">
+                    <div className="flex items-center gap-6">
+                      <div className="w-32 h-32 rounded-full bg-white/20 backdrop-blur-lg flex items-center justify-center text-5xl font-bold border-4 border-white/50">
+                        {profileData.name.charAt(0)}
+                      </div>
+                      <div className="flex-1">
+                        {editMode ? (
+                          <input
+                            type="text"
+                            value={profileData.name}
+                            onChange={(e) => setProfileData({ ...profileData, name: e.target.value })}
+                            className="text-4xl font-bold bg-white/20 rounded-lg px-4 py-2 w-full"
+                            placeholder="Họ và Tên"
+                          />
+                        ) : (
+                          <h2 className="text-4xl font-bold mb-2">{profileData.name}</h2>
+                        )}
+                        {editMode ? (
+                          <div className="space-y-2 mt-3">
+                            <input
+                              type="text"
+                              value={profileData.university}
+                              onChange={(e) => setProfileData({ ...profileData, university: e.target.value })}
+                              className="text-lg bg-white/20 rounded-lg px-4 py-2 w-full"
+                              placeholder="Trường đại học"
+                            />
+                            <div className="flex gap-3">
+                              <input
+                                type="text"
+                                value={profileData.major}
+                                onChange={(e) => setProfileData({ ...profileData, major: e.target.value })}
+                                className="text-lg bg-white/20 rounded-lg px-4 py-2 flex-1"
+                                placeholder="Ngành học"
+                              />
+                              <input
+                                type="text"
+                                value={profileData.year}
+                                onChange={(e) => setProfileData({ ...profileData, year: e.target.value })}
+                                className="text-lg bg-white/20 rounded-lg px-4 py-2 w-32"
+                                placeholder="Năm"
+                              />
+                            </div>
+                          </div>
+                        ) : (
+                          <>
+                            <p className="text-xl opacity-90">🎓 {profileData.university}</p>
+                            <p className="text-lg opacity-80">{profileData.major} • {profileData.year} • GPA: {profileData.gpa}</p>
+                          </>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <label className="block text-gray-700 font-semibold mb-2">Email</label>
+                  </div>
+
+                  {/* Contact Info Grid */}
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
+                      <label className="block text-gray-600 font-semibold mb-3 text-sm uppercase">📧 Email</label>
                       <input
                         type="email"
                         value={profileData.email}
                         onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
                         disabled={!editMode}
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-100"
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50 font-semibold text-gray-800"
                       />
                     </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-gray-700 font-semibold mb-2">Số Điện Thoại</label>
+                    <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
+                      <label className="block text-gray-600 font-semibold mb-3 text-sm uppercase">📱 Điện Thoại</label>
                       <input
                         type="tel"
                         value={profileData.phone}
                         onChange={(e) => setProfileData({ ...profileData, phone: e.target.value })}
                         disabled={!editMode}
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-100"
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50 font-semibold text-gray-800"
                       />
                     </div>
-                    <div>
-                      <label className="block text-gray-700 font-semibold mb-2">Kỹ Năng</label>
+                    <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
+                      <label className="block text-gray-600 font-semibold mb-3 text-sm uppercase">🌍 Ngôn Ngữ</label>
                       <input
                         type="text"
-                        value={profileData.skills}
-                        onChange={(e) => setProfileData({ ...profileData, skills: e.target.value })}
+                        value={profileData.languages}
+                        onChange={(e) => setProfileData({ ...profileData, languages: e.target.value })}
                         disabled={!editMode}
-                        placeholder="VD: React, Node.js, Python..."
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-100"
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50 font-semibold text-gray-800"
+                        placeholder="VD: Tiếng Việt, Tiếng Anh..."
                       />
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-gray-700 font-semibold mb-2">Giới Thiệu Bản Thân</label>
+                  {/* Skills & Bio Section */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-gradient-to-br from-blue-50 to-cyan-100 rounded-xl p-6 shadow-lg">
+                      <label className="block text-gray-800 font-bold mb-4 text-lg">💡 Kỹ Năng Chuyên Môn</label>
+                      <textarea
+                        value={profileData.skills}
+                        onChange={(e) => setProfileData({ ...profileData, skills: e.target.value })}
+                        disabled={!editMode}
+                        rows={4}
+                        placeholder="VD: React, Node.js, Python, UI/UX Design..."
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
+                      />
+                    </div>
+                    <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-6 shadow-lg">
+                      <label className="block text-gray-800 font-bold mb-4 text-lg">📜 Chứng Chỉ</label>
+                      <textarea
+                        value={profileData.certifications}
+                        onChange={(e) => setProfileData({ ...profileData, certifications: e.target.value })}
+                        disabled={!editMode}
+                        rows={4}
+                        placeholder="VD: AWS Cloud Practitioner, Google UX Design..."
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Bio Section */}
+                  <div className="bg-white rounded-xl p-8 shadow-lg">
+                    <label className="block text-gray-800 font-bold mb-4 text-xl">👤 Giới Thiệu Bản Thân</label>
                     <textarea
                       value={profileData.bio}
                       onChange={(e) => setProfileData({ ...profileData, bio: e.target.value })}
                       disabled={!editMode}
-                      rows={3}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-100"
+                      rows={4}
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50 text-gray-800 text-lg"
+                      placeholder="Giới thiệu ngắn gọn về bản thân, sở thích và đam mê..."
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-gray-700 font-semibold mb-2">Mục Tiêu Nghề Nghiệp</label>
-                    <textarea
-                      value={profileData.goals}
-                      onChange={(e) => setProfileData({ ...profileData, goals: e.target.value })}
-                      disabled={!editMode}
-                      rows={2}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-100"
-                    />
+                  {/* Goals & Projects Section */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-xl p-6 shadow-lg">
+                      <label className="block text-gray-800 font-bold mb-4 text-lg">🎯 Mục Tiêu Nghề Nghiệp</label>
+                      <textarea
+                        value={profileData.goals}
+                        onChange={(e) => setProfileData({ ...profileData, goals: e.target.value })}
+                        disabled={!editMode}
+                        rows={5}
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
+                        placeholder="Mục tiêu ngắn hạn và dài hạn của bạn..."
+                      />
+                    </div>
+                    <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-xl p-6 shadow-lg">
+                      <label className="block text-gray-800 font-bold mb-4 text-lg">🚀 Dự Án Đã Làm</label>
+                      <textarea
+                        value={profileData.projects}
+                        onChange={(e) => setProfileData({ ...profileData, projects: e.target.value })}
+                        disabled={!editMode}
+                        rows={5}
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
+                        placeholder="Liệt kê các dự án bạn đã hoàn thành..."
+                      />
+                    </div>
                   </div>
 
-                  <div>
-                    <label className="block text-gray-700 font-semibold mb-2">Dự Án Đã Làm</label>
+                  {/* Achievements Section */}
+                  <div className="bg-gradient-to-r from-amber-50 via-yellow-50 to-orange-50 rounded-xl p-8 shadow-lg border-l-4 border-yellow-500">
+                    <label className="block text-gray-800 font-bold mb-4 text-xl">🏆 Thành Tích & Giải Thưởng</label>
                     <textarea
-                      value={profileData.projects}
-                      onChange={(e) => setProfileData({ ...profileData, projects: e.target.value })}
+                      value={profileData.achievements}
+                      onChange={(e) => setProfileData({ ...profileData, achievements: e.target.value })}
                       disabled={!editMode}
-                      rows={3}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-100"
+                      rows={4}
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800 text-lg"
+                      placeholder="VD: 🏆 Giải Nhì Hackathon 2024..."
                     />
                   </div>
                 </div>
@@ -461,9 +555,14 @@ const StudentDashboard = () => {
                       )}
 
                       {schedule.status === 'upcoming' && (
-                        <button className="w-full px-6 py-3 bg-[#06BBCC] text-white rounded-lg font-bold hover:bg-[#0099AA] transition-colors flex items-center justify-center gap-2">
+                        <a
+                          href={schedule.meetingLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full px-6 py-3 bg-[#06BBCC] text-white rounded-lg font-bold hover:bg-[#0099AA] transition-colors flex items-center justify-center gap-2"
+                        >
                           <FaVideo /> Tham Gia Cuộc Họp
-                        </button>
+                        </a>
                       )}
                     </motion.div>
                   ))}

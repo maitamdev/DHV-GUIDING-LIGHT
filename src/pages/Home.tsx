@@ -59,7 +59,7 @@ const Home = () => {
                       transition={{ duration: 0.6, delay: 0.2 }}
                       className="text-[#06BBCC] uppercase mb-3 text-lg font-semibold"
                     >
-                      Best Online Courses
+                      Khóa Học Trực Tuyến Tốt Nhất
                     </motion.h5>
                     <motion.h1 
                       initial={{ opacity: 0, y: -20 }}
@@ -67,7 +67,7 @@ const Home = () => {
                       transition={{ duration: 0.6, delay: 0.4 }}
                       className="text-white text-5xl md:text-6xl font-bold mb-4"
                     >
-                      The Best Online Learning Platform
+                      Nền Tảng Học Tập Trực Tuyến Hàng Đầu
                     </motion.h1>
                     <motion.p 
                       initial={{ opacity: 0, y: -20 }}
@@ -75,7 +75,7 @@ const Home = () => {
                       transition={{ duration: 0.6, delay: 0.6 }}
                       className="text-white text-xl mb-8"
                     >
-                      Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus eirmod elitr.
+                      Học tập mọi lúc, mọi nơi với hàng trăm khóa học chất lượng cao. Được hướng dẫn bởi các chuyên gia hàng đầu trong ngành, giúp bạn phát triển kỹ năng và đạt được mục tiêu nghề nghiệp.
                     </motion.p>
                     <div className="flex gap-4">
                       <motion.div
@@ -83,8 +83,8 @@ const Home = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.8 }}
                       >
-                        <Link to="/about" className="bg-[#06BBCC] text-white px-8 py-4 rounded hover:bg-[#05a3b3] transition-all inline-block">
-                          Read More
+                        <Link to="/about" className="bg-[#06BBCC] text-white px-8 py-4 rounded hover:bg-[#05a3b3] transition-all inline-block font-semibold">
+                          Tìm Hiểu Thêm
                         </Link>
                       </motion.div>
                       <motion.div
@@ -92,8 +92,8 @@ const Home = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.8 }}
                       >
-                        <Link to="/signup" className="bg-white text-[#06BBCC] px-8 py-4 rounded hover:bg-gray-100 transition-all inline-block">
-                          Join Now
+                        <Link to="/signup" className="bg-white text-[#06BBCC] px-8 py-4 rounded hover:bg-gray-100 transition-all inline-block font-semibold">
+                          Tham Gia Ngay
                         </Link>
                       </motion.div>
                     </div>
@@ -115,7 +115,7 @@ const Home = () => {
                       transition={{ duration: 0.6, delay: 0.2 }}
                       className="text-[#06BBCC] uppercase mb-3 text-lg font-semibold"
                     >
-                      Best Online Courses
+                      Khóa Học Trực Tuyến Tốt Nhất
                     </motion.h5>
                     <motion.h1 
                       initial={{ opacity: 0, y: -20 }}
@@ -123,7 +123,7 @@ const Home = () => {
                       transition={{ duration: 0.6, delay: 0.4 }}
                       className="text-white text-5xl md:text-6xl font-bold mb-4"
                     >
-                      Get Educated Online From Your Home
+                      Học Trực Tuyến Từ Nhà - Tiện Lợi & Hiệu Quả
                     </motion.h1>
                     <motion.p 
                       initial={{ opacity: 0, y: -20 }}
@@ -131,7 +131,7 @@ const Home = () => {
                       transition={{ duration: 0.6, delay: 0.6 }}
                       className="text-white text-xl mb-8"
                     >
-                      Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus eirmod elitr.
+                      Tiết kiệm thời gian di chuyển, linh hoạt lịch học, nội dung được cập nhật liên tục. Kết nối với mentor và cộng đồng học viên năng động để cùng nhau phát triển.
                     </motion.p>
                     <div className="flex gap-4">
                       <motion.div
@@ -139,8 +139,8 @@ const Home = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.8 }}
                       >
-                        <Link to="/about" className="bg-[#06BBCC] text-white px-8 py-4 rounded hover:bg-[#05a3b3] transition-all inline-block">
-                          Read More
+                        <Link to="/about" className="bg-[#06BBCC] text-white px-8 py-4 rounded hover:bg-[#05a3b3] transition-all inline-block font-semibold">
+                          Tìm Hiểu Thêm
                         </Link>
                       </motion.div>
                       <motion.div
@@ -148,8 +148,8 @@ const Home = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.8 }}
                       >
-                        <Link to="/signup" className="bg-white text-[#06BBCC] px-8 py-4 rounded hover:bg-gray-100 transition-all inline-block">
-                          Join Now
+                        <Link to="/signup" className="bg-white text-[#06BBCC] px-8 py-4 rounded hover:bg-gray-100 transition-all inline-block font-semibold">
+                          Tham Gia Ngay
                         </Link>
                       </motion.div>
                     </div>
@@ -172,10 +172,10 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: 'fa-graduation-cap', title: 'Skilled Instructors', delay: 0.1 },
-              { icon: 'fa-globe', title: 'Online Classes', delay: 0.3 },
-              { icon: 'fa-home', title: 'Home Projects', delay: 0.5 },
-              { icon: 'fa-book-open', title: 'Book Library', delay: 0.7 }
+              { icon: 'fa-graduation-cap', title: 'Giảng Viên Giỏi', description: 'Đội ngũ giảng viên giàu kinh nghiệm và tâm huyết, sẵn sàng hỗ trợ bạn đạt mục tiêu', delay: 0.1 },
+              { icon: 'fa-globe', title: 'Lớp Học Trực Tuyến', description: 'Học mọi lúc mọi nơi với công nghệ hiện đại, tương tác trực tiếp với giảng viên', delay: 0.3 },
+              { icon: 'fa-home', title: 'Dự Án Thực Tế', description: 'Áp dụng kiến thức vào các dự án thực tế để tích lũy kinh nghiệm làm việc', delay: 0.5 },
+              { icon: 'fa-book-open', title: 'Thư Viện Học Liệu', description: 'Kho tài liệu phong phú được cập nhật liên tục, hỗ trợ học tập hiệu quả', delay: 0.7 }
             ].map((service, index) => (
               <motion.div
                 key={index}
@@ -184,7 +184,7 @@ const Home = () => {
               >
                 <i className={`fa fa-3x ${service.icon} text-[#06BBCC] mb-6`}></i>
                 <h5 className="text-xl font-bold mb-3">{service.title}</h5>
-                <p className="text-gray-600">Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                <p className="text-gray-600">{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -204,18 +204,18 @@ const Home = () => {
               <img className="w-full h-full object-cover rounded-lg shadow-xl" src="/img/about.jpg" alt="About" />
             </motion.div>
             <motion.div variants={fadeInRight}>
-              <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">About Us</h6>
-              <h1 className="text-4xl font-bold mb-6">Welcome to eLEARNING</h1>
-              <p className="text-gray-600 mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-              <p className="text-gray-600 mb-6">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+              <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Về Chúng Tôi</h6>
+              <h1 className="text-4xl font-bold mb-6">Chào Mừng Đến Với DHV GUIDING LIGHT</h1>
+              <p className="text-gray-600 mb-4">Nền tảng học tập trực tuyến hàng đầu Việt Nam, kết nối học viên với các chuyên gia và mentor giàu kinh nghiệm. Chúng tôi cam kết mang đến trải nghiệm học tập chất lượng cao và hiệu quả.</p>
+              <p className="text-gray-600 mb-6">Với hệ thống quản lý mentor tiên tiến, bạn có thể dễ dàng tìm kiếm, đặt lịch và tham gia các buổi mentoring trực tuyến. Học tập linh hoạt, phát triển kỹ năng và đạt được mục tiêu nghề nghiệp của bạn.</p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {[
-                  'Skilled Instructors',
-                  'Online Classes',
-                  'International Certificate',
-                  'Skilled Instructors',
-                  'Online Classes',
-                  'International Certificate'
+                  'Giảng Viên Giỏi',
+                  'Lớp Học Trực Tuyến',
+                  'Chứng Chỉ Quốc Tế',
+                  'Mentor Chuyên Nghiệp',
+                  'Hỗ Trợ 24/7',
+                  'Dự Án Thực Tế'
                 ].map((item, index) => (
                   <div key={index} className="flex items-center">
                     <i className="fa fa-arrow-right text-[#06BBCC] mr-2"></i>
@@ -223,8 +223,8 @@ const Home = () => {
                   </div>
                 ))}
               </div>
-              <Link to="/about" className="bg-[#06BBCC] text-white px-8 py-4 rounded hover:bg-[#05a3b3] transition-all inline-block">
-                Read More
+              <Link to="/about" className="bg-[#06BBCC] text-white px-8 py-4 rounded hover:bg-[#05a3b3] transition-all inline-block font-semibold">
+                Tìm Hiểu Thêm
               </Link>
             </motion.div>
           </div>
