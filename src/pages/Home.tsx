@@ -49,7 +49,7 @@ const Home = () => {
         >
           <SwiperSlide>
             <div className="relative w-full h-full">
-              <img className="w-full h-full object-cover" src="img/carousel-1.jpg" alt="Carousel 1" />
+              <img className="w-full h-full object-cover" src="/img/carousel-1.jpg" alt="Carousel 1" />
               <div className="absolute inset-0 bg-[rgba(24,29,56,0.7)] flex items-center">
                 <div className="container mx-auto px-4">
                   <div className="max-w-3xl">
@@ -105,7 +105,7 @@ const Home = () => {
 
           <SwiperSlide>
             <div className="relative w-full h-full">
-              <img className="w-full h-full object-cover" src="img/carousel-2.jpg" alt="Carousel 2" />
+              <img className="w-full h-full object-cover" src="/img/carousel-2.jpg" alt="Carousel 2" />
               <div className="absolute inset-0 bg-[rgba(24,29,56,0.7)] flex items-center">
                 <div className="container mx-auto px-4">
                   <div className="max-w-3xl">
@@ -201,7 +201,7 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={fadeInLeft} className="relative h-[500px]">
-              <img className="w-full h-full object-cover rounded-lg shadow-xl" src="img/about.jpg" alt="About" />
+              <img className="w-full h-full object-cover rounded-lg shadow-xl" src="/img/about.jpg" alt="About" />
             </motion.div>
             <motion.div variants={fadeInRight}>
               <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">About Us</h6>
@@ -248,7 +248,7 @@ const Home = () => {
             <div className="lg:col-span-7">
               <div className="grid gap-4">
                 <motion.div variants={fadeInUp} className="relative overflow-hidden rounded-lg group cursor-pointer">
-                  <img className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src="img/cat-1.jpg" alt="Web Design" />
+                  <img className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src="/img/cat-1.jpg" alt="Web Design" />
                   <div className="absolute bottom-4 right-4 bg-white px-6 py-3 rounded shadow-lg">
                     <h5 className="text-xl font-bold mb-1">Web Design</h5>
                     <small className="text-[#06BBCC]">49 Courses</small>
@@ -264,7 +264,7 @@ const Home = () => {
                       variants={fadeInUp}
                       className="relative overflow-hidden rounded-lg group cursor-pointer"
                     >
-                      <img className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500" src={`img/${cat.img}`} alt={cat.title} />
+                      <img className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500" src={`/img/${cat.img}`} alt={cat.title} />
                       <div className="absolute bottom-4 right-4 bg-white px-4 py-2 rounded shadow-lg">
                         <h5 className="text-lg font-bold mb-1">{cat.title}</h5>
                         <small className="text-[#06BBCC]">{cat.courses} Courses</small>
@@ -285,7 +285,7 @@ const Home = () => {
                     variants={fadeInUp}
                     className="relative overflow-hidden rounded-lg group cursor-pointer h-64"
                   >
-                    <img className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src={`img/${cat.img}`} alt={cat.title} />
+                    <img className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src={`/img/${cat.img}`} alt={cat.title} />
                     <div className="absolute bottom-4 right-4 bg-white px-4 py-2 rounded shadow-lg">
                       <h5 className="text-lg font-bold mb-1">{cat.title}</h5>
                       <small className="text-[#06BBCC]">{cat.courses} Courses</small>
@@ -323,7 +323,7 @@ const Home = () => {
                 className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow"
               >
                 <div className="relative overflow-hidden">
-                  <img className="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500" src={`img/${course.img}`} alt={course.title} />
+                  <img className="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500" src={`/img/${course.img}`} alt={course.title} />
                   <div className="absolute top-4 right-4 bg-[#06BBCC] text-white px-4 py-2 rounded">
                     {course.price}
                   </div>
@@ -388,7 +388,7 @@ const Home = () => {
                 className="text-center group"
               >
                 <div className="relative overflow-hidden rounded-lg mb-4">
-                  <img className="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500" src={`img/${member.img}`} alt={member.name} />
+                  <img className="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500" src={`/img/${member.img}`} alt={member.name} />
                   <div className="absolute inset-0 bg-[rgba(6,187,204,0.7)] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <div className="flex gap-2">
                       <a href="#" className="w-10 h-10 bg-white text-[#06BBCC] rounded-full flex items-center justify-center hover:bg-[#06BBCC] hover:text-white transition-all">
@@ -446,7 +446,7 @@ const Home = () => {
                 <div className="bg-white rounded-lg shadow-lg p-8 text-center">
                   <i className="fa fa-quote-left fa-3x text-[#06BBCC] mb-4"></i>
                   <p className="text-gray-600 mb-6">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                  <img className="w-20 h-20 rounded-full mx-auto mb-4 object-cover" src={`img/${testimonial.img}`} alt={testimonial.name} />
+                  <img className="w-20 h-20 rounded-full mx-auto mb-4 object-cover" src={`/img/${testimonial.img}`} alt={testimonial.name} />
                   <h5 className="text-xl font-bold">{testimonial.name}</h5>
                   <p className="text-gray-600">{testimonial.profession}</p>
                 </div>
