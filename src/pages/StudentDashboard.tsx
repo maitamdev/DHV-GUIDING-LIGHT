@@ -596,7 +596,7 @@ const StudentDashboard = () => {
                               method: 'POST',
                               headers: {
                                 'Content-Type': 'application/json',
-                                'Authorization': `Bearer ${import.meta.env.VITE_GROQ_API_KEY || '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'}`
+                                'Authorization': `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`
                               },
                               body: JSON.stringify({
                                 model: 'mixtral-8x7b-32768',
