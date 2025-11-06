@@ -6,56 +6,56 @@ const roadmaps = [
   {
     id: 'web-development',
     title: 'Web Development',
-    description: 'Lộ trình trở thành Full Stack Web Developer',
+    description: 'Path to become a Full Stack Web Developer',
     icon: FaCode,
     color: 'bg-blue-500',
     courses: 12,
-    duration: '6 tháng'
+    duration: '6 months'
   },
   {
     id: 'mobile-app',
     title: 'Mobile App Development',
-    description: 'Phát triển ứng dụng di động đa nền tảng',
+    description: 'Cross-platform mobile application development',
     icon: FaMobile,
     color: 'bg-green-500',
     courses: 10,
-    duration: '5 tháng'
+    duration: '5 months'
   },
   {
     id: 'data-science',
     title: 'Data Science',
-    description: 'Khoa học dữ liệu và phân tích',
+    description: 'Data science and analytics',
     icon: FaChartLine,
     color: 'bg-purple-500',
     courses: 15,
-    duration: '8 tháng'
+    duration: '8 months'
   },
   {
     id: 'ai-ml',
     title: 'AI & Machine Learning',
-    description: 'Trí tuệ nhân tạo và học máy',
+    description: 'Artificial intelligence and machine learning',
     icon: FaRobot,
     color: 'bg-red-500',
     courses: 14,
-    duration: '9 tháng'
+    duration: '9 months'
   },
   {
     id: 'devops',
     title: 'DevOps Engineer',
-    description: 'Quản lý hệ thống và triển khai tự động',
+    description: 'System management and automated deployment',
     icon: FaServer,
     color: 'bg-yellow-500',
     courses: 8,
-    duration: '4 tháng'
+    duration: '4 months'
   },
   {
     id: 'database',
     title: 'Database Administrator',
-    description: 'Quản trị cơ sở dữ liệu chuyên sâu',
+    description: 'Advanced database administration',
     icon: FaDatabase,
     color: 'bg-indigo-500',
     courses: 9,
-    duration: '5 tháng'
+    duration: '5 months'
   },
 ];
 
@@ -72,7 +72,7 @@ const Roadmap = () => {
             transition={{ duration: 0.8 }}
             className="text-6xl md:text-7xl font-extrabold text-center mb-6 drop-shadow-2xl"
           >
-            🚀 Lộ Trình Học Tập
+            🚀 Learning Roadmaps
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 50 }}
@@ -80,7 +80,7 @@ const Roadmap = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-2xl text-center text-white drop-shadow-lg max-w-3xl mx-auto"
           >
-            Chọn lộ trình phù hợp với mục tiêu nghề nghiệp của bạn. Mỗi lộ trình được thiết kế bởi chuyên gia hàng đầu!
+            Choose a roadmap that fits your career goals. Each roadmap is designed by top experts!
           </motion.p>
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -90,15 +90,15 @@ const Roadmap = () => {
           >
             <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-8 py-4 text-center">
               <p className="text-4xl font-bold">6+</p>
-              <p className="text-sm">Lộ Trình</p>
+              <p className="text-sm">Roadmaps</p>
             </div>
             <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-8 py-4 text-center">
               <p className="text-4xl font-bold">68+</p>
-              <p className="text-sm">Khóa Học</p>
+              <p className="text-sm">Courses</p>
             </div>
             <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-8 py-4 text-center">
               <p className="text-4xl font-bold">37+</p>
-              <p className="text-sm">Tháng Nội Dung</p>
+              <p className="text-sm">Months Content</p>
             </div>
           </motion.div>
         </div>
@@ -143,21 +143,21 @@ const Roadmap = () => {
                         <div className="flex items-center gap-2 text-gray-700">
                           <FaBook className="text-[#06BBCC] text-2xl" />
                           <div>
-                            <p className="text-sm text-gray-500">Khóa học</p>
+                            <p className="text-sm text-gray-500">Courses</p>
                             <p className="text-xl font-bold">{roadmap.courses}</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-2 text-gray-700">
                           <FaClock className="text-[#06BBCC] text-2xl" />
                           <div>
-                            <p className="text-sm text-gray-500">Thời gian</p>
+                            <p className="text-sm text-gray-500">Duration</p>
                             <p className="text-xl font-bold">{roadmap.duration}</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-2 text-gray-700">
                           <FaStar className="text-yellow-500 text-2xl" />
                           <div>
-                            <p className="text-sm text-gray-500">Đánh giá</p>
+                            <p className="text-sm text-gray-500">Rating</p>
                             <p className="text-xl font-bold">4.9</p>
                           </div>
                         </div>
@@ -166,7 +166,7 @@ const Roadmap = () => {
                       {/* Progress Bar */}
                       <div className="mb-6">
                         <div className="flex justify-between text-sm mb-2">
-                          <span className="text-gray-600">Độ phổ biến</span>
+                          <span className="text-gray-600">Popularity</span>
                           <span className="font-semibold text-[#06BBCC]">{85 + index * 2}%</span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
@@ -181,7 +181,7 @@ const Roadmap = () => {
 
                       {/* CTA Button with Arrow */}
                       <div className="flex items-center justify-between py-4 px-6 bg-gradient-to-r from-[#06BBCC] to-[#0066FF] text-white rounded-2xl font-bold text-lg group-hover:from-[#0066FF] group-hover:to-[#FF0000] transition-all duration-500 shadow-lg">
-                        <span>Xem Chi Tiết</span>
+                        <span>View Details</span>
                         <FaArrowRight className="group-hover:translate-x-2 transition-transform duration-300" />
                       </div>
                     </div>
@@ -203,7 +203,7 @@ const Roadmap = () => {
             transition={{ duration: 0.6 }}
             className="text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-2xl"
           >
-            Chưa Chắc Chắn Về Lộ Trình? 🤔
+            Not Sure About Your Path? 🤔
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
@@ -211,7 +211,7 @@ const Roadmap = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-2xl text-white mb-10 max-w-3xl mx-auto drop-shadow-lg"
           >
-            Đặt lịch tư vấn <span className="font-bold">MIỄN PHÍ</span> với chuyên gia của chúng tôi. Chúng tôi sẽ giúp bạn chọn lộ trình phù hợp nhất!
+            Schedule a <span className="font-bold">FREE</span> consultation with our experts. We'll help you choose the most suitable path!
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -223,13 +223,13 @@ const Roadmap = () => {
               to="/contact"
               className="inline-flex items-center gap-3 px-10 py-5 bg-white text-[#06BBCC] rounded-full font-bold text-xl hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:scale-110 hover:shadow-[0_20px_50px_rgba(255,255,255,0.5)]"
             >
-              <FaArrowRight /> Đặt Lịch Tư Vấn Ngay
+              <FaArrowRight /> Schedule Consultation Now
             </Link>
             <Link
               to="/courses"
               className="inline-flex items-center gap-3 px-10 py-5 bg-transparent border-4 border-white text-white rounded-full font-bold text-xl hover:bg-white hover:text-[#06BBCC] transition-all duration-300 shadow-2xl hover:scale-110"
             >
-              <FaBook /> Xem Tất Cả Khóa Học
+              <FaBook /> View All Courses
             </Link>
           </motion.div>
         </div>

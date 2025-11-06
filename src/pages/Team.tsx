@@ -4,10 +4,10 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/f
 const teamMembers = [
   {
     id: 1,
-    name: 'Nguyễn Văn A',
+    name: 'Nguyen Van A',
     role: 'CEO & Founder',
     image: '/img/team-1.jpg',
-    bio: 'Với hơn 10 năm kinh nghiệm trong lĩnh vực giáo dục và công nghệ, tôi sáng lập DHV Guiding Light với sứ mệnh mang đến giáo dục chất lượng cao cho tất cả mọi người.',
+    bio: 'With over 10 years of experience in education and technology, I founded DHV Guiding Light with the mission to bring high-quality education to everyone.',
     social: { facebook: '#', twitter: '#', linkedin: '#', instagram: '#' }
   }
 ];
@@ -24,10 +24,10 @@ const Team = () => {
             transition={{ duration: 0.6 }}
             className="text-5xl md:text-6xl text-white font-bold text-center mb-4"
           >
-            Đội Ngũ Của Chúng Tôi
+            Our Team
           </motion.h1>
           <p className="text-xl text-center text-white/90">
-            Gặp gỡ những người đam mê giáo dục và công nghệ
+            Meet the people passionate about education and technology
           </p>
         </div>
       </div>

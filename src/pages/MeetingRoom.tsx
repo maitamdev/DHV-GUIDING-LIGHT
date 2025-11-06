@@ -9,15 +9,15 @@ const MeetingRoom = () => {
   const [isVideoOn, setIsVideoOn] = useState(true);
   const [showChat, setShowChat] = useState(true);
   const [messages, setMessages] = useState<{ user: string; text: string; time: string }[]>([
-    { user: 'Giảng viên', text: 'Chào mừng các bạn đến với buổi học!', time: '14:00' },
-    { user: 'Học viên A', text: 'Chào thầy ạ!', time: '14:01' },
+    { user: 'Mentor', text: 'Welcome to the session everyone!', time: '14:00' },
+    { user: 'Student A', text: 'Hello mentor!', time: '14:01' },
   ]);
   const [newMessage, setNewMessage] = useState('');
   const [participants] = useState([
-    { id: 1, name: 'Giảng viên', role: 'instructor', video: true, audio: true },
-    { id: 2, name: 'Học viên A', role: 'student', video: true, audio: true },
-    { id: 3, name: 'Học viên B', role: 'student', video: false, audio: true },
-    { id: 4, name: 'Học viên C', role: 'student', video: true, audio: false },
+    { id: 1, name: 'Mentor', role: 'instructor', video: true, audio: true },
+    { id: 2, name: 'Student A', role: 'student', video: true, audio: true },
+    { id: 3, name: 'Student B', role: 'student', video: false, audio: true },
+    { id: 4, name: 'Student C', role: 'student', video: true, audio: false },
   ]);
 
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -52,7 +52,7 @@ const MeetingRoom = () => {
   };
 
   const handleLeaveRoom = () => {
-    if (window.confirm('Bạn có chắc muốn rời khỏi phòng học?')) {
+    if (window.confirm('Are you sure you want to leave the room?')) {
       navigate('/meeting');
     }
   };
@@ -62,15 +62,15 @@ const MeetingRoom = () => {
       {/* Header */}
       <div className="bg-gray-800 text-white px-6 py-4 flex justify-between items-center">
         <div>
-          <h1 className="text-xl font-bold">Phòng học: {roomId}</h1>
+          <h1 className="text-xl font-bold">Room: {roomId}</h1>
           <p className="text-sm text-gray-400">JavaScript Advanced - Q&A Session</p>
         </div>
         <div className="flex items-center gap-4">
           <span className="text-sm text-gray-400">
             <FaUsers className="inline mr-2" />
-            {participants.length} người
+            {participants.length} participants
           </span>
-          <span className="text-sm text-green-400">● Đang kết nối</span>
+          <span className="text-sm text-green-400">● Connected</span>
         </div>
       </div>
 
@@ -99,7 +99,7 @@ const MeetingRoom = () => {
                 </div>
               )}
               <div className="absolute bottom-4 left-4 bg-black bg-opacity-60 px-3 py-1 rounded">
-                <span className="text-white font-semibold">Bạn</span>
+                <span className="text-white font-semibold">You</span>
               </div>
             </div>
 
@@ -163,14 +163,14 @@ const MeetingRoom = () => {
                   type="text"
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
-                  placeholder="Nhập tin nhắn..."
+                  placeholder="Type a message..."
                   className="flex-1 px-3 py-2 bg-gray-700 text-white rounded-lg outline-none focus:ring-2 focus:ring-primary"
                 />
                 <button
                   type="submit"
                   className="px-4 py-2 bg-[#06BBCC] text-white rounded-lg hover:bg-[#05a3b3] transition-colors"
                 >
-                  Gửi
+                  Send
                 </button>
               </div>
             </form>
@@ -185,7 +185,7 @@ const MeetingRoom = () => {
           className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 ${
             isMuted ? 'bg-red-500 hover:bg-red-600' : 'bg-gray-700 hover:bg-gray-600'
           }`}
-          title={isMuted ? 'Bật micro' : 'Tắt micro'}
+          title={isMuted ? 'Unmute' : 'Mute'}
         >
           {isMuted ? (
             <FaMicrophoneSlash className="text-white text-xl" />
@@ -199,7 +199,7 @@ const MeetingRoom = () => {
           className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 ${
             !isVideoOn ? 'bg-red-500 hover:bg-red-600' : 'bg-gray-700 hover:bg-gray-600'
           }`}
-          title={isVideoOn ? 'Tắt camera' : 'Bật camera'}
+          title={isVideoOn ? 'Turn off video' : 'Turn on video'}
         >
           {isVideoOn ? (
             <FaVideo className="text-white text-xl" />
@@ -211,7 +211,7 @@ const MeetingRoom = () => {
         <button
           onClick={handleLeaveRoom}
           className="w-14 h-14 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center transition-all duration-300"
-          title="Rời khỏi phòng"
+          title="Leave room"
         >
           <FaPhoneSlash className="text-white text-xl" />
         </button>
@@ -221,7 +221,7 @@ const MeetingRoom = () => {
           className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 ${
             showChat ? 'bg-[#06BBCC] hover:bg-[#05a3b3]' : 'bg-gray-700 hover:bg-gray-600'
           }`}
-          title={showChat ? 'Ẩn chat' : 'Hiện chat'}
+          title={showChat ? 'Hide chat' : 'Show chat'}
         >
           <FaComments className="text-white text-xl" />
         </button>
