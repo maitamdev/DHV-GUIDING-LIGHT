@@ -25,31 +25,31 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
             {/* Quick Links */}
             <div>
-              <h4 className="text-white text-xl font-bold mb-4">Liên kết nhanh</h4>
+              <h4 className="text-white text-xl font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2">
                 <li>
                   <Link to="/about" className="hover:text-[#06BBCC] transition-colors">
-                    Giới thiệu về chúng tôi
+                    About Us
                   </Link>
                 </li>
                 <li>
                   <Link to="/contact" className="hover:text-[#06BBCC] transition-colors">
-                    Liên hệ
+                    Contact Us
                   </Link>
                 </li>
                 <li>
                   <a href="#" className="hover:text-[#06BBCC] transition-colors">
-                    Chính sách bảo mật
+                    Privacy Policy
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-[#06BBCC] transition-colors">
-                    Điều khoản & Điều kiện
+                    Terms & Conditions
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-[#06BBCC] transition-colors">
-                    Câu hỏi thường gặp & Hỗ trợ
+                    FAQ & Support
                   </a>
                 </li>
               </ul>
@@ -57,7 +57,7 @@ const Footer = () => {
 
             {/* Contact Info */}
             <div>
-              <h4 className="text-white text-xl font-bold mb-4">Liên hệ</h4>
+              <h4 className="text-white text-xl font-bold mb-4">Contact</h4>
               <div className="space-y-3">
                 <p className="flex items-start">
                   <FaMapMarkerAlt className="text-[#06BBCC] mt-1 mr-3 flex-shrink-0" />
@@ -102,9 +102,9 @@ const Footer = () => {
 
             {/* Newsletter */}
             <div>
-              <h4 className="text-white text-xl font-bold mb-4">Đăng ký nhận bản tin</h4>
+              <h4 className="text-white text-xl font-bold mb-4">Newsletter</h4>
               <p className="mb-4 text-sm">
-                Đăng ký ngay để nhận cập nhật khóa học, chương trình mentoring, và lộ trình học tập cá nhân hóa từ DHV Guiding Light!!
+                Subscribe now to receive course updates, mentoring programs, and personalized learning paths from DHV Guiding Light!
               </p>
               <form className="relative">
                 <input 
@@ -117,7 +117,7 @@ const Footer = () => {
                   type="submit"
                   className="absolute right-2 top-2 bg-[#06BBCC] hover:bg-[#05a3b3] text-white px-4 py-2 rounded-lg transition-colors"
                 >
-                  <a href="mailto:keertidvcorai@gmail.com">Đăng ký</a>
+                  <a href="mailto:keertidvcorai@gmail.com">Subscribe</a>
                 </button>
               </form>
             </div>

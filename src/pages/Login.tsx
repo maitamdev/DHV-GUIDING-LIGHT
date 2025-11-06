@@ -76,50 +76,56 @@ const Login = () => {
 
   return (
     <>
-      {/* Header Start */}
-      <div className="w-full bg-gradient-to-r from-[#06BBCC] to-[#05a3b3] py-20 mb-12">
-        <div className="container mx-auto px-4 py-12">
-          <div className="flex justify-center">
-            <div className="w-full lg:w-10/12 text-center">
-              <motion.h1
-                initial={{ opacity: 0, y: -30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-5xl md:text-6xl text-white font-bold mb-4"
-              >
-                Đăng Nhập
-              </motion.h1>
-              <nav aria-label="breadcrumb">
-                <ol className="flex justify-center items-center space-x-2 text-white">
-                  <li>
-                    <Link className="hover:underline" to="/">
-                      Trang Chủ
-                    </Link>
-                  </li>
-                  <li>/</li>
-                  <li className="opacity-80">Đăng Nhập</li>
-                </ol>
-              </nav>
-            </div>
-          </div>
+      {/* Login Section with Background Image */}
+      <div className="relative min-h-screen flex items-center justify-center py-20">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/img/carousel-1.jpg" 
+            alt="Background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#06BBCC]/90 via-blue-600/85 to-purple-700/90"></div>
         </div>
-      </div>
-      {/* Header End */}
 
-      {/* Login Start */}
-      <div className="py-12">
-        <div className="container mx-auto px-4">
+        {/* Animated Background Circles */}
+        <div className="absolute inset-0 overflow-hidden z-0">
+          <div className="absolute w-96 h-96 bg-white/10 rounded-full blur-3xl -top-20 -left-20 animate-pulse"></div>
+          <div className="absolute w-96 h-96 bg-white/10 rounded-full blur-3xl -bottom-20 -right-20 animate-pulse delay-1000"></div>
+        </div>
+
+        {/* Login Form */}
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-md mx-auto"
           >
-            <form onSubmit={handleSubmit} className="bg-white shadow-xl rounded-lg p-8">
-              <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Đăng Nhập</h2>
+            <div className="text-center mb-8">
+              <motion.h1
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-5xl md:text-6xl text-white font-bold mb-4"
+              >
+                Login
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-white/90 text-lg"
+              >
+                Welcome back to DHV Guiding Light
+              </motion.p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl p-8">
+              <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Sign In</h2>
 
               {error && (
-                <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+                <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg">
                   {error}
                 </div>
               )}
@@ -141,7 +147,7 @@ const Login = () => {
                   <FaLock className="absolute left-4 top-4 text-gray-400" />
                   <input
                     type="password"
-                    placeholder="Mật Khẩu"
+                    placeholder="Password"
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none transition-colors"
@@ -150,23 +156,23 @@ const Login = () => {
                 </div>
 
                 <div className="text-right">
-                  <a href="#" className="text-[#06BBCC] hover:underline text-sm">
-                    Quên mật khẩu?
+                  <a href="#" className="text-[#06BBCC] hover:underline text-sm font-medium">
+                    Forgot Password?
                   </a>
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-[#06BBCC] hover:bg-[#05a3b3] text-white font-semibold py-3 rounded-lg transition-colors duration-300 disabled:opacity-50"
+                  className="w-full bg-gradient-to-r from-[#06BBCC] to-blue-600 hover:from-[#05a3b3] hover:to-blue-700 text-white font-semibold py-3 rounded-lg transition-all duration-300 disabled:opacity-50 shadow-lg hover:shadow-xl transform hover:scale-105"
                 >
-                  {loading ? 'Đang đăng nhập...' : 'Đăng Nhập'}
+                  {loading ? 'Logging in...' : 'Login'}
                 </button>
 
                 <p className="text-center text-gray-600">
-                  Bạn chưa có tài khoản?{' '}
+                  Don't have an account?{' '}
                   <Link to="/signup" className="text-[#06BBCC] hover:underline font-semibold">
-                    Đăng Ký
+                    Sign Up
                   </Link>
                 </p>
               </div>
@@ -174,7 +180,6 @@ const Login = () => {
           </motion.div>
         </div>
       </div>
-      {/* Login End */}
     </>
   );
 };

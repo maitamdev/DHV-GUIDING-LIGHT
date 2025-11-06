@@ -4,134 +4,134 @@ const courses = [
   {
     id: 1,
     title: 'Web Development Full Stack',
-    instructor: 'Nguyễn Văn A',
+    instructor: 'Nguyen Van A',
     students: 1234,
-    price: '2,999,000đ',
+    price: '$129',
     image: '/img/course-1.jpg',
     category: 'web-development',
-    level: 'Trung cấp',
-    duration: '6 tháng'
+    level: 'Intermediate',
+    duration: '6 months'
   },
   {
     id: 2,
     title: 'React & Node.js Bootcamp',
-    instructor: 'Trần Văn B',
+    instructor: 'Tran Van B',
     students: 987,
-    price: '3,299,000đ',
+    price: '$139',
     image: '/img/course-2.jpg',
     category: 'web-development',
-    level: 'Nâng cao',
-    duration: '4 tháng'
+    level: 'Advanced',
+    duration: '4 months'
   },
   {
     id: 3,
     title: 'Mobile App Development',
-    instructor: 'Trần Thị C',
+    instructor: 'Tran Thi C',
     students: 856,
-    price: '3,499,000đ',
+    price: '$149',
     image: '/img/course-3.jpg',
     category: 'mobile-app',
-    level: 'Trung cấp',
-    duration: '5 tháng'
+    level: 'Intermediate',
+    duration: '5 months'
   },
   {
     id: 4,
     title: 'Flutter & Dart Complete Guide',
-    instructor: 'Lê Văn D',
+    instructor: 'Le Van D',
     students: 654,
-    price: '2,799,000đ',
+    price: '$119',
     image: '/img/course-1.jpg',
     category: 'mobile-app',
-    level: 'Cơ bản',
-    duration: '3 tháng'
+    level: 'Beginner',
+    duration: '3 months'
   },
   {
     id: 5,
     title: 'Data Science & Analytics',
-    instructor: 'Phạm Thị E',
+    instructor: 'Pham Thi E',
     students: 2341,
-    price: '3,999,000đ',
+    price: '$169',
     image: '/img/course-2.jpg',
     category: 'data-science',
-    level: 'Nâng cao',
-    duration: '8 tháng'
+    level: 'Advanced',
+    duration: '8 months'
   },
   {
     id: 6,
     title: 'Machine Learning A-Z',
-    instructor: 'Hoàng Văn F',
+    instructor: 'Hoang Van F',
     students: 1876,
-    price: '4,499,000đ',
+    price: '$189',
     image: '/img/course-3.jpg',
     category: 'ai-ml',
-    level: 'Nâng cao',
-    duration: '9 tháng'
+    level: 'Advanced',
+    duration: '9 months'
   },
   {
     id: 7,
     title: 'Python for Data Science',
-    instructor: 'Nguyễn Thị G',
+    instructor: 'Nguyen Thi G',
     students: 1523,
-    price: '2,499,000đ',
+    price: '$109',
     image: '/img/course-1.jpg',
     category: 'data-science',
-    level: 'Cơ bản',
-    duration: '4 tháng'
+    level: 'Beginner',
+    duration: '4 months'
   },
   {
     id: 8,
     title: 'DevOps & Cloud Engineering',
-    instructor: 'Vũ Văn H',
+    instructor: 'Vu Van H',
     students: 743,
-    price: '3,799,000đ',
+    price: '$159',
     image: '/img/course-2.jpg',
     category: 'devops',
-    level: 'Nâng cao',
-    duration: '5 tháng'
+    level: 'Advanced',
+    duration: '5 months'
   },
   {
     id: 9,
     title: 'UI/UX Design Masterclass',
-    instructor: 'Đặng Thị I',
+    instructor: 'Dang Thi I',
     students: 1098,
-    price: '2,299,000đ',
+    price: '$99',
     image: '/img/course-3.jpg',
     category: 'design',
-    level: 'Trung cấp',
-    duration: '3 tháng'
+    level: 'Intermediate',
+    duration: '3 months'
   },
   {
     id: 10,
     title: 'Cybersecurity Fundamentals',
-    instructor: 'Bùi Văn K',
+    instructor: 'Bui Van K',
     students: 892,
-    price: '3,599,000đ',
+    price: '$155',
     image: '/img/course-1.jpg',
     category: 'security',
-    level: 'Trung cấp',
-    duration: '6 tháng'
+    level: 'Intermediate',
+    duration: '6 months'
   },
   {
     id: 11,
     title: 'Blockchain Development',
-    instructor: 'Trịnh Thị L',
+    instructor: 'Trinh Thi L',
     students: 567,
-    price: '4,299,000đ',
+    price: '$179',
     image: '/img/course-2.jpg',
     category: 'blockchain',
-    level: 'Nâng cao',
-    duration: '7 tháng'
+    level: 'Advanced',
+    duration: '7 months'
   },
   {
     id: 12,
     title: 'Digital Marketing Pro',
-    instructor: 'Mai Văn M',
+    instructor: 'Mai Van M',
     students: 1432,
-    price: '1,999,000đ',
+    price: '$89',
     image: '/img/course-3.jpg',
     category: 'marketing',
-    level: 'Cơ bản',
-    duration: '3 tháng'
+    level: 'Beginner',
+    duration: '3 months'
   },
 ];
 
@@ -141,9 +141,9 @@ const Courses = () => {
       {/* Header */}
       <section className="bg-gradient-to-r from-[#06BBCC] to-[#05a3b3] text-white py-20">
         <div className="container mx-auto px-4">
-          <h1 className="text-5xl font-bold text-center mb-4">Khóa học của chúng tôi</h1>
+          <h1 className="text-5xl font-bold text-center mb-4">Our Courses</h1>
           <p className="text-xl text-center text-white/90">
-            Khám phá hàng trăm khóa học chất lượng cao
+            Discover hundreds of high-quality courses
           </p>
         </div>
       </section>
@@ -177,7 +177,7 @@ const Courses = () => {
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center text-gray-600">
                       <i className="fas fa-users mr-2"></i>
-                      <span>{course.students} học viên</span>
+                      <span>{course.students} students</span>
                     </div>
                     <span className="text-2xl font-bold text-[#06BBCC]">{course.price}</span>
                   </div>
@@ -185,7 +185,7 @@ const Courses = () => {
                     to={`/course/${course.id}`}
                     className="block w-full py-3 bg-[#06BBCC] text-white text-center rounded-full font-semibold hover:bg-[#05a3b3] transition-colors duration-300"
                   >
-                    Xem chi tiết
+                    View Details
                   </Link>
                 </div>
               </div>

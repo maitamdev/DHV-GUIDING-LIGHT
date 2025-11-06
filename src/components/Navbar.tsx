@@ -62,7 +62,7 @@ const Navbar = () => {
                   : 'text-gray-700 dark:text-gray-200 hover:text-[#06BBCC] hover:bg-gray-50 dark:hover:bg-gray-800'
               }`}
             >
-              Trang Chủ
+              Home
             </Link>
             <Link 
               to="/about" 
@@ -72,7 +72,7 @@ const Navbar = () => {
                   : 'text-gray-700 dark:text-gray-200 hover:text-[#06BBCC] hover:bg-gray-50 dark:hover:bg-gray-800'
               }`}
             >
-              Giới Thiệu
+              About
             </Link>
             <Link 
               to="/courses" 
@@ -82,7 +82,7 @@ const Navbar = () => {
                   : 'text-gray-700 hover:text-[#06BBCC] hover:bg-gray-50'
               }`}
             >
-              Khóa Học
+              Courses
             </Link>
             
             {/* Dropdown */}
@@ -92,7 +92,7 @@ const Navbar = () => {
                 onMouseEnter={() => setIsDropdownOpen(true)}
                 onMouseLeave={() => setIsDropdownOpen(false)}
               >
-                <span>Trang</span>
+                <span>Pages</span>
                 <FaChevronDown className="text-xs" />
               </button>
               <div 
@@ -106,25 +106,25 @@ const Navbar = () => {
                   to="/roadmap" 
                   className="block px-4 py-3 text-gray-700 hover:bg-[#06BBCC]/10 hover:text-[#06BBCC] transition-colors first:rounded-t-lg"
                 >
-                  Lộ Trình
+                  Roadmap
                 </Link>
                 <Link 
                   to="/meeting" 
                   className="block px-4 py-3 text-gray-700 hover:bg-[#06BBCC]/10 hover:text-[#06BBCC] transition-colors"
                 >
-                  Phòng Học
+                  Meeting Room
                 </Link>
                 <Link 
                   to="/team" 
                   className="block px-4 py-3 text-gray-700 hover:bg-[#06BBCC]/10 hover:text-[#06BBCC] transition-colors"
                 >
-                  Đội Ngũ
+                  Team
                 </Link>
                 <Link 
                   to="/testimonial" 
                   className="block px-4 py-3 text-gray-700 hover:bg-[#06BBCC]/10 hover:text-[#06BBCC] transition-colors"
                 >
-                  Đánh Giá
+                  Testimonials
                 </Link>
                 <Link 
                   to="/faq" 
@@ -149,7 +149,7 @@ const Navbar = () => {
                   : 'text-gray-700 hover:text-[#06BBCC] hover:bg-gray-50'
               }`}
             >
-              Liên hệ
+              Contact
             </Link>
 
             {currentUser ? (
@@ -158,14 +158,14 @@ const Navbar = () => {
                   to="/student-dashboard"
                   className="text-gray-700 dark:text-gray-200 hover:text-[#06BBCC] hover:bg-gray-50 dark:hover:bg-gray-800 px-3 py-2 rounded transition-colors"
                 >
-                  Tìm Mentor
+                  Find Mentor
                 </Link>
                 <button
                   onClick={handleLogout}
                   className="ml-2 px-4 py-2 rounded-lg font-medium text-gray-700 dark:text-gray-200 hover:text-red-500 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center gap-2"
                 >
                   <FaSignOutAlt />
-                  <span className="hidden sm:inline">Đăng xuất</span>
+                  <span className="hidden sm:inline">Logout</span>
                 </button>
               </>
             ) : (
@@ -204,7 +204,7 @@ const Navbar = () => {
                 : 'text-gray-700 hover:text-[#06BBCC] hover:bg-gray-50'
             }`}
           >
-            Trang Chủ
+            Home
           </Link>
           <Link 
             to="/about" 
@@ -215,7 +215,7 @@ const Navbar = () => {
                 : 'text-gray-700 hover:text-[#06BBCC] hover:bg-gray-50'
             }`}
           >
-            Chúng Tôi
+            About Us
           </Link>
           <Link 
             to="/courses" 
@@ -226,7 +226,7 @@ const Navbar = () => {
                 : 'text-gray-700 hover:text-[#06BBCC] hover:bg-gray-50'
             }`}
           >
-            Khóa Học
+            Courses
           </Link>
           <div className="space-y-1 pl-4">
             <Link 
@@ -234,28 +234,28 @@ const Navbar = () => {
               onClick={closeMenu}
               className="block px-4 py-2 text-gray-600 hover:text-[#06BBCC] hover:bg-gray-50 rounded-lg transition-colors"
             >
-              Lộ Trình
+              Roadmap
             </Link>
             <Link 
               to="/meeting" 
               onClick={closeMenu}
               className="block px-4 py-2 text-gray-600 hover:text-[#06BBCC] hover:bg-gray-50 rounded-lg transition-colors"
             >
-              Phòng Học
+              Meeting Room
             </Link>
             <Link 
               to="/team" 
               onClick={closeMenu}
               className="block px-4 py-2 text-gray-600 hover:text-[#06BBCC] hover:bg-gray-50 rounded-lg transition-colors"
             >
-              Đội Ngũ
+              Team
             </Link>
             <Link 
               to="/testimonial" 
               onClick={closeMenu}
               className="block px-4 py-2 text-gray-600 hover:text-[#06BBCC] hover:bg-gray-50 rounded-lg transition-colors"
             >
-              Đánh Giá
+              Testimonials
             </Link>
             <Link 
               to="/faq" 
@@ -281,7 +281,7 @@ const Navbar = () => {
                 : 'text-gray-700 hover:text-[#06BBCC] hover:bg-gray-50'
             }`}
           >
-            Liên hệ
+            Contact
           </Link>
           <Link 
             to="/login" 
@@ -289,7 +289,7 @@ const Navbar = () => {
             className="block px-4 py-3 rounded-lg font-medium text-gray-700 hover:text-[#06BBCC] hover:bg-gray-50 transition-colors"
           >
             <FaUser className="inline mr-2" />
-            Đăng Nhập
+            Login
           </Link>
         </div>
       </div>

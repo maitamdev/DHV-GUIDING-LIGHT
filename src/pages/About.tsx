@@ -4,55 +4,56 @@ import { FaRocket, FaHeart, FaUsers, FaLightbulb, FaGraduationCap, FaStar, FaCha
 
 const About = () => {
   const stats = [
-    { icon: FaUsers, number: '10,000+', label: 'Học Viên', color: 'from-blue-500 to-cyan-500' },
-    { icon: FaGraduationCap, number: '200+', label: 'Khóa Học', color: 'from-purple-500 to-pink-500' },
-    { icon: FaStar, number: '150+', label: 'Giảng Viên', color: 'from-yellow-500 to-orange-500' },
-    { icon: FaGlobe, number: '50+', label: 'Quốc Gia', color: 'from-green-500 to-emerald-500' },
+    { icon: FaUsers, number: '10,000+', label: 'Students', color: 'from-blue-500 to-cyan-500' },
+    { icon: FaGraduationCap, number: '200+', label: 'Courses', color: 'from-purple-500 to-pink-500' },
+    { icon: FaStar, number: '150+', label: 'Professional Mentors', color: 'from-yellow-500 to-orange-500' },
+    { icon: FaGlobe, number: '50+', label: 'Countries', color: 'from-green-500 to-emerald-500' },
   ];
 
   const values = [
     {
       icon: FaRocket,
-      title: 'Đổi Mới & Sáng Tạo',
-      description: 'Ứng dụng công nghệ hiện đại nhất để tạo ra trải nghiệm học tập độc đáo và hiệu quả.',
+      title: 'Innovation & Creativity',
+      description: 'Leveraging cutting-edge technology to create unique and effective learning experiences.',
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
       icon: FaHeart,
-      title: 'Tận Tâm & Chất Lượng',
-      description: 'Cam kết mang đến chất lượng giáo dục tốt nhất, luôn lắng nghe và hỗ trợ học viên.',
+      title: 'Dedication & Quality',
+      description: 'Committed to delivering the best educational quality, always listening and supporting students.',
       gradient: 'from-red-500 to-pink-500'
     },
     {
       icon: FaUsers,
-      title: 'Cộng Đồng Gắn Kết',
-      description: 'Xây dựng một cộng đồng học tập năng động, nơi mọi người cùng nhau phát triển.',
+      title: 'Connected Community',
+      description: 'Building a dynamic learning community where everyone grows together.',
       gradient: 'from-purple-500 to-indigo-500'
     },
     {
       icon: FaLightbulb,
-      title: 'Học Tập Suốt Đời',
-      description: 'Khuyến khích văn hóa học tập liên tục, phát triển bản thân không ngừng nghỉ.',
+      title: 'Lifelong Learning',
+      description: 'Encouraging a culture of continuous learning and personal development.',
       gradient: 'from-yellow-500 to-orange-500'
     }
   ];
 
   const milestones = [
-    { year: '2020', title: 'Khởi Đầu', description: 'Ra mắt nền tảng với 10 khóa học đầu tiên' },
-    { year: '2021', title: 'Phát Triển', description: 'Đạt 1000+ học viên và mở rộng chương trình' },
-    { year: '2022', title: 'Mở Rộng', description: 'Hợp tác với 50+ doanh nghiệp lớn' },
-    { year: '2023', title: 'Vươn Xa', description: 'Có mặt tại 20+ quốc gia trên thế giới' },
-    { year: '2024', title: 'Đột Phá', description: 'Ra mắt tính năng AI Mentor và AR Learning' },
+    { year: '2020', title: 'The Beginning', description: 'Launched the platform with 10 initial courses' },
+    { year: '2021', title: 'Growth', description: 'Reached 1000+ students and expanded programs' },
+    { year: '2022', title: 'Expansion', description: 'Partnered with 50+ major enterprises' },
+    { year: '2023', title: 'Going Global', description: 'Present in 20+ countries worldwide' },
+    { year: '2024', title: 'Breakthrough', description: 'Launched AI Mentor and AR Learning features' },
   ];
 
   return (
     <>
       {/* Hero Section với Gradient */}
-      <div className="relative w-full bg-gradient-to-br from-[#06BBCC] via-blue-600 to-purple-700 py-32 overflow-hidden">
+      <div className="relative w-full bg-gradient-to-br from-[#06BBCC] via-blue-600 to-purple-700 py-32 overflow-hidden shadow-2xl">
         {/* Animated Background Circles */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute w-96 h-96 bg-white/10 rounded-full blur-3xl -top-20 -left-20 animate-pulse"></div>
           <div className="absolute w-96 h-96 bg-white/10 rounded-full blur-3xl -bottom-20 -right-20 animate-pulse delay-1000"></div>
+          <div className="absolute w-72 h-72 bg-yellow-400/10 rounded-full blur-3xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse delay-500"></div>
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -77,18 +78,18 @@ const About = () => {
               DHV GUIDING LIGHT
             </h1>
             <p className="text-2xl text-white/90 mb-8 leading-relaxed">
-              🌟 Thắp Sáng Tương Lai - Dẫn Lối Thành Công 🌟
+              🌟 Illuminate Your Future - Lead to Success 🌟
             </p>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              Nền tảng học tập trực tuyến hàng đầu Việt Nam, kết nối bạn với tri thức, 
-              mentor và cơ hội phát triển nghề nghiệp không giới hạn.
+              Vietnam's leading online learning platform, connecting you with knowledge, 
+              professional mentors, and unlimited career development opportunities.
             </p>
           </motion.div>
         </div>
       </div>
 
       {/* Stats Section */}
-      <div className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <div className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -98,12 +99,12 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
+                className="text-center group"
               >
-                <div className={`inline-block p-6 bg-gradient-to-br ${stat.color} rounded-2xl shadow-2xl mb-4 transform hover:scale-110 transition-transform`}>
+                <div className={`inline-block p-6 bg-gradient-to-br ${stat.color} rounded-3xl shadow-2xl mb-4 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
                   <stat.icon className="text-5xl text-white" />
                 </div>
-                <h3 className="text-4xl font-extrabold text-gray-800 mb-2">{stat.number}</h3>
+                <h3 className="text-4xl font-extrabold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-2">{stat.number}</h3>
                 <p className="text-gray-600 font-semibold text-lg">{stat.label}</p>
               </motion.div>
             ))}
@@ -120,7 +121,7 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl font-extrabold text-gray-800 mb-4">Sứ Mệnh & Tầm Nhìn</h2>
+            <h2 className="text-5xl font-extrabold text-gray-800 mb-4">Mission & Vision</h2>
             <div className="w-32 h-1 bg-gradient-to-r from-[#06BBCC] to-purple-600 mx-auto rounded-full"></div>
           </motion.div>
 
@@ -130,31 +131,32 @@ const About = () => {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-3xl p-10 shadow-2xl border-l-8 border-[#06BBCC] hover:shadow-3xl transition-shadow"
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="bg-gradient-to-br from-cyan-50 via-blue-50 to-blue-100 rounded-3xl p-10 shadow-2xl border-l-8 border-[#06BBCC] hover:shadow-3xl transition-all duration-300"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-4 bg-[#06BBCC] rounded-2xl">
                   <FaRocket className="text-4xl text-white" />
                 </div>
-                <h3 className="text-3xl font-bold text-gray-800">Sứ Mệnh</h3>
+                <h3 className="text-3xl font-bold text-gray-800">Mission</h3>
               </div>
               <p className="text-gray-700 text-lg leading-relaxed">
-                <strong>DHV Guiding Light</strong> ra đời với sứ mệnh <strong>dân chủ hóa giáo dục</strong>, 
-                mang kiến thức chất lượng cao đến với mọi người, mọi nơi. Chúng tôi tin rằng học tập 
-                không có rào cản, mỗi cá nhân đều xứng đáng có cơ hội phát triển tối đa tiềm năng của mình.
+                <strong>DHV Guiding Light</strong> was founded with the mission to <strong>democratize education</strong>, 
+                bringing high-quality knowledge to everyone, everywhere. We believe that learning 
+                should have no barriers, and every individual deserves the opportunity to maximize their potential.
               </p>
               <div className="mt-6 space-y-3">
                 <div className="flex items-start gap-3">
                   <FaChartLine className="text-2xl text-[#06BBCC] mt-1" />
-                  <p className="text-gray-700">Cung cấp khóa học chất lượng cao với giá cả phải chăng</p>
+                  <p className="text-gray-700">Provide high-quality courses at affordable prices</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <FaChartLine className="text-2xl text-[#06BBCC] mt-1" />
-                  <p className="text-gray-700">Kết nối học viên với mentor giàu kinh nghiệm</p>
+                  <p className="text-gray-700">Connect students with experienced professional mentors</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <FaChartLine className="text-2xl text-[#06BBCC] mt-1" />
-                  <p className="text-gray-700">Ứng dụng công nghệ AI để cá nhân hóa lộ trình học tập</p>
+                  <p className="text-gray-700">Apply AI technology to personalize learning paths</p>
                 </div>
               </div>
             </motion.div>
@@ -164,31 +166,32 @@ const About = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-3xl p-10 shadow-2xl border-l-8 border-purple-600 hover:shadow-3xl transition-shadow"
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="bg-gradient-to-br from-purple-50 via-pink-50 to-pink-100 rounded-3xl p-10 shadow-2xl border-l-8 border-purple-600 hover:shadow-3xl transition-all duration-300"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-4 bg-purple-600 rounded-2xl">
                   <FaLightbulb className="text-4xl text-white" />
                 </div>
-                <h3 className="text-3xl font-bold text-gray-800">Tầm Nhìn</h3>
+                <h3 className="text-3xl font-bold text-gray-800">Vision</h3>
               </div>
               <p className="text-gray-700 text-lg leading-relaxed">
-                Trở thành <strong>nền tảng giáo dục trực tuyến số 1 Đông Nam Á</strong> vào năm 2030, 
-                nơi hàng triệu người học tin tượng và lựa chọn để phát triển sự nghiệp. Chúng tôi hướng 
-                đến một thế giới nơi học tập là niềm vui, không phải gánh nặng.
+                To become <strong>Southeast Asia's #1 online education platform</strong> by 2030, 
+                where millions of learners trust and choose us for their career development. We envision 
+                a world where learning is a joy, not a burden.
               </p>
               <div className="mt-6 space-y-3">
                 <div className="flex items-start gap-3">
                   <FaGlobe className="text-2xl text-purple-600 mt-1" />
-                  <p className="text-gray-700">Mở rộng ra 100+ quốc gia trên toàn thế giới</p>
+                  <p className="text-gray-700">Expand to 100+ countries worldwide</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <FaGlobe className="text-2xl text-purple-600 mt-1" />
-                  <p className="text-gray-700">Đào tạo 10 triệu+ học viên với kỹ năng thế kỷ 21</p>
+                  <p className="text-gray-700">Train 10 million+ students with 21st-century skills</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <FaGlobe className="text-2xl text-purple-600 mt-1" />
-                  <p className="text-gray-700">Dẫn đầu xu hướng học tập với AI và thực tế ảo</p>
+                  <p className="text-gray-700">Lead learning trends with AI and virtual reality</p>
                 </div>
               </div>
             </motion.div>
@@ -205,9 +208,9 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl font-extrabold text-gray-800 mb-4">Giá Trị Cốt Lõi</h2>
+            <h2 className="text-5xl font-extrabold text-gray-800 mb-4">Core Values</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Những giá trị định hướng mọi hành động và quyết định của chúng tôi
+              The values that guide all our actions and decisions
             </p>
           </motion.div>
 
@@ -219,7 +222,8 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2"
+                whileHover={{ scale: 1.05, y: -8 }}
+                className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-gray-100"
               >
                 <div className={`inline-block p-5 bg-gradient-to-br ${value.gradient} rounded-2xl mb-6`}>
                   <value.icon className="text-4xl text-white" />
@@ -241,8 +245,8 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl font-extrabold text-gray-800 mb-4">Hành Trình Phát Triển</h2>
-            <p className="text-xl text-gray-600">Những cột mốc quan trọng trong chặng đường của chúng tôi</p>
+            <h2 className="text-5xl font-extrabold text-gray-800 mb-4">Our Journey</h2>
+            <p className="text-xl text-gray-600">Important milestones in our growth story</p>
           </motion.div>
 
           <div className="max-w-5xl mx-auto">
@@ -284,23 +288,23 @@ const About = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-5xl font-extrabold text-white mb-6">
-              Sẵn Sàng Bắt Đầu Hành Trình?
+              Ready to Start Your Journey?
             </h2>
             <p className="text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
-              Tham gia cùng hàng ngàn học viên đang thay đổi cuộc đời họ mỗi ngày
+              Join thousands of students transforming their lives every day
             </p>
             <div className="flex gap-6 justify-center flex-wrap">
               <Link 
                 to="/courses" 
                 className="px-10 py-5 bg-white text-[#06BBCC] rounded-full font-bold text-xl hover:bg-gray-100 transition-all shadow-2xl hover:scale-105 transform"
               >
-                Khám Phá Khóa Học
+                Explore Courses
               </Link>
               <Link 
                 to="/signup" 
                 className="px-10 py-5 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full font-bold text-xl hover:from-yellow-500 hover:to-orange-600 transition-all shadow-2xl hover:scale-105 transform"
               >
-                Đăng Ký Ngay
+                Sign Up Now
               </Link>
             </div>
           </motion.div>

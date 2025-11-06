@@ -59,7 +59,7 @@ const Home = () => {
                       transition={{ duration: 0.6, delay: 0.2 }}
                       className="text-[#06BBCC] uppercase mb-3 text-lg font-semibold"
                     >
-                      Khóa Học Trực Tuyến Tốt Nhất
+                      Best Online Courses
                     </motion.h5>
                     <motion.h1 
                       initial={{ opacity: 0, y: -20 }}
@@ -67,7 +67,7 @@ const Home = () => {
                       transition={{ duration: 0.6, delay: 0.4 }}
                       className="text-white text-5xl md:text-6xl font-bold mb-4"
                     >
-                      Nền Tảng Học Tập Trực Tuyến Hàng Đầu
+                      Leading Online Learning Platform
                     </motion.h1>
                     <motion.p 
                       initial={{ opacity: 0, y: -20 }}
@@ -75,7 +75,7 @@ const Home = () => {
                       transition={{ duration: 0.6, delay: 0.6 }}
                       className="text-white text-xl mb-8"
                     >
-                      Học tập mọi lúc, mọi nơi với hàng trăm khóa học chất lượng cao. Được hướng dẫn bởi các chuyên gia hàng đầu trong ngành, giúp bạn phát triển kỹ năng và đạt được mục tiêu nghề nghiệp.
+                      Learn anytime, anywhere with hundreds of high-quality courses. Guided by top industry experts, helping you develop skills and achieve your career goals.
                     </motion.p>
                     <div className="flex gap-4">
                       <motion.div
@@ -84,7 +84,7 @@ const Home = () => {
                         transition={{ duration: 0.6, delay: 0.8 }}
                       >
                         <Link to="/about" className="bg-[#06BBCC] text-white px-8 py-4 rounded hover:bg-[#05a3b3] transition-all inline-block font-semibold">
-                          Tìm Hiểu Thêm
+                          Learn More
                         </Link>
                       </motion.div>
                       <motion.div
@@ -93,7 +93,7 @@ const Home = () => {
                         transition={{ duration: 0.6, delay: 0.8 }}
                       >
                         <Link to="/signup" className="bg-white text-[#06BBCC] px-8 py-4 rounded hover:bg-gray-100 transition-all inline-block font-semibold">
-                          Tham Gia Ngay
+                          Join Now
                         </Link>
                       </motion.div>
                     </div>
@@ -115,7 +115,7 @@ const Home = () => {
                       transition={{ duration: 0.6, delay: 0.2 }}
                       className="text-[#06BBCC] uppercase mb-3 text-lg font-semibold"
                     >
-                      Khóa Học Trực Tuyến Tốt Nhất
+                      Best Online Courses
                     </motion.h5>
                     <motion.h1 
                       initial={{ opacity: 0, y: -20 }}
@@ -123,7 +123,7 @@ const Home = () => {
                       transition={{ duration: 0.6, delay: 0.4 }}
                       className="text-white text-5xl md:text-6xl font-bold mb-4"
                     >
-                      Học Trực Tuyến Từ Nhà - Tiện Lợi & Hiệu Quả
+                      Learn Online From Home - Convenient & Effective
                     </motion.h1>
                     <motion.p 
                       initial={{ opacity: 0, y: -20 }}
@@ -131,7 +131,7 @@ const Home = () => {
                       transition={{ duration: 0.6, delay: 0.6 }}
                       className="text-white text-xl mb-8"
                     >
-                      Tiết kiệm thời gian di chuyển, linh hoạt lịch học, nội dung được cập nhật liên tục. Kết nối với mentor và cộng đồng học viên năng động để cùng nhau phát triển.
+                      Save commuting time, flexible schedules, continuously updated content. Connect with mentors and a dynamic student community to grow together.
                     </motion.p>
                     <div className="flex gap-4">
                       <motion.div
@@ -140,7 +140,7 @@ const Home = () => {
                         transition={{ duration: 0.6, delay: 0.8 }}
                       >
                         <Link to="/about" className="bg-[#06BBCC] text-white px-8 py-4 rounded hover:bg-[#05a3b3] transition-all inline-block font-semibold">
-                          Tìm Hiểu Thêm
+                          Learn More
                         </Link>
                       </motion.div>
                       <motion.div
@@ -149,7 +149,7 @@ const Home = () => {
                         transition={{ duration: 0.6, delay: 0.8 }}
                       >
                         <Link to="/signup" className="bg-white text-[#06BBCC] px-8 py-4 rounded hover:bg-gray-100 transition-all inline-block font-semibold">
-                          Tham Gia Ngay
+                          Join Now
                         </Link>
                       </motion.div>
                     </div>
@@ -167,24 +167,27 @@ const Home = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={staggerContainer}
-        className="py-20 bg-gray-50"
+        className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50"
       >
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: 'fa-graduation-cap', title: 'Giảng Viên Giỏi', description: 'Đội ngũ giảng viên giàu kinh nghiệm và tâm huyết, sẵn sàng hỗ trợ bạn đạt mục tiêu', delay: 0.1 },
-              { icon: 'fa-globe', title: 'Lớp Học Trực Tuyến', description: 'Học mọi lúc mọi nơi với công nghệ hiện đại, tương tác trực tiếp với giảng viên', delay: 0.3 },
-              { icon: 'fa-home', title: 'Dự Án Thực Tế', description: 'Áp dụng kiến thức vào các dự án thực tế để tích lũy kinh nghiệm làm việc', delay: 0.5 },
-              { icon: 'fa-book-open', title: 'Thư Viện Học Liệu', description: 'Kho tài liệu phong phú được cập nhật liên tục, hỗ trợ học tập hiệu quả', delay: 0.7 }
+              { icon: 'fa-graduation-cap', title: 'Professional Mentors', description: 'Expert mentors with rich experience and dedication, ready to help you achieve your goals', delay: 0.1 },
+              { icon: 'fa-globe', title: 'Online Classes', description: 'Learn anytime, anywhere with modern technology, interact directly with mentors', delay: 0.3 },
+              { icon: 'fa-home', title: 'Practical Projects', description: 'Apply knowledge to real-world projects to gain valuable work experience', delay: 0.5 },
+              { icon: 'fa-book-open', title: 'Learning Library', description: 'Rich resource library continuously updated to support effective learning', delay: 0.7 }
             ].map((service, index) => (
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-2xl transition-shadow"
+                whileHover={{ scale: 1.05, y: -10 }}
+                className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-[#06BBCC]/20 group"
               >
-                <i className={`fa fa-3x ${service.icon} text-[#06BBCC] mb-6`}></i>
-                <h5 className="text-xl font-bold mb-3">{service.title}</h5>
-                <p className="text-gray-600">{service.description}</p>
+                <div className="inline-block p-4 bg-gradient-to-br from-[#06BBCC] to-blue-600 rounded-2xl mb-6 group-hover:rotate-6 transition-transform duration-300">
+                  <i className={`fa fa-3x ${service.icon} text-white`}></i>
+                </div>
+                <h5 className="text-xl font-bold mb-3 text-gray-800">{service.title}</h5>
+                <p className="text-gray-600 leading-relaxed">{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -204,18 +207,18 @@ const Home = () => {
               <img className="w-full h-full object-cover rounded-lg shadow-xl" src="/img/about.jpg" alt="About" />
             </motion.div>
             <motion.div variants={fadeInRight}>
-              <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Về Chúng Tôi</h6>
-              <h1 className="text-4xl font-bold mb-6">Chào Mừng Đến Với DHV GUIDING LIGHT</h1>
-              <p className="text-gray-600 mb-4">Nền tảng học tập trực tuyến hàng đầu Việt Nam, kết nối học viên với các chuyên gia và mentor giàu kinh nghiệm. Chúng tôi cam kết mang đến trải nghiệm học tập chất lượng cao và hiệu quả.</p>
-              <p className="text-gray-600 mb-6">Với hệ thống quản lý mentor tiên tiến, bạn có thể dễ dàng tìm kiếm, đặt lịch và tham gia các buổi mentoring trực tuyến. Học tập linh hoạt, phát triển kỹ năng và đạt được mục tiêu nghề nghiệp của bạn.</p>
+              <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">About Us</h6>
+              <h1 className="text-4xl font-bold mb-6">Welcome To DHV GUIDING LIGHT</h1>
+              <p className="text-gray-600 mb-4">Vietnam's leading online learning platform, connecting students with experienced experts and professional mentors. We are committed to delivering high-quality and effective learning experiences.</p>
+              <p className="text-gray-600 mb-6">With an advanced mentor management system, you can easily search, schedule and join online mentoring sessions. Learn flexibly, develop skills and achieve your career goals.</p>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {[
-                  'Giảng Viên Giỏi',
-                  'Lớp Học Trực Tuyến',
-                  'Chứng Chỉ Quốc Tế',
-                  'Mentor Chuyên Nghiệp',
-                  'Hỗ Trợ 24/7',
-                  'Dự Án Thực Tế'
+                  'Professional Mentors',
+                  'Online Classes',
+                  'Practical Certification',
+                  'Expert Mentoring',
+                  '24/7 Support',
+                  'Real Projects'
                 ].map((item, index) => (
                   <div key={index} className="flex items-center">
                     <i className="fa fa-arrow-right text-[#06BBCC] mr-2"></i>
@@ -224,7 +227,7 @@ const Home = () => {
                 ))}
               </div>
               <Link to="/about" className="bg-[#06BBCC] text-white px-8 py-4 rounded hover:bg-[#05a3b3] transition-all inline-block font-semibold">
-                Tìm Hiểu Thêm
+                Learn More
               </Link>
             </motion.div>
           </div>
@@ -308,19 +311,20 @@ const Home = () => {
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Khóa Học</h6>
-            <h1 className="text-4xl font-bold">Khóa Học Phổ Biến</h1>
+            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Courses</h6>
+            <h1 className="text-4xl font-bold">Popular Courses</h1>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { img: 'course-1.jpg', price: '3.490.000đ', rating: 5, reviews: 123, title: 'Khóa Học Thiết Kế & Phát Triển Web Cho Người Mới', instructor: 'Trần Văn Minh', students: 30 },
-              { img: 'course-2.jpg', price: '2.990.000đ', rating: 5, reviews: 98, title: 'React & Node.js Full Stack Development', instructor: 'Lê Thị Hương', students: 45 },
-              { img: 'course-3.jpg', price: '4.290.000đ', rating: 5, reviews: 156, title: 'UI/UX Design Chuyên Nghiệp Với Figma', instructor: 'Phạm Đức Anh', students: 67 }
+              { img: 'course-1.jpg', price: '$149', rating: 5, reviews: 123, title: 'Web Design & Development For Beginners', instructor: 'Mai Tran Thien Tam', students: 30 },
+              { img: 'course-2.jpg', price: '$129', rating: 5, reviews: 98, title: 'React & Node.js Full Stack Development', instructor: 'Le Thi Huong', students: 45 },
+              { img: 'course-3.jpg', price: '$179', rating: 5, reviews: 156, title: 'Professional UI/UX Design With Figma', instructor: 'Pham Duc Anh', students: 67 }
             ].map((course, index) => (
               <motion.div 
                 key={index}
                 variants={fadeInUp}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow"
+                whileHover={{ scale: 1.03, y: -8 }}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-[#06BBCC]/20"
               >
                 <div className="relative overflow-hidden">
                   <img className="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500" src={`/img/${course.img}`} alt={course.title} />
@@ -372,12 +376,12 @@ const Home = () => {
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Giảng Viên</h6>
-            <h1 className="text-4xl font-bold">Đội Ngũ Giảng Viên Chuyên Nghiệp</h1>
+            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Mentors</h6>
+            <h1 className="text-4xl font-bold">Our Professional Mentor Team</h1>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { img: 'team-1.jpg', name: 'Trần Văn Minh', designation: 'Senior Full Stack Developer' },
+              { img: 'team-1.jpg', name: 'Mai Trần Thiện Tâm', designation: 'Senior Full Stack Developer' },
               { img: 'team-2.jpg', name: 'Lê Thị Hương', designation: 'UI/UX Design Lead' },
               { img: 'team-3.jpg', name: 'Phạm Đức Anh', designation: 'AI/ML Engineer' },
               { img: 'team-4.jpg', name: 'Ngô Thị Mai', designation: 'Mobile Developer' }
@@ -420,8 +424,8 @@ const Home = () => {
       >
         <div className="container mx-auto px-4">
           <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Phản Hồi</h6>
-            <h1 className="text-4xl font-bold">Học Viên Nói Gì Về Chúng Tôi!</h1>
+            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Testimonials</h6>
+            <h1 className="text-4xl font-bold">What Our Students Say!</h1>
           </motion.div>
           <Swiper
             modules={[Autoplay, Pagination]}
@@ -437,10 +441,10 @@ const Home = () => {
             className="pb-16"
           >
             {[
-              { name: 'Nguyễn Văn An', profession: 'Full Stack Developer', img: 'testimonial-1.jpg', feedback: 'Khóa học rất chất lượng, giảng viên tận tâm. Sau 3 tháng học tôi đã có công việc mơ ước tại công ty công nghệ hàng đầu!' },
-              { name: 'Trần Thị Bình', profession: 'UI/UX Designer', img: 'testimonial-2.jpg', feedback: 'Nền tảng học tập tuyệt vời! Giao diện thân thiện, nội dung cập nhật liên tục. Mentor rất nhiệt tình hỗ trợ.' },
-              { name: 'Lê Hoàng Cường', profession: 'Data Analyst', img: 'testimonial-3.jpg', feedback: 'Tôi đã thử nhiều nền tảng nhưng DHV Guiding Light là tốt nhất. Dự án thực tế giúp tôi tự tin hơn rất nhiều!' },
-              { name: 'Phạm Thị Diễm', profession: 'Mobile Developer', img: 'testimonial-4.jpg', feedback: 'Khóa học React Native giúp tôi chuyển đổi sự nghiệp thành công. Cảm ơn đội ngũ giảng viên và mentor!' }
+              { name: 'Nguyen Van An', profession: 'Full Stack Developer', img: 'testimonial-1.jpg', feedback: 'High-quality courses, dedicated mentors. After 3 months of learning, I landed my dream job at a leading tech company!' },
+              { name: 'Tran Thi Binh', profession: 'UI/UX Designer', img: 'testimonial-2.jpg', feedback: 'Excellent learning platform! User-friendly interface, continuously updated content. Mentors are very enthusiastic and supportive.' },
+              { name: 'Le Hoang Cuong', profession: 'Data Analyst', img: 'testimonial-3.jpg', feedback: 'I tried many platforms but DHV Guiding Light is the best. Real projects boosted my confidence tremendously!' },
+              { name: 'Pham Thi Diem', profession: 'Mobile Developer', img: 'testimonial-4.jpg', feedback: 'The React Native course helped me successfully transition my career. Thank you to the mentors and teaching team!' }
             ].map((testimonial, index) => (
               <SwiperSlide key={index}>
                 <div className="bg-white rounded-lg shadow-lg p-8 text-center">
