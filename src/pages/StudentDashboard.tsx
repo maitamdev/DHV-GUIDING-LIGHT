@@ -5,7 +5,7 @@ import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, F
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'profile' | 'mentors' | 'aiSuggest' | 'schedule' | 'courses'>('profile');
+  const [activeTab, setActiveTab] = useState<'profile' | 'mentors' | 'aiSuggest' | 'schedule' | 'courses' | 'myCourses'>('profile');
   const [editMode, setEditMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   
@@ -126,11 +126,41 @@ const StudentDashboard = () => {
     }
   ];
 
-  // Khóa học đã đăng ký
+  // Purchased Courses - In production, fetch from Firebase based on userData.purchasedCourses
   const myCourses = [
-    { id: 1, title: 'Web Development Bootcamp', progress: 75, instructor: 'Trần Văn Minh' },
-    { id: 2, title: 'React & TypeScript', progress: 50, instructor: 'Lê Thị Hương' },
-    { id: 3, title: 'Data Science Fundamentals', progress: 30, instructor: 'Phạm Đức Anh' }
+    { 
+      id: 1, 
+      title: 'Web Development Full Stack', 
+      progress: 75, 
+      instructor: 'Nguyen Van A',
+      category: 'web-development',
+      image: '/img/course-1.jpg',
+      nextLesson: 'React Hooks Advanced',
+      totalLessons: 130,
+      completedLessons: 98
+    },
+    { 
+      id: 2, 
+      title: 'React & Node.js Bootcamp', 
+      progress: 50, 
+      instructor: 'Tran Van B',
+      category: 'web-development',
+      image: '/img/course-2.jpg',
+      nextLesson: 'Building REST APIs',
+      totalLessons: 93,
+      completedLessons: 47
+    },
+    { 
+      id: 3, 
+      title: 'Data Science & Analytics', 
+      progress: 30, 
+      instructor: 'Pham Thi E',
+      category: 'data-science',
+      image: '/img/course-3.jpg',
+      nextLesson: 'Pandas Data Manipulation',
+      totalLessons: 129,
+      completedLessons: 39
+    }
   ];
 
   const handleSaveProfile = () => {
@@ -153,17 +183,35 @@ const StudentDashboard = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <h1 className="text-5xl font-extrabold text-gray-800 mb-2">Dashboard Mentee</h1>
-          <p className="text-gray-600 text-lg">Chào mừng trở lại! Quản lý hồ sơ, tìm mentor và theo dõi tiến độ học tập.</p>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-gradient-to-r from-[#06BBCC] via-blue-600 to-purple-600 rounded-3xl shadow-2xl p-8 text-white">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-extrabold mb-2">📚 Student Dashboard</h1>
+              <p className="text-white/90 text-lg">Welcome back! Manage your profile, find mentors, and track your learning progress.</p>
+            </div>
+            <div className="flex gap-3">
+              <button
+                onClick={() => navigate('/portfolio')}
+                className="flex items-center gap-2 px-6 py-3 bg-white text-[#06BBCC] font-bold rounded-xl hover:shadow-2xl transition-all transform hover:scale-105"
+              >
+                <FaGraduationCap /> My Portfolio
+              </button>
+              <button
+                onClick={() => navigate('/homework')}
+                className="flex items-center gap-2 px-6 py-3 bg-yellow-400 text-gray-800 font-bold rounded-xl hover:shadow-2xl transition-all transform hover:scale-105"
+              >
+                <FaBell /> Homework
+              </button>
+            </div>
+          </div>
         </motion.div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
           {[
-            { icon: FaBook, label: 'Khóa Học Đã Đăng Ký', value: '3', color: 'bg-blue-500' },
-            { icon: FaUser, label: 'Mentor Đang Theo Dõi', value: '2', color: 'bg-green-500' },
-            { icon: FaCalendar, label: 'Buổi Hẹn Sắp Tới', value: '2', color: 'bg-purple-500' },
-            { icon: FaCheckCircle, label: 'Buổi Đã Hoàn Thành', value: '8', color: 'bg-yellow-500' }
+            { icon: FaBook, label: 'Enrolled Courses', value: '3', color: 'bg-blue-500' },
+            { icon: FaUser, label: 'Following Mentors', value: '2', color: 'bg-green-500' },
+            { icon: FaCalendar, label: 'Upcoming Meetings', value: '2', color: 'bg-purple-500' },
+            { icon: FaCheckCircle, label: 'Completed Sessions', value: '8', color: 'bg-yellow-500' }
           ].map((stat, index) => (
             <motion.div
               key={index}
@@ -189,11 +237,11 @@ const StudentDashboard = () => {
         <div className="bg-white rounded-xl shadow-lg mb-8">
           <div className="flex border-b-2 border-gray-200 overflow-x-auto">
             {[
-              { id: 'profile', label: 'Hồ Sơ', icon: FaUser },
-              { id: 'mentors', label: 'Tìm Mentor', icon: FaSearch },
-              { id: 'aiSuggest', label: 'Hỏi AI', icon: FaRobot },
-              { id: 'schedule', label: 'Lịch Hẹn', icon: FaCalendar },
-              { id: 'courses', label: 'Khóa Học Của Tôi', icon: FaBook }
+              { id: 'profile', label: 'Profile', icon: FaUser },
+              { id: 'myCourses', label: 'My Courses', icon: FaBook },
+              { id: 'mentors', label: 'Find Mentors', icon: FaSearch },
+              { id: 'aiSuggest', label: 'AI Mentor', icon: FaRobot },
+              { id: 'schedule', label: 'Schedule', icon: FaCalendar }
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -818,44 +866,94 @@ Hãy trả lời theo format JSON như sau:
               </div>
             )}
 
-            {/* Courses Tab */}
-            {activeTab === 'courses' && (
+            {/* My Courses Tab - Purchased Courses */}
+            {activeTab === 'myCourses' && (
               <div>
-                <h3 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                  <FaGraduationCap className="text-[#06BBCC]" />
-                  Khóa Học Của Tôi
-                </h3>
-                <div className="space-y-4">
-                  {myCourses.map((course) => (
-                    <div key={course.id} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow">
-                      <div className="flex justify-between items-start mb-4">
-                        <div>
-                          <h4 className="text-xl font-bold text-gray-800">{course.title}</h4>
-                          <p className="text-gray-600">Giảng viên: {course.instructor}</p>
-                        </div>
-                        <span className="px-4 py-2 bg-[#06BBCC] text-white rounded-full font-bold">
-                          {course.progress}%
-                        </span>
-                      </div>
-                      <div className="mb-4">
-                        <div className="w-full bg-gray-200 rounded-full h-4">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: `${course.progress}%` }}
-                            transition={{ duration: 1 }}
-                            className="bg-gradient-to-r from-[#06BBCC] to-[#0066FF] h-4 rounded-full"
-                          />
-                        </div>
-                      </div>
-                      <button
-                        onClick={() => navigate(`/roadmap`)}
-                        className="px-6 py-2 bg-[#06BBCC] text-white rounded-lg font-semibold hover:bg-[#0099AA] transition-colors"
-                      >
-                        Tiếp Tục Học
-                      </button>
-                    </div>
-                  ))}
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-3xl font-bold text-gray-800 flex items-center gap-3">
+                    <FaBook className="text-[#06BBCC]" />
+                    My Purchased Courses
+                  </h3>
+                  <button
+                    onClick={() => navigate('/courses')}
+                    className="px-4 py-2 border-2 border-[#06BBCC] text-[#06BBCC] rounded-lg hover:bg-[#06BBCC] hover:text-white transition-colors font-semibold"
+                  >
+                    Browse More Courses
+                  </button>
                 </div>
+                
+                {myCourses.length === 0 ? (
+                  <div className="text-center py-12 bg-gray-50 rounded-2xl">
+                    <FaBook className="text-6xl text-gray-300 mx-auto mb-4" />
+                    <h4 className="text-xl font-bold text-gray-600 mb-2">No Courses Yet</h4>
+                    <p className="text-gray-500 mb-4">Start your learning journey by purchasing a course!</p>
+                    <button
+                      onClick={() => navigate('/courses')}
+                      className="px-6 py-3 bg-[#06BBCC] text-white rounded-lg font-bold hover:bg-[#05a3b3] transition-colors"
+                    >
+                      Explore Courses
+                    </button>
+                  </div>
+                ) : (
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {myCourses.map((course) => (
+                      <motion.div 
+                        key={course.id} 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden"
+                      >
+                        <img src={course.image} alt={course.title} className="w-full h-48 object-cover" />
+                        <div className="p-6">
+                          <div className="flex justify-between items-start mb-3">
+                            <div>
+                              <h4 className="text-xl font-bold text-gray-800 mb-1">{course.title}</h4>
+                              <p className="text-sm text-gray-600">Instructor: {course.instructor}</p>
+                            </div>
+                            <span className="px-4 py-2 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white rounded-full font-bold text-sm">
+                              {course.progress}%
+                            </span>
+                          </div>
+                          
+                          <div className="mb-4">
+                            <div className="flex justify-between text-sm text-gray-600 mb-2">
+                              <span>{course.completedLessons} / {course.totalLessons} lessons completed</span>
+                            </div>
+                            <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                              <motion.div
+                                initial={{ width: 0 }}
+                                animate={{ width: `${course.progress}%` }}
+                                transition={{ duration: 1 }}
+                                className="bg-gradient-to-r from-[#06BBCC] to-blue-600 h-3 rounded-full"
+                              />
+                            </div>
+                          </div>
+
+                          <div className="bg-blue-50 border-l-4 border-[#06BBCC] p-3 rounded-lg mb-4">
+                            <p className="text-sm text-gray-600">Next Lesson:</p>
+                            <p className="font-semibold text-gray-800">{course.nextLesson}</p>
+                          </div>
+
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => navigate(`/roadmap/${course.category}`)}
+                              className="flex-1 px-6 py-3 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+                            >
+                              <FaBook /> Continue Learning
+                            </button>
+                            <button
+                              onClick={() => navigate(`/course/${course.id}`)}
+                              className="px-4 py-3 border-2 border-[#06BBCC] text-[#06BBCC] rounded-lg hover:bg-[#06BBCC] hover:text-white transition-colors"
+                              title="View Course Details"
+                            >
+                              <FaStar />
+                            </button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </div>
