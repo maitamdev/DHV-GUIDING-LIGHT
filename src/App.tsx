@@ -24,6 +24,8 @@ import Blog from './pages/Blog';
 import InstructorDashboard from './pages/InstructorDashboard';
 import CreateCourse from './pages/CreateCourse';
 import StudentDashboard from './pages/StudentDashboard';
+import Portfolio from './pages/Portfolio';
+import HomeworkReminder from './pages/HomeworkReminder';
 
 function App() {
   return (
@@ -97,6 +99,16 @@ function App() {
             <Route path="mentee-list" element={
               <ProtectedRoute>
                 <MenteeList />
+              </ProtectedRoute>
+            } />
+            <Route path="portfolio" element={
+              <ProtectedRoute>
+                <Portfolio />
+              </ProtectedRoute>
+            } />
+            <Route path="homework" element={
+              <ProtectedRoute>
+                <HomeworkReminder />
               </ProtectedRoute>
             } />
           </Route>

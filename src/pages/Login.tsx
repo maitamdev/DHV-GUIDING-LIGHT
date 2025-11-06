@@ -28,22 +28,33 @@ const Login = () => {
 
   const checkUserRoleAndRedirect = async (uid: string) => {
     try {
+      console.log('🔍 Checking user role for UID:', uid);
       const userDoc = await getDoc(doc(db, 'users', uid));
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        if (userData.role === 'instructor' || userData.role === 'Giảng viên') {
+        console.log('✅ User data found:', userData);
+        console.log('👤 User role:', userData.role);
+        
+        if (userData.role === 'instructor' || userData.role === 'Giảng viên' || userData.role === 'mentor') {
+          console.log('🎓 Redirecting to INSTRUCTOR dashboard');
           navigate('/instructor-dashboard');
         } else if (userData.role === 'student' || userData.role === 'Học viên') {
+          console.log('📚 Redirecting to STUDENT dashboard');
           navigate('/student-dashboard');
+        } else if (userData.role === 'employer' || userData.role === 'Nhà tuyển dụng') {
+          console.log('💼 Redirecting to courses (employer)');
+          navigate('/courses');
         } else {
+          console.log('⚠️ Unknown role, redirecting to courses');
           navigate('/courses');
         }
       } else {
-        // nếu user chưa có doc trong firestore thì cho về trang chủ hoặc courses
+        console.log('❌ User document not found in Firestore');
+        // If user doesn't have doc in firestore, redirect to home or courses
         navigate('/');
       }
     } catch (error) {
-      console.error('Error checking user role:', error);
+      console.error('❌ Error checking user role:', error);
       navigate('/');
     }
   };
@@ -54,21 +65,21 @@ const Login = () => {
     setLoading(true);
 
     try {
-      // hàm login từ context (thường là signInWithEmailAndPassword)
+      // Login function from context (signInWithEmailAndPassword)
       await login(formData.email, formData.password);
 
-      // lấy user hiện tại từ Firebase auth
+      // Get current user from Firebase auth
       const auth = getAuth();
       const user = auth.currentUser;
 
       if (user) {
         await checkUserRoleAndRedirect(user.uid);
       } else {
-        // fallback nếu chưa kịp sync
+        // Fallback if not synced yet
         navigate('/');
       }
     } catch (err: any) {
-      setError('Đăng nhập thất bại. Vui lòng kiểm tra email và mật khẩu.');
+      setError('Login failed. Please check your email and password.');
       console.error(err);
     } finally {
       setLoading(false);
