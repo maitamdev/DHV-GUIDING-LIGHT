@@ -20,106 +20,106 @@ const StudentDashboard = () => {
   const [aiLoading, setAiLoading] = useState(false);
   const [aiSuggestions, setAiSuggestions] = useState<any>(null);
   const [profileData, setProfileData] = useState({
-    name: 'Nguyễn Văn A',
+    name: 'John Anderson',
     email: 'student@email.com',
-    phone: '0901234567',
-    university: 'Đại học Bách Khoa Hà Nội',
-    major: 'Công nghệ thông tin',
-    year: 'Năm 3',
+    phone: '+84 901 234 567',
+    university: 'Hanoi University of Science and Technology',
+    major: 'Computer Science',
+    year: 'Junior (Year 3)',
     gpa: '3.5/4.0',
     skills: 'React, TypeScript, Node.js',
-    bio: 'Sinh viên năm 3 ngành CNTT, đam mê lập trình web và có kinh nghiệm thực tế qua các dự án freelance. Luôn tìm kiếm cơ hội học hỏi và phát triển kỹ năng mới.',
-    goals: 'Trở thành Full Stack Developer trong 6 tháng tới, thành thạo React và Node.js, tham gia các dự án thực tế để tích lũy kinh nghiệm chuyên môn.',
-    projects: 'E-commerce Website (React + Node.js), Blog cá nhân (Next.js), Task Management App (React Native)',
+    bio: 'Third-year Computer Science student passionate about web development with hands-on experience through freelance projects. Always seeking opportunities to learn and develop new skills.',
+    goals: 'Become a Full Stack Developer within 6 months, master React and Node.js, participate in real-world projects to accumulate professional experience.',
+    projects: 'E-commerce Website (React + Node.js), Personal Blog (Next.js), Task Management App (React Native)',
     certifications: 'AWS Cloud Practitioner, Google UX Design Certificate',
-    languages: 'Tiếng Việt (Bản ngữ), Tiếng Anh (IELTS 7.0)',
-    achievements: '🏆 Giải Nhì Hackathon 2024\n🥇 Top 10% sinh viên xuất sắc\n📜 5+ dự án hoàn thành'
+    languages: 'Vietnamese (Native), English (IELTS 7.0)',
+    achievements: '🏆 2nd Place Hackathon 2024\n🥇 Top 10% Outstanding Students\n📜 5+ Completed Projects'
   });
 
-  // Danh sách Mentor
+  // Mentor List
   const mentors = [
     {
       id: 1,
-      name: 'Trần Văn Minh',
+      name: 'Michael Chen',
       avatar: '/img/team-1.jpg',
       title: 'Senior Full Stack Developer',
       company: 'FPT Software',
       skills: ['React', 'Node.js', 'AWS'],
       rating: 4.9,
       students: 45,
-      experience: '8 năm',
+      experience: '8 years',
       available: true,
-      bio: 'Chuyên gia phát triển web với 8 năm kinh nghiệm. Đã hướng dẫn hơn 45 mentees thành công.'
+      bio: 'Web development expert with 8 years of experience. Successfully mentored over 45 mentees.'
     },
     {
       id: 2,
-      name: 'Lê Thị Hương',
+      name: 'Sarah Williams',
       avatar: '/img/team-2.jpg',
       title: 'UI/UX Design Lead',
       company: 'Viettel',
       skills: ['Figma', 'Adobe XD', 'Design Thinking'],
       rating: 4.8,
       students: 38,
-      experience: '6 năm',
+      experience: '6 years',
       available: true,
-      bio: 'Chuyên gia thiết kế giao diện với nhiều dự án lớn. Tận tâm hướng dẫn mentees.'
+      bio: 'Interface design expert with many large projects. Dedicated to mentoring students.'
     },
     {
       id: 3,
-      name: 'Phạm Đức Anh',
+      name: 'David Nguyen',
       avatar: '/img/team-3.jpg',
       title: 'Data Scientist',
       company: 'VNG Corporation',
       skills: ['Python', 'Machine Learning', 'TensorFlow'],
       rating: 4.9,
       students: 32,
-      experience: '7 năm',
+      experience: '7 years',
       available: false,
-      bio: 'Chuyên gia AI/ML với kinh nghiệm triển khai nhiều dự án thực tế.'
+      bio: 'AI/ML expert with experience deploying many real-world projects.'
     },
     {
       id: 4,
-      name: 'Ngô Thị Mai',
+      name: 'Emily Parker',
       avatar: '/img/team-1.jpg',
       title: 'Mobile Developer',
       company: 'Shopee Vietnam',
       skills: ['React Native', 'Flutter', 'iOS'],
       rating: 4.7,
       students: 28,
-      experience: '5 năm',
+      experience: '5 years',
       available: true,
-      bio: 'Chuyên phát triển ứng dụng mobile đa nền tảng với hơn 20 app trên store.'
+      bio: 'Cross-platform mobile app development specialist with 20+ apps on stores.'
     }
   ];
 
-  // Lịch hẹn với Mentor
+  // Meeting Schedule with Mentors
   const schedules = [
     {
       id: 1,
-      mentorName: 'Trần Văn Minh',
-      topic: 'Review Source Code - E-commerce Project',
-      date: 'Hôm nay',
-      time: '14:00 - 15:30',
+      mentorName: 'Michael Chen',
+      topic: 'Source Code Review - E-commerce Project',
+      date: 'Today',
+      time: '2:00 PM - 3:30 PM',
       status: 'upcoming',
       meetingLink: 'https://meet.google.com/abc-defg-hij',
       reminder: true
     },
     {
       id: 2,
-      mentorName: 'Lê Thị Hương',
+      mentorName: 'Sarah Williams',
       topic: 'UI/UX Portfolio Review',
-      date: 'Ngày mai',
-      time: '10:00 - 11:00',
+      date: 'Tomorrow',
+      time: '10:00 AM - 11:00 AM',
       status: 'upcoming',
       meetingLink: 'https://zoom.us/j/123456789',
       reminder: true
     },
     {
       id: 3,
-      mentorName: 'Trần Văn Minh',
+      mentorName: 'Michael Chen',
       topic: 'Career Path Planning',
-      date: '2 ngày trước',
-      time: '15:00 - 16:00',
+      date: '2 days ago',
+      time: '3:00 PM - 4:00 PM',
       status: 'completed',
       meetingLink: '',
       reminder: false
@@ -165,7 +165,7 @@ const StudentDashboard = () => {
 
   const handleSaveProfile = () => {
     setEditMode(false);
-    alert('Cập nhật hồ sơ thành công! ✅');
+    alert('Profile updated successfully! ✅');
   };
 
   const filteredMentors = mentors.filter(mentor =>
@@ -265,21 +265,21 @@ const StudentDashboard = () => {
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-3xl font-bold text-gray-800 flex items-center gap-3">
                     <FaUser className="text-[#06BBCC]" />
-                    Hồ Sơ Cá Nhân - Portfolio
+                    Personal Profile - Portfolio
                   </h3>
                   {!editMode ? (
                     <button
                       onClick={() => setEditMode(true)}
                       className="flex items-center gap-2 px-6 py-3 bg-[#06BBCC] text-white font-bold rounded-lg hover:bg-[#0099AA] transition-colors"
                     >
-                      <FaEdit /> Chỉnh Sửa
+                      <FaEdit /> Edit Profile
                     </button>
                   ) : (
                     <button
                       onClick={handleSaveProfile}
                       className="flex items-center gap-2 px-6 py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition-colors"
                     >
-                      <FaSave /> Lưu Thay Đổi
+                      <FaSave /> Save Changes
                     </button>
                   )}
                 </div>
@@ -298,7 +298,7 @@ const StudentDashboard = () => {
                             value={profileData.name}
                             onChange={(e) => setProfileData({ ...profileData, name: e.target.value })}
                             className="text-4xl font-bold bg-white/20 rounded-lg px-4 py-2 w-full"
-                            placeholder="Họ và Tên"
+                            placeholder="Full Name"
                           />
                         ) : (
                           <h2 className="text-4xl font-bold mb-2">{profileData.name}</h2>
@@ -310,7 +310,7 @@ const StudentDashboard = () => {
                               value={profileData.university}
                               onChange={(e) => setProfileData({ ...profileData, university: e.target.value })}
                               className="text-lg bg-white/20 rounded-lg px-4 py-2 w-full"
-                              placeholder="Trường đại học"
+                              placeholder="University"
                             />
                             <div className="flex gap-3">
                               <input
@@ -318,14 +318,14 @@ const StudentDashboard = () => {
                                 value={profileData.major}
                                 onChange={(e) => setProfileData({ ...profileData, major: e.target.value })}
                                 className="text-lg bg-white/20 rounded-lg px-4 py-2 flex-1"
-                                placeholder="Ngành học"
+                                placeholder="Major"
                               />
                               <input
                                 type="text"
                                 value={profileData.year}
                                 onChange={(e) => setProfileData({ ...profileData, year: e.target.value })}
                                 className="text-lg bg-white/20 rounded-lg px-4 py-2 w-32"
-                                placeholder="Năm"
+                                placeholder="Year"
                               />
                             </div>
                           </div>
@@ -352,7 +352,7 @@ const StudentDashboard = () => {
                       />
                     </div>
                     <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
-                      <label className="block text-gray-600 font-semibold mb-3 text-sm uppercase">📱 Điện Thoại</label>
+                      <label className="block text-gray-600 font-semibold mb-3 text-sm uppercase">📱 Phone Number</label>
                       <input
                         type="tel"
                         value={profileData.phone}
@@ -362,14 +362,14 @@ const StudentDashboard = () => {
                       />
                     </div>
                     <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
-                      <label className="block text-gray-600 font-semibold mb-3 text-sm uppercase">🌍 Ngôn Ngữ</label>
+                      <label className="block text-gray-600 font-semibold mb-3 text-sm uppercase">🌍 Languages</label>
                       <input
                         type="text"
                         value={profileData.languages}
                         onChange={(e) => setProfileData({ ...profileData, languages: e.target.value })}
                         disabled={!editMode}
                         className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50 font-semibold text-gray-800"
-                        placeholder="VD: Tiếng Việt, Tiếng Anh..."
+                        placeholder="e.g., Vietnamese, English..."
                       />
                     </div>
                   </div>
@@ -377,24 +377,24 @@ const StudentDashboard = () => {
                   {/* Skills & Bio Section */}
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="bg-gradient-to-br from-blue-50 to-cyan-100 rounded-xl p-6 shadow-lg">
-                      <label className="block text-gray-800 font-bold mb-4 text-lg">💡 Kỹ Năng Chuyên Môn</label>
+                      <label className="block text-gray-800 font-bold mb-4 text-lg">💡 Professional Skills</label>
                       <textarea
                         value={profileData.skills}
                         onChange={(e) => setProfileData({ ...profileData, skills: e.target.value })}
                         disabled={!editMode}
                         rows={4}
-                        placeholder="VD: React, Node.js, Python, UI/UX Design..."
+                        placeholder="e.g., React, Node.js, Python, UI/UX Design..."
                         className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
                       />
                     </div>
                     <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-6 shadow-lg">
-                      <label className="block text-gray-800 font-bold mb-4 text-lg">📜 Chứng Chỉ</label>
+                      <label className="block text-gray-800 font-bold mb-4 text-lg">📜 Certifications</label>
                       <textarea
                         value={profileData.certifications}
                         onChange={(e) => setProfileData({ ...profileData, certifications: e.target.value })}
                         disabled={!editMode}
                         rows={4}
-                        placeholder="VD: AWS Cloud Practitioner, Google UX Design..."
+                        placeholder="e.g., AWS Cloud Practitioner, Google UX Design..."
                         className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
                       />
                     </div>
@@ -402,46 +402,46 @@ const StudentDashboard = () => {
 
                   {/* Bio Section */}
                   <div className="bg-white rounded-xl p-8 shadow-lg">
-                    <label className="block text-gray-800 font-bold mb-4 text-xl">👤 Giới Thiệu Bản Thân</label>
+                    <label className="block text-gray-800 font-bold mb-4 text-xl">👤 About Me</label>
                     <textarea
                       value={profileData.bio}
                       onChange={(e) => setProfileData({ ...profileData, bio: e.target.value })}
                       disabled={!editMode}
                       rows={4}
                       className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50 text-gray-800 text-lg"
-                      placeholder="Giới thiệu ngắn gọn về bản thân, sở thích và đam mê..."
+                      placeholder="Brief introduction about yourself, interests and passions..."
                     />
                   </div>
 
                   {/* Goals & Projects Section */}
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-xl p-6 shadow-lg">
-                      <label className="block text-gray-800 font-bold mb-4 text-lg">🎯 Mục Tiêu Nghề Nghiệp</label>
+                      <label className="block text-gray-800 font-bold mb-4 text-lg">🎯 Career Goals</label>
                       <textarea
                         value={profileData.goals}
                         onChange={(e) => setProfileData({ ...profileData, goals: e.target.value })}
                         disabled={!editMode}
                         rows={5}
                         className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
-                        placeholder="Mục tiêu ngắn hạn và dài hạn của bạn..."
+                        placeholder="Your short-term and long-term career goals..."
                       />
                     </div>
                     <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-xl p-6 shadow-lg">
-                      <label className="block text-gray-800 font-bold mb-4 text-lg">🚀 Dự Án Đã Làm</label>
+                      <label className="block text-gray-800 font-bold mb-4 text-lg">🚀 Completed Projects</label>
                       <textarea
                         value={profileData.projects}
                         onChange={(e) => setProfileData({ ...profileData, projects: e.target.value })}
                         disabled={!editMode}
                         rows={5}
                         className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
-                        placeholder="Liệt kê các dự án bạn đã hoàn thành..."
+                        placeholder="List your completed projects..."
                       />
                     </div>
                   </div>
 
                   {/* Achievements Section */}
                   <div className="bg-gradient-to-r from-amber-50 via-yellow-50 to-orange-50 rounded-xl p-8 shadow-lg border-l-4 border-yellow-500">
-                    <label className="block text-gray-800 font-bold mb-4 text-xl">🏆 Thành Tích & Giải Thưởng</label>
+                    <label className="block text-gray-800 font-bold mb-4 text-xl">🏆 Achievements & Awards</label>
                     <textarea
                       value={profileData.achievements}
                       onChange={(e) => setProfileData({ ...profileData, achievements: e.target.value })}
@@ -460,7 +460,7 @@ const StudentDashboard = () => {
               <div>
                 <h3 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
                   <FaSearch className="text-[#06BBCC]" />
-                  Tìm & Chọn Mentor
+                  Find & Select Mentor
                 </h3>
 
                 {/* Search Bar */}
@@ -470,13 +470,13 @@ const StudentDashboard = () => {
                       type="text"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Tìm kiếm theo tên, kỹ năng, lĩnh vực..."
+                      placeholder="Search by name, skills, field..."
                       className="w-full px-6 py-4 border-2 border-gray-300 rounded-full focus:border-[#06BBCC] focus:outline-none text-lg pl-14"
                     />
                     <FaSearch className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl" />
                   </div>
                   <p className="text-sm text-gray-600 mt-2 ml-4">
-                    <strong>Tìm kiếm – Kết nối nhanh:</strong> Lọc theo kỹ năng, kinh nghiệm hoặc lĩnh vực
+                    <strong>Smart Search – Quick Connect:</strong> Filter by skills, experience, or field
                   </p>
                 </div>
 
@@ -502,11 +502,11 @@ const StudentDashboard = () => {
                         </div>
                         {mentor.available ? (
                           <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
-                            ✅ Có Lịch
+                            ✅ Available
                           </span>
                         ) : (
                           <span className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">
-                            ⏰ Bận
+                            ⏰ Busy
                           </span>
                         )}
                       </div>
@@ -526,7 +526,7 @@ const StudentDashboard = () => {
                           <p className="text-2xl font-bold text-[#06BBCC] flex items-center justify-center gap-1">
                             <FaStar className="text-yellow-500" /> {mentor.rating}
                           </p>
-                          <p className="text-xs text-gray-600">Đánh giá</p>
+                          <p className="text-xs text-gray-600">Rating</p>
                         </div>
                         <div className="text-center">
                           <p className="text-2xl font-bold text-gray-800">{mentor.students}</p>
@@ -534,7 +534,7 @@ const StudentDashboard = () => {
                         </div>
                         <div className="text-center">
                           <p className="text-2xl font-bold text-gray-800">{mentor.experience}</p>
-                          <p className="text-xs text-gray-600">Kinh nghiệm</p>
+                          <p className="text-xs text-gray-600">Experience</p>
                         </div>
                       </div>
 
@@ -543,7 +543,7 @@ const StudentDashboard = () => {
                         disabled={!mentor.available}
                         className="w-full px-6 py-3 bg-gradient-to-r from-[#06BBCC] to-[#0066FF] text-white rounded-lg font-bold hover:from-[#0066FF] hover:to-[#FF0000] transition-all disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed"
                       >
-                        {mentor.available ? 'Đặt Lịch Hẹn' : 'Hiện Không Có Lịch'}
+                        {mentor.available ? 'Schedule Meeting' : 'Currently Unavailable'}
                       </button>
                     </motion.div>
                   ))}
@@ -556,10 +556,10 @@ const StudentDashboard = () => {
               <div>
                 <h3 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
                   <FaRobot className="text-[#06BBCC]" />
-                  Hỏi AI Gợi Ý Mentor Phù Hợp
+                  AI-Powered Mentor Recommendations
                 </h3>
                 <p className="text-gray-600 mb-8">
-                  💡 Nhập thông tin về kỹ năng, sở thích và mục tiêu của bạn. AI sẽ phân tích và gợi ý những mentor phù hợp nhất!
+                  💡 Enter your skills, interests, and goals. AI will analyze and suggest the best mentors for you!
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-8 mb-8">
@@ -567,65 +567,65 @@ const StudentDashboard = () => {
                   <div className="bg-gradient-to-br from-blue-50 to-cyan-100 rounded-2xl p-8 shadow-xl">
                     <h4 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
                       <FaLightbulb className="text-yellow-500" />
-                      Thông Tin Của Bạn
+                      Your Information
                     </h4>
                     
                     <div className="space-y-5">
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2">🎯 Kỹ Năng Hiện Tại</label>
+                        <label className="block text-gray-700 font-semibold mb-2">🎯 Current Skills</label>
                         <textarea
                           value={aiFormData.skills}
                           onChange={(e) => setAiFormData({ ...aiFormData, skills: e.target.value })}
-                          placeholder="VD: React, Node.js, Python, UI/UX Design..."
+                          placeholder="e.g., React, Node.js, Python, UI/UX Design..."
                           rows={3}
                           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2">❤️ Sở Thích & Lĩnh Vực Quan Tâm</label>
+                        <label className="block text-gray-700 font-semibold mb-2">❤️ Interests & Fields</label>
                         <textarea
                           value={aiFormData.interests}
                           onChange={(e) => setAiFormData({ ...aiFormData, interests: e.target.value })}
-                          placeholder="VD: Web Development, Mobile Apps, AI/ML, Game Development..."
+                          placeholder="e.g., Web Development, Mobile Apps, AI/ML, Game Development..."
                           rows={3}
                           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2">🚀 Mục Tiêu Nghề Nghiệp</label>
+                        <label className="block text-gray-700 font-semibold mb-2">🚀 Career Goals</label>
                         <textarea
                           value={aiFormData.goals}
                           onChange={(e) => setAiFormData({ ...aiFormData, goals: e.target.value })}
-                          placeholder="VD: Trở thành Full Stack Developer, Làm việc tại công ty công nghệ lớn..."
+                          placeholder="e.g., Become a Full Stack Developer, Work at a major tech company..."
                           rows={3}
                           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2">📊 Trình Độ Hiện Tại</label>
+                        <label className="block text-gray-700 font-semibold mb-2">📊 Current Level</label>
                         <select
                           value={aiFormData.experience}
                           onChange={(e) => setAiFormData({ ...aiFormData, experience: e.target.value })}
                           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
                         >
-                          <option value="">-- Chọn trình độ --</option>
-                          <option value="beginner">Mới Bắt Đầu</option>
-                          <option value="intermediate">Trung Cấp</option>
-                          <option value="advanced">Nâng Cao</option>
-                          <option value="expert">Chuyên Gia</option>
+                          <option value="">-- Select level --</option>
+                          <option value="beginner">Beginner</option>
+                          <option value="intermediate">Intermediate</option>
+                          <option value="advanced">Advanced</option>
+                          <option value="expert">Expert</option>
                         </select>
                       </div>
 
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2">🎓 Lĩnh Vực Ưu Tiên</label>
+                        <label className="block text-gray-700 font-semibold mb-2">🎓 Preferred Fields</label>
                         <input
                           type="text"
                           value={aiFormData.preferredFields}
                           onChange={(e) => setAiFormData({ ...aiFormData, preferredFields: e.target.value })}
-                          placeholder="VD: Backend, Frontend, DevOps, Data Science..."
+                          placeholder="e.g., Backend, Frontend, DevOps, Data Science..."
                           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
                         />
                       </div>
@@ -633,7 +633,7 @@ const StudentDashboard = () => {
                       <button
                         onClick={async () => {
                           if (!aiFormData.skills || !aiFormData.goals) {
-                            alert('⚠️ Vui lòng nhập ít nhất Kỹ Năng và Mục Tiêu!');
+                            alert('⚠️ Please enter at least Skills and Goals!');
                             return;
                           }
                           
@@ -650,26 +650,26 @@ const StudentDashboard = () => {
                                 model: 'mixtral-8x7b-32768',
                                 messages: [{
                                   role: 'user',
-                                  content: `Bạn là chuyên gia tư vấn nghề nghiệp. Dựa trên thông tin sau của mentee, hãy gợi ý 3 mentor phù hợp nhất:
+                                  content: `You are a career counseling expert. Based on the following mentee information, suggest 3 most suitable mentors:
                                   
-Kỹ năng: ${aiFormData.skills}
-Sở thích: ${aiFormData.interests}
-Mục tiêu: ${aiFormData.goals}
-Trình độ: ${aiFormData.experience}
-Lĩnh vực ưu tiên: ${aiFormData.preferredFields}
+Skills: ${aiFormData.skills}
+Interests: ${aiFormData.interests}
+Goals: ${aiFormData.goals}
+Level: ${aiFormData.experience}
+Preferred Fields: ${aiFormData.preferredFields}
 
-Hãy trả lời theo format JSON như sau:
+Please respond in JSON format:
 {
   "suggestions": [
     {
-      "mentorName": "Tên mentor",
-      "title": "Chức danh",
-      "reason": "Lý do phù hợp",
-      "focus": "Lĩnh vực chuyên môn",
-      "recommendation": "Gợi ý học tập"
+      "mentorName": "Mentor name",
+      "title": "Title",
+      "reason": "Why suitable",
+      "focus": "Area of expertise",
+      "recommendation": "Learning recommendations"
     }
   ],
-  "overallAdvice": "Lời khuyên chung cho mentee"
+  "overallAdvice": "General advice for mentee"
 }`
                                 }],
                                 temperature: 0.7,
@@ -686,12 +686,12 @@ Hãy trả lời theo format JSON như sau:
                               const result = JSON.parse(jsonMatch[0]);
                               setAiSuggestions(result);
                             } else {
-                              setAiSuggestions({ error: 'Không thể phân tích kết quả', raw: content });
+                              setAiSuggestions({ error: 'Unable to parse results', raw: content });
                             }
                           } catch (error: any) {
                             console.error('Groq API Error:', error);
                             setAiSuggestions({ 
-                              error: 'Có lỗi xảy ra khi kết nối AI',
+                              error: 'Error connecting to AI',
                               message: error.message 
                             });
                           }
@@ -703,12 +703,12 @@ Hãy trả lời theo format JSON như sau:
                         {aiLoading ? (
                           <>
                             <div className="animate-spin w-6 h-6 border-4 border-white border-t-transparent rounded-full"></div>
-                            Đang Phân Tích...
+                            Analyzing...
                           </>
                         ) : (
                           <>
                             <FaPaperPlane />
-                            Gợi Ý Mentor Cho Tôi
+                            Get Mentor Recommendations
                           </>
                         )}
                       </button>
@@ -719,14 +719,14 @@ Hãy trả lời theo format JSON như sau:
                   <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl p-8 shadow-xl">
                     <h4 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
                       <FaStar className="text-yellow-500" />
-                      Gợi Ý Từ AI
+                      AI Recommendations
                     </h4>
 
                     {!aiSuggestions ? (
                       <div className="text-center py-12">
                         <FaRobot className="text-6xl text-gray-400 mx-auto mb-4" />
                         <p className="text-gray-600 text-lg">
-                          Điền thông tin bên trái và nhấn nút để nhận gợi ý từ AI! 🤖
+                          Fill in the information on the left and click the button to get AI recommendations! 🤖
                         </p>
                       </div>
                     ) : aiSuggestions.error ? (
@@ -756,15 +756,15 @@ Hãy trả lời theo format JSON như sau:
                             
                             <div className="space-y-3 pl-16">
                               <div>
-                                <span className="font-semibold text-gray-700">✅ Lý do phù hợp:</span>
+                                <span className="font-semibold text-gray-700">✅ Why Suitable:</span>
                                 <p className="text-gray-600 mt-1">{suggestion.reason}</p>
                               </div>
                               <div>
-                                <span className="font-semibold text-gray-700">🎯 Chuyên môn:</span>
+                                <span className="font-semibold text-gray-700">🎯 Expertise:</span>
                                 <p className="text-gray-600 mt-1">{suggestion.focus}</p>
                               </div>
                               <div>
-                                <span className="font-semibold text-gray-700">💡 Gợi ý:</span>
+                                <span className="font-semibold text-gray-700">💡 Recommendations:</span>
                                 <p className="text-gray-600 mt-1">{suggestion.recommendation}</p>
                               </div>
                             </div>
@@ -775,7 +775,7 @@ Hãy trả lời theo format JSON như sau:
                           <div className="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-xl p-6 border-l-4 border-yellow-500">
                             <h5 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
                               <FaLightbulb className="text-yellow-600" />
-                              Lời Khuyên Chung
+                              Overall Advice
                             </h5>
                             <p className="text-gray-700 leading-relaxed">{aiSuggestions.overallAdvice}</p>
                           </div>
@@ -792,10 +792,10 @@ Hãy trả lời theo format JSON như sau:
               <div>
                 <h3 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
                   <FaCalendar className="text-[#06BBCC]" />
-                  Quản Lý Lịch & Nhắc Hẹn
+                  Schedule Management & Reminders
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  <strong>Nhắc lịch tự động:</strong> Hệ thống sẽ gửi thông báo trước mỗi buổi hẹn 30 phút ⏰
+                  <strong>Auto Reminders:</strong> System will send notifications 30 minutes before each meeting ⏰
                 </p>
 
                 <div className="space-y-4">
@@ -824,12 +824,12 @@ Hãy trả lời theo format JSON như sau:
                           <div className="flex items-center gap-2">
                             <FaBell className="text-yellow-500 text-2xl animate-pulse" />
                             <span className="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full font-bold text-sm">
-                              🔔 Nhắc nhở đã bật
+                              🔔 Reminder Active
                             </span>
                           </div>
                         ) : (
                           <span className="px-4 py-2 bg-gray-300 text-gray-700 rounded-full font-semibold text-sm">
-                            ✅ Đã hoàn thành
+                            ✅ Completed
                           </span>
                         )}
                       </div>
@@ -837,7 +837,7 @@ Hãy trả lời theo format JSON như sau:
                       {schedule.meetingLink && schedule.status === 'upcoming' && (
                         <div className="bg-white rounded-lg p-4 mb-4">
                           <label className="block text-sm font-semibold text-gray-700 mb-2">
-                            Link Cuộc Họp:
+                            Meeting Link:
                           </label>
                           <a
                             href={schedule.meetingLink}
@@ -857,7 +857,7 @@ Hãy trả lời theo format JSON như sau:
                           rel="noopener noreferrer"
                           className="w-full px-6 py-3 bg-[#06BBCC] text-white rounded-lg font-bold hover:bg-[#0099AA] transition-colors flex items-center justify-center gap-2"
                         >
-                          <FaVideo /> Tham Gia Cuộc Họp
+                          <FaVideo /> Join Meeting
                         </a>
                       )}
                     </motion.div>
