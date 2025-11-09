@@ -67,6 +67,36 @@ const Home = () => {
         {/* Animated Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800"></div>
         
+        {/* Animated Graduation Cap Icons */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{ 
+                x: `${Math.random() * 100}%`,
+                y: -50,
+                opacity: 0.2,
+                scale: 0.5 + Math.random() * 0.5
+              }}
+              animate={{ 
+                y: '110vh',
+                opacity: [0.1, 0.25, 0.1],
+                rotate: [0, 180, 360],
+                scale: [0.5, 0.8, 0.5]
+              }}
+              transition={{ 
+                duration: 12 + Math.random() * 8,
+                repeat: Infinity,
+                delay: Math.random() * 6,
+                ease: "linear"
+              }}
+              className="absolute"
+            >
+              <FaGraduationCap className="text-white opacity-30" style={{ fontSize: `${20 + Math.random() * 20}px` }} />
+            </motion.div>
+          ))}
+        </div>
+        
         {/* Animated Shapes */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
@@ -88,21 +118,23 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full mb-6 border border-white/20"
+                className="inline-flex items-center gap-2 mb-6"
               >
-                <FaAward className="text-yellow-400" />
-                <span className="text-white text-sm font-medium">Trusted by 50,000+ Students</span>
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                  <div className="w-2 h-2 bg-[#06BBCC] rounded-full animate-pulse"></div>
+                  <span className="text-[#06BBCC] uppercase text-sm font-bold tracking-wider">Best Online Courses</span>
+                </div>
               </motion.div>
 
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+                className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-[1.1]"
               >
-                Learn Without
-                <span className="block bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-                  Limits
+                <span className="block mb-2">Leading Online</span>
+                <span className="block bg-gradient-to-r from-[#06BBCC] via-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                  Learning Platform
                 </span>
               </motion.h1>
 
@@ -110,9 +142,9 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="text-xl text-white/90 mb-8 leading-relaxed"
+                className="text-xl text-white/90 mb-8 leading-relaxed max-w-xl"
               >
-                Master in-demand skills with expert-led courses. From web development to AI, find your perfect learning path and transform your career.
+                Learn anytime, anywhere with hundreds of high-quality courses. Guided by top industry experts, helping you develop skills and achieve your career goals.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -123,18 +155,18 @@ const Home = () => {
                 className="flex flex-wrap gap-4 mb-10"
               >
                 <Link
-                  to="/courses"
-                  className="group relative inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 hover:text-gray-900 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
+                  to="/about"
+                  className="group relative inline-flex items-center gap-2 bg-gradient-to-r from-[#06BBCC] to-cyan-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-cyan-500 hover:to-[#06BBCC] transition-all duration-300 shadow-2xl hover:shadow-cyan-500/50 hover:scale-105"
                 >
-                  <FaRocket className="group-hover:rotate-12 transition-transform" />
-                  Explore Courses
+                  <span>Learn More</span>
+                  <FaPlay className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
-                  to="/about"
-                  className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all duration-300 border-2 border-white/30 hover:border-white/50"
+                  to="/signup"
+                  className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all duration-300 border-2 border-white/30 hover:border-white/60"
                 >
-                  <FaPlay />
-                  Watch Demo
+                  <FaRocket className="group-hover:rotate-12 transition-transform" />
+                  <span>Join Now</span>
                 </Link>
               </motion.div>
 
@@ -145,24 +177,27 @@ const Home = () => {
                 transition={{ delay: 0.6 }}
                 className="flex flex-wrap items-center gap-6"
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <div className="flex -space-x-2">
                     {[1, 2, 3, 4].map((i) => (
-                      <img
-                        key={i}
-                        src={`/img/team-${i}.jpg`}
-                        alt="Student"
-                        className="w-10 h-10 rounded-full border-2 border-white object-cover"
-                      />
+                      <div key={i} className="relative">
+                        <img
+                          src={`/img/team-${i}.jpg`}
+                          alt="Student"
+                          className="w-12 h-12 rounded-full border-3 border-white object-cover ring-2 ring-white/20"
+                        />
+                      </div>
                     ))}
                   </div>
                   <div className="text-white">
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 mb-1">
                       {[1, 2, 3, 4, 5].map((i) => (
-                        <FaStar key={i} className="text-yellow-400 text-xs" />
+                        <FaStar key={i} className="text-yellow-400 text-sm drop-shadow-lg" />
                       ))}
                     </div>
-                    <p className="text-sm">4.9/5 from 12,000+ reviews</p>
+                    <p className="text-sm font-medium">
+                      <span className="font-bold">4.9/5</span> from 12,000+ reviews
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -176,7 +211,7 @@ const Home = () => {
               className="relative hidden lg:block"
             >
               <div className="relative">
-                {/* Main Image Card */}
+                {/* Main Image Card - LARGER */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -186,7 +221,7 @@ const Home = () => {
                   <img
                     src="/img/carousel-1.jpg"
                     alt="Learning"
-                    className="w-full h-[500px] object-cover"
+                    className="w-full h-[600px] object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </motion.div>
@@ -240,51 +275,8 @@ const Home = () => {
               </div>
             </motion.div>
           </div>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-          >
-            <div className="flex flex-col items-center gap-2 text-white/60">
-              <span className="text-sm">Scroll to explore</span>
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-                className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2"
-              >
-                <div className="w-1.5 h-2 bg-white/60 rounded-full"></div>
-              </motion.div>
-            </div>
-          </motion.div>
         </div>
       </div>
-
-      {/* Companies Trust Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="py-16 bg-gray-50 border-y border-gray-200"
-      >
-        <div className="container mx-auto px-4">
-          <motion.p
-            variants={fadeInUp}
-            className="text-center text-gray-600 mb-8 font-semibold"
-          >
-            Trusted by leading companies worldwide
-          </motion.p>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
-            {['Google', 'Microsoft', 'Amazon', 'Apple', 'Meta', 'Netflix'].map((company) => (
-              <div key={company} className="text-2xl font-bold text-gray-400">
-                {company}
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
 
       {/* Why Choose Us Section */}
       <motion.section 
