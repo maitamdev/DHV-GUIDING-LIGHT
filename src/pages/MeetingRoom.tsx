@@ -42,7 +42,7 @@ const MeetingRoom = () => {
       setMessages([
         ...messages,
         {
-          user: 'Bạn',
+          user: 'You',
           text: newMessage,
           time: `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`
         }
@@ -94,7 +94,7 @@ const MeetingRoom = () => {
                     <div className="w-24 h-24 bg-[#06BBCC] rounded-full flex items-center justify-center mx-auto mb-4">
                       <span className="text-4xl font-bold text-white">B</span>
                     </div>
-                    <p className="text-white text-xl">Bạn</p>
+                    <p className="text-white text-xl">You</p>
                   </div>
                 </div>
               )}

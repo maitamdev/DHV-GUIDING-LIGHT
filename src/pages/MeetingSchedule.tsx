@@ -23,7 +23,7 @@ const MeetingSchedule = () => {
       instructor: 'Nguy?n Van A',
       date: '2024-11-15',
       time: '14:00',
-      duration: '60 ph�t',
+      duration: '60 minutes',
       meetLink: 'https://meet.google.com/abc-defg-hij',
       participants: 45,
       status: 'upcoming'
@@ -47,7 +47,7 @@ const MeetingSchedule = () => {
       instructor: 'Current User',
       date: newMeeting.date,
       time: newMeeting.time,
-      duration: newMeeting.duration + ' ph�t',
+      duration: newMeeting.duration + ' minutes',
       meetLink: newMeeting.meetLink,
       participants: 0,
       status: 'upcoming'
@@ -71,21 +71,21 @@ const MeetingSchedule = () => {
             transition={{ duration: 0.6 }}
             className="text-5xl md:text-6xl text-white font-bold text-center mb-4"
           >
-            Phòng Học Trực Tuyến
+            Online Meeting Rooms
           </motion.h1>
         </div>
       </div>
 
       <div className="container mx-auto px-4 py-12">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800">Lịch Học Sắp Tới</h2>
+          <h2 className="text-3xl font-bold text-gray-800">Upcoming Classes</h2>
           {userRole === 'instructor' && (
             <button
               onClick={() => setShowCreateModal(true)}
               className="px-6 py-3 bg-[#06BBCC] text-white rounded-lg font-semibold hover:bg-[#05a3b3] transition-colors flex items-center gap-2"
             >
               <FaPlus />
-              Tạo Buổi Học Mới
+              Create New Session
             </button>
           )}
         </div>
@@ -109,7 +109,7 @@ const MeetingSchedule = () => {
                   </div>
                   <div className="flex items-center text-gray-600">
                     <FaUsers className="mr-2" />
-                    <span className="text-sm">{meeting.participants} ngu?i</span>
+                    <span className="text-sm">{meeting.participants} people</span>
                   </div>
                 </div>
                 <div className="bg-gray-50 rounded p-3 mb-4">
@@ -124,7 +124,7 @@ const MeetingSchedule = () => {
                   onClick={() => handleJoinMeeting(meeting.meetLink)}
                   className="w-full py-3 bg-[#06BBCC] hover:bg-[#05a3b3] text-white rounded-lg font-semibold transition-colors"
                 >
-                  {meeting.status === 'live' ? 'Tham Gia Ngay' : 'Tham Gia'}
+                  {meeting.status === 'live' ? 'Join Now' : 'Join'}
                 </button>
               </div>
             </div>
@@ -136,23 +136,23 @@ const MeetingSchedule = () => {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-800">T?o bu?i h?c m?i</h3>
+              <h3 className="text-2xl font-bold text-gray-800">Create New Session</h3>
               <button onClick={() => setShowCreateModal(false)} className="text-gray-400 hover:text-gray-600">
                 <FaTimes size={24} />
               </button>
             </div>
             <form onSubmit={handleCreateMeeting} className="space-y-4">
               <div>
-                <label className="block text-gray-700 font-semibold mb-2">Tiêu đề</label>
+                <label className="block text-gray-700 font-semibold mb-2">Title</label>
                 <input type="text" value={newMeeting.title} onChange={(e) => setNewMeeting({...newMeeting, title: e.target.value})} className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none" required />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">Ng�y</label>
+                  <label className="block text-gray-700 font-semibold mb-2">Date</label>
                   <input type="date" value={newMeeting.date} onChange={(e) => setNewMeeting({...newMeeting, date: e.target.value})} className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none" required />
                 </div>
                 <div>
-                  <label className="block text-gray-700 font-semibold mb-2">Gi?</label>
+                  <label className="block text-gray-700 font-semibold mb-2">Time</label>
                   <input type="time" value={newMeeting.time} onChange={(e) => setNewMeeting({...newMeeting, time: e.target.value})} className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none" required />
                 </div>
               </div>
@@ -162,10 +162,10 @@ const MeetingSchedule = () => {
               </div>
               <div className="flex gap-3 pt-4">
                 <button type="button" onClick={() => setShowCreateModal(false)} className="flex-1 px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-                  H?y
+                  Cancel
                 </button>
                 <button type="submit" className="flex-1 px-4 py-3 bg-[#06BBCC] text-white rounded-lg font-semibold hover:bg-[#05a3b3] transition-colors">
-                  T?o bu?i h?c
+                  Create Session
                 </button>
               </div>
             </form>
