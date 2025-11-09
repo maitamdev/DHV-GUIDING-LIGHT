@@ -175,136 +175,180 @@ const StudentDashboard = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-cyan-50 py-12">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-8">
+      <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
+          className="mb-10"
         >
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-gradient-to-r from-[#06BBCC] via-blue-600 to-purple-600 rounded-3xl shadow-2xl p-8 text-white">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-extrabold mb-2">📚 Student Dashboard</h1>
-              <p className="text-white/90 text-lg">Welcome back! Manage your profile, find mentors, and track your learning progress.</p>
+          <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl shadow-2xl p-8 md:p-10">
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20px 20px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
             </div>
-            <div className="flex gap-3">
-              <button
-                onClick={() => navigate('/portfolio')}
-                className="flex items-center gap-2 px-6 py-3 bg-white text-[#06BBCC] font-bold rounded-xl hover:shadow-2xl transition-all transform hover:scale-105"
+            
+            <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+              <div>
+                <motion.h1 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-4xl md:text-5xl font-bold mb-3 text-white tracking-tight"
+                >
+                  📚 Student Dashboard
+                </motion.h1>
+                <motion.p 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-blue-100 text-lg font-medium"
+                >
+                  Welcome back, <span className="text-white font-semibold">{profileData.name}</span>! Track your progress and connect with mentors.
+                </motion.p>
+              </div>
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+                className="flex flex-wrap gap-3"
               >
-                <FaGraduationCap /> My Portfolio
-              </button>
-              <button
-                onClick={() => navigate('/competency-profile')}
-                className="flex items-center gap-2 px-6 py-3 bg-green-400 text-gray-800 font-bold rounded-xl hover:shadow-2xl transition-all transform hover:scale-105"
-              >
-                <FaChartLine /> Competency
-              </button>
-              <button
-                onClick={() => navigate('/assignment-submission')}
-                className="flex items-center gap-2 px-6 py-3 bg-purple-400 text-white font-bold rounded-xl hover:shadow-2xl transition-all transform hover:scale-105"
-              >
-                <FaUpload /> Assignments
-              </button>
-              <button
-                onClick={() => navigate('/homework')}
-                className="flex items-center gap-2 px-6 py-3 bg-yellow-400 text-gray-800 font-bold rounded-xl hover:shadow-2xl transition-all transform hover:scale-105"
-              >
-                <FaBell /> Homework
-              </button>
+                <button
+                  onClick={() => navigate('/portfolio')}
+                  className="group flex items-center gap-2 px-5 py-3 bg-white text-blue-600 font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                >
+                  <FaGraduationCap className="group-hover:rotate-12 transition-transform" /> Portfolio
+                </button>
+                <button
+                  onClick={() => navigate('/competency-profile')}
+                  className="group flex items-center gap-2 px-5 py-3 bg-emerald-500 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                >
+                  <FaChartLine className="group-hover:scale-110 transition-transform" /> Competency
+                </button>
+                <button
+                  onClick={() => navigate('/assignment-submission')}
+                  className="group flex items-center gap-2 px-5 py-3 bg-purple-500 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                >
+                  <FaUpload className="group-hover:translate-y-1 transition-transform" /> Assignments
+                </button>
+                <button
+                  onClick={() => navigate('/homework')}
+                  className="group flex items-center gap-2 px-5 py-3 bg-amber-400 text-gray-800 font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                >
+                  <FaBell className="group-hover:swing transition-transform" /> Homework
+                </button>
+              </motion.div>
             </div>
           </div>
         </motion.div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {[
-            { icon: FaBook, label: 'Enrolled Courses', value: '3', color: 'bg-blue-500' },
-            { icon: FaUser, label: 'Following Mentors', value: '2', color: 'bg-green-500' },
-            { icon: FaCalendar, label: 'Upcoming Meetings', value: '2', color: 'bg-purple-500' },
-            { icon: FaCheckCircle, label: 'Completed Sessions', value: '8', color: 'bg-yellow-500' }
+            { icon: FaBook, label: 'Enrolled Courses', value: '3', color: 'from-blue-500 to-blue-600', iconBg: 'bg-blue-100', iconColor: 'text-blue-600' },
+            { icon: FaUser, label: 'Following Mentors', value: '2', color: 'from-emerald-500 to-emerald-600', iconBg: 'bg-emerald-100', iconColor: 'text-emerald-600' },
+            { icon: FaCalendar, label: 'Upcoming Meetings', value: '2', color: 'from-purple-500 to-purple-600', iconBg: 'bg-purple-100', iconColor: 'text-purple-600' },
+            { icon: FaCheckCircle, label: 'Completed Sessions', value: '8', color: 'from-amber-500 to-amber-600', iconBg: 'bg-amber-100', iconColor: 'text-amber-600' }
           ].map((stat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow"
+              className={`bg-gradient-to-br ${stat.color} rounded-2xl shadow-lg hover:shadow-2xl p-6 text-white transition-all duration-300 transform hover:scale-105 cursor-pointer`}
             >
-              <div className="flex items-center gap-4">
-                <div className={`${stat.color} p-4 rounded-lg text-white`}>
-                  <stat.icon className="text-3xl" />
+              <div className="flex items-center justify-between mb-4">
+                <div className={`${stat.iconBg} p-3 rounded-xl`}>
+                  <stat.icon className={`text-2xl ${stat.iconColor}`} />
                 </div>
-                <div>
-                  <p className="text-gray-600 text-sm">{stat.label}</p>
-                  <p className="text-3xl font-bold text-gray-800">{stat.value}</p>
-                </div>
+                <span className="text-4xl font-bold">{stat.value}</span>
               </div>
+              <p className="text-white/90 font-medium text-sm">{stat.label}</p>
             </motion.div>
           ))}
         </div>
 
         {/* Tabs */}
-        <div className="bg-white rounded-xl shadow-lg mb-8">
-          <div className="flex border-b-2 border-gray-200 overflow-x-auto">
+        <div className="bg-white rounded-2xl shadow-xl mb-10 overflow-hidden">
+          <div className="flex border-b border-gray-200 overflow-x-auto bg-gradient-to-r from-gray-50 to-blue-50">
             {[
-              { id: 'profile', label: 'Profile', icon: FaUser },
+              { id: 'profile', label: 'My Profile', icon: FaUser },
               { id: 'myCourses', label: 'My Courses', icon: FaBook },
               { id: 'mentors', label: 'Find Mentors', icon: FaSearch },
               { id: 'aiSuggest', label: 'AI Mentor', icon: FaRobot },
-              { id: 'schedule', label: 'Schedule', icon: FaCalendar }
+              { id: 'schedule', label: 'Meeting Schedule', icon: FaCalendar }
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center gap-2 px-6 py-4 font-semibold transition-colors whitespace-nowrap ${
+                className={`relative flex items-center gap-2 px-8 py-5 font-semibold transition-all duration-300 whitespace-nowrap ${
                   activeTab === tab.id
-                    ? 'text-[#06BBCC] border-b-4 border-[#06BBCC]'
-                    : 'text-gray-600 hover:text-[#06BBCC]'
+                    ? 'text-blue-600 bg-white'
+                    : 'text-gray-600 hover:text-blue-500 hover:bg-white/50'
                 }`}
               >
-                <tab.icon />
+                <tab.icon className={`text-lg transition-transform ${activeTab === tab.id ? 'scale-110' : ''}`} />
                 {tab.label}
+                {activeTab === tab.id && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
               </button>
             ))}
           </div>
 
-          <div className="p-8">
+          <div className="p-10">
             {/* Profile Tab */}
             {activeTab === 'profile' && (
-              <div>
-                <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-3xl font-bold text-gray-800 flex items-center gap-3">
-                    <FaUser className="text-[#06BBCC]" />
-                    Personal Profile - Portfolio
-                  </h3>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="flex justify-between items-center mb-8">
+                  <div>
+                    <h3 className="text-4xl font-bold text-gray-800 flex items-center gap-3 mb-2">
+                      <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-3 rounded-xl">
+                        <FaUser className="text-white" />
+                      </div>
+                      Personal Profile
+                    </h3>
+                    <p className="text-gray-600 ml-16">Manage your information and showcase your achievements</p>
+                  </div>
                   {!editMode ? (
                     <button
                       onClick={() => setEditMode(true)}
-                      className="flex items-center gap-2 px-6 py-3 bg-[#06BBCC] text-white font-bold rounded-lg hover:bg-[#0099AA] transition-colors"
+                      className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                     >
-                      <FaEdit /> Edit Profile
+                      <FaEdit className="group-hover:rotate-12 transition-transform" /> Edit Profile
                     </button>
                   ) : (
                     <button
                       onClick={handleSaveProfile}
-                      className="flex items-center gap-2 px-6 py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition-colors"
+                      className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                     >
-                      <FaSave /> Save Changes
+                      <FaSave className="group-hover:scale-110 transition-transform" /> Save Changes
                     </button>
                   )}
                 </div>
 
-                <div className="space-y-8">
+                <div className="space-y-6">
                   {/* Avatar & Basic Info Section */}
-                  <div className="bg-gradient-to-r from-[#06BBCC] to-blue-600 rounded-2xl p-8 text-white shadow-xl">
-                    <div className="flex items-center gap-6">
-                      <div className="w-32 h-32 rounded-full bg-white/20 backdrop-blur-lg flex items-center justify-center text-5xl font-bold border-4 border-white/50">
+                  <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-3xl p-10 text-white shadow-2xl">
+                    {/* Background pattern */}
+                    <div className="absolute inset-0 opacity-10">
+                      <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20px 20px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+                    </div>
+                    
+                    <div className="relative z-10 flex items-center gap-8">
+                      <div className="w-36 h-36 rounded-2xl bg-white/20 backdrop-blur-lg flex items-center justify-center text-6xl font-bold border-4 border-white/50 shadow-2xl">
                         {profileData.name.charAt(0)}
                       </div>
-                      <div className="flex-1">
-                        {editMode ? (
+                      <div className="flex-1">{editMode ? (
                           <input
                             type="text"
                             value={profileData.name}
@@ -464,7 +508,7 @@ const StudentDashboard = () => {
                     />
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {/* Mentors Tab */}
