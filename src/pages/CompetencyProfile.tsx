@@ -238,21 +238,30 @@ ${competencyData.recommendations.map((r, i) => `${i + 1}. ${r}`).join('\n')}
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-purple-50 py-12">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 py-12">
+      <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl font-bold text-gray-800 mb-4 flex items-center justify-center gap-3">
-            <FaChartLine className="text-[#06BBCC]" />
-            Competency Profile
-          </h1>
-          <p className="text-xl text-gray-600">
-            Auto-generated based on your certificates, achievements, and skills
-          </p>
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 mb-4"
+          >
+            🎯 Competency Profile
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-xl text-gray-600 font-medium"
+          >
+            Auto-generated from your certificates, achievements, and skills
+          </motion.p>
         </motion.div>
 
         {/* Overall Score Card */}

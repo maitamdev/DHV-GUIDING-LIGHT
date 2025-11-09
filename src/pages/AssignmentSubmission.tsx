@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaUpload, FaFile, FaCheckCircle, FaClock, FaExclamationTriangle, FaDownload, FaTrash, FaPaperPlane } from 'react-icons/fa';
+import { FaFile, FaCheckCircle, FaClock, FaExclamationTriangle, FaDownload, FaTrash, FaPaperPlane } from 'react-icons/fa';
 
 interface Assignment {
   id: number;
@@ -167,21 +167,30 @@ const AssignmentSubmission = () => {
   const submittedAssignments = assignments.filter(a => a.status === 'submitted' || a.status === 'graded');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-12">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-12">
+      <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl font-bold text-gray-800 mb-4 flex items-center justify-center gap-3">
-            <FaUpload className="text-[#06BBCC]" />
-            Assignment Submission
-          </h1>
-          <p className="text-xl text-gray-600">
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 mb-4"
+          >
+            📤 Assignment Submission
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-xl text-gray-600 font-medium"
+          >
             Submit your work and track your progress with auto-reminders
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Auto-Reminder Info Banner */}
