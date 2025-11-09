@@ -21,6 +21,7 @@ import MeetingRoom from './pages/MeetingRoom';
 import MeetingSchedule from './pages/MeetingSchedule';
 import FAQ from './pages/FAQ';
 import Blog from './pages/Blog';
+import BlogDetail from './pages/BlogDetail';
 import InstructorDashboard from './pages/InstructorDashboard';
 import CreateCourse from './pages/CreateCourse';
 import StudentDashboard from './pages/StudentDashboard';
@@ -54,6 +55,7 @@ function App() {
             <Route path="instructor" element={<Instructor />} />
             <Route path="faq" element={<FAQ />} />
             <Route path="blog" element={<Blog />} />
+            <Route path="blog/:id" element={<BlogDetail />} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
             

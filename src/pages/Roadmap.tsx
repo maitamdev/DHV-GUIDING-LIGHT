@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaCode, FaMobile, FaDatabase, FaRobot, FaServer, FaChartLine, FaBook, FaClock, FaArrowRight, FaStar } from 'react-icons/fa';
+import { FaCode, FaMobile, FaDatabase, FaRobot, FaServer, FaChartLine, FaBook, FaClock, FaArrowRight, FaStar, FaCloud, FaShieldAlt, FaGamepad, FaPalette } from 'react-icons/fa';
 
 const roadmaps = [
   {
@@ -10,52 +10,118 @@ const roadmaps = [
     icon: FaCode,
     color: 'bg-blue-500',
     courses: 12,
-    duration: '6 months'
+    duration: '6 months',
+    image: '/img/course-1.jpg',
+    level: 'Beginner to Advanced',
+    students: 1240
   },
   {
     id: 'mobile-app',
     title: 'Mobile App Development',
-    description: 'Cross-platform mobile application development',
+    description: 'Cross-platform mobile application development with React Native & Flutter',
     icon: FaMobile,
     color: 'bg-green-500',
     courses: 10,
-    duration: '5 months'
+    duration: '5 months',
+    image: '/img/course-2.jpg',
+    level: 'Intermediate',
+    students: 856
   },
   {
     id: 'data-science',
-    title: 'Data Science',
-    description: 'Data science and analytics',
+    title: 'Data Science & Analytics',
+    description: 'Master data analysis, visualization, and statistical modeling',
     icon: FaChartLine,
     color: 'bg-purple-500',
     courses: 15,
-    duration: '8 months'
+    duration: '8 months',
+    image: '/img/course-3.jpg',
+    level: 'Beginner to Advanced',
+    students: 1120
   },
   {
     id: 'ai-ml',
     title: 'AI & Machine Learning',
-    description: 'Artificial intelligence and machine learning',
+    description: 'Build intelligent systems with deep learning and neural networks',
     icon: FaRobot,
     color: 'bg-red-500',
     courses: 14,
-    duration: '9 months'
+    duration: '9 months',
+    image: '/img/team-1.jpg',
+    level: 'Advanced',
+    students: 945
   },
   {
     id: 'devops',
-    title: 'DevOps Engineer',
-    description: 'System management and automated deployment',
+    title: 'DevOps & Cloud Engineering',
+    description: 'Master CI/CD, Docker, Kubernetes, and cloud platforms',
     icon: FaServer,
-    color: 'bg-yellow-500',
-    courses: 8,
-    duration: '4 months'
+    color: 'bg-yellow-600',
+    courses: 11,
+    duration: '6 months',
+    image: '/img/team-2.jpg',
+    level: 'Intermediate to Advanced',
+    students: 732
+  },
+  {
+    id: 'cloud-computing',
+    title: 'Cloud Computing (AWS, Azure, GCP)',
+    description: 'Become a certified cloud architect and solutions specialist',
+    icon: FaCloud,
+    color: 'bg-cyan-500',
+    courses: 13,
+    duration: '7 months',
+    image: '/img/team-3.jpg',
+    level: 'Intermediate',
+    students: 1050
+  },
+  {
+    id: 'cybersecurity',
+    title: 'Cybersecurity Specialist',
+    description: 'Learn ethical hacking, penetration testing, and security protocols',
+    icon: FaShieldAlt,
+    color: 'bg-indigo-600',
+    courses: 12,
+    duration: '8 months',
+    image: '/img/team-1.jpg',
+    level: 'Advanced',
+    students: 680
+  },
+  {
+    id: 'ui-ux-design',
+    title: 'UI/UX Design',
+    description: 'Design beautiful user interfaces with Figma, Adobe XD, and user research',
+    icon: FaPalette,
+    color: 'bg-pink-500',
+    courses: 9,
+    duration: '4 months',
+    image: '/img/team-2.jpg',
+    level: 'Beginner to Intermediate',
+    students: 1340
+  },
+  {
+    id: 'game-development',
+    title: 'Game Development',
+    description: 'Create games with Unity, Unreal Engine, and C#',
+    icon: FaGamepad,
+    color: 'bg-orange-500',
+    courses: 10,
+    duration: '7 months',
+    image: '/img/team-3.jpg',
+    level: 'Intermediate',
+    students: 565
   },
   {
     id: 'database',
-    title: 'Database Administrator',
-    description: 'Advanced database administration',
+    title: 'Database Administration',
+    description: 'Advanced SQL, NoSQL, database optimization, and management',
     icon: FaDatabase,
-    color: 'bg-indigo-500',
+    color: 'bg-teal-600',
     courses: 9,
-    duration: '5 months'
+    duration: '5 months',
+    image: '/img/course-1.jpg',
+    level: 'Intermediate to Advanced',
+    students: 420
   },
 ];
 
@@ -126,62 +192,58 @@ const Roadmap = () => {
                 >
                   <Link
                     to={`/roadmap/${roadmap.id}`}
-                    className="block bg-white rounded-3xl shadow-2xl overflow-hidden hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-500 border-4 border-transparent hover:border-[#06BBCC]"
+                    className="block bg-white rounded-3xl shadow-2xl overflow-hidden hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-500"
                   >
-                    {/* Icon Header with Gradient */}
-                    <div className={`${roadmap.color} relative p-10 text-white bg-gradient-to-br from-current to-transparent overflow-hidden`}>
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
-                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
-                      <Icon className="text-8xl mb-4 drop-shadow-2xl relative z-10 group-hover:scale-110 transition-transform duration-500" />
-                      <h3 className="text-3xl font-extrabold mb-3 relative z-10">{roadmap.title}</h3>
-                      <p className="text-gray-100 text-lg relative z-10">{roadmap.description}</p>
+                    {/* Image Header */}
+                    <div className="relative h-56 overflow-hidden">
+                      <img 
+                        src={roadmap.image} 
+                        alt={roadmap.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                      <div className="absolute top-4 right-4">
+                        <div className={`${roadmap.color} p-4 rounded-2xl shadow-xl`}>
+                          <Icon className="text-4xl text-white" />
+                        </div>
+                      </div>
+                      <div className="absolute bottom-4 left-4 right-4 text-white">
+                        <h3 className="text-2xl font-bold mb-1">{roadmap.title}</h3>
+                        <p className="text-sm text-gray-200">{roadmap.level}</p>
+                      </div>
                     </div>
 
-                    {/* Info Section with Better Layout */}
-                    <div className="p-8 bg-gradient-to-br from-white to-gray-50">
-                      <div className="flex justify-between items-center mb-6">
-                        <div className="flex items-center gap-2 text-gray-700">
-                          <FaBook className="text-[#06BBCC] text-2xl" />
-                          <div>
-                            <p className="text-sm text-gray-500">Courses</p>
-                            <p className="text-xl font-bold">{roadmap.courses}</p>
+                    {/* Info Section */}
+                    <div className="p-6 bg-gradient-to-br from-white to-gray-50">
+                      <p className="text-gray-600 mb-6 leading-relaxed">{roadmap.description}</p>
+                      
+                      <div className="grid grid-cols-3 gap-4 mb-6">
+                        <div className="text-center">
+                          <div className="flex items-center justify-center gap-1 text-blue-600 mb-1">
+                            <FaBook className="text-lg" />
                           </div>
+                          <p className="text-2xl font-bold text-gray-800">{roadmap.courses}</p>
+                          <p className="text-xs text-gray-500">Courses</p>
                         </div>
-                        <div className="flex items-center gap-2 text-gray-700">
-                          <FaClock className="text-[#06BBCC] text-2xl" />
-                          <div>
-                            <p className="text-sm text-gray-500">Duration</p>
-                            <p className="text-xl font-bold">{roadmap.duration}</p>
+                        <div className="text-center">
+                          <div className="flex items-center justify-center gap-1 text-green-600 mb-1">
+                            <FaClock className="text-lg" />
                           </div>
+                          <p className="text-2xl font-bold text-gray-800">{roadmap.duration}</p>
+                          <p className="text-xs text-gray-500">Duration</p>
                         </div>
-                        <div className="flex items-center gap-2 text-gray-700">
-                          <FaStar className="text-yellow-500 text-2xl" />
-                          <div>
-                            <p className="text-sm text-gray-500">Rating</p>
-                            <p className="text-xl font-bold">4.9</p>
+                        <div className="text-center">
+                          <div className="flex items-center justify-center gap-1 text-purple-600 mb-1">
+                            <FaStar className="text-lg" />
                           </div>
+                          <p className="text-2xl font-bold text-gray-800">{roadmap.students}</p>
+                          <p className="text-xs text-gray-500">Students</p>
                         </div>
                       </div>
 
-                      {/* Progress Bar */}
-                      <div className="mb-6">
-                        <div className="flex justify-between text-sm mb-2">
-                          <span className="text-gray-600">Popularity</span>
-                          <span className="font-semibold text-[#06BBCC]">{85 + index * 2}%</span>
-                        </div>
-                        <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                          <motion.div 
-                            initial={{ width: 0 }}
-                            animate={{ width: `${85 + index * 2}%` }}
-                            transition={{ duration: 1.5, delay: index * 0.1 + 0.5 }}
-                            className="bg-gradient-to-r from-[#06BBCC] to-[#0066FF] h-3 rounded-full"
-                          />
-                        </div>
-                      </div>
-
-                      {/* CTA Button with Arrow */}
-                      <div className="flex items-center justify-between py-4 px-6 bg-gradient-to-r from-[#06BBCC] to-[#0066FF] text-white rounded-2xl font-bold text-lg group-hover:from-[#0066FF] group-hover:to-[#FF0000] transition-all duration-500 shadow-lg">
-                        <span>View Details</span>
+                      {/* CTA Button */}
+                      <div className="flex items-center justify-between py-4 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl font-bold text-lg hover:from-indigo-600 hover:to-purple-600 transition-all duration-500 shadow-lg">
+                        <span>View Roadmap</span>
                         <FaArrowRight className="group-hover:translate-x-2 transition-transform duration-300" />
                       </div>
                     </div>
