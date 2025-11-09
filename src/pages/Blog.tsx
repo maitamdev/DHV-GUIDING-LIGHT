@@ -16,61 +16,61 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: 'Top 10 Kỹ Năng Lập Trình Cần Có Năm 2024',
-    excerpt: 'Khám phá những kỹ năng lập trình quan trọng nhất mà mọi developer nên học trong năm 2024. Từ AI, Cloud Computing đến Web3...',
-    author: 'Nguyễn Văn A',
-    date: '15/11/2024',
-    readTime: '5 phút đọc',
+    title: 'Top 10 Programming Skills You Need in 2024',
+    excerpt: 'Discover the most important programming skills every developer should learn in 2024. From AI, Cloud Computing to Web3...',
+    author: 'John Anderson',
+    date: 'November 15, 2024',
+    readTime: '5 min read',
     image: '/img/course-1.jpg',
-    category: 'Lập Trình'
+    category: 'Programming'
   },
   {
     id: 2,
-    title: 'Làm Thế Nào Để Trở Thành Full Stack Developer?',
-    excerpt: 'Lộ trình chi tiết từ zero đến hero để trở thành một Full Stack Developer chuyên nghiệp với mức lương hấp dẫn...',
-    author: 'Trần Thị B',
-    date: '12/11/2024',
-    readTime: '8 phút đọc',
+    title: 'How to Become a Full Stack Developer?',
+    excerpt: 'Complete roadmap from zero to hero to become a professional Full Stack Developer with an attractive salary...',
+    author: 'Sarah Chen',
+    date: 'November 12, 2024',
+    readTime: '8 min read',
     image: '/img/course-2.jpg',
-    category: 'Nghề Nghiệp'
+    category: 'Career'
   },
   {
     id: 3,
-    title: 'React vs Vue vs Angular: Nên Chọn Framework Nào?',
-    excerpt: 'So sánh chi tiết 3 framework JavaScript phổ biến nhất hiện nay. Ưu nhược điểm và lời khuyên cho người mới bắt đầu...',
-    author: 'Lê Văn C',
-    date: '10/11/2024',
-    readTime: '6 phút đọc',
+    title: 'React vs Vue vs Angular: Which Framework Should You Choose?',
+    excerpt: 'Detailed comparison of the 3 most popular JavaScript frameworks today. Pros and cons and advice for beginners...',
+    author: 'David Williams',
+    date: 'November 10, 2024',
+    readTime: '6 min read',
     image: '/img/course-3.jpg',
-    category: 'Công Nghệ'
+    category: 'Technology'
   },
   {
     id: 4,
-    title: 'AI và Machine Learning: Cơ Hội Việc Làm Trong Tương Lai',
-    excerpt: 'Tìm hiểu về xu hướng AI/ML và những cơ hội nghề nghiệp đầy tiềm năng trong lĩnh vực này...',
-    author: 'Phạm Thị D',
-    date: '08/11/2024',
-    readTime: '7 phút đọc',
+    title: 'AI and Machine Learning: Career Opportunities in the Future',
+    excerpt: 'Learn about AI/ML trends and promising career opportunities in this field...',
+    author: 'Emily Parker',
+    date: 'November 8, 2024',
+    readTime: '7 min read',
     image: '/img/course-1.jpg',
     category: 'AI & ML'
   },
   {
     id: 5,
-    title: '5 Sai Lầm Thường Gặp Của Người Mới Học Lập Trình',
-    excerpt: 'Những sai lầm phổ biến mà người mới học lập trình thường mắc phải và cách khắc phục hiệu quả...',
-    author: 'Hoàng Văn E',
-    date: '05/11/2024',
-    readTime: '4 phút đọc',
+    title: '5 Common Mistakes Beginner Programmers Make',
+    excerpt: 'Common mistakes that beginner programmers often make and effective ways to fix them...',
+    author: 'Michael Johnson',
+    date: 'November 5, 2024',
+    readTime: '4 min read',
     image: '/img/course-2.jpg',
-    category: 'Học Tập'
+    category: 'Learning'
   },
   {
     id: 6,
-    title: 'Tìm Hiểu Về DevOps: Vai Trò và Công Cụ Cần Thiết',
-    excerpt: 'DevOps đang trở thành xu hướng quan trọng. Cùng tìm hiểu vai trò, kỹ năng và công cụ cần thiết...',
-    author: 'Vũ Thị F',
-    date: '02/11/2024',
-    readTime: '6 phút đọc',
+    title: 'Understanding DevOps: Role and Essential Tools',
+    excerpt: 'DevOps is becoming an important trend. Learn about the role, skills and essential tools...',
+    author: 'Lisa Nguyen',
+    date: 'November 2, 2024',
+    readTime: '6 min read',
     image: '/img/course-3.jpg',
     category: 'DevOps'
   }
@@ -89,10 +89,10 @@ const Blog = () => {
             className="text-center"
           >
             <h1 className="text-5xl md:text-6xl text-white font-bold mb-4">
-              Blog & Tin Tức
+              Blog & News
             </h1>
             <p className="text-xl text-white/90">
-              Cập nhật kiến thức và xu hướng công nghệ mới nhất
+              Stay updated with the latest knowledge and technology trends
             </p>
           </motion.div>
         </div>
@@ -153,7 +153,7 @@ const Blog = () => {
                       to={`/blog/${post.id}`}
                       className="text-[#06BBCC] font-semibold flex items-center gap-2 hover:gap-3 transition-all"
                     >
-                      Đọc thêm
+                      Read more
                       <FaArrowRight className="text-sm" />
                     </Link>
                   </div>
@@ -195,15 +195,15 @@ const Blog = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              Đăng Ký Nhận Bản Tin
+              Subscribe to Newsletter
             </h2>
             <p className="text-gray-600 mb-8">
-              Nhận tin tức, bài viết và khóa học mới nhất qua email của bạn
+              Receive the latest news, articles and courses via your email
             </p>
             <form className="flex gap-4">
               <input
                 type="email"
-                placeholder="Email của bạn"
+                placeholder="Your email"
                 className="flex-1 px-6 py-4 rounded-lg border-2 border-gray-300 focus:border-[#06BBCC] focus:outline-none"
                 required
               />
@@ -211,7 +211,7 @@ const Blog = () => {
                 type="submit"
                 className="px-8 py-4 bg-[#06BBCC] text-white rounded-lg font-semibold hover:bg-[#05a3b3] transition-colors"
               >
-                Đăng Ký
+                Subscribe
               </button>
             </form>
           </div>

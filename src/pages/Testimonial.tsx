@@ -4,35 +4,35 @@ import { FaStar, FaQuoteLeft } from 'react-icons/fa';
 const testimonials = [
   {
     id: 1,
-    name: 'Nguyễn Văn A',
+    name: 'John Anderson',
     role: 'Web Developer',
     image: '/img/testimonial-1.jpg',
     rating: 5,
-    text: 'Khóa học rất chất lượng, giảng viên nhiệt tình. Tôi đã học được rất nhiều kiến thức thực tế và áp dụng vào công việc ngay lập tức.'
+    text: 'The course quality is excellent, instructors are very enthusiastic. I learned a lot of practical knowledge and applied it to my work immediately.'
   },
   {
     id: 2,
-    name: 'Trần Thị B',
+    name: 'Sarah Chen',
     role: 'Data Analyst',
     image: '/img/testimonial-2.jpg',
     rating: 5,
-    text: 'Nền tảng học tập tuyệt vời với lộ trình rõ ràng. Mentor rất tận tâm và giúp đỡ tôi rất nhiều trong quá trình học tập.'
+    text: 'Wonderful learning platform with a clear roadmap. The mentor is very dedicated and helped me a lot during the learning process.'
   },
   {
     id: 3,
-    name: 'Lê Văn C',
+    name: 'David Williams',
     role: 'Mobile Developer',
     image: '/img/testimonial-3.jpg',
     rating: 5,
-    text: 'Tôi rất hài lòng với chất lượng khóa học. Nội dung cập nhật, bài tập thực hành phong phú và có mentor hỗ trợ 24/7.'
+    text: 'I am very satisfied with the course quality. Updated content, rich practical exercises and 24/7 mentor support.'
   },
   {
     id: 4,
-    name: 'Phạm Thị D',
+    name: 'Emily Parker',
     role: 'UI/UX Designer',
     image: '/img/testimonial-4.jpg',
     rating: 5,
-    text: 'DHV Guiding Light đã giúp tôi chuyển đổi nghề nghiệp thành công. Chương trình mentoring rất hữu ích và thực tế.'
+    text: 'DHV Guiding Light helped me successfully transition my career. The mentoring program is very useful and practical.'
   }
 ];
 
@@ -48,7 +48,7 @@ const Testimonial = () => {
             transition={{ duration: 0.6 }}
             className="text-5xl md:text-6xl text-white font-bold text-center"
           >
-            Học viên nói gì về chúng tôi
+            What Our Students Say
           </motion.h1>
         </div>
       </div>
