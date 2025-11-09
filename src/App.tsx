@@ -29,6 +29,7 @@ import Portfolio from './pages/Portfolio';
 import HomeworkReminder from './pages/HomeworkReminder';
 import CompetencyProfile from './pages/CompetencyProfile';
 import AssignmentSubmission from './pages/AssignmentSubmission';
+import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:id" element={<BlogDetail />} />
             <Route path="login" element={<Login />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="signup" element={<Signup />} />
             
             {/* Protected Routes */}
