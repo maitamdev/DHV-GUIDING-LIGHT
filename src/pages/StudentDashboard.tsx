@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap, FaRobot, FaPaperPlane, FaLightbulb } from 'react-icons/fa';
+import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap, FaRobot, FaPaperPlane, FaLightbulb, FaChartLine } from 'react-icons/fa';
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
@@ -194,6 +194,12 @@ const StudentDashboard = () => {
                 className="flex items-center gap-2 px-6 py-3 bg-white text-[#06BBCC] font-bold rounded-xl hover:shadow-2xl transition-all transform hover:scale-105"
               >
                 <FaGraduationCap /> My Portfolio
+              </button>
+              <button
+                onClick={() => navigate('/competency-profile')}
+                className="flex items-center gap-2 px-6 py-3 bg-green-400 text-gray-800 font-bold rounded-xl hover:shadow-2xl transition-all transform hover:scale-105"
+              >
+                <FaChartLine /> Competency
               </button>
               <button
                 onClick={() => navigate('/homework')}

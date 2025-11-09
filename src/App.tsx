@@ -26,6 +26,7 @@ import CreateCourse from './pages/CreateCourse';
 import StudentDashboard from './pages/StudentDashboard';
 import Portfolio from './pages/Portfolio';
 import HomeworkReminder from './pages/HomeworkReminder';
+import CompetencyProfile from './pages/CompetencyProfile';
 
 function App() {
   return (
@@ -109,6 +110,11 @@ function App() {
             <Route path="homework" element={
               <ProtectedRoute>
                 <HomeworkReminder />
+              </ProtectedRoute>
+            } />
+            <Route path="competency-profile" element={
+              <ProtectedRoute>
+                <CompetencyProfile />
               </ProtectedRoute>
             } />
           </Route>
