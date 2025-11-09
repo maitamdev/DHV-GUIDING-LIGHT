@@ -222,19 +222,19 @@ const StudentDashboard = () => {
                 </button>
                 <button
                   onClick={() => navigate('/competency-profile')}
-                  className="group flex items-center gap-2 px-5 py-3 bg-emerald-500 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                  className="group flex items-center gap-2 px-5 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
                 >
                   <FaChartLine className="group-hover:scale-110 transition-transform" /> Competency
                 </button>
                 <button
                   onClick={() => navigate('/assignment-submission')}
-                  className="group flex items-center gap-2 px-5 py-3 bg-purple-500 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                  className="group flex items-center gap-2 px-5 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
                 >
                   <FaUpload className="group-hover:translate-y-1 transition-transform" /> Assignments
                 </button>
                 <button
                   onClick={() => navigate('/homework')}
-                  className="group flex items-center gap-2 px-5 py-3 bg-amber-400 text-gray-800 font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                  className="group flex items-center gap-2 px-5 py-3 bg-blue-400 hover:bg-blue-500 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
                 >
                   <FaBell className="group-hover:swing transition-transform" /> Homework
                 </button>
@@ -243,24 +243,24 @@ const StudentDashboard = () => {
           </div>
         </motion.div>
 
-        {/* Stats Cards */}
+        {/* Stats Cards - Unified Blue Theme */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {[
-            { icon: FaBook, label: 'Enrolled Courses', value: '3', color: 'from-blue-500 to-blue-600', iconBg: 'bg-blue-100', iconColor: 'text-blue-600' },
-            { icon: FaUser, label: 'Following Mentors', value: '2', color: 'from-emerald-500 to-emerald-600', iconBg: 'bg-emerald-100', iconColor: 'text-emerald-600' },
-            { icon: FaCalendar, label: 'Upcoming Meetings', value: '2', color: 'from-purple-500 to-purple-600', iconBg: 'bg-purple-100', iconColor: 'text-purple-600' },
-            { icon: FaCheckCircle, label: 'Completed Sessions', value: '8', color: 'from-amber-500 to-amber-600', iconBg: 'bg-amber-100', iconColor: 'text-amber-600' }
+            { icon: FaBook, label: 'Enrolled Courses', value: '3' },
+            { icon: FaUser, label: 'Following Mentors', value: '2' },
+            { icon: FaCalendar, label: 'Upcoming Meetings', value: '2' },
+            { icon: FaCheckCircle, label: 'Completed Sessions', value: '8' }
           ].map((stat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className={`bg-gradient-to-br ${stat.color} rounded-2xl shadow-lg hover:shadow-2xl p-6 text-white transition-all duration-300 transform hover:scale-105 cursor-pointer`}
+              className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-lg hover:shadow-2xl p-6 text-white transition-all duration-300 transform hover:scale-105 cursor-pointer"
             >
               <div className="flex items-center justify-between mb-4">
-                <div className={`${stat.iconBg} p-3 rounded-xl`}>
-                  <stat.icon className={`text-2xl ${stat.iconColor}`} />
+                <div className="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
+                  <stat.icon className="text-2xl text-white" />
                 </div>
                 <span className="text-4xl font-bold">{stat.value}</span>
               </div>
