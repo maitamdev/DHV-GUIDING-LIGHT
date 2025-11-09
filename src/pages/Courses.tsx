@@ -448,310 +448,253 @@ const Courses = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Hero Header */}
-      <section className="relative bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white py-24 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20px 20px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
+    <div className="min-h-screen bg-white">
+      {/* Hero Header - Simple 28Tech style */}
+      <section className="relative bg-blue-600 text-white py-16">
+        <div className="container mx-auto px-4">
           <motion.h1 
-            initial={{ opacity: 0, y: -30 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-bold text-center mb-6"
+            className="text-4xl md:text-5xl font-bold mb-4"
           >
-            📚 Explore Our Courses
+            Khóa Học DHV
           </motion.h1>
           <motion.p 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-center text-blue-100 max-w-3xl mx-auto mb-8"
+            transition={{ delay: 0.1 }}
+            className="text-lg text-blue-100 max-w-2xl"
           >
-            Master in-demand skills with expert-led courses. From web development to AI, find your perfect learning path.
+            Học tập không giới hạn - Nắm vững kỹ năng với các khóa học chất lượng từ chuyên gia
           </motion.p>
-
-          {/* Search Bar */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 }}
-            className="max-w-2xl mx-auto"
-          >
-            <div className="relative">
-              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl" />
-              <input
-                type="text"
-                placeholder="Search courses by title, instructor..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-14 pr-4 py-4 rounded-2xl text-gray-800 text-lg focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-xl"
-              />
-            </div>
-          </motion.div>
-
-          {/* Stats */}
-          <div className="flex justify-center gap-8 mt-12">
-            <div className="text-center">
-              <p className="text-4xl font-bold">{courses.length}</p>
-              <p className="text-blue-100">Courses</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold">{categories.length - 1}</p>
-              <p className="text-blue-100">Categories</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold">50K+</p>
-              <p className="text-blue-100">Students</p>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Category Filter */}
-      <section className="py-12 bg-white shadow-md sticky top-0 z-40">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center gap-4 mb-6 overflow-x-auto pb-4">
+      {/* Category Filter & Search - Clean 28Tech style */}
+      <section className="bg-white border-b border-gray-200 sticky top-16 z-40">
+        <div className="container mx-auto px-4 py-4">
+          {/* Search Bar */}
+          <div className="mb-4">
+            <div className="relative max-w-2xl">
+              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Tìm kiếm khóa học..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:border-blue-500"
+              />
+            </div>
+          </div>
+
+          {/* Categories */}
+          <div className="flex items-center gap-3 mb-4 overflow-x-auto pb-2">
             {categories.map((category) => {
               const Icon = category.icon;
               return (
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold whitespace-nowrap transition-all duration-300 ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all ${
                     selectedCategory === category.id
-                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg scale-105'
+                      ? 'bg-blue-600 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  <Icon className="text-lg" />
+                  <Icon className="text-sm" />
                   {category.name}
-                  <span className="bg-white/20 px-2 py-1 rounded-full text-sm">{category.count}</span>
+                  <span className={`px-2 py-0.5 rounded-full text-xs ${
+                    selectedCategory === category.id ? 'bg-white/20' : 'bg-gray-200'
+                  }`}>
+                    {category.count}
+                  </span>
                 </button>
               );
             })}
           </div>
 
           {/* Filters Row */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
             {/* Level Filter */}
             <div className="flex flex-col">
-              <label className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                <FaGraduationCap className="text-blue-600" /> Level
-              </label>
+              <label className="text-xs font-medium text-gray-600 mb-1">Cấp độ</label>
               <select
                 value={selectedLevel}
                 onChange={(e) => setSelectedLevel(e.target.value)}
-                className="px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:outline-none font-medium"
+                className="px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none text-sm"
               >
-                <option value="all">All Levels</option>
-                <option value="Beginner">Beginner</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Advanced">Advanced</option>
+                <option value="all">Tất cả</option>
+                <option value="Beginner">Cơ bản</option>
+                <option value="Intermediate">Trung cấp</option>
+                <option value="Advanced">Nâng cao</option>
               </select>
             </div>
 
             {/* Price Filter */}
             <div className="flex flex-col">
-              <label className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                <FaFilter className="text-blue-600" /> Price Range
-              </label>
+              <label className="text-xs font-medium text-gray-600 mb-1">Giá</label>
               <select
                 value={priceRange}
                 onChange={(e) => setPriceRange(e.target.value)}
-                className="px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:outline-none font-medium"
+                className="px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none text-sm"
               >
-                <option value="all">All Prices</option>
-                <option value="free">Free</option>
-                <option value="under-100">Under $100</option>
+                <option value="all">Tất cả</option>
+                <option value="free">Miễn phí</option>
+                <option value="under-100">Dưới $100</option>
                 <option value="100-150">$100 - $150</option>
-                <option value="over-150">Over $150</option>
+                <option value="over-150">Trên $150</option>
               </select>
             </div>
 
             {/* Sort By */}
             <div className="flex flex-col">
-              <label className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
-                <FaSortAmountDown className="text-blue-600" /> Sort By
-              </label>
+              <label className="text-xs font-medium text-gray-600 mb-1">Sắp xếp</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:outline-none font-medium"
+                className="px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none text-sm"
               >
-                <option value="popular">Most Popular</option>
-                <option value="rating">Highest Rated</option>
-                <option value="newest">Newest First</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
+                <option value="popular">Phổ biến</option>
+                <option value="rating">Đánh giá cao</option>
+                <option value="newest">Mới nhất</option>
+                <option value="price-low">Giá thấp</option>
+                <option value="price-high">Giá cao</option>
               </select>
             </div>
 
             {/* Results Count */}
             <div className="flex flex-col justify-end">
-              <div className="px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border-2 border-blue-100">
-                <p className="text-sm text-gray-600">Showing Results</p>
-                <p className="text-2xl font-bold text-blue-600">{sortedCourses.length}</p>
+              <div className="px-3 py-2 bg-blue-50 rounded-lg border border-blue-100">
+                <p className="text-xs text-gray-600">Kết quả</p>
+                <p className="text-lg font-bold text-blue-600">{sortedCourses.length}</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Courses Grid */}
-      <section className="py-16">
+      {/* Courses Grid - Clean 28Tech style */}
+      <section className="py-8 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="mb-8 flex items-center justify-between">
-            <h2 className="text-3xl font-bold text-gray-800">
-              {selectedCategory === 'all' ? 'All Courses' : categories.find(c => c.id === selectedCategory)?.name}
-            </h2>
-            <p className="text-gray-600">
-              <span className="font-bold text-blue-600">{sortedCourses.length}</span> courses found
-            </p>
-          </div>
-
           {sortedCourses.length === 0 ? (
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-20 bg-white rounded-3xl shadow-xl"
+              className="text-center py-16 bg-white rounded-lg"
             >
-              <div className="text-6xl mb-4">📚</div>
-              <p className="text-2xl font-bold text-gray-800 mb-2">No courses found</p>
-              <p className="text-gray-500">Try adjusting your filters or search query</p>
+              <div className="text-5xl mb-3">📚</div>
+              <p className="text-xl font-bold text-gray-800 mb-1">Không tìm thấy khóa học</p>
+              <p className="text-gray-500">Thử điều chỉnh bộ lọc hoặc từ khóa tìm kiếm</p>
             </motion.div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
               {sortedCourses.map((course, index) => (
                 <motion.div
                   key={course.id}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  className="group bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100 relative"
+                  transition={{ delay: index * 0.03 }}
+                  className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-200 relative"
                 >
                   {/* Favorite Button */}
                   <button
                     onClick={() => toggleFavorite(course.id)}
-                    className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all duration-300 hover:scale-110"
+                    className="absolute top-2 right-2 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow hover:bg-white transition-all hover:scale-110"
                   >
                     {favorites.includes(course.id) ? (
-                      <FaHeart className="text-red-500 text-lg" />
+                      <FaHeart className="text-red-500 text-sm" />
                     ) : (
-                      <FaRegHeart className="text-gray-600 text-lg" />
+                      <FaRegHeart className="text-gray-600 text-sm" />
                     )}
                   </button>
 
                   {/* Course Image */}
-                  <div className="relative overflow-hidden h-56">
+                  <div className="relative overflow-hidden h-44">
                     <img
                       src={course.image}
                       alt={course.title}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     
                     {/* Badges */}
-                    <div className="absolute top-4 left-4 flex flex-col gap-2">
+                    <div className="absolute top-2 left-2 flex flex-col gap-1">
                       {course.bestseller && (
-                        <span className="px-3 py-1 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
-                          <FaStar /> BESTSELLER
+                        <span className="px-2 py-1 bg-yellow-500 text-white rounded text-xs font-bold shadow">
+                          <FaStar className="inline mr-1" />BESTSELLER
                         </span>
                       )}
                       {course.new && (
-                        <span className="px-3 py-1 bg-gradient-to-r from-green-400 to-emerald-500 text-white rounded-full text-xs font-bold shadow-lg">
+                        <span className="px-2 py-1 bg-green-500 text-white rounded text-xs font-bold shadow">
                           🆕 NEW
                         </span>
                       )}
-                      <span className="px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-semibold shadow-lg">
+                    </div>
+
+                    {/* Level Badge */}
+                    <div className="absolute bottom-2 left-2">
+                      <span className="px-2 py-1 bg-blue-600 text-white rounded text-xs font-medium">
                         {course.level}
                       </span>
-                    </div>
-
-                    {/* Price Badge */}
-                    <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="bg-white px-4 py-2 rounded-full font-bold text-blue-600 shadow-xl text-lg">
-                        {course.price}
-                      </div>
-                    </div>
-
-                    {/* Play Button Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform">
-                        <FaPlay className="text-blue-600 text-xl ml-1" />
-                      </div>
                     </div>
                   </div>
 
                   {/* Course Content */}
-                  <div className="p-6">
+                  <div className="p-4">
                     {/* Category Tag */}
-                    <div className="mb-3">
-                      <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 rounded-lg text-xs font-semibold">
+                    <div className="mb-2">
+                      <span className="inline-block px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-xs font-medium">
                         {categories.find(c => c.id === course.category)?.name}
                       </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors min-h-[3.5rem]">
+                    <h3 className="text-base font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors min-h-[2.5rem]">
                       {course.title}
                     </h3>
 
-                    {/* Description */}
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed">
-                      {course.description}
-                    </p>
-
                     {/* Instructor */}
-                    <div className="flex items-center gap-3 mb-4 pb-4 border-b border-gray-100">
+                    <div className="flex items-center gap-2 mb-3 pb-3 border-b border-gray-100">
                       <img
                         src={course.instructorAvatar || '/img/team-1.jpg'}
                         alt={course.instructor}
-                        className="w-10 h-10 rounded-full object-cover border-2 border-blue-100"
+                        className="w-6 h-6 rounded-full object-cover"
                       />
-                      <div>
-                        <p className="text-xs text-gray-500">Instructor</p>
-                        <p className="font-semibold text-gray-800 text-sm">{course.instructor}</p>
-                      </div>
+                      <p className="font-medium text-gray-700 text-xs truncate">{course.instructor}</p>
                     </div>
 
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-2 gap-3 mb-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 rounded-lg p-2">
+                    {/* Stats */}
+                    <div className="grid grid-cols-2 gap-2 mb-3">
+                      <div className="flex items-center gap-1 text-xs text-gray-600">
                         <FaUsers className="text-blue-600" />
-                        <span className="font-medium">{course.students.toLocaleString()}</span>
+                        <span>{course.students.toLocaleString()}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 rounded-lg p-2">
+                      <div className="flex items-center gap-1 text-xs text-gray-600">
                         <FaClock className="text-green-600" />
-                        <span className="font-medium">{course.duration}</span>
+                        <span>{course.duration}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 rounded-lg p-2">
+                      <div className="flex items-center gap-1 text-xs text-gray-600">
                         <FaChartLine className="text-purple-600" />
-                        <span className="font-medium">{course.lessons || 120} lessons</span>
+                        <span>{course.lessons || 120} bài</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 rounded-lg p-2">
+                      <div className="flex items-center gap-1 text-xs text-gray-600">
                         <FaStar className="text-yellow-500" />
-                        <span className="font-bold text-gray-800">{course.rating}</span>
+                        <span className="font-bold">{course.rating}</span>
                       </div>
                     </div>
 
                     {/* Price and CTA */}
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div className="flex items-center justify-between pt-3 border-t border-gray-100">
                       <div>
-                        <p className="text-sm text-gray-500 line-through">{parseInt(course.price.replace('$', '')) + 50}</p>
-                        <p className="text-3xl font-bold text-gray-800">{course.price}</p>
+                        <p className="text-xl font-bold text-gray-800">{course.price}</p>
                       </div>
                       <Link
                         to={`/courses/${course.id}`}
-                        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
+                        className="flex items-center gap-1 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all text-sm"
                       >
-                        Enroll <FaArrowRight className="text-sm" />
+                        Chi tiết
                       </Link>
                     </div>
                   </div>
-
-                  {/* Bottom Accent Line */}
-                  <div className="h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                 </motion.div>
               ))}
             </div>
