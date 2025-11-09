@@ -1,53 +1,15 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import { FaPlay, FaRocket, FaStar, FaUsers, FaGraduationCap, FaChartLine, FaAward, FaBook, FaClock, FaInfinity } from 'react-icons/fa';
-import { useState, useEffect } from 'react';
+import { FaPlay, FaRocket, FaStar, FaUsers, FaGraduationCap, FaChartLine, FaAward, FaBook, FaClock, FaBrain, FaShoppingCart, FaCreditCard, FaSignInAlt, FaQuoteLeft } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const Home = () => {
-  const [studentsCount, setStudentsCount] = useState(0);
-  const [coursesCount, setCoursesCount] = useState(0);
-  const [instructorsCount, setInstructorsCount] = useState(0);
-
-  // Counter animation
-  useEffect(() => {
-    const animateCount = (target: number, setter: (n: number) => void, duration = 2000) => {
-      let start = 0;
-      const increment = target / (duration / 16);
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-          setter(target);
-          clearInterval(timer);
-        } else {
-          setter(Math.floor(start));
-        }
-      }, 16);
-    };
-
-    animateCount(50000, setStudentsCount);
-    animateCount(200, setCoursesCount);
-    animateCount(150, setInstructorsCount);
-  }, []);
-
   // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-  };
-
-  const fadeInLeft = {
-    hidden: { opacity: 0, x: -60 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } }
-  };
-
-  const fadeInRight = {
-    hidden: { opacity: 0, x: 60 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } }
   };
 
   const staggerContainer = {
@@ -62,445 +24,374 @@ const Home = () => {
 
   return (
     <>
-      {/* Modern Hero Section */}
-      <div className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Animated Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800"></div>
-        
-        {/* Animated Graduation Cap Icons */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(15)].map((_, i) => (
-            <motion.div
-              key={i}
-              initial={{ 
-                x: `${Math.random() * 100}%`,
-                y: -50,
-                opacity: 0.2,
-                scale: 0.5 + Math.random() * 0.5
-              }}
-              animate={{ 
-                y: '110vh',
-                opacity: [0.1, 0.25, 0.1],
-                rotate: [0, 180, 360],
-                scale: [0.5, 0.8, 0.5]
-              }}
-              transition={{ 
-                duration: 12 + Math.random() * 8,
-                repeat: Infinity,
-                delay: Math.random() * 6,
-                ease: "linear"
-              }}
-              className="absolute"
-            >
-              <FaGraduationCap className="text-white opacity-30" style={{ fontSize: `${20 + Math.random() * 20}px` }} />
-            </motion.div>
-          ))}
-        </div>
-        
-        {/* Animated Shapes */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-1/2 -left-40 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute bottom-20 right-1/3 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      {/* Hero Section with 28Tech Style */}
+      <div className="relative bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 py-32 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20px 20px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
         </div>
 
-        {/* Hero Content */}
-        <div className="container mx-auto px-4 py-20 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left - Hero Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              {/* Trust Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 mb-6"
-              >
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-                  <div className="w-2 h-2 bg-[#06BBCC] rounded-full animate-pulse"></div>
-                  <span className="text-[#06BBCC] uppercase text-sm font-bold tracking-wider">Best Online Courses</span>
-                </div>
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-[1.1]"
-              >
-                <span className="block mb-2">Leading Online</span>
-                <span className="block bg-gradient-to-r from-[#06BBCC] via-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                  Learning Platform
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
+                Leading Online Learning Platform
+                <span className="block bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent mt-2">
+                  DHV GUIDING LIGHT
                 </span>
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="text-xl text-white/90 mb-8 leading-relaxed max-w-xl"
-              >
-                Learn anytime, anywhere with hundreds of high-quality courses. Guided by top industry experts, helping you develop skills and achieve your career goals.
-              </motion.p>
-
-              {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="flex flex-wrap gap-4 mb-10"
-              >
+              </h1>
+              <p className="text-xl text-white/90 mb-8 leading-relaxed">
+                Learn anytime, anywhere with hundreds of high-quality courses across all fields. Guided by top industry experts and professional mentors, helping you develop skills and achieve your career goals.
+              </p>
+              <div className="flex flex-wrap gap-4">
                 <Link
-                  to="/about"
-                  className="group relative inline-flex items-center gap-2 bg-gradient-to-r from-[#06BBCC] to-cyan-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-cyan-500 hover:to-[#06BBCC] transition-all duration-300 shadow-2xl hover:shadow-cyan-500/50 hover:scale-105"
+                  to="/courses"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 rounded-full font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transition-all shadow-2xl hover:scale-105"
                 >
-                  <span>Learn More</span>
-                  <FaPlay className="group-hover:translate-x-1 transition-transform" />
+                  <FaRocket />
+                  View Courses
                 </Link>
                 <Link
                   to="/signup"
-                  className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all duration-300 border-2 border-white/30 hover:border-white/60"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-md text-white rounded-full font-bold text-lg hover:bg-white/20 transition-all border-2 border-white/30"
                 >
-                  <FaRocket className="group-hover:rotate-12 transition-transform" />
-                  <span>Join Now</span>
+                  <FaGraduationCap />
+                  Register Now
                 </Link>
+              </div>
+            </motion.div>
+
+            {/* Right - Feature Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-6"
+            >
+              {/* Feature 1 - Experienced Instructors */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <FaUsers className="text-3xl text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white mb-2">Professional Expert Mentors</h3>
+                    <p className="text-white/80 leading-relaxed">Learn from industry leaders with years of real-world experience across multiple fields and disciplines</p>
+                  </div>
+                </div>
               </motion.div>
 
-              {/* Trust Indicators */}
+              {/* Feature 2 - Quality Content */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="flex flex-wrap items-center gap-6"
+                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
               >
-                <div className="flex items-center gap-3">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className="relative">
-                        <img
-                          src={`/img/team-${i}.jpg`}
-                          alt="Student"
-                          className="w-12 h-12 rounded-full border-3 border-white object-cover ring-2 ring-white/20"
-                        />
-                      </div>
-                    ))}
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <FaBook className="text-3xl text-white" />
                   </div>
-                  <div className="text-white">
-                    <div className="flex items-center gap-1 mb-1">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <FaStar key={i} className="text-yellow-400 text-sm drop-shadow-lg" />
-                      ))}
-                    </div>
-                    <p className="text-sm font-medium">
-                      <span className="font-bold">4.9/5</span> from 12,000+ reviews
-                    </p>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white mb-2">High-Quality Courses & Content</h3>
+                    <p className="text-white/80 leading-relaxed">Comprehensive courses across all fields with video lectures, practical projects, and hands-on learning experiences</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Feature 3 - Auto Grading Platform */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <FaGraduationCap className="text-3xl text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white mb-2">Flexible Online Learning Platform</h3>
+                    <p className="text-white/80 leading-relaxed">Learn at your own pace with our advanced mentor booking system, online classes, and 1-on-1 mentoring sessions</p>
                   </div>
                 </div>
               </motion.div>
             </motion.div>
+          </div>
+        </div>
+      </div>
 
-            {/* Right Content - Stats Cards */}
+      {/* Skills Section - 28Tech Style */}
+      <div className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
+              Skills Our Courses Provide to Students
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              With high-quality courses across all fields and expert mentorship, DHV Guiding Light delivers many valuable skills to help you succeed in your career
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {[
+              {
+                icon: FaGraduationCap,
+                title: 'Expert Knowledge & Skills',
+                description: 'Master essential skills in your chosen field with comprehensive courses and expert guidance',
+                gradient: 'from-blue-500 to-indigo-600'
+              },
+              {
+                icon: FaUsers,
+                title: 'Professional Mentorship',
+                description: 'Connect with experienced mentors who provide personalized guidance and career advice',
+                gradient: 'from-green-500 to-emerald-600'
+              },
+              {
+                icon: FaBrain,
+                title: 'Critical Thinking & Problem Solving',
+                description: 'Develop analytical skills and creative problem-solving abilities applicable to any career',
+                gradient: 'from-purple-500 to-pink-600'
+              },
+              {
+                icon: FaBook,
+                title: 'Practical Real-World Experience',
+                description: 'Work on real projects and case studies that prepare you for industry challenges',
+                gradient: 'from-yellow-500 to-orange-600'
+              },
+              {
+                icon: FaChartLine,
+                title: 'Career Growth & Development',
+                description: 'Build your professional portfolio and advance your career with recognized certifications',
+                gradient: 'from-red-500 to-rose-600'
+              },
+              {
+                icon: FaAward,
+                title: 'Industry-Recognized Certification',
+                description: 'Earn certificates that validate your expertise and boost your professional credibility',
+                gradient: 'from-cyan-500 to-blue-600'
+              }
+            ].map((skill, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all"
+              >
+                <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${skill.gradient} rounded-xl mb-6`}>
+                  <skill.icon className="text-3xl text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">{skill.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{skill.description}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Feature Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <img 
+              src="/img/about.jpg" 
+              alt="Learning Platform" 
+              className="w-full max-w-4xl mx-auto rounded-3xl shadow-2xl"
+            />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Why Choose Us Section - 28Tech Style with Numbers */}
+      <div className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
+              Why You Should Learn with DHV Guiding Light
+            </h2>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-3 gap-10">
+            {/* Reason 01 */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative hidden lg:block"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all"
             >
-              <div className="relative">
-                {/* Main Image Card - LARGER */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="relative rounded-3xl overflow-hidden shadow-2xl"
-                >
-                  <img
-                    src="/img/carousel-1.jpg"
-                    alt="Learning"
-                    className="w-full h-[600px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                </motion.div>
-
-                {/* Floating Stats Cards */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 }}
-                  className="absolute top-10 -left-10 bg-white rounded-2xl p-6 shadow-2xl"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
-                      <FaUsers className="text-white text-2xl" />
-                    </div>
-                    <div>
-                      <div className="text-3xl font-bold text-gray-800">{studentsCount.toLocaleString()}+</div>
-                      <div className="text-gray-600">Active Students</div>
-                    </div>
+              <div className="flex items-start gap-6 mb-6">
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center">
+                    <span className="text-3xl font-bold text-white">01</span>
                   </div>
-                </motion.div>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4">High Quality</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Course content is invested in both quality and quantity. Expert instructors and professional mentors with years of experience are passionate about teaching. DHV Guiding Light offers diverse courses across all fields with practical projects and comprehensive learning materials.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.9 }}
-                  className="absolute bottom-10 -right-10 bg-white rounded-2xl p-6 shadow-2xl"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center">
-                      <FaGraduationCap className="text-white text-2xl" />
-                    </div>
-                    <div>
-                      <div className="text-3xl font-bold text-gray-800">{coursesCount}+</div>
-                      <div className="text-gray-600">Expert Courses</div>
-                    </div>
+            {/* Reason 02 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all"
+            >
+              <div className="flex items-start gap-6 mb-6">
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center">
+                    <span className="text-3xl font-bold text-white">02</span>
                   </div>
-                </motion.div>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4">Essential Skills Development</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    When learning with DHV Guiding Light, you don't just learn theory, but also develop critical thinking, problem-solving abilities, communication skills, and professional expertise. These skills will accompany you forever in your studies and future career across any field.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.1 }}
-                  className="absolute top-1/2 -right-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl p-4 shadow-2xl"
-                >
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-white">98%</div>
-                    <div className="text-white text-sm">Success Rate</div>
+            {/* Reason 03 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all"
+            >
+              <div className="flex items-start gap-6 mb-6">
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center">
+                    <span className="text-3xl font-bold text-white">03</span>
                   </div>
-                </motion.div>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4">Solid Foundation for Your Career</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Professional skills and industry knowledge are the first things you need when starting your career journey. Learning with DHV Guiding Light provides a solid stepping stone through expert mentorship, practical experience, and comprehensive training in your chosen field.
+                  </p>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </div>
 
-      {/* Why Choose Us Section */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={staggerContainer}
-        className="py-24 bg-white"
-      >
+      {/* How to Register Section - 28Tech Style */}
+      <div className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <motion.div variants={fadeInUp} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">
-              WHY CHOOSE US
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Everything You Need to Succeed
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Join thousands of students who are transforming their careers with our comprehensive learning platform
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { 
-                icon: FaGraduationCap, 
-                title: 'Expert Instructors', 
-                description: 'Learn from industry leaders with real-world experience and proven track records',
-                gradient: 'from-blue-500 to-indigo-600',
-                color: 'text-blue-500'
-              },
-              { 
-                icon: FaInfinity, 
-                title: 'Lifetime Access', 
-                description: 'Get unlimited access to course materials, updates, and new content forever',
-                gradient: 'from-purple-500 to-pink-600',
-                color: 'text-purple-500'
-              },
-              { 
-                icon: FaBook, 
-                title: 'Practical Projects', 
-                description: 'Build real-world projects and create an impressive portfolio to showcase',
-                gradient: 'from-green-500 to-emerald-600',
-                color: 'text-green-500'
-              },
-              { 
-                icon: FaAward, 
-                title: 'Certificates', 
-                description: 'Earn recognized certificates to boost your resume and career prospects',
-                gradient: 'from-orange-500 to-red-600',
-                color: 'text-orange-500'
-              }
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="relative group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl"></div>
-                <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group-hover:border-transparent h-full">
-                  {/* Icon */}
-                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <feature.icon className="text-white text-2xl" />
-                  </div>
-                  
-                  {/* Content */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-800">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {feature.description}
-                  </p>
-
-                  {/* Hover Arrow */}
-                  <div className="mt-6 flex items-center gap-2 text-blue-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-sm">Learn more</span>
-                    <FaPlay className="text-xs" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Stats Row */}
           <motion.div
-            variants={fadeInUp}
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            {[
-              { number: studentsCount.toLocaleString() + '+', label: 'Active Students', icon: FaUsers },
-              { number: coursesCount + '+', label: 'Quality Courses', icon: FaBook },
-              { number: instructorsCount + '+', label: 'Expert Instructors', icon: FaGraduationCap },
-              { number: '98%', label: 'Success Rate', icon: FaChartLine }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="text-center"
-              >
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl mb-4">
-                  <stat.icon className="text-blue-600 text-2xl" />
-                </div>
-                <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-gray-600 font-medium">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
+              How to Register for Courses?
+            </h2>
+            <p className="text-xl text-gray-600">Just 3 simple registration steps</p>
           </motion.div>
-        </div>
-      </motion.section>
 
-      {/* About Section */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        className="py-20"
-      >
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div variants={fadeInLeft} className="relative h-[500px]">
-              <img className="w-full h-full object-cover rounded-lg shadow-xl" src="/img/about.jpg" alt="About" />
-            </motion.div>
-            <motion.div variants={fadeInRight}>
-              <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">About Us</h6>
-              <h1 className="text-4xl font-bold mb-6">Welcome To DHV GUIDING LIGHT</h1>
-              <p className="text-gray-600 mb-4">Vietnam's leading online learning platform, connecting students with experienced experts and professional mentors. We are committed to delivering high-quality and effective learning experiences.</p>
-              <p className="text-gray-600 mb-6">With an advanced mentor management system, you can easily search, schedule and join online mentoring sessions. Learn flexibly, develop skills and achieve your career goals.</p>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                {[
-                  'Professional Mentors',
-                  'Online Classes',
-                  'Practical Certification',
-                  'Expert Mentoring',
-                  '24/7 Support',
-                  'Real Projects'
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center">
-                    <i className="fa fa-arrow-right text-[#06BBCC] mr-2"></i>
-                    <p className="text-gray-700">{item}</p>
-                  </div>
-                ))}
+          <div className="grid lg:grid-cols-3 gap-10">
+            {/* Step 01 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-center group"
+            >
+              <div className="relative inline-block mb-6">
+                <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-3xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+                  <FaShoppingCart className="text-5xl text-white" />
+                </div>
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center border-4 border-blue-100">
+                  <span className="text-2xl font-bold text-blue-600">01</span>
+                </div>
               </div>
-              <Link to="/about" className="bg-[#06BBCC] text-white px-8 py-4 rounded hover:bg-[#05a3b3] transition-all inline-block font-semibold">
-                Learn More
-              </Link>
+              <h3 className="text-2xl font-bold text-gray-800 mb-3">Choose Your Course</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Browse through our extensive course catalog and select the perfect course that matches your learning goals and career aspirations
+              </p>
+            </motion.div>
+
+            {/* Step 02 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-center group"
+            >
+              <div className="relative inline-block mb-6">
+                <div className="w-32 h-32 bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+                  <FaCreditCard className="text-5xl text-white" />
+                </div>
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center border-4 border-green-100">
+                  <span className="text-2xl font-bold text-green-600">02</span>
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-3">Complete Payment</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Securely pay for your selected course using various payment methods. All transactions are encrypted and protected
+              </p>
+            </motion.div>
+
+            {/* Step 03 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-center group"
+            >
+              <div className="relative inline-block mb-6">
+                <div className="w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-600 rounded-3xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+                  <FaSignInAlt className="text-5xl text-white" />
+                </div>
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center border-4 border-purple-100">
+                  <span className="text-2xl font-bold text-purple-600">03</span>
+                </div>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-3">Start Learning</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Log in to your account and start your learning journey immediately with lifetime access to all course materials
+              </p>
             </motion.div>
           </div>
         </div>
-      </motion.section>
-
-      {/* Categories Section */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={staggerContainer}
-        className="py-20 bg-gray-50"
-      >
-        <div className="container mx-auto px-4">
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Categories</h6>
-            <h1 className="text-4xl font-bold">Courses Categories</h1>
-          </motion.div>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-            <div className="lg:col-span-7">
-              <div className="grid gap-4">
-                <motion.div variants={fadeInUp} className="relative overflow-hidden rounded-lg group cursor-pointer">
-                  <img className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src="/img/cat-1.jpg" alt="Web Design" />
-                  <div className="absolute bottom-4 right-4 bg-white px-6 py-3 rounded shadow-lg">
-                    <h5 className="text-xl font-bold mb-1">Web Design</h5>
-                    <small className="text-[#06BBCC]">49 Courses</small>
-                  </div>
-                </motion.div>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { img: 'cat-2.jpg', title: 'Graphic Design', courses: 49, delay: 0.3 },
-                    { img: 'cat-3.jpg', title: 'Video Editing', courses: 49, delay: 0.5 }
-                  ].map((cat, index) => (
-                    <motion.div 
-                      key={index}
-                      variants={fadeInUp}
-                      className="relative overflow-hidden rounded-lg group cursor-pointer"
-                    >
-                      <img className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500" src={`/img/${cat.img}`} alt={cat.title} />
-                      <div className="absolute bottom-4 right-4 bg-white px-4 py-2 rounded shadow-lg">
-                        <h5 className="text-lg font-bold mb-1">{cat.title}</h5>
-                        <small className="text-[#06BBCC]">{cat.courses} Courses</small>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="lg:col-span-5">
-              <div className="grid gap-4">
-                {[
-                  { img: 'cat-4.jpg', title: 'Online Marketing', courses: 49, delay: 0.1 },
-                  { img: 'cat-5.jpg', title: 'SEO Optimization', courses: 49, delay: 0.3 }
-                ].map((cat, index) => (
-                  <motion.div 
-                    key={index}
-                    variants={fadeInUp}
-                    className="relative overflow-hidden rounded-lg group cursor-pointer h-64"
-                  >
-                    <img className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" src={`/img/${cat.img}`} alt={cat.title} />
-                    <div className="absolute bottom-4 right-4 bg-white px-4 py-2 rounded shadow-lg">
-                      <h5 className="text-lg font-bold mb-1">{cat.title}</h5>
-                      <small className="text-[#06BBCC]">{cat.courses} Courses</small>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.section>
+      </div>
 
       {/* Featured Courses Section */}
       <motion.section 
@@ -671,62 +562,8 @@ const Home = () => {
         </div>
       </motion.section>
 
-      {/* Team Section */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={staggerContainer}
-        className="py-20 bg-gray-50"
-      >
-        <div className="container mx-auto px-4">
-          <motion.div variants={fadeInUp} className="text-center mb-12">
-            <h6 className="text-[#06BBCC] text-lg font-semibold mb-2">Mentors</h6>
-            <h1 className="text-4xl font-bold">Our Professional Mentor Team</h1>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { img: 'team-1.jpg', name: 'Mai Trần Thiện Tâm', designation: 'Senior Full Stack Developer' },
-              { img: 'team-2.jpg', name: 'Lê Thị Hương', designation: 'UI/UX Design Lead' },
-              { img: 'team-3.jpg', name: 'Phạm Đức Anh', designation: 'AI/ML Engineer' },
-              { img: 'team-4.jpg', name: 'Ngô Thị Mai', designation: 'Mobile Developer' }
-            ].map((member, index) => (
-              <motion.div 
-                key={index}
-                variants={fadeInUp}
-                className="text-center group"
-              >
-                <div className="relative overflow-hidden rounded-lg mb-4">
-                  <img className="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500" src={`/img/${member.img}`} alt={member.name} />
-                  <div className="absolute inset-0 bg-[rgba(6,187,204,0.7)] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="flex gap-2">
-                      <a href="#" className="w-10 h-10 bg-white text-[#06BBCC] rounded-full flex items-center justify-center hover:bg-[#06BBCC] hover:text-white transition-all">
-                        <i className="fab fa-facebook-f"></i>
-                      </a>
-                      <a href="#" className="w-10 h-10 bg-white text-[#06BBCC] rounded-full flex items-center justify-center hover:bg-[#06BBCC] hover:text-white transition-all">
-                        <i className="fab fa-twitter"></i>
-                      </a>
-                      <a href="#" className="w-10 h-10 bg-white text-[#06BBCC] rounded-full flex items-center justify-center hover:bg-[#06BBCC] hover:text-white transition-all">
-                        <i className="fab fa-instagram"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <h5 className="text-xl font-bold mb-1">{member.name}</h5>
-                <small className="text-gray-600">{member.designation}</small>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Testimonials Section */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        className="py-24 bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 relative overflow-hidden"
-      >
+      {/* Testimonials Section - 28Tech Style */}
+      <div className="py-24 bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
@@ -735,197 +572,176 @@ const Home = () => {
 
         <div className="container mx-auto px-4 relative z-10">
           {/* Section Header */}
-          <motion.div variants={fadeInUp} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-semibold mb-4">
-              STUDENT SUCCESS STORIES
-            </span>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Trusted by Thousands of Students
+              Student Feedback
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              See what our graduates have to say about their learning journey
+              What our students say about learning with DHV Guiding Light
             </p>
           </motion.div>
 
-          {/* Testimonials Slider */}
-          <Swiper
-            modules={[Autoplay, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            autoplay={{ delay: 4000, disableOnInteraction: false }}
-            pagination={{ 
-              clickable: true,
-              bulletActiveClass: 'swiper-pagination-bullet-active !bg-white'
-            }}
-            loop
-            breakpoints={{
-              640: { slidesPerView: 1 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 }
-            }}
-            className="pb-16"
-          >
+          {/* Testimonials Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {[
-              { 
-                name: 'Nguyen Van An', 
-                profession: 'Full Stack Developer', 
-                company: 'VNG Corporation',
-                img: 'testimonial-1.jpg', 
-                rating: 5,
-                feedback: 'The course content is incredibly comprehensive and well-structured. After completing the Full Stack bootcamp, I landed my dream job at VNG with a 40% salary increase. The instructors are world-class!' 
+              {
+                name: 'Nguyen Van An',
+                course: 'Full Stack Development',
+                avatar: 'testimonial-1.jpg',
+                comment: 'Excellent course! Quality teaching, enthusiastic instructors and assistants, easy-to-understand teaching helps students easily absorb new knowledge. Thanks to DHV Guiding Light for bringing a great experience to me and fellow students. I will recommend friends and relatives who want to learn programming to DHV Guiding Light!'
               },
-              { 
-                name: 'Tran Thi Binh', 
-                profession: 'Senior UI/UX Designer', 
-                company: 'FPT Software',
-                img: 'testimonial-2.jpg',
-                rating: 5, 
-                feedback: 'DHV Guiding Light transformed my career completely. The UI/UX course gave me practical skills that I use every single day. The portfolio projects helped me stand out in interviews!' 
+              {
+                name: 'Tran Thi Binh',
+                course: 'UI/UX Design',
+                avatar: 'testimonial-2.jpg',
+                comment: 'The course is amazing, high quality, easy to understand and wonderful! Instructors are very kind, humorous, approachable, teach clearly and support enthusiastically. Currently I am taking Java and C++ courses from basic to advanced, feel very worth the money and rice bowl despite the affordable tuition fee'
               },
-              { 
-                name: 'Le Hoang Cuong', 
-                profession: 'Data Scientist', 
-                company: 'Grab Vietnam',
-                img: 'testimonial-3.jpg',
-                rating: 5, 
-                feedback: 'Best investment I ever made in my career. The Data Science program is hands-on and industry-relevant. Within 6 months, I transitioned from marketing to data science at Grab!' 
+              {
+                name: 'Le Hoang Cuong',
+                course: 'Data Science',
+                avatar: 'testimonial-3.jpg',
+                comment: 'The teaching quality of DHV Guiding Light is really good, complete exercises of all types from basic to advanced, registered to study here my coding ability is getting better and better, no longer afraid of difficult exercises at school. Thanks to DHV Guiding Light for helping me achieve results like today'
               },
-              { 
-                name: 'Pham Thi Diem', 
-                profession: 'Mobile Developer', 
-                company: 'Momo',
-                img: 'testimonial-4.jpg',
-                rating: 5, 
-                feedback: 'The React Native course is outstanding! The instructors are supportive, the community is amazing, and the curriculum is cutting-edge. Now I am building apps used by millions!' 
-              },
-              { 
-                name: 'Hoang Minh Tuan', 
-                profession: 'AI Engineer', 
-                company: 'Zalo',
-                img: 'team-3.jpg',
-                rating: 5, 
-                feedback: 'The AI and ML courses are world-class. I went from zero coding experience to building production AI models in just 8 months. The career support was incredible!' 
-              },
-              { 
-                name: 'Vu Thi Mai', 
-                profession: 'DevOps Engineer', 
-                company: 'Tiki',
-                img: 'team-4.jpg',
-                rating: 5, 
-                feedback: 'DHV Guiding Light provided the perfect blend of theory and practice. The DevOps bootcamp prepared me for real-world challenges. I got 3 job offers after graduation!' 
+              {
+                name: 'Pham Thi Diem',
+                course: 'React Native Development',
+                avatar: 'testimonial-4.jpg',
+                comment: 'Wonderful course, lots of exercises, easy and difficult all available for everyone to practice together, teachers and teaching assistants are enthusiastic and dedicated, theory is conveyed in an easy-to-understand way, course members freely exchange knowledge with each other to progress together'
               }
             ].map((testimonial, index) => (
-              <SwiperSlide key={index}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="h-full"
-                >
-                  <div className="bg-white rounded-3xl shadow-2xl p-8 h-full flex flex-col">
-                    {/* Quote Icon */}
-                    <div className="mb-6">
-                      <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center">
-                        <i className="fa fa-quote-left text-white text-xl"></i>
-                      </div>
-                    </div>
-
-                    {/* Rating */}
-                    <div className="flex items-center gap-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <FaStar key={i} className="text-yellow-400 text-lg" />
-                      ))}
-                    </div>
-
-                    {/* Feedback */}
-                    <p className="text-gray-700 leading-relaxed mb-6 flex-grow italic">
-                      "{testimonial.feedback}"
-                    </p>
-
-                    {/* Author Info */}
-                    <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
-                      <img 
-                        className="w-16 h-16 rounded-full object-cover border-4 border-gray-100 shadow-md" 
-                        src={`/img/${testimonial.img}`} 
-                        alt={testimonial.name} 
-                      />
-                      <div className="flex-1">
-                        <h5 className="text-lg font-bold text-gray-900">{testimonial.name}</h5>
-                        <p className="text-gray-600 text-sm">{testimonial.profession}</p>
-                        <p className="text-blue-600 text-sm font-semibold">{testimonial.company}</p>
-                      </div>
-                    </div>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all"
+              >
+                <div className="mb-4">
+                  <FaQuoteLeft className="text-3xl text-blue-400 mb-3" />
+                  <h4 className="text-lg font-bold text-gray-800 mb-2">Excellent course!</h4>
+                  <p className="text-gray-600 text-sm leading-relaxed line-clamp-6">
+                    "{testimonial.comment}"
+                  </p>
+                </div>
+                <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                  <img
+                    src={`/img/${testimonial.avatar}`}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full object-cover border-2 border-blue-100"
+                  />
+                  <div>
+                    <h5 className="font-bold text-gray-800">{testimonial.name}</h5>
+                    <p className="text-sm text-gray-600">{testimonial.course}</p>
                   </div>
-                </motion.div>
-              </SwiperSlide>
+                </div>
+              </motion.div>
             ))}
-          </Swiper>
+          </div>
 
-          {/* Trust Stats */}
+          {/* Stats Counter */}
           <motion.div
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            variants={staggerContainer}
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
           >
             {[
-              { number: '50,000+', label: 'Happy Students' },
-              { number: '98%', label: 'Success Rate' },
-              { number: '4.9/5', label: 'Average Rating' },
-              { number: '12,000+', label: 'Reviews' }
+              { number: '3,000+', label: 'Students Nationwide' },
+              { number: '30+', label: 'Courses Completed' },
+              { number: '100+', label: 'Positive Reviews' },
+              { number: '20,000+', label: 'Community Members' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
-                variants={fadeInUp}
-                className="text-center"
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, type: "spring" }}
               >
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                <h3 className="text-5xl md:text-6xl font-extrabold text-white mb-2">
                   {stat.number}
-                </div>
-                <div className="text-white/80 font-medium">
-                  {stat.label}
-                </div>
+                </h3>
+                <p className="text-white/90 font-semibold text-lg">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
-      </motion.section>
+      </div>
 
-      {/* CTA Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="py-24 bg-gradient-to-r from-blue-600 to-indigo-700"
-      >
+      {/* Final CTA Section - 28Tech Style */}
+      <div className="py-24 bg-white">
         <div className="container mx-auto px-4">
-          <motion.div variants={fadeInUp} className="text-center max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Ready to Start Your Learning Journey?
-            </h2>
-            <p className="text-xl text-white/90 mb-10">
-              Join 50,000+ students already learning on DHV Guiding Light. Start your free trial today!
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                to="/signup"
-                className="group inline-flex items-center gap-2 bg-white text-blue-600 px-10 py-5 rounded-full font-bold text-lg hover:bg-yellow-400 hover:text-gray-900 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:scale-105"
+          <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl overflow-hidden">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left - CTA Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="p-12"
               >
-                <FaRocket className="group-hover:rotate-12 transition-transform" />
-                <span>Get Started Free</span>
-              </Link>
-              <Link
-                to="/courses"
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all duration-300 border-2 border-white/30 hover:border-white/50"
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Join DHV Guiding Light and Develop Your Professional Skills!
+                </h2>
+                <p className="text-xl text-white/90 mb-8">
+                  We are committed to helping you become the best version of yourself in your chosen career!
+                </p>
+                <Link
+                  to="/signup"
+                  className="inline-flex items-center gap-2 px-10 py-5 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 rounded-full font-bold text-xl hover:from-yellow-500 hover:to-orange-600 transition-all shadow-2xl hover:scale-105"
+                >
+                  <FaRocket />
+                  Register Account
+                </Link>
+              </motion.div>
+
+              {/* Right - Contact Form */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="bg-white/10 backdrop-blur-lg p-12 border-l border-white/20"
               >
-                <FaBook />
-                <span>Browse Courses</span>
-              </Link>
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  REQUEST FREE CONSULTATION
+                </h3>
+                <p className="text-white/90 mb-6">
+                  Please leave your phone number, we will contact you for consultation as soon as possible.
+                </p>
+                <form className="space-y-4">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    className="w-full px-6 py-4 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-white/60"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    className="w-full px-6 py-4 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-white/60"
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Your Phone Number"
+                    className="w-full px-6 py-4 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-white/60"
+                  />
+                  <button
+                    type="submit"
+                    className="w-full px-8 py-4 bg-white text-blue-600 rounded-xl font-bold hover:bg-blue-50 transition-all shadow-xl"
+                  >
+                    Send Request
+                  </button>
+                </form>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </motion.section>
+      </div>
     </>
   );
 };
