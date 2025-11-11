@@ -1,19 +1,16 @@
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { FaUser, FaBars, FaTimes, FaSignOutAlt, FaSearch } from 'react-icons/fa';
-import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaBars, FaTimes, FaUser, FaSignOutAlt, FaShoppingBag } from 'react-icons/fa';
+import { useAuth } from '../context/AuthContext';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { currentUser, logout } = useAuth();
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -25,312 +22,248 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await logout();
-      navigate('/login');
+      navigate('/');
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error('Failed to log out', error);
     }
   };
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
+  const menuItems = [
+    { label: 'TRANG CHỦ', path: '/' },
+    { label: 'KHÓA HỌC ONLINE', path: '/courses' },
+    { label: 'VỀ CHÚNG TÔI', path: '/about' },
+    { label: 'BLOG', path: '/blog' },
+    { label: 'LIÊN HỆ', path: '/contact' }
+  ];
 
   const isActive = (path: string) => location.pathname === path;
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/courses?search=${searchQuery}`);
-      setSearchQuery('');
-      setIsSearchOpen(false);
-    }
-  };
-
   return (
-    <nav className={`sticky top-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white shadow-md border-b border-gray-200' 
-        : 'bg-white shadow-sm'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group" onClick={closeMenu}>
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <img 
-                src="/img/icon.png" 
-                alt="DHV Logo" 
-                className="h-10 w-10 md:h-12 md:w-12 object-contain" 
-              />
-            </motion.div>
-            <div className="flex flex-col">
-              <span className="text-lg md:text-xl font-bold text-gray-800">
-                DHV GUIDING LIGHT
-              </span>
-              <span className="text-[9px] text-gray-500 tracking-wider hidden md:block uppercase">
-              </span>
-            </div>
-          </Link>
-
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-1">
-            <Link 
-              to="/" 
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                isActive('/') 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-              }`}
-            >
-              HOME
-            </Link>
-            <Link 
-              to="/courses" 
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                isActive('/courses') 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-              }`}
-            >
-              COURSES
-            </Link>
-            <Link 
-              to="/about" 
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                isActive('/about') 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-              }`}
-            >
-              ABOUT
-            </Link>
-            <Link 
-              to="/blog" 
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                isActive('/blog') 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-              }`}
-            >
-              BLOG
-            </Link>
-            <Link 
-              to="/contact" 
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-                isActive('/contact') 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-              }`}
-            >
-              CONTACT
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled ? 'shadow-xl' : 'shadow-lg'
+        }`}
+        style={{ backgroundColor: '#001A66' }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo - 28Tech Style */}
+            <Link to="/" className="flex items-center space-x-3 group">
+              <motion.div 
+                className="relative"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* Tech Circle Icon with Gradient */}
+                <div className="relative w-10 h-10 bg-gradient-to-br from-blue-400 via-indigo-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/50">
+                  <span className="text-white font-black text-xl">D</span>
+                  {/* Pulsing ring effect */}
+                  <motion.div
+                    className="absolute inset-0 border-2 border-blue-400 rounded-full"
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      opacity: [0.5, 0, 0.5]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </div>
+              </motion.div>
+              <div className="flex flex-col">
+                <span className="text-base font-bold text-white tracking-wide">
+                  DHV GUIDING LIGHT
+                </span>
+                <span className="text-xs font-medium" style={{ color: '#00FF99' }}>
+                  Online Learning Platform
+                </span>
+              </div>
             </Link>
 
-            {currentUser ? (
-              <>
+            {/* Desktop Menu - Center Positioned */}
+            <div className="hidden lg:flex items-center space-x-1">
+              {menuItems.map((item) => (
                 <Link
-                  to="/student-dashboard"
-                  className="px-4 py-2 rounded-lg font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-all flex items-center gap-2"
+                  key={item.path}
+                  to={item.path}
+                  className="group relative px-4 py-2"
                 >
-                  <FaUser className="text-sm" />
-                  DASHBOARD
+                  <span className={`text-sm font-semibold tracking-wide transition-all duration-300 ${
+                    isActive(item.path)
+                      ? 'text-[#00FF99]'
+                      : 'text-white hover:text-[#00FF99]'
+                  }`}>
+                    {item.label}
+                  </span>
+                  {/* Underline animation */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#00FF99] origin-left"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: isActive(item.path) ? 1 : 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
                 </Link>
-                
-                {/* Search Toggle - AFTER Dashboard */}
-                <button
-                  onClick={() => setIsSearchOpen(!isSearchOpen)}
-                  className="p-2 rounded-lg text-gray-700 hover:bg-gray-50 transition-all"
-                >
-                  <FaSearch className="text-lg" />
-                </button>
-                
-                <button
-                  onClick={handleLogout}
-                  className="ml-2 px-4 py-2 rounded-lg font-medium text-red-600 hover:bg-red-50 transition-all flex items-center gap-2"
-                >
-                  <FaSignOutAlt />
-                  LOGOUT
-                </button>
-              </>
-            ) : (
-              <>
-                {/* Search Toggle for non-logged in users */}
-                <button
-                  onClick={() => setIsSearchOpen(!isSearchOpen)}
-                  className="p-2 rounded-lg text-gray-700 hover:bg-gray-50 transition-all"
-                >
-                  <FaSearch className="text-lg" />
-                </button>
-                
-                <Link 
-                  to="/login" 
-                  className="ml-2 px-6 py-2.5 rounded-lg font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-sm hover:shadow-md flex items-center gap-2"
-                >
-                  <FaUser className="text-sm" />
-                  LOGIN
-                </Link>
-              </>
-            )}
-          </div>
+              ))}
+            </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={toggleMenu}
-            className="lg:hidden text-gray-700 dark:text-gray-200 hover:text-blue-600 focus:outline-none p-2"
-          >
-            <motion.div
-              animate={{ rotate: isOpen ? 90 : 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-            </motion.div>
-          </button>
-        </div>
-
-        {/* Search Bar (Desktop) */}
-        <AnimatePresence>
-          {isSearchOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden pb-4"
-            >
-              <form onSubmit={handleSearch} className="relative max-w-2xl mx-auto">
-                <input
-                  type="text"
-                  placeholder="Search courses, topics, instructors..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full px-6 py-3 pl-12 rounded-2xl border-2 border-blue-200 focus:border-blue-500 focus:outline-none bg-white/50 backdrop-blur-sm text-gray-800"
-                  autoFocus
-                />
-                <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-600" />
-              </form>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden overflow-hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-t border-gray-200"
-          >
-            <div className="px-4 pt-2 pb-4 space-y-1">
-              {/* Search Bar Mobile */}
-              <form onSubmit={handleSearch} className="relative mb-4">
-                <input
-                  type="text"
-                  placeholder="Search courses..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full px-4 py-2 pl-10 rounded-xl border-2 border-blue-200 focus:border-blue-500 focus:outline-none"
-                />
-                <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-600" />
-              </form>
-
-              <Link 
-                to="/" 
-                onClick={closeMenu}
-                className={`block px-4 py-3 rounded-xl font-semibold transition-all ${
-                  isActive('/') 
-                    ? 'text-white bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg' 
-                    : 'text-gray-700 hover:bg-blue-50'
-                }`}
+            {/* Right Side - Shopping Cart + User/Auth */}
+            <div className="hidden lg:flex items-center space-x-4">
+              {/* Shopping Cart with Badge */}
+              <Link
+                to="/cart"
+                className="relative p-2 rounded-lg transition-all duration-300 hover:bg-white/10 group"
               >
-                Home
-              </Link>
-              <Link 
-                to="/about" 
-                onClick={closeMenu}
-                className={`block px-4 py-3 rounded-lg font-medium transition-all ${
-                  isActive('/about') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                ABOUT
-              </Link>
-              <Link 
-                to="/courses" 
-                onClick={closeMenu}
-                className={`block px-4 py-3 rounded-lg font-medium transition-all ${
-                  isActive('/courses') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                COURSES
-              </Link>
-              <Link 
-                to="/blog" 
-                onClick={closeMenu}
-                className={`block px-4 py-3 rounded-lg font-medium transition-all ${
-                  isActive('/blog') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                BLOG
-              </Link>
-              <Link 
-                to="/contact" 
-                onClick={closeMenu}
-                className={`block px-4 py-3 rounded-lg font-medium transition-all ${
-                  isActive('/contact') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                CONTACT
+                <FaShoppingBag className="text-white text-xl group-hover:text-[#00FF99] transition-colors duration-300" />
+                {/* Badge */}
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-blue-500 text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-[#001A66]">
+                  0
+                </span>
               </Link>
 
+              {/* User Icon / Auth */}
               {currentUser ? (
-                <>
+                <div className="flex items-center space-x-3">
                   <Link
-                    to="/student-dashboard"
-                    onClick={closeMenu}
-                    className={`block px-4 py-3 rounded-lg font-medium transition-all ${
-                      isActive('/student-dashboard') 
-                        ? 'text-blue-600 bg-blue-50' 
-                        : 'text-gray-700 hover:bg-gray-50'
-                    }`}
+                    to={currentUser.email?.includes('instructor') ? '/instructor-dashboard' : '/student-dashboard'}
+                    className="p-2 rounded-lg transition-all duration-300 hover:bg-white/10 group"
                   >
-                    DASHBOARD
+                    <FaUser className="text-white text-lg group-hover:text-[#00FF99] transition-colors duration-300" />
                   </Link>
                   <button
-                    onClick={() => {
-                      handleLogout();
-                      closeMenu();
-                    }}
-                    className="w-full text-left px-4 py-3 rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition-all"
+                    onClick={handleLogout}
+                    className="flex items-center gap-2 px-4 py-2 text-white border-2 border-white/30 rounded-lg hover:bg-white/10 hover:border-[#00FF99] hover:text-[#00FF99] transition-all duration-300 font-medium text-sm"
                   >
-                    LOGOUT
+                    <FaSignOutAlt />
+                    <span>Đăng xuất</span>
                   </button>
-                </>
+                </div>
               ) : (
-                <Link 
-                  to="/login" 
-                  onClick={closeMenu}
-                  className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium bg-blue-600 text-white hover:bg-blue-700 transition-all"
+                <Link
+                  to="/login"
+                  className="px-6 py-2 rounded-lg font-bold text-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                  style={{
+                    backgroundColor: '#00FF99',
+                    color: '#001A66'
+                  }}
                 >
-                  <FaUser />
-                  LOGIN
+                  Đăng nhập
                 </Link>
               )}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden p-2 text-white hover:text-[#00FF99] transition-colors duration-300"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-16 left-0 right-0 z-40 lg:hidden overflow-hidden"
+            style={{ backgroundColor: '#00132E' }}
+          >
+            <div className="container mx-auto px-4 py-6 space-y-2">
+              {/* Menu Items */}
+              {menuItems.map((item, index) => (
+                <motion.div
+                  key={item.path}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Link
+                    to={item.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`block px-4 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                      isActive(item.path)
+                        ? 'bg-[#00FF99]/20 text-[#00FF99]'
+                        : 'text-white hover:bg-white/10 hover:text-[#00FF99]'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
+
+              {/* Mobile Shopping Cart */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: menuItems.length * 0.1 }}
+              >
+                <Link
+                  to="/cart"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-between px-4 py-3 rounded-lg text-white hover:bg-white/10 hover:text-[#00FF99] transition-all duration-300 font-semibold"
+                >
+                  <div className="flex items-center gap-3">
+                    <FaShoppingBag className="text-xl" />
+                    <span>Giỏ hàng</span>
+                  </div>
+                  <span className="w-6 h-6 bg-blue-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                    0
+                  </span>
+                </Link>
+              </motion.div>
+
+              {/* Mobile Auth Section */}
+              <div className="pt-4 border-t border-white/10 space-y-2">
+                {currentUser ? (
+                  <>
+                    <Link
+                      to={currentUser.email?.includes('instructor') ? '/instructor-dashboard' : '/student-dashboard'}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-lg text-white hover:bg-white/10 hover:text-[#00FF99] transition-all duration-300 font-semibold"
+                    >
+                      <FaUser />
+                      <span>Tài khoản</span>
+                    </Link>
+                    <button
+                      onClick={() => {
+                        handleLogout();
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-white hover:bg-red-500/20 hover:text-red-400 transition-all duration-300 font-semibold"
+                    >
+                      <FaSignOutAlt />
+                      <span>Đăng xuất</span>
+                    </button>
+                  </>
+                ) : (
+                  <Link
+                    to="/login"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-4 py-3 rounded-lg text-center font-bold transition-all duration-300"
+                    style={{
+                      backgroundColor: '#00FF99',
+                      color: '#001A66'
+                    }}
+                  >
+                    Đăng nhập
+                  </Link>
+                )}
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 };
 

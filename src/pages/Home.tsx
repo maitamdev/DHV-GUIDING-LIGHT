@@ -25,115 +25,267 @@ const Home = () => {
 
   return (
     <>
-      {/* Hero Section with 28Tech Style + Animated Waves */}
-      <div className="relative py-32 overflow-hidden" style={{ backgroundColor: '#0b004b' }}>
+      {/* Hero Section - Premium Modern Design */}
+      <div className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#0b004b' }}>
         {/* Animated Wave Background */}
         <AnimatedWaves 
           colors={[
-            'rgba(255, 255, 255, 0.1)', 
-            'rgba(255, 255, 255, 0.15)', 
-            'rgba(139, 92, 246, 0.25)'
+            'rgba(255, 255, 255, 0.08)', 
+            'rgba(255, 255, 255, 0.12)', 
+            'rgba(139, 92, 246, 0.2)'
           ]}
           backgroundColor="#0b004b"
         />
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* Gradient Overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-transparent to-blue-900/30 pointer-events-none"></div>
+
+        {/* Floating particles effect */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
+        </div>
+
+        <div className="container mx-auto px-4 py-20 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left - Hero Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
+              className="space-y-8"
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
-                Leading Online Learning Platform
-                <span className="block bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent mt-2">
-                  DHV GUIDING LIGHT
-                </span>
-              </h1>
-              <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                Learn anytime, anywhere with hundreds of high-quality courses across all fields. Guided by top industry experts and professional mentors, helping you develop skills and achieve your career goals.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  to="/courses"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 rounded-full font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transition-all shadow-2xl hover:scale-105"
-                >
-                  <FaRocket />
-                  View Courses
-                </Link>
-                <Link
-                  to="/signup"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-md text-white rounded-full font-bold text-lg hover:bg-white/20 transition-all border-2 border-white/30"
-                >
-                  <FaGraduationCap />
-                  Register Now
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* Right - Feature Cards */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-6"
-            >
-              {/* Feature 1 - Experienced Instructors */}
+              {/* Badge */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20"
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <FaUsers className="text-3xl text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-white mb-2">Professional Expert Mentors</h3>
-                    <p className="text-white/80 leading-relaxed">Learn from industry leaders with years of real-world experience across multiple fields and disciplines</p>
-                  </div>
-                </div>
+                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                <span className="text-white/90 text-sm font-medium">🎓 Trusted by 50,000+ Students Worldwide</span>
               </motion.div>
 
-              {/* Feature 2 - Quality Content */}
-              <motion.div
+              {/* Main Heading */}
+              <div className="space-y-4">
+                <motion.h1 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-5xl md:text-6xl xl:text-7xl font-black text-white leading-tight tracking-tight"
+                  style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
+                >
+                  Leading Online
+                  <br />
+                  <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    Learning Platform
+                  </span>
+                </motion.h1>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="flex items-center gap-3"
+                >
+                  <div className="h-1 w-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
+                  <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
+                    DHV Guiding Light
+                  </h2>
+                </motion.div>
+              </div>
+
+              {/* Description */}
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="text-lg md:text-xl text-white/80 leading-relaxed max-w-xl"
+                style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
+              >
+                Master any skill with expert-led courses across all fields. From technology to business, guided by industry leaders who bring real-world experience to every lesson.
+              </motion.p>
+
+              {/* CTA Buttons */}
+              <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
+                className="flex flex-wrap gap-4 pt-4"
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <FaBook className="text-3xl text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-white mb-2">High-Quality Courses & Content</h3>
-                    <p className="text-white/80 leading-relaxed">Comprehensive courses across all fields with video lectures, practical projects, and hands-on learning experiences</p>
-                  </div>
-                </div>
+                <Link
+                  to="/courses"
+                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-gray-900 rounded-2xl font-bold text-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/50 hover:scale-105"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <FaRocket className="relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+                  <span className="relative z-10">View Courses</span>
+                </Link>
+                <Link
+                  to="/signup"
+                  className="group inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md text-white rounded-2xl font-bold text-lg border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300 hover:scale-105"
+                >
+                  <FaGraduationCap className="group-hover:rotate-12 transition-transform duration-300" />
+                  <span>Register Now</span>
+                </Link>
               </motion.div>
 
-              {/* Feature 3 - Auto Grading Platform */}
+              {/* Stats */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
+                transition={{ delay: 0.7 }}
+                className="flex flex-wrap gap-8 pt-8"
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <FaGraduationCap className="text-3xl text-white" />
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                    <FaStar className="text-yellow-400 text-xl" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-white mb-2">Flexible Online Learning Platform</h3>
-                    <p className="text-white/80 leading-relaxed">Learn at your own pace with our advanced mentor booking system, online classes, and 1-on-1 mentoring sessions</p>
+                  <div>
+                    <p className="text-2xl font-bold text-white">4.9/5</p>
+                    <p className="text-white/60 text-sm">Average Rating</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                    <FaBook className="text-blue-400 text-xl" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-white">300+</p>
+                    <p className="text-white/60 text-sm">Expert Courses</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                    <FaUsers className="text-purple-400 text-xl" />
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-white">50K+</p>
+                    <p className="text-white/60 text-sm">Active Students</p>
                   </div>
                 </div>
               </motion.div>
             </motion.div>
+
+            {/* Right - Feature Cards with Parallax Effect */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="space-y-6 relative"
+            >
+              {/* Decorative Element */}
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"></div>
+
+              {/* Feature Card 1 - Professional Mentors */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                whileHover={{ 
+                  y: -8,
+                  boxShadow: "0 25px 50px -12px rgba(139, 92, 246, 0.4)"
+                }}
+                className="group bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer relative overflow-hidden"
+              >
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <div className="relative z-10 flex items-start gap-5">
+                  <motion.div 
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                    className="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl shadow-blue-500/30"
+                  >
+                    <FaUsers className="text-3xl text-white" />
+                  </motion.div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-white mb-3">Professional Expert Mentors</h3>
+                    <p className="text-white/70 leading-relaxed">Learn from industry leaders with years of real-world experience across multiple fields</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Feature Card 2 - Quality Courses */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                whileHover={{ 
+                  y: -8,
+                  boxShadow: "0 25px 50px -12px rgba(16, 185, 129, 0.4)"
+                }}
+                className="group bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <div className="relative z-10 flex items-start gap-5">
+                  <motion.div 
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                    className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl shadow-green-500/30"
+                  >
+                    <FaBook className="text-3xl text-white" />
+                  </motion.div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-white mb-3">High-Quality Courses</h3>
+                    <p className="text-white/70 leading-relaxed">Comprehensive courses with video lectures, projects, and hands-on learning experiences</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Feature Card 3 - Flexible Platform */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+                whileHover={{ 
+                  y: -8,
+                  boxShadow: "0 25px 50px -12px rgba(236, 72, 153, 0.4)"
+                }}
+                className="group bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <div className="relative z-10 flex items-start gap-5">
+                  <motion.div 
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                    className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl shadow-purple-500/30"
+                  >
+                    <FaGraduationCap className="text-3xl text-white" />
+                  </motion.div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-white mb-3">Flexible Learning Platform</h3>
+                    <p className="text-white/70 leading-relaxed">Learn at your own pace with mentor booking, online classes, and 1-on-1 sessions</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Decorative Bottom Element */}
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-tr from-blue-500/20 to-indigo-500/20 rounded-full blur-3xl"></div>
+            </motion.div>
           </div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="flex flex-col items-center gap-2 text-white/60"
+            >
+              <span className="text-sm font-medium">Scroll to explore</span>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 
