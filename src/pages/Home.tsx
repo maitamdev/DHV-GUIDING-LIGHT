@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaPlay, FaRocket, FaStar, FaUsers, FaGraduationCap, FaChartLine, FaAward, FaBook, FaClock, FaBrain, FaShoppingCart, FaCreditCard, FaSignInAlt, FaQuoteLeft } from 'react-icons/fa';
+import AnimatedWaves from '../components/AnimatedWaves';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -24,12 +25,17 @@ const Home = () => {
 
   return (
     <>
-      {/* Hero Section with 28Tech Style */}
-      <div className="relative bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 py-32 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20px 20px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
-        </div>
+      {/* Hero Section with 28Tech Style + Animated Waves */}
+      <div className="relative py-32 overflow-hidden" style={{ backgroundColor: '#0b004b' }}>
+        {/* Animated Wave Background */}
+        <AnimatedWaves 
+          colors={[
+            'rgba(255, 255, 255, 0.1)', 
+            'rgba(255, 255, 255, 0.15)', 
+            'rgba(139, 92, 246, 0.25)'
+          ]}
+          backgroundColor="#0b004b"
+        />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
