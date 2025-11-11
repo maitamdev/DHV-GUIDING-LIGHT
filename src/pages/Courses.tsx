@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { FaSearch, FaFilter, FaClock, FaUsers, FaStar, FaCode, FaMobile, FaDatabase, FaRobot, FaCloud, FaShieldAlt, FaPalette, FaServer, FaPlay, FaChartLine, FaGraduationCap, FaHeart, FaRegHeart, FaArrowRight, FaSortAmountDown } from 'react-icons/fa';
+import { FaSearch, FaClock, FaUsers, FaStar, FaCode, FaMobile, FaDatabase, FaRobot, FaCloud, FaShieldAlt, FaPalette, FaServer, FaChartLine, FaHeart, FaRegHeart } from 'react-icons/fa';
 
 interface Course {
   id: number;
