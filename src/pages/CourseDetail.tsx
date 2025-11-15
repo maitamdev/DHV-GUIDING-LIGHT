@@ -1,8 +1,9 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { FaUsers, FaClock, FaChalkboardTeacher, FaBook, FaCertificate, FaCheckCircle } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaUsers, FaClock, FaChalkboardTeacher, FaBook, FaCertificate, FaCheckCircle, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 import { useState } from 'react';
+import { ProgressRing } from '../components/AnimationEffects';
 
 const coursesData: any = {
   '1': {
@@ -411,8 +412,16 @@ const CourseDetail = () => {
   const navigate = useNavigate();
   const { currentUser, userData, purchaseCourse } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState<'overview' | 'content' | 'instructor' | 'reviews'>('overview');
+  const [expandedModules, setExpandedModules] = useState<number[]>([]);
   
   const course = coursesData[courseId || '1'];
+
+  const toggleModule = (index: number) => {
+    setExpandedModules(prev =>
+      prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
+    );
+  };
 
   if (!course) {
     return (
@@ -499,40 +508,186 @@ const CourseDetail = () => {
               <div className="bg-white rounded-lg shadow-sm">
                 <div className="border-b border-gray-200">
                   <div className="flex gap-8 px-6">
-                    <button className="py-4 border-b-2 border-blue-500 text-blue-500 font-medium">
-                      Overview
-                    </button>
-                    <button className="py-4 text-gray-600 hover:text-blue-500">
-                      Course Content
-                    </button>
-                    <button className="py-4 text-gray-600 hover:text-blue-500">
-                      Instructor
-                    </button>
-                    <button className="py-4 text-gray-600 hover:text-blue-500">
-                      Reviews
-                    </button>
-                    <button className="py-4 text-gray-600 hover:text-blue-500">
-                      Comments
-                    </button>
-                  </div>
-                </div>
-
-                {/* Tab Content - What You'll Learn */}
-                <div className="p-8">
-                  <h2 className="text-2xl font-bold text-[#001f3f] mb-6">
-                    What You'll Learn
-                  </h2>
-                  <div className="space-y-3">
-                    {course.whatYouLearn.map((item: string, index: number) => (
-                      <div key={index} className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <FaCheckCircle className="text-green-600 text-xs" />
-                        </div>
-                        <span className="text-gray-700">{item}</span>
-                      </div>
+                    {[
+                      { id: 'overview', label: 'Overview' },
+                      { id: 'content', label: 'Course Content' },
+                      { id: 'instructor', label: 'Instructor' },
+                      { id: 'reviews', label: 'Reviews' }
+                    ].map((tab) => (
+                      <button
+                        key={tab.id}
+                        onClick={() => setActiveTab(tab.id as any)}
+                        className={`relative py-4 font-medium transition-colors duration-300 ${
+                          activeTab === tab.id
+                            ? 'text-blue-500'
+                            : 'text-gray-600 hover:text-blue-500'
+                        }`}
+                      >
+                        {tab.label}
+                        {activeTab === tab.id && (
+                          <motion.div
+                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500"
+                            layoutId="activeTab"
+                            initial={false}
+                            transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                          />
+                        )}
+                      </button>
                     ))}
                   </div>
                 </div>
+
+                {/* Tab Content with AnimatePresence */}
+                <AnimatePresence mode="wait">
+                  {activeTab === 'overview' && (
+                    <motion.div
+                      key="overview"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="p-8"
+                    >
+                      <h2 className="text-2xl font-bold text-[#001f3f] mb-6">
+                        What You'll Learn
+                      </h2>
+                      <div className="space-y-3">
+                        {course.whatYouLearn.map((item: string, index: number) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.05 }}
+                            className="flex items-start gap-3"
+                          >
+                            <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <FaCheckCircle className="text-green-600 text-xs" />
+                            </div>
+                            <span className="text-gray-700">{item}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {activeTab === 'content' && (
+                    <motion.div
+                      key="content"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="p-8"
+                    >
+                      <h2 className="text-2xl font-bold text-[#001f3f] mb-6">
+                        Course Curriculum
+                      </h2>
+                      <div className="space-y-3">
+                        {course.curriculum.map((module: any, index: number) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: index * 0.05 }}
+                            className="border border-gray-200 rounded-lg overflow-hidden"
+                          >
+                            <button
+                              onClick={() => toggleModule(index)}
+                              className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors"
+                            >
+                              <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                                  <span className="text-blue-600 font-semibold text-sm">{index + 1}</span>
+                                </div>
+                                <div className="text-left">
+                                  <h3 className="font-semibold text-gray-800">{module.module}</h3>
+                                  <p className="text-sm text-gray-500">{module.lessons} lessons • {module.duration}</p>
+                                </div>
+                              </div>
+                              {expandedModules.includes(index) ? (
+                                <FaChevronUp className="text-gray-400" />
+                              ) : (
+                                <FaChevronDown className="text-gray-400" />
+                              )}
+                            </button>
+                            <AnimatePresence>
+                              {expandedModules.includes(index) && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: 'auto', opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.3 }}
+                                  className="overflow-hidden"
+                                >
+                                  <div className="p-4 bg-white border-t border-gray-200">
+                                    <p className="text-gray-600">
+                                      This module contains {module.lessons} comprehensive lessons covering all essential topics. 
+                                      Estimated completion time: {module.duration}.
+                                    </p>
+                                    <div className="mt-4 flex justify-center">
+                                      <ProgressRing progress={index * 10 + 20} size={100} />
+                                    </div>
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {activeTab === 'instructor' && (
+                    <motion.div
+                      key="instructor"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="p-8"
+                    >
+                      <h2 className="text-2xl font-bold text-[#001f3f] mb-6">
+                        About the Instructor
+                      </h2>
+                      <div className="flex items-start gap-6">
+                        <motion.img
+                          whileHover={{ scale: 1.05, rotate: 2 }}
+                          transition={{ duration: 0.3 }}
+                          src="/img/team-1.jpg"
+                          alt={course.instructor}
+                          className="w-24 h-24 rounded-full object-cover shadow-lg ring-4 ring-blue-100"
+                        />
+                        <div>
+                          <h3 className="text-xl font-bold text-gray-800 mb-2">{course.instructor}</h3>
+                          <p className="text-gray-600 mb-4">Expert instructor with years of industry experience</p>
+                          <div className="flex gap-4 text-sm text-gray-500">
+                            <span>⭐ 4.9 Rating</span>
+                            <span>👥 {course.students.toLocaleString()} Students</span>
+                            <span>📚 15+ Courses</span>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {activeTab === 'reviews' && (
+                    <motion.div
+                      key="reviews"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="p-8"
+                    >
+                      <h2 className="text-2xl font-bold text-[#001f3f] mb-6">
+                        Student Reviews
+                      </h2>
+                      <div className="text-center py-12 text-gray-500">
+                        Reviews coming soon...
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
 
@@ -540,13 +695,27 @@ const CourseDetail = () => {
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden sticky top-24">
                 {/* Course Image/Video */}
-                <div className="relative">
-                  <img src={course.image} alt={course.title} className="w-full h-48 object-cover" />
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
+                <div className="relative group">
+                  <motion.img
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.5 }}
+                    src={course.image}
+                    alt={course.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    className="absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300"
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center cursor-pointer"
+                    >
                       <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-blue-600 border-b-8 border-b-transparent ml-1"></div>
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
                   {/* Course Stats Overlay */}
                   <div className="absolute top-3 left-3 bg-blue-600 text-white px-3 py-1 rounded text-sm font-semibold">
                     PROGRAMMING COURSE

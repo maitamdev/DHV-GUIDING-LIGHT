@@ -42,28 +42,31 @@ const Navbar: React.FC = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'shadow-xl' : 'shadow-lg'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled ? 'shadow-xl bg-[#001A66]' : 'shadow-lg bg-[#001A66]/95 backdrop-blur-md'
         }`}
-        style={{ backgroundColor: '#001A66' }}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
+          <div className={`flex items-center justify-between transition-all duration-500 ${
+            isScrolled ? 'h-14' : 'h-16'
+          }`}>
             {/* Logo - DHV School Branding */}
             <Link to="/" className="flex items-center space-x-3 group">
               <motion.div 
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.3 }}
-                className="w-12 h-12"
+                className={`transition-all duration-500 ${isScrolled ? 'w-10 h-10' : 'w-12 h-12'}`}
               >
                 <img 
                   src="/img/icon.png" 
                   alt="DHV Logo" 
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain drop-shadow-lg"
                 />
               </motion.div>
               <div className="flex flex-col">
-                <span className="text-base font-bold text-white tracking-wide">
+                <span className={`font-bold text-white tracking-wide transition-all duration-500 ${
+                  isScrolled ? 'text-sm' : 'text-base'
+                }`}>
                   DHV GUIDING LIGHT
                 </span>
               </div>

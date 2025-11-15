@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaPlay, FaRocket, FaStar, FaUsers, FaGraduationCap, FaChartLine, FaAward, FaBook, FaClock, FaBrain, FaShoppingCart, FaCreditCard, FaSignInAlt, FaQuoteLeft } from 'react-icons/fa';
+import { FaPlay, FaRocket, FaStar, FaUsers, FaGraduationCap, FaChartLine, FaAward, FaBook, FaClock, FaBrain, FaShoppingCart, FaCreditCard, FaSignInAlt, FaQuoteLeft, FaLaptop, FaPencilAlt, FaLightbulb } from 'react-icons/fa';
 import AnimatedWaves from '../components/AnimatedWaves';
+import TypewriterEffect from '../components/TypewriterEffect';
+import { FloatingIcon } from '../components/AnimationEffects';
+import { ScrollReveal } from '../components/AdvancedEffects';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -45,6 +48,13 @@ const Home = () => {
           <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
           <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
+          
+          {/* Floating Learning Icons */}
+          <FloatingIcon icon={<FaBook className="text-6xl text-white" />} x={10} y={20} delay={0} duration={15} scale={1} />
+          <FloatingIcon icon={<FaLaptop className="text-5xl text-white" />} x={85} y={15} delay={2} duration={18} scale={0.9} />
+          <FloatingIcon icon={<FaGraduationCap className="text-7xl text-white" />} x={15} y={70} delay={1} duration={20} scale={1.1} />
+          <FloatingIcon icon={<FaPencilAlt className="text-5xl text-white" />} x={75} y={65} delay={3} duration={16} scale={0.8} />
+          <FloatingIcon icon={<FaLightbulb className="text-6xl text-white" />} x={50} y={30} delay={1.5} duration={17} scale={1} />
         </div>
 
         <div className="container mx-auto px-4 py-20 relative z-10">
@@ -76,10 +86,18 @@ const Home = () => {
                   className="text-5xl md:text-6xl xl:text-7xl font-black text-white leading-tight tracking-tight"
                   style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
                 >
-                  Leading Online
+                  <TypewriterEffect
+                    texts={[
+                      'Unlock Your Knowledge',
+                      'Transform Your Career',
+                      'Master New Skills',
+                      'Learn from Experts'
+                    ]}
+                    className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+                  />
                   <br />
-                  <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    Learning Platform
+                  <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
+                    with DHV Platform
                   </span>
                 </motion.h1>
                 
@@ -292,19 +310,16 @@ const Home = () => {
       {/* Skills Section - 28Tech Style */}
       <div className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
-              Skills Our Courses Provide to Students
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              With high-quality courses across all fields and expert mentorship, DHV Guiding Light delivers many valuable skills to help you succeed in your career
-            </p>
-          </motion.div>
+          <ScrollReveal direction="up">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
+                Skills Our Courses Provide to Students
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                With high-quality courses across all fields and expert mentorship, DHV Guiding Light delivers many valuable skills to help you succeed in your career
+              </p>
+            </div>
+          </ScrollReveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {[
@@ -345,37 +360,32 @@ const Home = () => {
                 gradient: 'from-cyan-500 to-blue-600'
               }
             ].map((skill, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all"
-              >
-                <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${skill.gradient} rounded-xl mb-6`}>
-                  <skill.icon className="text-3xl text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">{skill.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{skill.description}</p>
-              </motion.div>
+              <ScrollReveal key={index} direction="up" delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all cursor-pointer group"
+                >
+                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${skill.gradient} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <skill.icon className="text-3xl text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">{skill.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{skill.description}</p>
+                </motion.div>
+              </ScrollReveal>
             ))}
           </div>
 
           {/* Feature Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <img 
-              src="/img/about.jpg" 
-              alt="Learning Platform" 
-              className="w-full max-w-4xl mx-auto rounded-3xl shadow-2xl"
-            />
-          </motion.div>
+          <ScrollReveal direction="up">
+            <div className="text-center">
+              <img 
+                src="/img/about.jpg" 
+                alt="Learning Platform" 
+                className="w-full max-w-4xl mx-auto rounded-3xl shadow-2xl"
+              />
+            </div>
+          </ScrollReveal>
         </div>
       </div>
 
