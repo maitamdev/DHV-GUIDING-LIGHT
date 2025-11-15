@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap, FaRobot, FaPaperPlane, FaLightbulb, FaChartLine, FaUpload } from 'react-icons/fa';
+import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap, FaRobot, FaPaperPlane, FaLightbulb, FaChartLine, FaCog, FaSignOutAlt, FaHome, FaBriefcase, FaTasks, FaBookOpen } from 'react-icons/fa';
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
@@ -174,134 +174,339 @@ const StudentDashboard = () => {
     mentor.skills.some(skill => skill.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
+  // Sidebar menu configuration
+  const sidebarMenu = [
+    { id: 'profile', icon: FaUser, label: 'My Profile' },
+    { id: 'myCourses', icon: FaBook, label: 'My Courses' },
+    { id: 'mentors', icon: FaSearch, label: 'Find Mentors' },
+    { id: 'aiSuggest', icon: FaRobot, label: 'AI Mentor' },
+    { id: 'schedule', icon: FaCalendar, label: 'Meeting Schedule' },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-8">
-      <div className="container mx-auto px-4 max-w-7xl">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-10"
-        >
-          <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl shadow-2xl p-8 md:p-10">
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20px 20px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+    <div className="min-h-screen bg-gradient-to-br from-[#F8FAFC] via-[#EDF2F7] to-[#E2E8F0] flex">
+      {/* Sidebar - Neumorphism */}
+      <motion.aside
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        className="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-[#F8FAFC] to-[#E2E8F0] shadow-[10px_10px_20px_rgba(163,177,198,0.6),-10px_-10px_20px_rgba(255,255,255,0.5)] z-50 overflow-y-auto"
+      >
+        {/* Logo */}
+        <div className="p-6 border-b border-gray-200/50">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#5B8DEF] to-[#9B7BFF] shadow-lg flex items-center justify-center">
+              <FaGraduationCap className="text-2xl text-white" />
             </div>
-            
-            <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-              <div>
-                <motion.h1 
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-4xl md:text-5xl font-bold mb-3 text-white tracking-tight"
-                >
-                  📚 Student Dashboard
-                </motion.h1>
-                <motion.p 
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="text-blue-100 text-lg font-medium"
-                >
-                  Welcome back, <span className="text-white font-semibold">{profileData.name}</span>! Track your progress and connect with mentors.
-                </motion.p>
-              </div>
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
-                className="flex flex-wrap gap-3"
-              >
-                <button
-                  onClick={() => navigate('/portfolio')}
-                  className="group flex items-center gap-2 px-5 py-3 bg-white text-blue-600 font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
-                >
-                  <FaGraduationCap className="group-hover:rotate-12 transition-transform" /> Portfolio
-                </button>
-                <button
-                  onClick={() => navigate('/competency-profile')}
-                  className="group flex items-center gap-2 px-5 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
-                >
-                  <FaChartLine className="group-hover:scale-110 transition-transform" /> Competency
-                </button>
-                <button
-                  onClick={() => navigate('/assignment-submission')}
-                  className="group flex items-center gap-2 px-5 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
-                >
-                  <FaUpload className="group-hover:translate-y-1 transition-transform" /> Assignments
-                </button>
-                <button
-                  onClick={() => navigate('/homework')}
-                  className="group flex items-center gap-2 px-5 py-3 bg-blue-400 hover:bg-blue-500 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
-                >
-                  <FaBell className="group-hover:swing transition-transform" /> Homework
-                </button>
-              </motion.div>
+            <div>
+              <h2 className="text-lg font-bold text-gray-800">DHV Learning</h2>
+              <p className="text-xs text-gray-500">Student Portal</p>
             </div>
           </div>
-        </motion.div>
-
-        {/* Stats Cards - Unified Blue Theme */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-          {[
-            { icon: FaBook, label: 'Enrolled Courses', value: '3' },
-            { icon: FaUser, label: 'Following Mentors', value: '2' },
-            { icon: FaCalendar, label: 'Upcoming Meetings', value: '2' },
-            { icon: FaCheckCircle, label: 'Completed Sessions', value: '8' }
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl shadow-lg hover:shadow-2xl p-6 text-white transition-all duration-300 transform hover:scale-105 cursor-pointer"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div className="bg-white/20 p-3 rounded-xl backdrop-blur-sm">
-                  <stat.icon className="text-2xl text-white" />
-                </div>
-                <span className="text-4xl font-bold">{stat.value}</span>
-              </div>
-              <p className="text-white/90 font-medium text-sm">{stat.label}</p>
-            </motion.div>
-          ))}
         </div>
 
-        {/* Tabs */}
-        <div className="bg-white rounded-2xl shadow-xl mb-10 overflow-hidden">
-          <div className="flex border-b border-gray-200 overflow-x-auto bg-gradient-to-r from-gray-50 to-blue-50">
-            {[
-              { id: 'profile', label: 'My Profile', icon: FaUser },
-              { id: 'myCourses', label: 'My Courses', icon: FaBook },
-              { id: 'mentors', label: 'Find Mentors', icon: FaSearch },
-              { id: 'aiSuggest', label: 'AI Mentor', icon: FaRobot },
-              { id: 'schedule', label: 'Meeting Schedule', icon: FaCalendar }
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
-                className={`relative flex items-center gap-2 px-8 py-5 font-semibold transition-all duration-300 whitespace-nowrap ${
-                  activeTab === tab.id
-                    ? 'text-blue-600 bg-white'
-                    : 'text-gray-600 hover:text-blue-500 hover:bg-white/50'
-                }`}
+        {/* Menu Items */}
+        <nav className="p-4 space-y-2">
+          {sidebarMenu.map((item) => (
+            <motion.button
+              key={item.id}
+              onClick={() => setActiveTab(item.id as any)}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium ${
+                activeTab === item.id
+                  ? 'bg-gradient-to-r from-[#5B8DEF] to-[#9B7BFF] text-white shadow-lg'
+                  : 'text-gray-600 hover:bg-white/50 shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)]'
+              }`}
+            >
+              <item.icon className="text-lg" />
+              <span className="text-sm">{item.label}</span>
+            </motion.button>
+          ))}
+          
+          <div className="my-4 border-t border-gray-200/50"></div>
+          
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-white/50 shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)] transition-all font-medium"
+          >
+            <FaHome className="text-lg" />
+            <span className="text-sm">Dashboard</span>
+          </motion.button>
+          
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-white/50 shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)] transition-all font-medium"
+          >
+            <FaBell className="text-lg" />
+            <span className="text-sm">Notifications</span>
+          </motion.button>
+          
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-white/50 shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)] transition-all font-medium"
+          >
+            <FaCog className="text-lg" />
+            <span className="text-sm">Settings</span>
+          </motion.button>
+        </nav>
+
+        {/* Logout Button */}
+        <div className="absolute bottom-6 left-4 right-4">
+          <button
+            onClick={() => navigate('/login')}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)] transition-all font-medium"
+          >
+            <FaSignOutAlt className="text-lg" />
+            <span className="text-sm">Logout</span>
+          </button>
+        </div>
+      </motion.aside>
+
+      {/* Main Content */}
+      <div className="ml-64 flex-1 min-h-screen">
+        {/* Top Header */}
+        <motion.header
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="sticky top-0 bg-gradient-to-r from-[#F8FAFC]/95 to-[#E2E8F0]/95 backdrop-blur-sm shadow-[0_4px_12px_rgba(163,177,198,0.3)] z-40"
+        >
+          <div className="px-8 py-5 flex justify-between items-center">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-800">Welcome back, {profileData.name}!</h1>
+              <p className="text-sm text-gray-500 mt-1">Let's continue your learning journey today 🚀</p>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="flex items-center gap-3">
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/portfolio')}
+                className="px-5 py-2.5 rounded-xl bg-white text-gray-700 font-semibold shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)] hover:shadow-lg transition-all flex items-center gap-2"
               >
-                <tab.icon className={`text-lg transition-transform ${activeTab === tab.id ? 'scale-110' : ''}`} />
-                {tab.label}
-                {activeTab === tab.id && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </button>
-            ))}
+                <FaBriefcase />
+                Portfolio
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/competency-profile')}
+                className="px-5 py-2.5 rounded-xl bg-white text-gray-700 font-semibold shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)] hover:shadow-lg transition-all flex items-center gap-2"
+              >
+                <FaChartLine />
+                Competency
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/assignment-submission')}
+                className="px-5 py-2.5 rounded-xl bg-white text-gray-700 font-semibold shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)] hover:shadow-lg transition-all flex items-center gap-2"
+              >
+                <FaTasks />
+                Assignments
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#5B8DEF] to-[#9B7BFF] text-white font-semibold shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
+              >
+                <FaBookOpen />
+                Homework
+              </motion.button>
+            </div>
+          </div>
+        </motion.header>
+
+        {/* Dashboard Content */}
+        <div className="p-8">
+          {/* Main Stats Cards - Neumorphism */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {/* Enrolled Courses */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              whileHover={{ y: -5 }}
+              className="bg-gradient-to-br from-white to-[#F8FAFC] rounded-3xl p-6 shadow-[8px_8px_16px_rgba(163,177,198,0.5),-8px_-8px_16px_rgba(255,255,255,0.5)] cursor-pointer group"
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#5B8DEF] to-[#4A7BD8] shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <FaBook className="text-2xl text-white" />
+                </div>
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800 mb-1">3</h3>
+              <p className="text-gray-500 text-sm font-medium mb-3">Enrolled Courses</p>
+              <div className="bg-gray-200 rounded-full h-2 overflow-hidden">
+                <div className="bg-gradient-to-r from-[#5B8DEF] to-[#9B7BFF] h-full rounded-full transition-all" style={{ width: '68%' }}></div>
+              </div>
+              <p className="text-xs text-gray-400 mt-2">68% average progress</p>
+            </motion.div>
+
+            {/* Following Mentors */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ y: -5 }}
+              className="bg-gradient-to-br from-white to-[#F8FAFC] rounded-3xl p-6 shadow-[8px_8px_16px_rgba(163,177,198,0.5),-8px_-8px_16px_rgba(255,255,255,0.5)] cursor-pointer group"
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#9B7BFF] to-[#8B6BE0] shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <FaUser className="text-2xl text-white" />
+                </div>
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800 mb-1">2</h3>
+              <p className="text-gray-500 text-sm font-medium mb-3">Following Mentors</p>
+              <div className="flex -space-x-2">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#5B8DEF] to-[#4A7BD8] border-2 border-white shadow-md"></div>
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#9B7BFF] to-[#8B6BE0] border-2 border-white shadow-md"></div>
+              </div>
+            </motion.div>
+
+            {/* Upcoming Meetings */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              whileHover={{ y: -5 }}
+              className="bg-gradient-to-br from-white to-[#F8FAFC] rounded-3xl p-6 shadow-[8px_8px_16px_rgba(163,177,198,0.5),-8px_-8px_16px_rgba(255,255,255,0.5)] cursor-pointer group"
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#A8E6CF] to-[#88D4AB] shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <FaCalendar className="text-2xl text-white" />
+                </div>
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800 mb-1">2</h3>
+              <p className="text-gray-500 text-sm font-medium mb-3">Upcoming Meetings</p>
+              <div className="flex items-center gap-2 text-xs text-gray-500">
+                <FaClock className="text-[#A8E6CF]" />
+                <span>Next: Today, 3:00 PM</span>
+              </div>
+            </motion.div>
+
+            {/* Completed Sessions */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              whileHover={{ y: -5 }}
+              className="bg-gradient-to-br from-white to-[#F8FAFC] rounded-3xl p-6 shadow-[8px_8px_16px_rgba(163,177,198,0.5),-8px_-8px_16px_rgba(255,255,255,0.5)] cursor-pointer group"
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFB347] to-[#FFA033] shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <FaCheckCircle className="text-2xl text-white" />
+                </div>
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800 mb-1">8</h3>
+              <p className="text-gray-500 text-sm font-medium mb-3">Completed Sessions</p>
+              <div className="flex items-center gap-1">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <FaStar key={star} className="text-yellow-400 text-sm" />
+                ))}
+                <span className="text-xs text-gray-500 ml-1">(4.9)</span>
+              </div>
+            </motion.div>
           </div>
 
-          <div className="p-10">
+          {/* Profile Overview - Neumorphism */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="bg-gradient-to-br from-white to-[#F8FAFC] rounded-3xl p-8 shadow-[8px_8px_16px_rgba(163,177,198,0.5),-8px_-8px_16px_rgba(255,255,255,0.5)] mb-8"
+          >
+            <div className="flex flex-col md:flex-row gap-8">
+              {/* Student Info */}
+              <div className="flex-1">
+                <div className="flex items-start gap-6 mb-6">
+                  <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-[#5B8DEF] to-[#9B7BFF] shadow-lg flex items-center justify-center">
+                    <FaUser className="text-4xl text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h2 className="text-2xl font-bold text-gray-800 mb-1">{profileData.name}</h2>
+                    <p className="text-gray-500 mb-2">{profileData.major}</p>
+                    <div className="flex items-center gap-4 text-sm text-gray-600">
+                      <span className="flex items-center gap-1">
+                        <FaStar className="text-yellow-400" />
+                        <strong>GPA: 3.8</strong>
+                      </span>
+                      <span>•</span>
+                      <span>Year 3</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Contact Info */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-gray-50/50 rounded-2xl p-4 shadow-inner">
+                    <p className="text-xs text-gray-500 mb-1">Email</p>
+                    <p className="text-sm font-medium text-gray-800">{profileData.email}</p>
+                  </div>
+                  <div className="bg-gray-50/50 rounded-2xl p-4 shadow-inner">
+                    <p className="text-xs text-gray-500 mb-1">Phone</p>
+                    <p className="text-sm font-medium text-gray-800">{profileData.phone}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Stats */}
+              <div className="w-full md:w-64 space-y-4">
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-4 shadow-inner">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-xs text-gray-500 mb-1">Learning Hours</p>
+                      <h4 className="text-2xl font-bold text-[#5B8DEF]">32.1h</h4>
+                    </div>
+                    <FaClock className="text-3xl text-[#5B8DEF] opacity-30" />
+                  </div>
+                </div>
+                <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-4 shadow-inner">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-xs text-gray-500 mb-1">Achievements</p>
+                      <h4 className="text-2xl font-bold text-[#9B7BFF]">12</h4>
+                    </div>
+                    <FaStar className="text-3xl text-[#9B7BFF] opacity-30" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Tabs Navigation */}
+          <div className="mb-8">
+            <div className="flex gap-3 overflow-x-auto pb-4">
+              {[
+                { id: 'profile', label: 'Profile', icon: FaUser },
+                { id: 'myCourses', label: 'My Courses', icon: FaBook },
+                { id: 'mentors', label: 'Find Mentors', icon: FaSearch },
+                { id: 'aiSuggest', label: 'AI Mentor', icon: FaRobot },
+                { id: 'schedule', label: 'Meeting Schedule', icon: FaCalendar }
+              ].map((tab) => (
+                <motion.button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id as any)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-semibold text-sm transition-all whitespace-nowrap ${
+                    activeTab === tab.id
+                      ? 'bg-gradient-to-r from-[#5B8DEF] to-[#9B7BFF] text-white shadow-lg'
+                      : 'bg-white text-gray-600 shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)]'
+                  }`}
+                >
+                  <tab.icon />
+                  {tab.label}
+                </motion.button>
+              ))}
+            </div>
+          </div>
+
+          {/* Tab Content - Neumorphism Card */}
+          <div className="bg-gradient-to-br from-white to-[#F8FAFC] rounded-3xl shadow-[8px_8px_16px_rgba(163,177,198,0.5),-8px_-8px_16px_rgba(255,255,255,0.5)] overflow-hidden">
+            <div className="p-10">
             {/* Profile Tab */}
             {activeTab === 'profile' && (
               <motion.div
@@ -999,7 +1204,7 @@ Please respond in JSON format:
                             </button>
                             <button
                               onClick={() => navigate(`/course/${course.id}`)}
-                              className="px-4 py-3 border-2 border-[#06BBCC] text-[#06BBCC] rounded-lg hover:bg-[#06BBCC] hover:text-white transition-colors"
+                              className="px-4 py-3 border-2 border-[#06BBCC] text-[#06BBCK] rounded-lg hover:bg-[#06BBCC] hover:text-white transition-colors"
                               title="View Course Details"
                             >
                               <FaStar />
@@ -1012,6 +1217,7 @@ Please respond in JSON format:
                 )}
               </div>
             )}
+          </div>
           </div>
         </div>
       </div>
