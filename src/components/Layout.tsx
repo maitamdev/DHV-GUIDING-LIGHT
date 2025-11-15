@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 import Navbar from './Navbar';
+import Breadcrumb from './Breadcrumb';
 import Footer from './Footer';
 import Spinner from './Spinner';
 
@@ -16,6 +17,7 @@ const Layout = () => {
     <>
       <Spinner />
       <Navbar />
+      <Breadcrumb />
       <Outlet />
       <Footer />
     </>

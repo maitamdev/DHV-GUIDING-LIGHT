@@ -1212,7 +1212,7 @@ const Courses = () => {
       <div className="sticky top-16 z-40 backdrop-blur-xl bg-white/80 border-b border-gray-200/30 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           {/* Horizontal Scroll Layout for Compact Cards */}
-          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent scroll-smooth snap-x snap-mandatory touch-pan-x">
             {categories.map((category, index) => {
               const Icon = category.icon;
               const isActive = selectedCategory === category.id;
@@ -1236,16 +1236,20 @@ const Courses = () => {
                     setCurrentPage(1);
                   }}
                   className={`
-                    group relative flex flex-col items-center justify-center gap-2 min-w-[90px] p-4 rounded-2xl 
-                    font-medium transition-all duration-250 flex-shrink-0
+                    group relative flex flex-col items-center justify-center gap-2 
+                    min-w-[90px] sm:min-w-[100px] p-4 rounded-2xl 
+                    font-medium transition-all duration-250 flex-shrink-0 snap-start
+                    cursor-pointer touch-manipulation
                     ${isActive
                       ? 'bg-gradient-to-br from-[#27E0A7] to-[#1BC6D5] text-white shadow-lg'
-                      : 'bg-white text-gray-700 hover:shadow-md border border-[#E8E8E8]'
+                      : 'bg-white text-gray-700 hover:shadow-md border border-[#E8E8E8] active:bg-gray-50'
                     }
                   `}
                   style={{
                     fontFamily: "'Inter', 'Poppins', sans-serif",
-                    boxShadow: isActive ? '0 4px 12px rgba(39, 224, 167, 0.25), inset 0 1px 2px rgba(255,255,255,0.3)' : undefined
+                    boxShadow: isActive ? '0 4px 12px rgba(39, 224, 167, 0.25), inset 0 1px 2px rgba(255,255,255,0.3)' : undefined,
+                    minHeight: '44px', // iOS minimum touch target
+                    WebkitTapHighlightColor: 'transparent' // Remove iOS tap highlight
                   }}
                 >
                   {/* Soft Glow for Active */}
@@ -1306,7 +1310,7 @@ const Courses = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
             {currentCourses.map((course, index) => (
               <motion.div
