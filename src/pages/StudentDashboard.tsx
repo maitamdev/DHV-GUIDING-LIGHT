@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap, FaRobot, FaPaperPlane, FaLightbulb, FaChartLine, FaCog, FaSignOutAlt, FaHome, FaBriefcase, FaTasks, FaBookOpen, FaBars } from 'react-icons/fa';
+import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap, FaRobot, FaPaperPlane, FaLightbulb, FaChartLine, FaCog, FaSignOutAlt, FaHome, FaBriefcase, FaTasks, FaBookOpen, FaEye } from 'react-icons/fa';
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
@@ -1336,11 +1336,14 @@ Please respond in JSON format:
                               <FaBook /> Continue Learning
                             </button>
                             <button
-                              onClick={() => navigate(`/course/${course.id}`)}
-                              className="px-4 py-3 border-2 border-[#06BBCC] text-[#06BBCK] rounded-lg hover:bg-[#06BBCC] hover:text-white transition-colors"
-                              title="View Course Details"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                navigate(`/course/${course.id}`);
+                              }}
+                              className="px-6 py-3 border-2 border-[#06BBCC] text-[#06BBCC] rounded-lg hover:bg-[#06BBCC] hover:text-white transition-all font-semibold flex items-center gap-2"
+                              title="Xem chi tiết khóa học"
                             >
-                              <FaStar />
+                              <FaEye /> Chi tiết
                             </button>
                           </div>
                         </div>
