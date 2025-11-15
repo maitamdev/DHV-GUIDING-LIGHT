@@ -1,6 +1,6 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaUsers, FaClock, FaStar, FaChalkboardTeacher, FaBook, FaCertificate, FaShoppingCart, FaCheckCircle } from 'react-icons/fa';
+import { FaUsers, FaClock, FaChalkboardTeacher, FaBook, FaCertificate, FaCheckCircle } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 import { useState } from 'react';
 
@@ -449,83 +449,200 @@ const CourseDetail = () => {
 
   return (
     <>
-      {/* Header */}
-      <div className="w-full bg-gradient-to-r from-[#06BBCC] to-[#05a3b3] py-20">
+      {/* Header - Navy Blue like DHV image */}
+      <div className="w-full bg-[#001f3f] py-12">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="mb-4">
-                <span className="px-3 py-1 bg-white/20 text-white rounded-full text-sm font-semibold">
-                  {course.level}
-                </span>
-              </div>
-              <h1 className="text-4xl md:text-5xl text-white font-bold mb-4">
-                {course.title}
-              </h1>
-              <p className="text-xl text-white/90 mb-6">{course.description}</p>
-              
-              <div className="flex flex-wrap gap-6 text-white mb-6">
-                <div className="flex items-center gap-2">
-                  <FaStar className="text-yellow-300" />
-                  <span className="font-semibold">{course.rating}</span>
-                  <span className="opacity-80">({course.totalRatings} ratings)</span>
+          <nav className="text-white/80 text-sm mb-6 flex items-center gap-2">
+            <Link to="/" className="hover:text-white">Trang chủ</Link>
+            <span>•</span>
+            <Link to="/courses" className="hover:text-white">Khóa học online</Link>
+            <span>•</span>
+            <span className="text-white">{course.title}</span>
+          </nav>
+        </div>
+      </div>
+
+      {/* Main Content - 2 Column Layout */}
+      <div className="bg-gray-50 py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Left Column - Course Info */}
+            <div className="lg:col-span-2 space-y-6">
+              {/* Course Title & Label */}
+              <div>
+                <div className="inline-block px-4 py-1 bg-green-500 text-white rounded-full text-sm font-semibold mb-4">
+                  NỔI BẬT
                 </div>
-                <div className="flex items-center gap-2">
-                  <FaUsers />
-                  <span>{course.students} students</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <FaClock />
-                  <span>{course.duration}</span>
+                <h1 className="text-3xl font-bold text-[#001f3f] mb-4">
+                  {course.title}
+                </h1>
+                <p className="text-gray-600 text-lg leading-relaxed mb-4">
+                  {course.description}
+                </p>
+                <div className="flex items-center gap-6 text-sm text-gray-600 mb-6">
+                  <div className="flex items-center gap-2">
+                    <span className="text-yellow-500">★★★★★</span>
+                    <span className="font-semibold">{course.rating}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FaUsers className="text-gray-400" />
+                    <span>{course.totalRatings} bình luận</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FaUsers className="text-gray-400" />
+                    <span>{course.students} học viên</span>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 mb-6">
-                <img src="/img/team-1.jpg" alt={course.instructor} className="w-12 h-12 rounded-full" />
-                <div>
-                  <p className="text-white/80 text-sm">Instructor</p>
-                  <p className="text-white font-semibold">{course.instructor}</p>
+              {/* Tabs - Matching DHV style */}
+              <div className="bg-white rounded-lg shadow-sm">
+                <div className="border-b border-gray-200">
+                  <div className="flex gap-8 px-6">
+                    <button className="py-4 border-b-2 border-blue-500 text-blue-500 font-medium">
+                      Tổng quan
+                    </button>
+                    <button className="py-4 text-gray-600 hover:text-blue-500">
+                      Nội dung khóa học
+                    </button>
+                    <button className="py-4 text-gray-600 hover:text-blue-500">
+                      Giảng viên
+                    </button>
+                    <button className="py-4 text-gray-600 hover:text-blue-500">
+                      Đánh giá
+                    </button>
+                    <button className="py-4 text-gray-600 hover:text-blue-500">
+                      Bình luận
+                    </button>
+                  </div>
+                </div>
+
+                {/* Tab Content - What You'll Learn */}
+                <div className="p-8">
+                  <h2 className="text-2xl font-bold text-[#001f3f] mb-6">
+                    Bạn sẽ học được gì?
+                  </h2>
+                  <div className="space-y-3">
+                    {course.whatYouLearn.map((item: string, index: number) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <FaCheckCircle className="text-green-600 text-xs" />
+                        </div>
+                        <span className="text-gray-700">{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <div className="flex flex-wrap gap-4">
-                {hasPurchased ? (
-                  <Link
-                    to={`/roadmap/${course.category}`}
-                    className="px-8 py-4 bg-white text-[#06BBCC] rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors"
-                  >
-                    Start Learning
-                  </Link>
-                ) : (
-                  <button
-                    onClick={handlePurchase}
-                    disabled={loading}
-                    className="px-8 py-4 bg-white text-[#06BBCC] rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors disabled:opacity-50 flex items-center gap-2"
-                  >
-                    <FaShoppingCart />
-                    {loading ? 'Processing...' : `Enroll Now - ${course.priceDisplay}`}
-                  </button>
-                )}
+            {/* Right Column - Purchase Card */}
+            <div className="lg:col-span-1">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden sticky top-24">
+                {/* Course Image/Video */}
+                <div className="relative">
+                  <img src={course.image} alt={course.title} className="w-full h-48 object-cover" />
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
+                      <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-blue-600 border-b-8 border-b-transparent ml-1"></div>
+                    </div>
+                  </div>
+                  {/* Course Stats Overlay */}
+                  <div className="absolute top-3 left-3 bg-blue-600 text-white px-3 py-1 rounded text-sm font-semibold">
+                    KHÓA HỌC LẬP TRÌNH C
+                  </div>
+                  <div className="absolute bottom-3 left-3 right-3 bg-white/95 p-2 rounded text-xs">
+                    <div className="font-semibold text-blue-600">QUA 130 VIDEO</div>
+                    <div className="text-gray-600">VÀ 310 BÀI TẬP HACKERRANK</div>
+                  </div>
+                </div>
+
+                {/* Pricing */}
+                <div className="p-6">
+                  <div className="flex items-baseline gap-3 mb-4">
+                    <div className="text-3xl font-bold text-blue-600">
+                      {course.priceDisplay}
+                    </div>
+                    <div className="text-lg text-gray-400 line-through">
+                      ${Math.round(course.price * 2.2)}
+                    </div>
+                  </div>
+
+                  {hasPurchased ? (
+                    <Link
+                      to={`/roadmap/${course.category}`}
+                      className="w-full block text-center px-6 py-4 bg-blue-500 text-white rounded-lg font-bold text-lg hover:bg-blue-600 transition-colors mb-4"
+                    >
+                      Đăng Ký Học
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={handlePurchase}
+                      disabled={loading}
+                      className="w-full px-6 py-4 bg-blue-500 text-white rounded-lg font-bold text-lg hover:bg-blue-600 transition-colors disabled:opacity-50 mb-4"
+                    >
+                      {loading ? 'Processing...' : 'Đăng Ký Học'}
+                    </button>
+                  )}
+
+                  {/* Course Details */}
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                      <div className="flex items-center gap-2 text-gray-600">
+                        <FaBook className="text-gray-400" />
+                        <span>Bài giảng</span>
+                      </div>
+                      <span className="font-semibold text-gray-800">170</span>
+                    </div>
+                    <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                      <div className="flex items-center gap-2 text-gray-600">
+                        <FaClock className="text-gray-400" />
+                        <span>Thời lượng</span>
+                      </div>
+                      <span className="font-semibold text-gray-800">150 giờ</span>
+                    </div>
+                    <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                      <div className="flex items-center gap-2 text-gray-600">
+                        <FaBook className="text-gray-400" />
+                        <span>Bài tập</span>
+                      </div>
+                      <span className="font-semibold text-gray-800">520</span>
+                    </div>
+                    <div className="flex items-center justify-between py-2">
+                      <div className="flex items-center gap-2 text-gray-600">
+                        <FaCertificate className="text-gray-400" />
+                        <span>Số hữu</span>
+                      </div>
+                      <span className="font-semibold text-gray-800">Trọn đời</span>
+                    </div>
+                  </div>
+
+                  {/* Social Share */}
+                  <div className="mt-6 pt-6 border-t border-gray-100">
+                    <div className="flex items-center justify-center gap-4">
+                      <a href="#" className="text-blue-600 hover:text-blue-700">
+                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                      </a>
+                      <a href="#" className="text-blue-400 hover:text-blue-500">
+                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                      </a>
+                      <a href="#" className="text-red-600 hover:text-red-700">
+                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                      </a>
+                      <a href="#" className="text-blue-700 hover:text-blue-800">
+                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <img src={course.image} alt={course.title} className="rounded-lg shadow-2xl" />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="py-20 bg-gray-50">
+      {/* Original content continues below */}
+      <div className="py-20 bg-white" style={{ display: 'none' }}>
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Left Column */}

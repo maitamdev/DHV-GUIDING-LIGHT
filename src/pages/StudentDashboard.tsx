@@ -126,7 +126,7 @@ const StudentDashboard = () => {
     }
   ];
 
-  // Purchased Courses - In production, fetch from Firebase based on userData.purchasedCourses
+  // Purchased Courses - Expanded with more categories
   const myCourses = [
     { 
       id: 1, 
@@ -137,7 +137,11 @@ const StudentDashboard = () => {
       image: '/img/course-1.jpg',
       nextLesson: 'React Hooks Advanced',
       totalLessons: 130,
-      completedLessons: 98
+      completedLessons: 98,
+      level: 'Intermediate',
+      rating: 4.9,
+      reviews: 1234,
+      hours: 42.5
     },
     { 
       id: 2, 
@@ -148,7 +152,11 @@ const StudentDashboard = () => {
       image: '/img/course-2.jpg',
       nextLesson: 'Building REST APIs',
       totalLessons: 93,
-      completedLessons: 47
+      completedLessons: 47,
+      level: 'Beginner',
+      rating: 4.8,
+      reviews: 987,
+      hours: 32
     },
     { 
       id: 3, 
@@ -159,7 +167,116 @@ const StudentDashboard = () => {
       image: '/img/course-3.jpg',
       nextLesson: 'Pandas Data Manipulation',
       totalLessons: 129,
-      completedLessons: 39
+      completedLessons: 39,
+      level: 'Advanced',
+      rating: 4.9,
+      reviews: 1567,
+      hours: 28.5
+    },
+    { 
+      id: 4, 
+      title: 'Digital Marketing & Social Media Strategy', 
+      progress: 65, 
+      instructor: 'Nguyen Minh Khai',
+      category: 'marketing',
+      image: '/img/course-1.jpg',
+      nextLesson: 'Facebook Ads Campaign',
+      totalLessons: 85,
+      completedLessons: 55,
+      level: 'All Levels',
+      rating: 4.8,
+      reviews: 987,
+      hours: 32
+    },
+    { 
+      id: 5, 
+      title: 'UI/UX Design Masterclass with Figma', 
+      progress: 80, 
+      instructor: 'Pham Duc Anh',
+      category: 'design',
+      image: '/img/course-2.jpg',
+      nextLesson: 'Prototyping in Figma',
+      totalLessons: 76,
+      completedLessons: 61,
+      level: 'All Levels',
+      rating: 4.9,
+      reviews: 1567,
+      hours: 28.5
+    },
+    { 
+      id: 6, 
+      title: 'Business Management & Entrepreneurship', 
+      progress: 45, 
+      instructor: 'Tran Van Long',
+      category: 'business',
+      image: '/img/course-3.jpg',
+      nextLesson: 'Financial Planning',
+      totalLessons: 102,
+      completedLessons: 46,
+      level: 'Intermediate',
+      rating: 4.7,
+      reviews: 876,
+      hours: 36
+    },
+    { 
+      id: 7, 
+      title: 'Machine Learning A-Z with Python', 
+      progress: 20, 
+      instructor: 'Le Thanh Tung',
+      category: 'ai-ml',
+      image: '/img/course-1.jpg',
+      nextLesson: 'Neural Networks Basics',
+      totalLessons: 156,
+      completedLessons: 31,
+      level: 'Advanced',
+      rating: 5.0,
+      reviews: 2341,
+      hours: 48
+    },
+    { 
+      id: 8, 
+      title: 'Mobile App Development with React Native', 
+      progress: 55, 
+      instructor: 'Hoang Van Minh',
+      category: 'mobile-dev',
+      image: '/img/course-2.jpg',
+      nextLesson: 'Navigation & Routing',
+      totalLessons: 98,
+      completedLessons: 54,
+      level: 'Intermediate',
+      rating: 4.8,
+      reviews: 1123,
+      hours: 38
+    },
+    { 
+      id: 9, 
+      title: 'Photography & Video Editing Masterclass', 
+      progress: 70, 
+      instructor: 'Nguyen Thu Ha',
+      category: 'creative',
+      image: '/img/course-3.jpg',
+      nextLesson: 'Color Grading in Premiere',
+      totalLessons: 67,
+      completedLessons: 47,
+      level: 'Beginner',
+      rating: 4.9,
+      reviews: 892,
+      hours: 24
+    },
+    { 
+      id: 10, 
+      title: 'Financial Analysis & Investment', 
+      progress: 35, 
+      instructor: 'Tran Quoc Bao',
+      category: 'finance',
+      image: '/img/course-1.jpg',
+      nextLesson: 'Stock Market Analysis',
+      totalLessons: 88,
+      completedLessons: 31,
+      level: 'Intermediate',
+      rating: 4.7,
+      reviews: 654,
+      hours: 30
     }
   ];
 
@@ -1162,14 +1279,15 @@ Please respond in JSON format:
                         key={course.id} 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden"
+                        className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden cursor-pointer"
+                        onClick={() => navigate(`/course/${course.id}`)}
                       >
                         <img src={course.image} alt={course.title} className="w-full h-48 object-cover" />
                         <div className="p-6">
                           <div className="flex justify-between items-start mb-3">
                             <div>
                               <h4 className="text-xl font-bold text-gray-800 mb-1">{course.title}</h4>
-                              <p className="text-sm text-gray-600">Instructor: {course.instructor}</p>
+                              <p className="text-sm text-gray-600">👨‍🏫 {course.instructor}</p>
                             </div>
                             <span className="px-4 py-2 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white rounded-full font-bold text-sm">
                               {course.progress}%
@@ -1178,7 +1296,8 @@ Please respond in JSON format:
                           
                           <div className="mb-4">
                             <div className="flex justify-between text-sm text-gray-600 mb-2">
-                              <span>{course.completedLessons} / {course.totalLessons} lessons completed</span>
+                              <span>📚 {course.completedLessons} / {course.totalLessons} lessons</span>
+                              <span>⏱️ {course.hours}h</span>
                             </div>
                             <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
                               <motion.div
@@ -1192,12 +1311,26 @@ Please respond in JSON format:
 
                           <div className="bg-blue-50 border-l-4 border-[#06BBCC] p-3 rounded-lg mb-4">
                             <p className="text-sm text-gray-600">Next Lesson:</p>
-                            <p className="font-semibold text-gray-800">{course.nextLesson}</p>
+                            <p className="font-semibold text-gray-800">▶️ {course.nextLesson}</p>
+                          </div>
+
+                          <div className="flex items-center justify-between mb-4">
+                            <div className="flex items-center gap-1">
+                              <span className="text-yellow-400">⭐</span>
+                              <span className="font-bold text-gray-800">{course.rating}</span>
+                              <span className="text-sm text-gray-500">({course.reviews} reviews)</span>
+                            </div>
+                            <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">
+                              {course.level}
+                            </span>
                           </div>
 
                           <div className="flex gap-2">
                             <button
-                              onClick={() => navigate(`/roadmap/${course.category}`)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                navigate(`/course/${course.id}`);
+                              }}
                               className="flex-1 px-6 py-3 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2"
                             >
                               <FaBook /> Continue Learning
