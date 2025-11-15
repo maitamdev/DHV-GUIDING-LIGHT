@@ -36,7 +36,7 @@ const Footer = () => {
                   DHV GUIDING LIGHT
                 </h3>
                 <p className="text-white/60 text-sm leading-relaxed">
-                  Nền tảng học trực tuyến hàng đầu Việt Nam
+                  Leading online learning platform for career transformation
                 </p>
               </div>
 
@@ -167,7 +167,7 @@ const Footer = () => {
           {/* Bottom - Copyright */}
           <div className="pt-8 text-center">
             <p className="text-white/50 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>
-              &copy; 2024 DHV GUIDING LIGHT. All Rights Reserved.
+              &copy; 2025 DHV GUIDING LIGHT. All Rights Reserved.
             </p>
             <div className="flex justify-center gap-6 mt-4">
               <Link to="/about" className="text-white/40 hover:text-white text-xs transition-colors">Privacy Policy</Link>
