@@ -83,13 +83,23 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left Side - Branding */}
+      {/* Left Side - Branding (60%) */}
       <motion.div
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#27E0A7] via-[#1BC6D5] to-[#06BBCC] relative overflow-hidden items-center justify-center p-12"
+        className="hidden lg:flex lg:w-3/5 bg-gradient-to-br from-[#27E0A7] via-[#1BC6D5] to-[#06BBCC] relative overflow-hidden items-center justify-center p-12"
       >
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0">
+          <img 
+            src="/img/carousel-1.jpg" 
+            alt="Students Learning" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#27E0A7]/95 via-[#1BC6D5]/95 to-[#06BBCC]/95"></div>
+        </div>
+
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute w-96 h-96 bg-white/10 rounded-full blur-3xl -top-20 -left-20 animate-float"></div>
@@ -155,12 +165,12 @@ const Login = () => {
         </div>
       </motion.div>
 
-      {/* Right Side - Login Form */}
+      {/* Right Side - Login Form (40%) */}
       <motion.div
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-gradient-to-br from-gray-50 to-white"
+        className="w-full lg:w-2/5 flex items-center justify-center p-8 bg-gradient-to-br from-gray-50 to-white"
       >
         <div className="w-full max-w-md">
           {/* Mobile Logo */}
