@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp, FaShoppingCart, FaCreditCard, FaPlay } from 'react-icons/fa';
 
 interface FAQItem {
   question: string;
@@ -60,7 +60,7 @@ const FAQ = () => {
   return (
     <>
       {/* Header */}
-      <div className="w-full bg-gradient-to-r from-[#06BBCC] to-[#05a3b3] py-20 mb-12">
+      <div className="w-full bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 py-20 mb-12">
         <div className="container mx-auto px-4 py-12">
           <motion.div
             initial={{ opacity: 0, y: -30 }}
@@ -78,10 +78,120 @@ const FAQ = () => {
         </div>
       </div>
 
-      {/* FAQ Content */}
       <div className="py-20">
         <div className="container mx-auto px-4">
+          {/* How to Register Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-6xl mx-auto mb-16"
+          >
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">How to Register for Courses?</h2>
+              <p className="text-xl text-gray-600">Simple 3-step process to start learning</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Step 1 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all group"
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div className="bg-white p-6 rounded-2xl shadow-md mb-6 group-hover:scale-110 transition-transform">
+                    <FaShoppingCart className="text-6xl text-gray-600" />
+                  </div>
+                  <div className="bg-emerald-500 text-white font-bold text-lg px-6 py-2 rounded-full mb-4">
+                    Step 1
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-3">Choose Your Course</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Browse our course catalog and select the perfect course for your learning goals.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Step 2 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all group"
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div className="bg-white p-6 rounded-2xl shadow-md mb-6 group-hover:scale-110 transition-transform">
+                    <FaCreditCard className="text-6xl text-gray-600" />
+                  </div>
+                  <div className="bg-teal-500 text-white font-bold text-lg px-6 py-2 rounded-full mb-4">
+                    Step 2
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-3">Complete Payment</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Securely pay using your preferred payment method - credit card, e-wallet, or bank transfer.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Step 3 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="bg-gradient-to-br from-cyan-50 to-emerald-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all group"
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div className="bg-white p-6 rounded-2xl shadow-md mb-6 group-hover:scale-110 transition-transform">
+                    <FaPlay className="text-6xl text-gray-600" />
+                  </div>
+                  <div className="bg-cyan-500 text-white font-bold text-lg px-6 py-2 rounded-full mb-4">
+                    Step 3
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-3">Start Learning</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Access your course immediately and start your learning journey with expert instructors.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Trust Badges */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+              <div className="bg-white rounded-xl p-6 shadow-md text-center">
+                <div className="text-3xl mb-2">🔒</div>
+                <h4 className="font-bold text-gray-800 mb-1">Secure Learning</h4>
+                <p className="text-sm text-gray-600">SSL Protected</p>
+              </div>
+              <div className="bg-white rounded-xl p-6 shadow-md text-center">
+                <div className="text-3xl mb-2">📜</div>
+                <h4 className="font-bold text-gray-800 mb-1">Certified</h4>
+                <p className="text-sm text-gray-600">Industry Recognized</p>
+              </div>
+              <div className="bg-white rounded-xl p-6 shadow-md text-center">
+                <div className="text-3xl mb-2">⭐</div>
+                <h4 className="font-bold text-gray-800 mb-1">4.9/5 Rating</h4>
+                <p className="text-sm text-gray-600">12,000+ Reviews</p>
+              </div>
+              <div className="bg-white rounded-xl p-6 shadow-md text-center">
+                <div className="text-3xl mb-2">👥</div>
+                <h4 className="font-bold text-gray-800 mb-1">50K+ Students</h4>
+                <p className="text-sm text-gray-600">Worldwide</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* FAQ List */}
           <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Common Questions</h2>
+              <p className="text-xl text-gray-600">Everything you need to know about our courses</p>
+            </div>
+
             <div className="space-y-4">
               {faqData.map((faq, index) => (
                 <motion.div
@@ -100,7 +210,7 @@ const FAQ = () => {
                       {faq.question}
                     </span>
                     {openIndex === index ? (
-                      <FaChevronUp className="text-[#06BBCC] flex-shrink-0 ml-4" />
+                      <FaChevronUp className="text-emerald-500 flex-shrink-0 ml-4" />
                     ) : (
                       <FaChevronDown className="text-gray-400 flex-shrink-0 ml-4" />
                     )}
@@ -124,7 +234,7 @@ const FAQ = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mt-16 text-center bg-gradient-to-r from-[#06BBCC] to-[#05a3b3] rounded-lg p-12"
+              className="mt-16 text-center bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 rounded-2xl p-12 shadow-xl"
             >
               <h2 className="text-3xl font-bold text-white mb-4">
                 Can't find your answer?
@@ -134,7 +244,7 @@ const FAQ = () => {
               </p>
               <a
                 href="/contact"
-                className="inline-block px-8 py-4 bg-white text-[#06BBCC] rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors"
+                className="inline-block px-8 py-4 bg-white text-emerald-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
               >
                 Contact Now
               </a>
