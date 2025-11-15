@@ -28,8 +28,8 @@ const Home = () => {
 
   return (
     <>
-      {/* Hero Section - Premium Modern Design */}
-      <div className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#0b004b' }}>
+      {/* Hero Section - Compact Modern Design */}
+      <div className="relative min-h-[85vh] flex items-center overflow-hidden" style={{ backgroundColor: '#0b004b' }}>
         {/* Animated Wave Background */}
         <AnimatedWaves 
           colors={[
@@ -57,33 +57,33 @@ const Home = () => {
           <FloatingIcon icon={<FaLightbulb className="text-6xl text-white" />} x={50} y={30} delay={1.5} duration={17} scale={1} />
         </div>
 
-        <div className="container mx-auto px-4 py-20 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="container mx-auto px-4 py-16 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left - Hero Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-8"
+              className="space-y-6"
             >
               {/* Badge */}
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20"
+                className="inline-flex items-center gap-2 px-3 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20"
               >
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                <span className="text-white/90 text-sm font-medium">🎓 Trusted by 50,000+ Students Worldwide</span>
+                <span className="text-white/90 text-xs font-medium">🎓 Join 50,000+ Students Worldwide</span>
               </motion.div>
 
-              {/* Main Heading */}
-              <div className="space-y-4">
+              {/* Main Heading - Compact */}
+              <div className="space-y-3">
                 <motion.h1 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="text-5xl md:text-6xl xl:text-7xl font-black text-white leading-tight tracking-tight"
+                  className="text-4xl md:text-5xl xl:text-6xl font-black text-white leading-tight"
                   style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
                 >
                   <TypewriterEffect
@@ -105,184 +105,183 @@ const Home = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="flex items-center gap-3"
+                  className="flex items-center gap-2"
                 >
-                  <div className="h-1 w-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
-                  <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
+                  <div className="h-1 w-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"></div>
+                  <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
                     DHV Guiding Light
                   </h2>
                 </motion.div>
               </div>
 
-              {/* Description */}
+              {/* Description - Shorter */}
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="text-lg md:text-xl text-white/80 leading-relaxed max-w-xl"
+                className="text-base md:text-lg text-white/80 leading-relaxed max-w-xl"
                 style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
               >
-                Master any skill with expert-led courses across all fields. From technology to business, guided by industry leaders who bring real-world experience to every lesson.
+                Master any skill with expert-led courses. From technology to business, guided by industry leaders with real-world experience.
               </motion.p>
 
-              {/* CTA Buttons */}
+              {/* CTA Buttons - Updated Text */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="flex flex-wrap gap-4 pt-4"
+                className="flex flex-wrap gap-3 pt-4"
               >
                 <Link
                   to="/courses"
-                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-gray-900 rounded-2xl font-bold text-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-500/50 hover:scale-105"
+                  className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-gray-900 rounded-xl font-bold text-base overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-yellow-500/50 hover:scale-105"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   <FaRocket className="relative z-10 group-hover:rotate-12 transition-transform duration-300" />
-                  <span className="relative z-10">View Courses</span>
+                  <span className="relative z-10">Explore Courses</span>
                 </Link>
                 <Link
-                  to="/signup"
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md text-white rounded-2xl font-bold text-lg border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300 hover:scale-105"
+                  to="/roadmap"
+                  className="group inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md text-white rounded-xl font-bold text-base border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300 hover:scale-105"
                 >
                   <FaGraduationCap className="group-hover:rotate-12 transition-transform duration-300" />
-                  <span>Register Now</span>
+                  <span>View Learning Path</span>
                 </Link>
               </motion.div>
 
-              {/* Stats */}
+              {/* Stats - Compact */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
-                className="flex flex-wrap gap-8 pt-8"
+                className="flex flex-wrap gap-6 pt-6"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
-                    <FaStar className="text-yellow-400 text-xl" />
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
+                    <FaStar className="text-yellow-400 text-lg" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-white">4.9/5</p>
-                    <p className="text-white/60 text-sm">Average Rating</p>
+                    <p className="text-xl font-bold text-white">4.9/5</p>
+                    <p className="text-white/60 text-xs">Rating</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                    <FaBook className="text-blue-400 text-xl" />
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                    <FaBook className="text-blue-400 text-lg" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-white">300+</p>
-                    <p className="text-white/60 text-sm">Expert Courses</p>
+                    <p className="text-xl font-bold text-white">54+</p>
+                    <p className="text-white/60 text-xs">Courses</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
-                    <FaUsers className="text-purple-400 text-xl" />
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                    <FaUsers className="text-purple-400 text-lg" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-white">50K+</p>
-                    <p className="text-white/60 text-sm">Active Students</p>
+                    <p className="text-xl font-bold text-white">50K+</p>
+                    <p className="text-white/60 text-xs">Students</p>
                   </div>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Right - Feature Cards with Parallax Effect */}
+            {/* Right - Feature Cards - Compact */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="space-y-6 relative"
+              className="space-y-4 relative"
             >
               {/* Decorative Element */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"></div>
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"></div>
 
               {/* Feature Card 1 - Professional Mentors */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
                 whileHover={{ 
-                  y: -8,
-                  boxShadow: "0 25px 50px -12px rgba(139, 92, 246, 0.4)"
+                  y: -6,
+                  boxShadow: "0 20px 40px -10px rgba(139, 92, 246, 0.4)"
                 }}
-                className="group bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer relative overflow-hidden"
+                className="group bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer relative overflow-hidden"
               >
-                {/* Glow effect on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
-                <div className="relative z-10 flex items-start gap-5">
+                <div className="relative z-10 flex items-start gap-4">
                   <motion.div 
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
-                    className="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl shadow-blue-500/30"
+                    className="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30"
                   >
-                    <FaUsers className="text-3xl text-white" />
+                    <FaUsers className="text-2xl text-white" />
                   </motion.div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white mb-3">Professional Expert Mentors</h3>
-                    <p className="text-white/70 leading-relaxed">Learn from industry leaders with years of real-world experience across multiple fields</p>
+                    <h3 className="text-lg font-bold text-white mb-2">Expert Mentors</h3>
+                    <p className="text-white/70 text-sm leading-relaxed">Learn from industry leaders with years of real-world experience</p>
                   </div>
                 </div>
               </motion.div>
 
               {/* Feature Card 2 - Quality Courses */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
                 whileHover={{ 
-                  y: -8,
-                  boxShadow: "0 25px 50px -12px rgba(16, 185, 129, 0.4)"
+                  y: -6,
+                  boxShadow: "0 20px 40px -10px rgba(16, 185, 129, 0.4)"
                 }}
-                className="group bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer relative overflow-hidden"
+                className="group bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
-                <div className="relative z-10 flex items-start gap-5">
+                <div className="relative z-10 flex items-start gap-4">
                   <motion.div 
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
-                    className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl shadow-green-500/30"
+                    className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-green-500/30"
                   >
-                    <FaBook className="text-3xl text-white" />
+                    <FaBook className="text-2xl text-white" />
                   </motion.div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white mb-3">High-Quality Courses</h3>
-                    <p className="text-white/70 leading-relaxed">Comprehensive courses with video lectures, projects, and hands-on learning experiences</p>
+                    <h3 className="text-lg font-bold text-white mb-2">Quality Content</h3>
+                    <p className="text-white/70 text-sm leading-relaxed">Comprehensive courses with videos, projects, and hands-on learning</p>
                   </div>
                 </div>
               </motion.div>
 
               {/* Feature Card 3 - Flexible Platform */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
                 whileHover={{ 
-                  y: -8,
-                  boxShadow: "0 25px 50px -12px rgba(236, 72, 153, 0.4)"
+                  y: -6,
+                  boxShadow: "0 20px 40px -10px rgba(236, 72, 153, 0.4)"
                 }}
-                className="group bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer relative overflow-hidden"
+                className="group bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
-                <div className="relative z-10 flex items-start gap-5">
+                <div className="relative z-10 flex items-start gap-4">
                   <motion.div 
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
-                    className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl shadow-purple-500/30"
+                    className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-purple-500/30"
                   >
-                    <FaGraduationCap className="text-3xl text-white" />
+                    <FaGraduationCap className="text-2xl text-white" />
                   </motion.div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white mb-3">Flexible Learning Platform</h3>
-                    <p className="text-white/70 leading-relaxed">Learn at your own pace with mentor booking, online classes, and 1-on-1 sessions</p>
+                    <h3 className="text-lg font-bold text-white mb-2">Flexible Learning</h3>
+                    <p className="text-white/70 text-sm leading-relaxed">Learn at your own pace with mentor booking and 1-on-1 sessions</p>
                   </div>
                 </div>
               </motion.div>
 
               {/* Decorative Bottom Element */}
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-tr from-blue-500/20 to-indigo-500/20 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-tr from-blue-500/20 to-indigo-500/20 rounded-full blur-3xl"></div>
             </motion.div>
           </div>
 

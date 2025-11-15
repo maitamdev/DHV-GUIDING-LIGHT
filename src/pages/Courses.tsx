@@ -1208,11 +1208,11 @@ const Courses = () => {
         </div>
       </div>
 
-      {/* Category Filter - Material You / Framer Card Tabs Style */}
-      <div className="sticky top-16 z-40 bg-gradient-to-br from-gray-50 via-white to-purple-50 backdrop-blur-xl border-b border-gray-200/50 shadow-xl">
-        <div className="container mx-auto px-4 py-8">
-          {/* Grid Layout for Card Tabs */}
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+      {/* Category Filter - Compact Modern Style */}
+      <div className="sticky top-16 z-40 backdrop-blur-xl bg-white/80 border-b border-gray-200/30 shadow-sm">
+        <div className="container mx-auto px-4 py-4">
+          {/* Horizontal Scroll Layout for Compact Cards */}
+          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
             {categories.map((category, index) => {
               const Icon = category.icon;
               const isActive = selectedCategory === category.id;
@@ -1220,126 +1220,65 @@ const Courses = () => {
               return (
                 <motion.button
                   key={category.id}
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ 
-                    delay: index * 0.05,
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 25
+                    delay: index * 0.03,
+                    duration: 0.25
                   }}
                   whileHover={{ 
-                    y: -8,
-                    scale: isActive ? 1.05 : 1.08,
-                    boxShadow: "0 20px 40px -10px rgba(79, 70, 229, 0.3)"
+                    scale: isActive ? 1.02 : 1.03,
+                    y: -2
                   }}
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={{ scale: 0.97 }}
                   onClick={() => {
                     setSelectedCategory(category.id);
                     setCurrentPage(1);
                   }}
                   className={`
-                    group relative flex flex-col items-center justify-center gap-3 p-6 rounded-3xl 
-                    font-bold transition-all duration-300 overflow-hidden
+                    group relative flex flex-col items-center justify-center gap-2 min-w-[90px] p-4 rounded-2xl 
+                    font-medium transition-all duration-250 flex-shrink-0
                     ${isActive
-                      ? 'bg-gradient-to-br from-[#10b981] via-[#14b8a6] to-[#06b6d4] text-white shadow-2xl shadow-emerald-500/40 scale-105 ring-4 ring-emerald-300/50'
-                      : 'bg-white/80 text-gray-700 hover:bg-white hover:shadow-xl border-2 border-gray-200/50'
+                      ? 'bg-gradient-to-br from-[#27E0A7] to-[#1BC6D5] text-white shadow-lg'
+                      : 'bg-white text-gray-700 hover:shadow-md border border-[#E8E8E8]'
                     }
                   `}
                   style={{
-                    fontFamily: "'Poppins', 'Inter', sans-serif",
-                    transform: isActive ? 'translateY(-4px)' : 'translateY(0)',
+                    fontFamily: "'Inter', 'Poppins', sans-serif",
+                    boxShadow: isActive ? '0 4px 12px rgba(39, 224, 167, 0.25), inset 0 1px 2px rgba(255,255,255,0.3)' : undefined
                   }}
                 >
-                  {/* Animated Gradient Background for Active */}
+                  {/* Soft Glow for Active */}
                   {isActive && (
-                    <>
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 opacity-90"
-                        animate={{
-                          background: [
-                            'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
-                            'linear-gradient(135deg, #14b8a6 0%, #10b981 100%)',
-                            'linear-gradient(135deg, #06b6d4 0%, #14b8a6 100%)',
-                            'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
-                          ]
-                        }}
-                        transition={{
-                          duration: 4,
-                          repeat: Infinity,
-                          ease: "linear"
-                        }}
-                      />
-                      {/* Glow Pulse */}
-                      <motion.div
-                        className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/30 to-transparent"
-                        animate={{
-                          opacity: [0.3, 0.6, 0.3],
-                          scale: [1, 1.05, 1]
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                      />
-                      {/* Shimmer Wave */}
-                      <motion.div
-                        className="absolute inset-0 rounded-3xl"
-                        style={{
-                          background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%)',
-                        }}
-                        animate={{
-                          x: ['-200%', '200%']
-                        }}
-                        transition={{
-                          duration: 2.5,
-                          repeat: Infinity,
-                          ease: "linear",
-                          repeatDelay: 1
-                        }}
-                      />
-                    </>
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent pointer-events-none" />
                   )}
                   
-                  {/* Icon with Bounce Animation */}
-                  <motion.div
-                    animate={isActive ? {
-                      scale: [1, 1.2, 1],
-                      rotate: [0, 5, -5, 0]
-                    } : {}}
-                    transition={{
-                      duration: 0.6,
-                      ease: "easeOut"
-                    }}
-                    className="relative z-10"
-                  >
-                    <Icon className={`text-3xl ${isActive ? 'text-white drop-shadow-2xl' : 'text-gray-600 group-hover:text-gray-800'}`} />
-                  </motion.div>
+                  {/* Icon */}
+                  <div className="relative z-10">
+                    <Icon className={`text-2xl transition-colors duration-250 ${
+                      isActive ? 'text-white' : 'text-[#3A4750] group-hover:text-[#27E0A7]'
+                    }`} />
+                  </div>
                   
                   {/* Label */}
-                  <span className={`relative z-10 text-xs font-extrabold tracking-wider text-center leading-tight ${isActive ? 'text-white' : 'text-gray-800'}`}>
+                  <span className={`relative z-10 text-sm font-medium text-center leading-tight transition-colors duration-250 ${
+                    isActive ? 'text-white' : 'text-gray-700 group-hover:text-gray-900'
+                  }`}>
                     {category.label}
                   </span>
 
-                  {/* Active Checkmark Badge */}
+                  {/* Active Check Icon */}
                   {isActive && (
                     <motion.div
-                      initial={{ scale: 0, rotate: -180 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      className="absolute -top-2 -right-2 w-7 h-7 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full relative z-10 shadow-xl shadow-emerald-400/50 flex items-center justify-center"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+                      className="absolute -top-1 -right-1 w-5 h-5 bg-white rounded-full shadow-md flex items-center justify-center"
                     >
-                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-3 h-3 text-[#27E0A7]" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     </motion.div>
-                  )}
-
-                  {/* Hover Glow for Inactive Cards */}
-                  {!isActive && (
-                    <motion.div
-                      className="absolute inset-0 rounded-3xl bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    />
                   )}
                 </motion.button>
               );
@@ -1350,12 +1289,12 @@ const Courses = () => {
 
       {/* Courses Grid */}
       <div className="container mx-auto px-4 py-12">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900">
+            <h2 className="text-2xl font-bold text-gray-900">
               {filteredCourses.length} courses
             </h2>
-            <p className="text-gray-600 mt-1">
+            <p className="text-sm text-gray-600 mt-1">
               {selectedCategory === 'all' ? 'All categories' : categories.find(c => c.id === selectedCategory)?.label}
             </p>
           </div>
@@ -1367,33 +1306,33 @@ const Courses = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {currentCourses.map((course, index) => (
               <motion.div
                 key={course.id}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10, scale: 1.03 }}
-                className="group bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300"
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-250"
               >
                 {/* Course Image */}
-                <div className="relative overflow-hidden h-64">
+                <div className="relative overflow-hidden h-44">
                   <img
                     src={course.image}
                     alt={course.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-250"></div>
 
                   {/* Badge */}
                   {course.badge && (
-                    <div className="absolute top-4 left-4">
-                      <span className={`px-4 py-2 rounded-full text-xs font-bold shadow-lg flex items-center gap-1 ${getBadgeStyles(course.badge)}`}>
-                        {course.badge === 'bestseller' && <FaFire />}
-                        {course.badge === 'new' && <FaAward />}
-                        {course.badge === 'trending' && <FaChartLine />}
+                    <div className="absolute top-3 left-3">
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold shadow-md flex items-center gap-1 ${getBadgeStyles(course.badge)}`}>
+                        {course.badge === 'bestseller' && <FaFire className="text-xs" />}
+                        {course.badge === 'new' && <FaAward className="text-xs" />}
+                        {course.badge === 'trending' && <FaChartLine className="text-xs" />}
                         {getBadgeText(course.badge)}
                       </span>
                     </div>
@@ -1402,100 +1341,100 @@ const Courses = () => {
                   {/* Favorite Button */}
                   <button
                     onClick={() => toggleFavorite(course.id)}
-                    className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all shadow-lg"
+                    className="absolute top-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all shadow-md"
                   >
                     {favorites.includes(course.id) ? (
-                      <FaHeart className="text-red-500 text-lg" />
+                      <FaHeart className="text-red-500 text-sm" />
                     ) : (
-                      <FaRegHeart className="text-gray-600 text-lg" />
+                      <FaRegHeart className="text-gray-600 text-sm" />
                     )}
                   </button>
 
                   {/* Level Badge */}
-                  <div className="absolute bottom-4 left-4">
-                    <span className="px-3 py-1 bg-blue-500 text-white text-xs font-semibold rounded-full">
+                  <div className="absolute bottom-3 left-3">
+                    <span className="px-2 py-1 bg-blue-500 text-white text-xs font-medium rounded-full">
                       {course.level}
                     </span>
                   </div>
 
                   {/* Play Button on Hover */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl">
-                      <FaPlay className="text-blue-600 text-xl ml-1" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-250">
+                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-xl">
+                      <FaPlay className="text-blue-600 text-base ml-1" />
                     </div>
                   </div>
                 </div>
 
                 {/* Course Content */}
-                <div className="p-8">
+                <div className="p-5">
                   {/* Rating */}
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center gap-2 mb-2">
                     <div className="flex items-center gap-1">
-                      <FaStar className="text-yellow-400 text-sm" />
-                      <span className="font-bold text-gray-900">{course.rating}</span>
+                      <FaStar className="text-yellow-400 text-xs" />
+                      <span className="font-semibold text-sm text-gray-900">{course.rating}</span>
                     </div>
-                    <span className="text-gray-500 text-sm">({course.reviews.toLocaleString()} reviews)</span>
+                    <span className="text-gray-500 text-xs">({course.reviews.toLocaleString()})</span>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors min-h-[56px]">
+                  <h3 className="text-base font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors min-h-[48px]" style={{ fontSize: '15px' }}>
                     {course.title}
                   </h3>
 
                   {/* Instructor */}
-                  <div className="flex items-center gap-3 mb-4 pb-4 border-b border-gray-100">
+                  <div className="flex items-center gap-2 mb-3 pb-3 border-b border-gray-100">
                     <img
                       src={course.instructorAvatar}
                       alt={course.instructor}
-                      className="w-8 h-8 rounded-full object-cover"
+                      className="w-6 h-6 rounded-full object-cover"
                     />
-                    <p className="text-sm text-gray-600 font-medium">{course.instructor}</p>
+                    <p className="text-xs text-gray-600 font-medium truncate">{course.instructor}</p>
                   </div>
 
                   {/* Stats */}
-                  <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
+                  <div className="flex items-center justify-between text-xs text-gray-600 mb-3">
                     <div className="flex items-center gap-1">
-                      <FaClock className="text-gray-400" />
+                      <FaClock className="text-gray-400 text-xs" />
                       <span>{course.duration}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <FaUsers className="text-gray-400" />
+                      <FaUsers className="text-gray-400 text-xs" />
                       <span>{course.students.toLocaleString()}</span>
                     </div>
                   </div>
 
                   {/* Features */}
-                  <div className="flex items-center gap-3 text-xs text-gray-500 mb-4">
+                  <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
                     <div className="flex items-center gap-1">
-                      <FaCertificate className="text-green-500" />
+                      <FaCertificate className="text-green-500 text-xs" />
                       <span>Certificate</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <FaInfinity className="text-blue-500" />
+                      <FaInfinity className="text-blue-500 text-xs" />
                       <span>Lifetime</span>
                     </div>
                   </div>
 
                   {/* Price & Action */}
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-3">
                     <div>
                       <div className="flex items-baseline gap-2">
-                        <span className="text-2xl font-black text-blue-600">${course.price}</span>
-                        <span className="text-sm text-gray-400 line-through">${course.originalPrice}</span>
+                        <span className="text-xl font-black text-blue-600">${course.price}</span>
+                        <span className="text-xs text-gray-400 line-through">${course.originalPrice}</span>
                       </div>
                     </div>
                     <Link
                       to={`/courses/${course.id}`}
-                      className="p-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md hover:shadow-xl"
+                      className="p-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all shadow-sm hover:shadow-md"
                     >
-                      <FaShoppingCart className="text-lg" />
+                      <FaShoppingCart className="text-base" />
                     </Link>
                   </div>
 
                   {/* View Details Button */}
                   <Link
                     to={`/course/${course.id}`}
-                    className="block w-full py-3 px-4 bg-[#0066CC] text-white text-center font-semibold rounded-xl hover:bg-blue-700 transition-all shadow-md hover:shadow-lg"
+                    className="block w-full py-2.5 px-4 bg-[#0066CC] text-white text-center text-sm font-semibold rounded-xl hover:bg-blue-700 transition-all shadow-sm hover:shadow-md"
                   >
                     View Details
                   </Link>
