@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap, FaRobot, FaPaperPlane, FaLightbulb, FaChartLine, FaCog, FaSignOutAlt, FaHome, FaBriefcase, FaTasks, FaBookOpen, FaEye } from 'react-icons/fa';
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
+  const { logout } = useAuth();
   const [activeTab, setActiveTab] = useState<'profile' | 'mentors' | 'aiSuggest' | 'schedule' | 'courses' | 'myCourses'>('profile');
   const [editMode, setEditMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -373,7 +375,14 @@ const StudentDashboard = () => {
         {/* Logout Button */}
         <div className="absolute bottom-6 left-4 right-4">
           <button
-            onClick={() => navigate('/login')}
+            onClick={async () => {
+              try {
+                await logout();
+                navigate('/login');
+              } catch (error) {
+                console.error('Logout error:', error);
+              }
+            }}
             className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-500 hover:bg-red-50 transition-all font-medium text-sm"
           >
             <FaSignOutAlt className="text-lg" />

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaCode, FaMobile, FaDatabase, FaRobot, FaServer, FaChartLine, FaBook, FaClock, FaArrowRight, FaStar, FaCloud, FaShieldAlt, FaGamepad, FaPalette } from 'react-icons/fa';
+import { FaCode, FaMobile, FaDatabase, FaRobot, FaServer, FaChartLine, FaBook, FaClock, FaArrowRight, FaStar, FaCloud, FaShieldAlt, FaGamepad, FaPalette, FaBullhorn, FaBriefcase, FaDollarSign, FaCamera } from 'react-icons/fa';
 
 const roadmaps = [
   {
@@ -123,6 +123,54 @@ const roadmaps = [
     level: 'Intermediate to Advanced',
     students: 420
   },
+  {
+    id: 'digital-marketing',
+    title: 'Digital Marketing',
+    description: 'Master SEO, social media marketing, content strategy, and analytics',
+    icon: FaBullhorn,
+    color: 'bg-orange-500',
+    courses: 8,
+    duration: '4 months',
+    image: '/img/course-2.jpg',
+    level: 'Beginner to Intermediate',
+    students: 980
+  },
+  {
+    id: 'business-analytics',
+    title: 'Business & Analytics',
+    description: 'Learn business strategy, project management, and data-driven decision making',
+    icon: FaBriefcase,
+    color: 'bg-indigo-500',
+    courses: 10,
+    duration: '6 months',
+    image: '/img/course-3.jpg',
+    level: 'Intermediate',
+    students: 1150
+  },
+  {
+    id: 'finance-accounting',
+    title: 'Finance & Accounting',
+    description: 'Financial modeling, investment analysis, and accounting fundamentals',
+    icon: FaDollarSign,
+    color: 'bg-green-600',
+    courses: 9,
+    duration: '5 months',
+    image: '/img/team-1.jpg',
+    level: 'Beginner to Advanced',
+    students: 765
+  },
+  {
+    id: 'photography',
+    title: 'Photography & Videography',
+    description: 'Professional photography, video editing, color grading, and storytelling',
+    icon: FaCamera,
+    color: 'bg-purple-500',
+    courses: 7,
+    duration: '3 months',
+    image: '/img/team-2.jpg',
+    level: 'Beginner',
+    students: 890
+  },
 ];
 
 const Roadmap = () => {
@@ -155,15 +203,15 @@ const Roadmap = () => {
             className="flex justify-center gap-6 mt-10"
           >
             <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-8 py-4 text-center">
-              <p className="text-4xl font-bold">6+</p>
+              <p className="text-4xl font-bold">14</p>
               <p className="text-sm">Roadmaps</p>
             </div>
             <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-8 py-4 text-center">
-              <p className="text-4xl font-bold">68+</p>
+              <p className="text-4xl font-bold">135+</p>
               <p className="text-sm">Courses</p>
             </div>
             <div className="bg-white/20 backdrop-blur-lg rounded-2xl px-8 py-4 text-center">
-              <p className="text-4xl font-bold">37+</p>
+              <p className="text-4xl font-bold">82+</p>
               <p className="text-sm">Months Content</p>
             </div>
           </motion.div>
