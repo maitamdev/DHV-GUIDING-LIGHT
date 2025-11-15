@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaUser, FaEnvelope, FaLock, FaGraduationCap, FaLightbulb, FaChalkboardTeacher, FaBriefcase, FaRocket, FaUsers, FaStar, FaCheckCircle } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaLock, FaGraduationCap, FaChalkboardTeacher, FaBriefcase, FaRocket, FaUsers, FaStar, FaCheckCircle } from 'react-icons/fa';
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
