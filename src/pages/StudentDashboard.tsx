@@ -401,8 +401,8 @@ const StudentDashboard = () => {
         >
           <div className="px-8 py-4 flex justify-between items-center">
             <div>
-              <h1 className="text-2xl font-bold text-white">👋 Chào mừng {profileData.name}!</h1>
-              <p className="text-sm text-blue-100 mt-1">📅 Saturday, November 15 – Books are the most wonderful companions!</p>
+              <h1 className="text-2xl font-bold text-white"> Wellcome {profileData.name}!</h1>
+              <p className="text-sm text-blue-100 mt-1"> Saturday, November 15 – Books are the most wonderful companions!</p>
             </div>
 
             {/* Quick Actions - White buttons */}
@@ -835,7 +835,7 @@ const StudentDashboard = () => {
                       disabled={!editMode}
                       rows={4}
                       className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800 text-lg"
-                      placeholder="VD: 🏆 Giải Nhì Hackathon 2024..."
+                      placeholder="VD:  Giải Nhì Hackathon 2024..."
                     />
                   </div>
                 </div>
@@ -889,11 +889,11 @@ const StudentDashboard = () => {
                         </div>
                         {mentor.available ? (
                           <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
-                            ✅ Available
+                             Available
                           </span>
                         ) : (
                           <span className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">
-                            ⏰ Busy
+                            Busy
                           </span>
                         )}
                       </div>
@@ -946,7 +946,7 @@ const StudentDashboard = () => {
                   AI-Powered Mentor Recommendations
                 </h3>
                 <p className="text-gray-600 mb-8">
-                  💡 Enter your skills, interests, and goals. AI will analyze and suggest the best mentors for you!
+                   Enter your skills, interests, and goals. AI will analyze and suggest the best mentors for you!
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-8 mb-8">
@@ -959,7 +959,7 @@ const StudentDashboard = () => {
                     
                     <div className="space-y-5">
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2">🎯 Current Skills</label>
+                        <label className="block text-gray-700 font-semibold mb-2"> Current Skills</label>
                         <textarea
                           value={aiFormData.skills}
                           onChange={(e) => setAiFormData({ ...aiFormData, skills: e.target.value })}
@@ -970,7 +970,7 @@ const StudentDashboard = () => {
                       </div>
 
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2">❤️ Interests & Fields</label>
+                        <label className="block text-gray-700 font-semibold mb-2"> Interests & Fields</label>
                         <textarea
                           value={aiFormData.interests}
                           onChange={(e) => setAiFormData({ ...aiFormData, interests: e.target.value })}
@@ -981,7 +981,7 @@ const StudentDashboard = () => {
                       </div>
 
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2">🚀 Career Goals</label>
+                        <label className="block text-gray-700 font-semibold mb-2">Career Goals</label>
                         <textarea
                           value={aiFormData.goals}
                           onChange={(e) => setAiFormData({ ...aiFormData, goals: e.target.value })}
@@ -992,7 +992,7 @@ const StudentDashboard = () => {
                       </div>
 
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2">📊 Current Level</label>
+                        <label className="block text-gray-700 font-semibold mb-2"> Current Level</label>
                         <select
                           value={aiFormData.experience}
                           onChange={(e) => setAiFormData({ ...aiFormData, experience: e.target.value })}
@@ -1007,7 +1007,7 @@ const StudentDashboard = () => {
                       </div>
 
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2">🎓 Preferred Fields</label>
+                        <label className="block text-gray-700 font-semibold mb-2"> Preferred Fields</label>
                         <input
                           type="text"
                           value={aiFormData.preferredFields}

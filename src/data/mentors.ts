@@ -239,7 +239,7 @@ export const instructors: Instructor[] = [
     name: 'Lê Hoàng Anh',
     title: 'Mobile Development Expert',
     specialty: 'Mobile Development',
-    image: '/img/team-3.jpg',
+    image: '/img/anh1.png',
     rating: 4.9,
     students: 1056,
     courses: 10,
@@ -320,10 +320,10 @@ export const instructors: Instructor[] = [
 
   {
     id: 4,
-    name: 'Phạm Minh Tuấn',
+    name: 'Pham Minh Tuan',
     title: 'UX/UI Design Director',
     specialty: 'UI/UX Design',
-    image: '/img/team-4.jpg',
+    image: '/img/anh2.png',
     rating: 4.9,
     students: 1567,
     courses: 15,
@@ -398,6 +398,123 @@ export const instructors: Instructor[] = [
       },
     ]
   },
+  {
+  id: 7,
+  name: 'Nguyen Thao My',
+  title: 'Marketing Director',
+  specialty: 'Digital Marketing & Brand Strategy',
+  image: '/img/anh1.png',
+  rating: 4.8,
+  students: 1820,
+  courses: 18,
+  experience: '12+ years',
+  company: 'VNG Corporation',
+
+  bio: 'Marketing Director at VNG with over 12 years of experience in brand strategy, digital marketing, and growth marketing for tech products. Led multiple campaigns reaching over 150 million impressions and achieving 70% revenue growth. Mentored more than 200 students and junior marketers, many of whom now work at top-tech companies in Vietnam.',
+
+  skills: [
+    'Brand Strategy',
+    'Digital Marketing',
+    'Content Strategy',
+    'Social Media',
+    'SEO/SEM',
+    'Paid Ads (Facebook/Google/TikTok)',
+    'Marketing Automation',
+    'Consumer Insight',
+    'Campaign Planning',
+    'Growth Strategy'
+  ],
+
+  softSkills: [
+    'Leadership',
+    'Communication',
+    'Analytical Thinking',
+    'Creativity',
+    'Problem-solving'
+  ],
+
+  email: 'thaomy.marketing@dhv.edu.vn',
+  linkedin: 'linkedin.com/in/thaomy-marketing',
+  github: '',
+  website: 'thaomystrategy.com',
+
+  availability: [
+    { day: 'Tuesday', time: '19:00 - 21:00', available: true },
+    { day: 'Thursday', time: '18:30 - 20:30', available: true },
+    { day: 'Saturday', time: '14:00 - 16:00', available: true }
+  ],
+
+  workExperience: [
+    {
+      position: 'Marketing Director',
+      company: 'VNG Corporation',
+      duration: '2020 - Present',
+      achievements: [
+        'Increased ZaloPay MAU by 45% within one year',
+        'Led a social media campaign generating 120M+ impressions',
+        'Built and managed a 25-member marketing team with a strong growth process',
+        'Reduced CPA by 32% through optimized ad budgeting'
+      ]
+    },
+    {
+      position: 'Senior Digital Marketing Manager',
+      company: 'Shopee Vietnam',
+      duration: '2017 - 2020',
+      achievements: [
+        'Managed a 2 million USD annual advertising budget',
+        'Drove 200% growth from SEO & content channels',
+        'Led the 11.11 mega campaign achieving the highest conversion rate of the year'
+      ]
+    }
+  ],
+
+  achievements: [
+    { title: 'Vietnam Digital Awards', year: '2023' },
+    { title: 'Top 10 Young Marketers Vietnam', year: '2021' },
+    { title: 'Best Social Campaign – MMA Awards', year: '2020' }
+  ],
+
+  certifications: [
+    { name: 'Google Ads Certification', issuer: 'Google', year: '2020' },
+    { name: 'Meta Blueprint Media Buying Certification', issuer: 'Meta', year: '2021' },
+    { name: 'Hubspot Content Marketing Certification', issuer: 'Hubspot', year: '2019' }
+  ],
+
+  mentoringPhilosophy:
+    'Effective marketing combines creativity with data. I help mentees understand consumer behavior, build strategic marketing plans, and execute measurable campaigns. Every mentee gains real project experience to strengthen their portfolio and professional confidence.',
+
+  mentoringAreas: [
+    'Digital Marketing Fundamentals',
+    'Content & Social Media Strategy',
+    'Paid Advertising (Meta/Google/TikTok)',
+    'Brand Strategy & Positioning',
+    'SEO & Content Optimization',
+    'Marketing Analytics & KPI Tracking',
+    'Portfolio Building for Marketing Careers'
+  ],
+
+  mentoringSupport: {
+    mode: 'Online & Offline (HCMC)',
+    maxMentees: 8,
+    availability: '3 sessions per week',
+    responsibilities: [
+      'Campaign Review',
+      'Content Feedback',
+      'Marketing Strategy Coaching',
+      'Interview Preparation for Marketing Roles'
+    ]
+  },
+
+  testimonials: [
+    {
+      studentName: 'Le Hoang Nhi',
+      feedback:
+        'My’s mentorship helped me understand digital marketing from a real-world perspective. Thanks to her guidance, my portfolio improved significantly and I received offers from 3 companies.',
+      outcome: 'Digital Marketing Executive at Shopee'
+    }
+  ]
+},
+
 
   {
     id: 5,
@@ -480,7 +597,9 @@ export const instructors: Instructor[] = [
     ]
   },
 
+
   // Continue with remaining 45 mentors across different fields...
-  // Due to length constraints, I'll provide the structure for the remaining mentors
+  // Due to length constraints, I'll provide the structure for the remaining mentors    
+    
 
 ];

@@ -88,7 +88,7 @@ const Login = () => {
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="hidden lg:flex lg:w-3/5 bg-gradient-to-br from-[#27E0A7] via-[#1BC6D5] to-[#06BBCC] relative overflow-hidden items-center justify-center p-12"
+        className="hidden lg:flex lg:w-3/5 bg-gradient-to-br from-[#001A66] via-[#001F7A] to-[#002B8F] relative overflow-hidden items-center justify-center p-12"
       >
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
@@ -97,7 +97,7 @@ const Login = () => {
             alt="Students Learning" 
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#27E0A7]/95 via-[#1BC6D5]/95 to-[#06BBCC]/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#001A66]/95 via-[#001F7A]/95 to-[#002B8F]/95"></div>
         </div>
 
         {/* Animated Background Elements */}
@@ -264,7 +264,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white py-5 rounded-xl font-bold text-xl hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">

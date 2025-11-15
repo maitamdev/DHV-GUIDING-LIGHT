@@ -26,9 +26,9 @@ const Footer = () => {
         {/* Subtle Glow Line */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
 
-        <div className="container mx-auto px-4 pt-20 pb-8 relative z-10">
+        <div className="container mx-auto px-4 pt-12 pb-6 relative z-10">
           {/* Main Grid - 4 Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
             {/* Column 1: Logo + Description + Social */}
             <div>
               <div className="mb-6">
@@ -145,27 +145,27 @@ const Footer = () => {
           </div>
 
           {/* Trust Badges */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8 border-y border-white/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-white/10">
             {[
-              { icon: FaShieldAlt, title: 'Secure Learning', subtitle: 'SSL Protected', color: 'text-green-400' },
-              { icon: FaCertificate, title: 'Certified', subtitle: 'Industry Recognized', color: 'text-yellow-400' },
-              { icon: FaStar, title: '4.9/5 Rating', subtitle: '12,000+ Reviews', color: 'text-blue-400' },
-              { icon: FaUsers, title: '50K+ Students', subtitle: 'Worldwide', color: 'text-purple-400' }
+              { icon: FaShieldAlt, title: 'Secure Learning', subtitle: 'SSL Protected' },
+              { icon: FaCertificate, title: 'Certified', subtitle: 'Industry Recognized' },
+              { icon: FaStar, title: '4.9/5 Rating', subtitle: '12,000+ Reviews' },
+              { icon: FaUsers, title: '50K+ Students', subtitle: 'Worldwide' }
             ].map((badge, index) => (
               <motion.div
                 key={index}
-                whileHover={{ scale: 1.05, y: -5 }}
+                whileHover={{ scale: 1.05, y: -3 }}
                 className="flex flex-col items-center text-center"
               >
-                <badge.icon className={`text-3xl ${badge.color} mb-2`} />
-                <p className="text-white font-semibold text-sm" style={{ fontFamily: "'Poppins', sans-serif" }}>{badge.title}</p>
+                <badge.icon className="text-2xl text-white mb-1.5" />
+                <p className="text-white font-semibold text-xs" style={{ fontFamily: "'Poppins', sans-serif" }}>{badge.title}</p>
                 <p className="text-white/50 text-xs" style={{ fontFamily: "'Inter', sans-serif" }}>{badge.subtitle}</p>
               </motion.div>
             ))}
           </div>
 
           {/* Bottom - Copyright */}
-          <div className="pt-8 text-center">
+          <div className="pt-6 text-center">
             <p className="text-white/50 text-sm" style={{ fontFamily: "'Inter', sans-serif" }}>
               &copy; 2025 DHV GUIDING LIGHT. All Rights Reserved.
             </p>
