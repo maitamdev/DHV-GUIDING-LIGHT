@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap, FaRobot, FaPaperPlane, FaLightbulb, FaChartLine, FaCog, FaSignOutAlt, FaHome, FaBriefcase, FaTasks, FaBookOpen, FaBars } from 'react-icons/fa';
+import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaRobot, FaPaperPlane, FaLightbulb, FaGraduationCap, FaChartLine, FaCog, FaSignOutAlt, FaHome, FaBriefcase, FaTasks, FaBookOpen } from 'react-icons/fa';
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'profile' | 'mentors' | 'aiSuggest' | 'schedule' | 'courses' | 'myCourses'>('profile');
   const [editMode, setEditMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   
   // AI Suggestion State
   const [aiFormData, setAiFormData] = useState({
@@ -174,27 +175,43 @@ const StudentDashboard = () => {
     mentor.skills.some(skill => skill.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
-  // Sidebar menu configuration
+  // Chart data for learning progress
+  const weeklyProgressData = [
+    { day: 'Mon', hours: 3.2 },
+    { day: 'Tue', hours: 4.5 },
+    { day: 'Wed', hours: 2.8 },
+    { day: 'Thu', hours: 5.1 },
+    { day: 'Fri', hours: 4.2 },
+    { day: 'Sat', hours: 6.5 },
+    { day: 'Sun', hours: 5.8 }
+  ];
+
+  const maxHours = Math.max(...weeklyProgressData.map(d => d.hours));
+
+  // Sidebar menu items
   const sidebarMenu = [
-    { id: 'profile', icon: FaUser, label: 'My Profile' },
-    { id: 'myCourses', icon: FaBook, label: 'My Courses' },
-    { id: 'mentors', icon: FaSearch, label: 'Find Mentors' },
-    { id: 'aiSuggest', icon: FaRobot, label: 'AI Mentor' },
-    { id: 'schedule', icon: FaCalendar, label: 'Meeting Schedule' },
+    { id: 'profile', icon: FaUser, label: 'My Profile', action: () => setActiveTab('profile') },
+    { id: 'myCourses', icon: FaBook, label: 'My Courses', action: () => setActiveTab('myCourses') },
+    { id: 'mentors', icon: FaSearch, label: 'Find Mentors', action: () => setActiveTab('mentors') },
+    { id: 'aiSuggest', icon: FaRobot, label: 'AI Mentor', action: () => setActiveTab('aiSuggest') },
+    { id: 'schedule', icon: FaCalendar, label: 'Meeting Schedule', action: () => setActiveTab('schedule') },
+    { id: 'dashboard', icon: FaHome, label: 'Student Dashboard', action: () => setActiveTab('profile') },
+    { id: 'notifications', icon: FaBell, label: 'Notifications', action: () => {} },
+    { id: 'settings', icon: FaCog, label: 'Settings', action: () => {} },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      {/* Sidebar - White like DHV image */}
+    <div className="min-h-screen bg-gradient-to-br from-[#F8FAFC] via-[#EDF2F7] to-[#E2E8F0] flex">
+      {/* Sidebar - Neumorphism Style */}
       <motion.aside
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        className="fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 z-50 overflow-y-auto"
+        className="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-[#F8FAFC] to-[#E2E8F0] shadow-[8px_8px_16px_rgba(163,177,198,0.6),-8px_-8px_16px_rgba(255,255,255,0.5)] z-50 overflow-y-auto"
       >
         {/* Logo */}
-        <div className="p-6 border-b border-gray-100">
+        <div className="p-6 border-b border-gray-200/50">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-[#0066CC] shadow-md flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#5B8DEF] to-[#9B7BFF] shadow-lg flex items-center justify-center">
               <FaGraduationCap className="text-2xl text-white" />
             </div>
             <div>
@@ -209,111 +226,82 @@ const StudentDashboard = () => {
           {sidebarMenu.map((item) => (
             <motion.button
               key={item.id}
-              onClick={() => setActiveTab(item.id as any)}
+              onClick={item.action}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all font-medium text-sm ${
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                 activeTab === item.id
-                  ? 'bg-[#0066CC] text-white shadow-md'
-                  : 'text-gray-600 hover:bg-gray-50'
+                  ? 'bg-gradient-to-r from-[#5B8DEF] to-[#9B7BFF] text-white shadow-lg'
+                  : 'text-gray-600 hover:bg-white/50 shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)]'
               }`}
             >
               <item.icon className="text-lg" />
-              <span className="text-sm">{item.label}</span>
+              <span className="font-medium text-sm">{item.label}</span>
             </motion.button>
           ))}
-          
-          <div className="my-4 border-t border-gray-200/50"></div>
-          
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all font-medium text-sm"
-          >
-            <FaHome className="text-lg" />
-            <span>Dashboard</span>
-          </motion.button>
-          
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all font-medium text-sm"
-          >
-            <FaBell className="text-lg" />
-            <span>Notifications</span>
-          </motion.button>
-          
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all font-medium text-sm"
-          >
-            <FaCog className="text-lg" />
-            <span>Settings</span>
-          </motion.button>
         </nav>
 
         {/* Logout Button */}
         <div className="absolute bottom-6 left-4 right-4">
           <button
             onClick={() => navigate('/login')}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-500 hover:bg-red-50 transition-all font-medium text-sm"
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)] transition-all"
           >
             <FaSignOutAlt className="text-lg" />
-            <span>Logout</span>
+            <span className="font-medium text-sm">Logout</span>
           </button>
         </div>
       </motion.aside>
 
-      {/* Main Content */}
-      <div className="ml-64 flex-1 min-h-screen">
-        {/* Top Header - Blue like DHV image */}
+      {/* Main Content Area */}
+      <div className="ml-64 flex-1 pt-20 pb-12">
+        {/* Top Header Bar */}
         <motion.header
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="sticky top-0 bg-[#0066CC] shadow-md z-40"
+          className="fixed top-0 left-64 right-0 bg-gradient-to-r from-[#F8FAFC] to-[#E2E8F0] shadow-[0_4px_12px_rgba(163,177,198,0.4)] z-40 backdrop-blur-sm"
         >
           <div className="px-8 py-4 flex justify-between items-center">
             <div>
-              <h1 className="text-2xl font-bold text-white">👋 Chào mừng {profileData.name}!</h1>
-              <p className="text-sm text-blue-100 mt-1">📅 Thứ 7, 15 Tháng 11 - Sách là người bạn đồng hành tuyệt vời nhất!</p>
+              <h1 className="text-2xl font-bold text-gray-800">Welcome back, {profileData.name}!</h1>
+              <p className="text-sm text-gray-500 mt-1">Let's continue your learning journey</p>
             </div>
 
-            {/* Quick Actions - White buttons */}
+            {/* Quick Action Buttons */}
             <div className="flex items-center gap-3">
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate('/portfolio')}
-                className="px-5 py-2.5 rounded-lg bg-white text-[#0066CC] font-semibold shadow-md hover:shadow-lg transition-all flex items-center gap-2"
+                className="px-5 py-2.5 rounded-xl bg-white text-gray-700 font-semibold shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)] hover:shadow-lg transition-all"
               >
-                <FaBriefcase />
+                <FaBriefcase className="inline mr-2" />
                 Portfolio
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate('/competency-profile')}
-                className="px-5 py-2.5 rounded-lg bg-white text-[#0066CC] font-semibold shadow-md hover:shadow-lg transition-all flex items-center gap-2"
+                className="px-5 py-2.5 rounded-xl bg-white text-gray-700 font-semibold shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)] hover:shadow-lg transition-all"
               >
-                <FaChartLine />
+                <FaChartLine className="inline mr-2" />
                 Competency
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate('/assignment-submission')}
-                className="px-5 py-2.5 rounded-lg bg-white text-[#0066CC] font-semibold shadow-md hover:shadow-lg transition-all flex items-center gap-2"
+                className="px-5 py-2.5 rounded-xl bg-white text-gray-700 font-semibold shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)] hover:shadow-lg transition-all"
               >
-                <FaTasks />
+                <FaTasks className="inline mr-2" />
                 Assignments
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-5 py-2.5 rounded-lg bg-white/20 text-white font-semibold hover:bg-white/30 transition-all flex items-center gap-2"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#5B8DEF] to-[#9B7BFF] text-white font-semibold shadow-lg hover:shadow-xl transition-all"
               >
-                <FaBookOpen />
+                <FaBookOpen className="inline mr-2" />
                 Homework
               </motion.button>
             </div>
@@ -321,36 +309,36 @@ const StudentDashboard = () => {
         </motion.header>
 
         {/* Dashboard Content */}
-        <div className="p-8">
-          {/* Main Stats Cards - Neumorphism */}
+        <div className="container mx-auto px-8 max-w-7xl">
+          {/* Main Dashboard Cards - Neumorphism */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {/* Enrolled Courses */}
+            {/* Enrolled Courses Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all cursor-pointer group border border-gray-100"
+              whileHover={{ y: -5, boxShadow: '12px 12px 24px rgba(163,177,198,0.8), -12px -12px 24px rgba(255,255,255,0.7)' }}
+              className="bg-gradient-to-br from-white to-[#F8FAFC] rounded-3xl p-6 shadow-[8px_8px_16px_rgba(163,177,198,0.5),-8px_-8px_16px_rgba(255,255,255,0.5)] cursor-pointer group"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="w-14 h-14 rounded-xl bg-[#0066CC] shadow-md flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#5B8DEF] to-[#4A7BD8] shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                   <FaBook className="text-2xl text-white" />
                 </div>
               </div>
               <h3 className="text-3xl font-bold text-gray-800 mb-1">3</h3>
               <p className="text-gray-500 text-sm font-medium mb-3">Enrolled Courses</p>
-              <div className="bg-gray-100 rounded-full h-2 overflow-hidden">
-                <div className="bg-[#0066CC] h-full rounded-full transition-all" style={{ width: '68%' }}></div>
+              <div className="bg-gray-200 rounded-full h-2 overflow-hidden">
+                <div className="bg-gradient-to-r from-[#5B8DEF] to-[#9B7BFF] h-full rounded-full" style={{ width: '68%' }}></div>
               </div>
               <p className="text-xs text-gray-400 mt-2">68% average progress</p>
             </motion.div>
 
-            {/* Following Mentors */}
+            {/* Following Mentors Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -5, boxShadow: '12px 12px 24px rgba(163,177,198,0.8), -12px -12px 24px rgba(255,255,255,0.7)' }}
               className="bg-gradient-to-br from-white to-[#F8FAFC] rounded-3xl p-6 shadow-[8px_8px_16px_rgba(163,177,198,0.5),-8px_-8px_16px_rgba(255,255,255,0.5)] cursor-pointer group"
             >
               <div className="flex items-start justify-between mb-4">
@@ -366,12 +354,12 @@ const StudentDashboard = () => {
               </div>
             </motion.div>
 
-            {/* Upcoming Meetings */}
+            {/* Upcoming Meetings Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -5, boxShadow: '12px 12px 24px rgba(163,177,198,0.8), -12px -12px 24px rgba(255,255,255,0.7)' }}
               className="bg-gradient-to-br from-white to-[#F8FAFC] rounded-3xl p-6 shadow-[8px_8px_16px_rgba(163,177,198,0.5),-8px_-8px_16px_rgba(255,255,255,0.5)] cursor-pointer group"
             >
               <div className="flex items-start justify-between mb-4">
@@ -387,12 +375,12 @@ const StudentDashboard = () => {
               </div>
             </motion.div>
 
-            {/* Completed Sessions */}
+            {/* Completed Sessions Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -5, boxShadow: '12px 12px 24px rgba(163,177,198,0.8), -12px -12px 24px rgba(255,255,255,0.7)' }}
               className="bg-gradient-to-br from-white to-[#F8FAFC] rounded-3xl p-6 shadow-[8px_8px_16px_rgba(163,177,198,0.5),-8px_-8px_16px_rgba(255,255,255,0.5)] cursor-pointer group"
             >
               <div className="flex items-start justify-between mb-4">
@@ -411,7 +399,7 @@ const StudentDashboard = () => {
             </motion.div>
           </div>
 
-          {/* Profile Overview - Neumorphism */}
+          {/* Profile Overview Section - Neumorphism */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -476,7 +464,7 @@ const StudentDashboard = () => {
             </div>
           </motion.div>
 
-          {/* Tabs Navigation */}
+          {/* Tabs Navigation - Neumorphism */}
           <div className="mb-8">
             <div className="flex gap-3 overflow-x-auto pb-4">
               {[
@@ -504,7 +492,71 @@ const StudentDashboard = () => {
             </div>
           </div>
 
-          {/* Tab Content - Neumorphism Card */}
+          {/* Study Hours Chart - Neumorphism */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="bg-gradient-to-br from-white to-[#F8FAFC] rounded-3xl p-8 shadow-[8px_8px_16px_rgba(163,177,198,0.5),-8px_-8px_16px_rgba(255,255,255,0.5)] mb-8"
+          >
+            <div className="flex justify-between items-center mb-8">
+              <div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-2">Weekly Study Progress</h3>
+                <p className="text-gray-500 text-sm">Track your learning hours this week</p>
+              </div>
+              <div className="flex gap-2">
+                <button className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#5B8DEF] to-[#9B7BFF] text-white text-sm font-semibold shadow-lg">
+                  This Week
+                </button>
+                <button className="px-4 py-2 rounded-xl bg-white text-gray-600 text-sm font-semibold shadow-[4px_4px_8px_rgba(163,177,198,0.3),-4px_-4px_8px_rgba(255,255,255,0.5)]">
+                  Last Week
+                </button>
+              </div>
+            </div>
+
+            {/* Chart */}
+            <div className="relative h-80">
+              <div className="absolute left-0 top-0 bottom-0 w-12 flex flex-col justify-between text-xs text-gray-400 pr-2 text-right">
+                <span>8h</span>
+                <span>6h</span>
+                <span>4h</span>
+                <span>2h</span>
+                <span>0h</span>
+              </div>
+
+              <div className="ml-12 h-full flex items-end justify-around gap-4 border-b-2 border-gray-200">
+                {weeklyProgressData.map((data, idx) => {
+                  const height = (data.hours / maxHours) * 100;
+                  return (
+                    <div key={idx} className="flex flex-col items-center flex-1 group">
+                      <div
+                        className="w-full rounded-t-2xl shadow-[4px_4px_8px_rgba(163,177,198,0.3),-2px_-2px_6px_rgba(255,255,255,0.5)] bg-gradient-to-t from-[#5B8DEF] to-[#A8D4FF] hover:from-[#9B7BFF] hover:to-[#C8B7FF] transition-all cursor-pointer relative"
+                        style={{ height: `${height}%` }}
+                      >
+                        <div className="absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-gray-900 text-white px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap shadow-lg">
+                          {data.hours}h
+                        </div>
+                      </div>
+                      <span className="text-sm text-gray-600 mt-4 font-semibold">{data.day}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+                <p className="text-gray-400 text-xs font-medium">Average across all courses</p>
+                <a href="#" className="text-emerald-500 text-xs font-semibold mt-3 inline-block hover:underline">
+                  View progress →
+                </a>
+              </div>
+              <div className="bg-gradient-to-br from-purple-100 to-indigo-100 p-3 rounded-xl">
+                <FaCheckCircle className="text-2xl text-purple-500" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+          {/* Tab Content Area - Neumorphism */}
           <div className="bg-gradient-to-br from-white to-[#F8FAFC] rounded-3xl shadow-[8px_8px_16px_rgba(163,177,198,0.5),-8px_-8px_16px_rgba(255,255,255,0.5)] overflow-hidden">
             <div className="p-10">
             {/* Profile Tab */}
@@ -517,7 +569,7 @@ const StudentDashboard = () => {
                 <div className="flex justify-between items-center mb-8">
                   <div>
                     <h3 className="text-4xl font-bold text-gray-800 flex items-center gap-3 mb-2">
-                      <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-3 rounded-xl">
+                      <div className="bg-gradient-to-r from-emerald-500 to-teal-500 p-3 rounded-xl">
                         <FaUser className="text-white" />
                       </div>
                       Personal Profile
@@ -527,7 +579,7 @@ const StudentDashboard = () => {
                   {!editMode ? (
                     <button
                       onClick={() => setEditMode(true)}
-                      className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                      className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                     >
                       <FaEdit className="group-hover:rotate-12 transition-transform" /> Edit Profile
                     </button>
@@ -543,7 +595,7 @@ const StudentDashboard = () => {
 
                 <div className="space-y-6">
                   {/* Avatar & Basic Info Section */}
-                  <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-3xl p-10 text-white shadow-2xl">
+                  <div className="relative overflow-hidden bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 rounded-3xl p-10 text-white shadow-2xl">
                     {/* Background pattern */}
                     <div className="absolute inset-0 opacity-10">
                       <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 20px 20px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
@@ -959,7 +1011,7 @@ Please respond in JSON format:
                           setAiLoading(false);
                         }}
                         disabled={aiLoading}
-                        className="w-full px-8 py-4 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white rounded-xl font-bold text-lg hover:from-blue-600 hover:to-purple-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg"
+                        className="w-full px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl font-bold text-lg hover:from-emerald-600 hover:to-teal-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg"
                       >
                         {aiLoading ? (
                           <>
@@ -1006,7 +1058,7 @@ Please respond in JSON format:
                             className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500"
                           >
                             <div className="flex items-start gap-4 mb-4">
-                              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
                                 {index + 1}
                               </div>
                               <div className="flex-1">
@@ -1204,7 +1256,7 @@ Please respond in JSON format:
                             </button>
                             <button
                               onClick={() => navigate(`/course/${course.id}`)}
-                              className="px-4 py-3 border-2 border-[#06BBCC] text-[#06BBCK] rounded-lg hover:bg-[#06BBCC] hover:text-white transition-colors"
+                              className="px-4 py-3 border-2 border-[#06BBCC] text-[#06BBCC] rounded-lg hover:bg-[#06BBCC] hover:text-white transition-colors"
                               title="View Course Details"
                             >
                               <FaStar />
@@ -1218,7 +1270,7 @@ Please respond in JSON format:
               </div>
             )}
           </div>
-          </div>
+        </div>
         </div>
       </div>
     </div>
