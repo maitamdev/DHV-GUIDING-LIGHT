@@ -56,20 +56,21 @@ const Navbar: React.FC = () => {
               <motion.div 
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.3 }}
-                className={`transition-all duration-500 ${isScrolled ? 'w-10 h-10' : 'w-12 h-12'}`}
+                className={`transition-all duration-500 ${isScrolled ? 'w-11 h-11' : 'w-14 h-14'}`}
               >
                 <img 
-                  src="/img/icon.png" 
+                  src="/img/dhv-logo.png" 
                   alt="DHV Logo" 
-                  className="w-full h-full object-contain drop-shadow-lg"
+                  className="w-full h-full object-contain drop-shadow-2xl"
                 />
               </motion.div>
               <div className="flex flex-col">
-                <span className={`font-bold text-white tracking-wide transition-all duration-500 ${
-                  isScrolled ? 'text-sm' : 'text-base'
-                }`}>
+                <span className={`font-black text-white tracking-wider transition-all duration-500 ${
+                  isScrolled ? 'text-base' : 'text-lg'
+                }`} style={{ fontFamily: "'Poppins', 'Inter', sans-serif", letterSpacing: '0.05em' }}>
                   DHV GUIDING LIGHT
                 </span>
+                <span className="text-[10px] text-white/80 font-medium tracking-widest" style={{ fontFamily: "'Inter', sans-serif", letterSpacing: '0.1em' }}>CAREER TRANSFORMATION</span>
               </div>
             </Link>
 

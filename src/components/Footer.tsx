@@ -32,10 +32,15 @@ const Footer = () => {
             {/* Column 1: Logo + Description + Social */}
             <div>
               <div className="mb-6">
-                <h3 className="text-2xl font-black mb-2" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                <img 
+                  src="/img/dhv-logo.png" 
+                  alt="DHV Logo" 
+                  className="w-16 h-16 object-contain mb-4 drop-shadow-xl"
+                />
+                <h3 className="text-2xl font-black mb-2 tracking-wider" style={{ fontFamily: "'Poppins', sans-serif" }}>
                   DHV GUIDING LIGHT
                 </h3>
-                <p className="text-white/60 text-sm leading-relaxed">
+                <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'Inter', sans-serif" }}>
                   Leading online learning platform for career transformation
                 </p>
               </div>

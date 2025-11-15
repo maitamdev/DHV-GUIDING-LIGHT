@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaGraduationCap, FaRocket, FaUsers, FaStar, FaCheckCircle } from 'react-icons/fa';
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaRocket, FaUsers, FaStar, FaCheckCircle } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { doc, getDoc } from 'firebase/firestore';
@@ -116,13 +116,18 @@ const Login = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="mb-8"
           >
-            <div className="w-20 h-20 bg-white/20 backdrop-blur-xl rounded-2xl flex items-center justify-center mb-6 shadow-2xl">
-              <FaGraduationCap className="text-5xl text-white" />
+            <div className="mb-6">
+              <img 
+                src="/img/dhv-logo.png" 
+                alt="DHV Logo" 
+                className="w-32 h-32 object-contain drop-shadow-2xl mx-auto"
+              />
             </div>
-            <h1 className="text-5xl font-black mb-4 leading-tight">
-              DHV<br />GUIDING LIGHT
+            <h1 className="text-5xl font-black mb-2 leading-tight tracking-wider" style={{ fontFamily: "'Poppins', sans-serif" }}>
+              DHV GUIDING LIGHT
             </h1>
-            <div className="w-24 h-1 bg-white/40 rounded-full"></div>
+            <p className="text-sm text-white/70 tracking-widest font-semibold mb-4" style={{ fontFamily: "'Inter', sans-serif", letterSpacing: '0.15em' }}>CAREER TRANSFORMATION PLATFORM</p>
+            <div className="w-24 h-1 bg-white/40 rounded-full mx-auto"></div>
           </motion.div>
 
           {/* Description */}
@@ -175,10 +180,15 @@ const Login = () => {
         <div className="w-full max-w-md">
           {/* Mobile Logo */}
           <div className="lg:hidden text-center mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#27E0A7] to-[#1BC6D5] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <FaGraduationCap className="text-3xl text-white" />
+            <div className="mb-4">
+              <img 
+                src="/img/dhv-logo.png" 
+                alt="DHV Logo" 
+                className="w-20 h-20 object-contain mx-auto drop-shadow-xl"
+              />
             </div>
-            <h2 className="text-2xl font-bold text-gray-800">DHV GUIDING LIGHT</h2>
+            <h2 className="text-2xl font-black text-gray-800 tracking-wider" style={{ fontFamily: "'Poppins', sans-serif" }}>DHV GUIDING LIGHT</h2>
+            <p className="text-xs text-gray-500 tracking-widest mt-1" style={{ fontFamily: "'Inter', sans-serif", letterSpacing: '0.1em' }}>CAREER TRANSFORMATION</p>
           </div>
 
           {/* Welcome Back */}
