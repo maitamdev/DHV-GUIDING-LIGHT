@@ -29,11 +29,12 @@ const Navbar: React.FC = () => {
   };
 
   const menuItems = [
-    { label: 'TRANG CHỦ', path: '/' },
-    { label: 'KHÓA HỌC ONLINE', path: '/courses' },
-    { label: 'VỀ CHÚNG TÔI', path: '/about' },
+    { label: 'HOME', path: '/' },
+    { label: 'COURSES', path: '/courses' },
+    { label: 'ROADMAP', path: '/roadmap' },
+    { label: 'ABOUT', path: '/about' },
     { label: 'BLOG', path: '/blog' },
-    { label: 'LIÊN HỆ', path: '/contact' }
+    { label: 'CONTACT', path: '/contact' }
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -48,30 +49,18 @@ const Navbar: React.FC = () => {
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            {/* Logo - 28Tech Style */}
+            {/* Logo - DHV School Branding */}
             <Link to="/" className="flex items-center space-x-3 group">
               <motion.div 
-                className="relative"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
+                className="w-12 h-12"
               >
-                {/* Tech Circle Icon with Gradient */}
-                <div className="relative w-10 h-10 bg-gradient-to-br from-blue-400 via-indigo-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/50">
-                  <span className="text-white font-black text-xl">D</span>
-                  {/* Pulsing ring effect */}
-                  <motion.div
-                    className="absolute inset-0 border-2 border-blue-400 rounded-full"
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.5, 0, 0.5]
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
-                </div>
+                <img 
+                  src="/img/icon.png" 
+                  alt="DHV Logo" 
+                  className="w-full h-full object-contain"
+                />
               </motion.div>
               <div className="flex flex-col">
                 <span className="text-base font-bold text-white tracking-wide">
@@ -150,7 +139,7 @@ const Navbar: React.FC = () => {
                     color: '#001A66'
                   }}
                 >
-                  Đăng nhập
+                  Login
                 </Link>
               )}
             </div>
@@ -255,7 +244,7 @@ const Navbar: React.FC = () => {
                       color: '#001A66'
                     }}
                   >
-                    Đăng nhập
+                    Login
                   </Link>
                 )}
               </div>

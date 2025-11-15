@@ -120,7 +120,7 @@ const Footer = () => {
                 Newsletter
               </h4>
               <p className="text-white/60 text-sm mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>
-                Get the latest course updates
+                Nhận thông tin khóa học mới nhất
               </p>
               <form onSubmit={handleSubmit} className="relative">
                 <input

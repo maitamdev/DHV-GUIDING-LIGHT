@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Courses from './pages/Courses';
 import CourseDetail from './pages/CourseDetail';
+import Cart from './pages/Cart';
 import Contact from './pages/Contact';
 import Testimonial from './pages/Testimonial';
 import Team from './pages/Team';
@@ -50,13 +51,26 @@ function App() {
                 <CourseDetail />
               </ProtectedRoute>
             } />
+            <Route path="cart" element={
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            } />
             <Route path="contact" element={<Contact />} />
             <Route path="testimonial" element={<Testimonial />} />
             <Route path="team" element={<Team />} />
             <Route path="instructor" element={<Instructor />} />
             <Route path="faq" element={<FAQ />} />
-            <Route path="blog" element={<Blog />} />
-            <Route path="blog/:id" element={<BlogDetail />} />
+            <Route path="blog" element={
+              <ProtectedRoute>
+                <Blog />
+              </ProtectedRoute>
+            } />
+            <Route path="blog/:id" element={
+              <ProtectedRoute>
+                <BlogDetail />
+              </ProtectedRoute>
+            } />
             <Route path="login" element={<Login />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
             <Route path="signup" element={<Signup />} />

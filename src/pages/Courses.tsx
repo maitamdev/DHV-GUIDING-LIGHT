@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { FaSearch, FaClock, FaUsers, FaStar, FaCode, FaMobile, FaDatabase, FaRobot, FaCloud, FaShieldAlt, FaPalette, FaServer, FaChartLine, FaHeart, FaRegHeart } from 'react-icons/fa';
+import { 
+  FaSearch, FaClock, FaUsers, FaStar, FaCode, FaMobile, FaDatabase, 
+  FaCloud, FaShieldAlt, FaPalette, FaChartLine, 
+  FaHeart, FaRegHeart, FaPlay, FaShoppingCart, FaCertificate, FaInfinity,
+  FaFire, FaAward, FaGraduationCap, FaBriefcase, FaCamera
+} from 'react-icons/fa';
 
 interface Course {
   id: number;
@@ -9,698 +14,642 @@ interface Course {
   instructor: string;
   instructorAvatar?: string;
   students: number;
-  price: string;
+  price: number;
+  originalPrice: number;
   image: string;
   category: string;
   level: string;
   duration: string;
   rating: number;
+  reviews: number;
   description: string;
-  bestseller?: boolean;
-  new?: boolean;
-  lessons?: number;
+  badge?: 'bestseller' | 'new' | 'advanced' | 'trending';
+  lessons: number;
+  enrolled?: number;
 }
 
-const courses: Course[] = [
-  // Web Development
+const coursesData: Course[] = [
   {
     id: 1,
-    title: 'Full Stack Web Development Masterclass',
-    instructor: 'Michael Chen',
+    title: 'Complete Web Development Bootcamp 2024',
+    instructor: 'Mai Tran Thien Tam',
     instructorAvatar: '/img/team-1.jpg',
-    students: 2340,
-    price: '$129',
+    students: 12500,
+    price: 149,
+    originalPrice: 299,
     image: '/img/course-1.jpg',
-    category: 'web-development',
-    level: 'Intermediate',
-    duration: '6 months',
+    category: 'web-dev',
+    level: 'Beginner',
+    duration: '42.5 hours',
     rating: 4.9,
-    description: 'Master HTML, CSS, JavaScript, React, Node.js, and MongoDB',
-    bestseller: true,
-    lessons: 248
+    reviews: 1234,
+    description: 'Master HTML, CSS, JavaScript, React, Node.js from zero to hero',
+    badge: 'bestseller',
+    lessons: 248,
+    enrolled: 15000
   },
   {
     id: 2,
-    title: 'React & Node.js Complete Bootcamp',
-    instructor: 'Sarah Johnson',
+    title: 'Digital Marketing & Social Media Strategy',
+    instructor: 'Nguyen Minh Khai',
     instructorAvatar: '/img/team-2.jpg',
-    students: 1987,
-    price: '$139',
+    students: 9800,
+    price: 129,
+    originalPrice: 249,
     image: '/img/course-2.jpg',
-    category: 'web-development',
-    level: 'Advanced',
-    duration: '4 months',
+    category: 'marketing',
+    level: 'All Levels',
+    duration: '32 hours',
     rating: 4.8,
-    description: 'Build modern full-stack applications with React and Node.js',
-    new: true,
-    lessons: 186
+    reviews: 987,
+    description: 'Master SEO, Facebook Ads, Google Ads, Content Marketing',
+    badge: 'trending',
+    lessons: 156,
+    enrolled: 11000
   },
   {
     id: 3,
-    title: 'TypeScript for React Developers',
-    instructor: 'David Williams',
+    title: 'UI/UX Design Masterclass with Figma',
+    instructor: 'Pham Duc Anh',
     instructorAvatar: '/img/team-3.jpg',
-    students: 1456,
-    price: '$99',
+    students: 15600,
+    price: 179,
+    originalPrice: 349,
     image: '/img/course-3.jpg',
-    category: 'web-development',
-    level: 'Intermediate',
-    duration: '3 months',
-    rating: 4.7,
-    description: 'Learn TypeScript and build type-safe React applications',
-    lessons: 142
+    category: 'design',
+    level: 'All Levels',
+    duration: '28.5 hours',
+    rating: 4.9,
+    reviews: 1567,
+    description: 'Complete UI/UX design course from beginner to professional',
+    badge: 'bestseller',
+    lessons: 142,
+    enrolled: 18000
   },
   {
     id: 4,
-    title: 'Next.js 14 - The Complete Guide',
-    instructor: 'Emily Parker',
+    title: 'Business Management & Entrepreneurship',
+    instructor: 'Tran Van Long',
     instructorAvatar: '/img/team-4.jpg',
-    students: 1234,
-    price: '$119',
-    image: '/img/team-1.jpg',
-    category: 'web-development',
-    level: 'Advanced',
-    duration: '4 months',
-    rating: 4.9,
-    description: 'Master Next.js 14 with App Router, Server Components, and more',
-    bestseller: true,
-    lessons: 198
+    students: 11200,
+    price: 169,
+    originalPrice: 329,
+    image: '/img/course-1.jpg',
+    category: 'business',
+    level: 'Intermediate',
+    duration: '36 hours',
+    rating: 4.7,
+    reviews: 876,
+    description: 'Learn business strategy, startup, leadership, and management',
+    badge: 'new',
+    lessons: 198,
+    enrolled: 12500
   },
-
-  // Mobile Development
   {
     id: 5,
-    title: 'React Native - Build iOS & Android Apps',
-    instructor: 'Alex Martinez',
-    instructorAvatar: '/img/team-2.jpg',
-    students: 1876,
-    price: '$149',
-    image: '/img/team-2.jpg',
-    category: 'mobile-development',
-    level: 'Intermediate',
-    duration: '5 months',
+    title: 'Data Science & Machine Learning A-Z',
+    instructor: 'Nguyen Van Minh',
+    instructorAvatar: '/img/team-1.jpg',
+    students: 9800,
+    price: 189,
+    originalPrice: 399,
+    image: '/img/course-2.jpg',
+    category: 'data-science',
+    level: 'Advanced',
+    duration: '52 hours',
     rating: 4.8,
-    description: 'Create cross-platform mobile apps with React Native',
-    lessons: 215
+    reviews: 1098,
+    description: 'Python, Pandas, NumPy, Scikit-learn, TensorFlow, and more',
+    badge: 'advanced',
+    lessons: 298,
+    enrolled: 12000
   },
   {
     id: 6,
-    title: 'Flutter & Dart Complete Course',
-    instructor: 'Jessica Taylor',
-    instructorAvatar: '/img/team-3.jpg',
-    students: 1543,
-    price: '$139',
-    image: '/img/team-3.jpg',
-    category: 'mobile-development',
+    title: 'Graphic Design Complete Course',
+    instructor: 'Le Thi Mai',
+    instructorAvatar: '/img/team-2.jpg',
+    students: 13400,
+    price: 139,
+    originalPrice: 279,
+    image: '/img/course-3.jpg',
+    category: 'design',
     level: 'Beginner',
-    duration: '4 months',
-    rating: 4.7,
-    description: 'Build beautiful native apps with Flutter and Dart',
-    lessons: 189
+    duration: '30 hours',
+    rating: 4.9,
+    reviews: 1245,
+    description: 'Master Photoshop, Illustrator, InDesign for professional design',
+    badge: 'bestseller',
+    lessons: 165,
+    enrolled: 15000
   },
   {
     id: 7,
-    title: 'iOS Development with Swift 5',
-    instructor: 'James Anderson',
-    instructorAvatar: '/img/team-1.jpg',
-    students: 987,
-    price: '$159',
+    title: 'Financial Accounting & Bookkeeping',
+    instructor: 'Pham Thanh Ha',
+    instructorAvatar: '/img/team-3.jpg',
+    students: 8700,
+    price: 149,
+    originalPrice: 299,
     image: '/img/course-1.jpg',
-    category: 'mobile-development',
-    level: 'Advanced',
-    duration: '6 months',
-    rating: 4.9,
-    description: 'Master iOS app development with Swift 5 and SwiftUI',
-    bestseller: true,
-    lessons: 256
+    category: 'finance',
+    level: 'Beginner',
+    duration: '38 hours',
+    rating: 4.7,
+    reviews: 765,
+    description: 'Complete accounting fundamentals and QuickBooks training',
+    badge: 'trending',
+    lessons: 188,
+    enrolled: 9500
   },
-
-  // Data Science
   {
     id: 8,
-    title: 'Data Science & Machine Learning Bootcamp',
-    instructor: 'Dr. Robert Kim',
+    title: 'Photography Masterclass: Complete Guide',
+    instructor: 'Nguyen Quoc Bao',
     instructorAvatar: '/img/team-4.jpg',
-    students: 3210,
-    price: '$169',
+    students: 10500,
+    price: 159,
+    originalPrice: 319,
     image: '/img/course-2.jpg',
-    category: 'data-science',
-    level: 'Advanced',
-    duration: '8 months',
-    rating: 4.9,
-    description: 'Python, Pandas, NumPy, Scikit-learn, and data visualization',
-    bestseller: true,
-    lessons: 312
+    category: 'photography',
+    level: 'All Levels',
+    duration: '34 hours',
+    rating: 4.8,
+    reviews: 943,
+    description: 'Professional photography from basics to advanced techniques',
+    badge: 'new',
+    lessons: 172,
+    enrolled: 11800
   },
   {
     id: 9,
-    title: 'Python for Data Science',
-    instructor: 'Lisa Wang',
-    instructorAvatar: '/img/team-2.jpg',
-    students: 2456,
-    price: '$109',
+    title: 'Mobile App Development with React Native',
+    instructor: 'Tran Minh Quan',
+    instructorAvatar: '/img/team-1.jpg',
+    students: 7200,
+    price: 139,
+    originalPrice: 279,
     image: '/img/course-3.jpg',
-    category: 'data-science',
-    level: 'Beginner',
-    duration: '4 months',
+    category: 'mobile-dev',
+    level: 'Intermediate',
+    duration: '38 hours',
     rating: 4.6,
-    description: 'Learn Python programming for data analysis and visualization',
-    lessons: 156
+    reviews: 654,
+    description: 'Build iOS and Android apps with one codebase using React Native',
+    badge: 'trending',
+    lessons: 176,
+    enrolled: 8500
   },
   {
     id: 10,
-    title: 'Advanced Data Analytics with R',
-    instructor: 'Dr. Thomas Lee',
-    instructorAvatar: '/img/team-1.jpg',
-    students: 1234,
-    price: '$149',
-    image: '/img/team-1.jpg',
-    category: 'data-science',
-    level: 'Advanced',
-    duration: '5 months',
-    rating: 4.8,
-    description: 'Statistical analysis and data visualization with R',
-    lessons: 187
-  },
-
-  // AI & Machine Learning
-  {
-    id: 11,
-    title: 'Deep Learning & Neural Networks',
-    instructor: 'Dr. Anna Schmidt',
-    instructorAvatar: '/img/team-3.jpg',
-    students: 2187,
-    price: '$189',
-    image: '/img/team-2.jpg',
-    category: 'ai-ml',
-    level: 'Advanced',
-    duration: '9 months',
-    rating: 4.9,
-    description: 'TensorFlow, PyTorch, CNNs, RNNs, and Transformers',
-    bestseller: true,
-    new: true,
-    lessons: 342
-  },
-  {
-    id: 12,
-    title: 'Machine Learning A-Z',
-    instructor: 'Prof. Mark Johnson',
-    instructorAvatar: '/img/team-4.jpg',
-    students: 2876,
-    price: '$179',
-    image: '/img/team-3.jpg',
-    category: 'ai-ml',
-    level: 'Intermediate',
-    duration: '7 months',
-    rating: 4.8,
-    description: 'Comprehensive ML course covering all major algorithms',
-    bestseller: true,
-    lessons: 298
-  },
-  {
-    id: 13,
-    title: 'Natural Language Processing with Python',
-    instructor: 'Dr. Sarah Chen',
+    title: 'AWS Cloud Practitioner Complete Course',
+    instructor: 'Pham Thi Lan',
     instructorAvatar: '/img/team-2.jpg',
-    students: 1654,
-    price: '$169',
+    students: 11200,
+    price: 159,
+    originalPrice: 319,
     image: '/img/course-1.jpg',
-    category: 'ai-ml',
-    level: 'Advanced',
-    duration: '6 months',
-    rating: 4.7,
-    description: 'NLP, BERT, GPT, and text analysis',
-    new: true,
-    lessons: 234
-  },
-
-  // Cloud Computing
-  {
-    id: 14,
-    title: 'AWS Certified Solutions Architect',
-    instructor: 'Kevin Brown',
-    instructorAvatar: '/img/team-1.jpg',
-    students: 1876,
-    price: '$159',
-    image: '/img/course-2.jpg',
-    category: 'cloud-computing',
-    level: 'Intermediate',
-    duration: '5 months',
-    rating: 4.9,
-    description: 'Prepare for AWS certification and master cloud architecture',
-    bestseller: true,
-    lessons: 176
-  },
-  {
-    id: 15,
-    title: 'Microsoft Azure Administrator',
-    instructor: 'Rachel Green',
-    instructorAvatar: '/img/team-3.jpg',
-    students: 1432,
-    price: '$149',
-    image: '/img/course-3.jpg',
-    category: 'cloud-computing',
-    level: 'Intermediate',
-    duration: '4 months',
-    rating: 4.7,
-    description: 'Azure fundamentals, VM management, and cloud services',
-    lessons: 158
-  },
-  {
-    id: 16,
-    title: 'Google Cloud Platform (GCP) Complete Guide',
-    instructor: 'Daniel Park',
-    instructorAvatar: '/img/team-4.jpg',
-    students: 1098,
-    price: '$139',
-    image: '/img/team-1.jpg',
-    category: 'cloud-computing',
+    category: 'cloud',
     level: 'Beginner',
-    duration: '4 months',
-    rating: 4.6,
-    description: 'GCP services, deployment, and cloud infrastructure',
-    lessons: 145
-  },
-
-  // Cybersecurity
-  {
-    id: 17,
-    title: 'Ethical Hacking & Penetration Testing',
-    instructor: 'Chris Evans',
-    instructorAvatar: '/img/team-2.jpg',
-    students: 1654,
-    price: '$179',
-    image: '/img/team-2.jpg',
-    category: 'cybersecurity',
-    level: 'Advanced',
-    duration: '7 months',
-    rating: 4.9,
-    description: 'Learn ethical hacking, Kali Linux, and security testing',
-    bestseller: true,
-    lessons: 267
-  },
-  {
-    id: 18,
-    title: 'Network Security Fundamentals',
-    instructor: 'Jennifer White',
-    instructorAvatar: '/img/team-1.jpg',
-    students: 1234,
-    price: '$129',
-    image: '/img/team-3.jpg',
-    category: 'cybersecurity',
-    level: 'Beginner',
-    duration: '4 months',
-    rating: 4.7,
-    description: 'Firewalls, VPNs, encryption, and network protocols',
-    lessons: 132
-  },
-
-  // UI/UX Design
-  {
-    id: 19,
-    title: 'UI/UX Design Masterclass with Figma',
-    instructor: 'Sophia Lee',
-    instructorAvatar: '/img/team-3.jpg',
-    students: 2340,
-    price: '$119',
-    image: '/img/course-1.jpg',
-    category: 'ui-ux',
-    level: 'Intermediate',
-    duration: '4 months',
+    duration: '45 hours',
     rating: 4.8,
-    description: 'Design beautiful interfaces with Figma and Adobe XD',
-    bestseller: true,
-    lessons: 164
-  },
-  {
-    id: 20,
-    title: 'User Experience (UX) Research & Design',
-    instructor: 'Oliver Martinez',
-    instructorAvatar: '/img/team-4.jpg',
-    students: 1765,
-    price: '$109',
-    image: '/img/course-2.jpg',
-    category: 'ui-ux',
-    level: 'Beginner',
-    duration: '3 months',
-    rating: 4.6,
-    description: 'User research, wireframing, prototyping, and usability testing',
-    lessons: 118
-  },
-
-  // DevOps
-  {
-    id: 21,
-    title: 'DevOps Engineering - Docker & Kubernetes',
-    instructor: 'Andrew Wilson',
-    instructorAvatar: '/img/team-2.jpg',
-    students: 1543,
-    price: '$159',
-    image: '/img/course-3.jpg',
-    category: 'devops',
-    level: 'Advanced',
-    duration: '6 months',
-    rating: 4.9,
-    description: 'Containerization, orchestration, and CI/CD pipelines',
-    bestseller: true,
-    lessons: 201
-  },
-  {
-    id: 22,
-    title: 'Jenkins CI/CD Complete Course',
-    instructor: 'Michelle Davis',
-    instructorAvatar: '/img/team-1.jpg',
-    students: 987,
-    price: '$129',
-    image: '/img/team-1.jpg',
-    category: 'devops',
-    level: 'Intermediate',
-    duration: '3 months',
-    rating: 4.7,
-    description: 'Automate build, test, and deployment processes',
-    lessons: 96
-  },
+    reviews: 1123,
+    description: 'Master AWS cloud services and prepare for certification',
+    badge: 'bestseller',
+    lessons: 234,
+    enrolled: 13000
+  }
 ];
 
 const categories = [
-  { id: 'all', name: 'All Courses', icon: FaCode, count: courses.length },
-  { id: 'web-development', name: 'Web Development', icon: FaCode, count: courses.filter(c => c.category === 'web-development').length },
-  { id: 'mobile-development', name: 'Mobile Development', icon: FaMobile, count: courses.filter(c => c.category === 'mobile-development').length },
-  { id: 'data-science', name: 'Data Science', icon: FaDatabase, count: courses.filter(c => c.category === 'data-science').length },
-  { id: 'ai-ml', name: 'AI & Machine Learning', icon: FaRobot, count: courses.filter(c => c.category === 'ai-ml').length },
-  { id: 'cloud-computing', name: 'Cloud Computing', icon: FaCloud, count: courses.filter(c => c.category === 'cloud-computing').length },
-  { id: 'cybersecurity', name: 'Cybersecurity', icon: FaShieldAlt, count: courses.filter(c => c.category === 'cybersecurity').length },
-  { id: 'ui-ux', name: 'UI/UX Design', icon: FaPalette, count: courses.filter(c => c.category === 'ui-ux').length },
-  { id: 'devops', name: 'DevOps', icon: FaServer, count: courses.filter(c => c.category === 'devops').length },
+  { id: 'all', label: 'All Courses', icon: FaGraduationCap },
+  { id: 'web-dev', label: 'Web Development', icon: FaCode },
+  { id: 'mobile-dev', label: 'Mobile Dev', icon: FaMobile },
+  { id: 'data-science', label: 'Data Science', icon: FaDatabase },
+  { id: 'marketing', label: 'Marketing', icon: FaChartLine },
+  { id: 'design', label: 'Design', icon: FaPalette },
+  { id: 'business', label: 'Business', icon: FaBriefcase },
+  { id: 'finance', label: 'Finance', icon: FaAward },
+  { id: 'photography', label: 'Photography', icon: FaCamera },
+  { id: 'cloud', label: 'Cloud', icon: FaCloud },
+  { id: 'security', label: 'Security', icon: FaShieldAlt }
 ];
 
 const Courses = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedLevel, setSelectedLevel] = useState('all');
-  const [sortBy, setSortBy] = useState('popular');
-  const [priceRange, setPriceRange] = useState('all');
   const [favorites, setFavorites] = useState<number[]>([]);
 
-  const toggleFavorite = (courseId: number) => {
-    setFavorites(prev => 
-      prev.includes(courseId) 
-        ? prev.filter(id => id !== courseId)
-        : [...prev, courseId]
+  const filteredCourses = coursesData.filter(course => {
+    const matchesCategory = selectedCategory === 'all' || course.category === selectedCategory;
+    const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         course.instructor.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  const toggleFavorite = (id: number) => {
+    setFavorites(prev =>
+      prev.includes(id) ? prev.filter(fav => fav !== id) : [...prev, id]
     );
   };
 
-  const filteredCourses = courses.filter(course => {
-    const matchesCategory = selectedCategory === 'all' || course.category === selectedCategory;
-    const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          course.instructor.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesLevel = selectedLevel === 'all' || course.level === selectedLevel;
-    
-    // Price filter
-    let matchesPrice = true;
-    if (priceRange !== 'all') {
-      const price = parseInt(course.price.replace('$', ''));
-      if (priceRange === 'free') matchesPrice = price === 0;
-      else if (priceRange === 'under-100') matchesPrice = price < 100;
-      else if (priceRange === '100-150') matchesPrice = price >= 100 && price <= 150;
-      else if (priceRange === 'over-150') matchesPrice = price > 150;
-    }
-    
-    return matchesCategory && matchesSearch && matchesLevel && matchesPrice;
-  });
-
-  // Sorting
-  const sortedCourses = [...filteredCourses].sort((a, b) => {
-    switch (sortBy) {
-      case 'popular':
-        return b.students - a.students;
-      case 'rating':
-        return b.rating - a.rating;
-      case 'price-low':
-        return parseInt(a.price.replace('$', '')) - parseInt(b.price.replace('$', ''));
-      case 'price-high':
-        return parseInt(b.price.replace('$', '')) - parseInt(a.price.replace('$', ''));
-      case 'newest':
-        return (b.new ? 1 : 0) - (a.new ? 1 : 0);
+  const getBadgeStyles = (badge?: string) => {
+    switch (badge) {
+      case 'bestseller':
+        return 'bg-gradient-to-r from-yellow-400 to-orange-500 text-white';
+      case 'new':
+        return 'bg-gradient-to-r from-green-400 to-emerald-500 text-white';
+      case 'advanced':
+        return 'bg-gradient-to-r from-purple-500 to-pink-600 text-white';
+      case 'trending':
+        return 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white';
       default:
-        return 0;
+        return '';
     }
-  });
+  };
+
+  const getBadgeText = (badge?: string) => {
+    switch (badge) {
+      case 'bestseller':
+        return 'Bestseller';
+      case 'new':
+        return 'New';
+      case 'advanced':
+        return 'Advanced';
+      case 'trending':
+        return 'Trending';
+      default:
+        return '';
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Header - Simple 28Tech style */}
-      <section className="relative bg-blue-600 text-white py-16">
-        <div className="container mx-auto px-4">
-          <motion.h1 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold mb-4"
-          >
-            Khóa Học DHV
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-blue-100 max-w-2xl"
-          >
-            Học tập không giới hạn - Nắm vững kỹ năng với các khóa học chất lượng từ chuyên gia
-          </motion.p>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
+      {/* Hero Section with Gradient & Wave */}
+      <div className="relative bg-gradient-to-r from-[#001A66] via-[#3A0CA3] to-[#4361EE] pt-24 pb-20 overflow-hidden">
+        {/* Animated Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
-      </section>
 
-      {/* Category Filter & Search - Clean 28Tech style */}
-      <section className="bg-white border-b border-gray-200 sticky top-16 z-40">
-        <div className="container mx-auto px-4 py-4">
-          {/* Search Bar */}
-          <div className="mb-4">
-            <div className="relative max-w-2xl">
-              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Tìm kiếm khóa học..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:border-blue-500"
-              />
-            </div>
-          </div>
+        {/* Wave at Bottom */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 120" className="w-full h-16 fill-current text-gray-50">
+            <path d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,58.7C960,64,1056,64,1152,58.7C1248,53,1344,43,1392,37.3L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"></path>
+          </svg>
+        </div>
 
-          {/* Categories */}
-          <div className="flex items-center gap-3 mb-4 overflow-x-auto pb-2">
-            {categories.map((category) => {
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
+              DHV Courses
+              <span className="block bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-400 bg-clip-text text-transparent mt-2">
+                Guiding Light
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed">
+              Discover 300+ high-quality courses from top experts
+            </p>
+
+            {/* Search Bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="max-w-2xl mx-auto"
+            >
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search courses, instructors, topics..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-14 pr-6 py-5 rounded-full border-none focus:outline-none focus:ring-4 focus:ring-white/30 text-lg shadow-2xl"
+                  style={{ fontFamily: "'Poppins', 'Inter', sans-serif" }}
+                />
+                <FaSearch className="absolute left-6 top-1/2 transform -translate-y-1/2 text-2xl text-gray-400" />
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Category Filter - Material You / Framer Card Tabs Style */}
+      <div className="sticky top-16 z-40 bg-gradient-to-br from-gray-50 via-white to-purple-50 backdrop-blur-xl border-b border-gray-200/50 shadow-xl">
+        <div className="container mx-auto px-4 py-8">
+          {/* Grid Layout for Card Tabs */}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+            {categories.map((category, index) => {
               const Icon = category.icon;
+              const isActive = selectedCategory === category.id;
+              
               return (
-                <button
+                <motion.button
                   key={category.id}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ 
+                    delay: index * 0.05,
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 25
+                  }}
+                  whileHover={{ 
+                    y: -8,
+                    scale: isActive ? 1.05 : 1.08,
+                    boxShadow: "0 20px 40px -10px rgba(79, 70, 229, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all ${
-                    selectedCategory === category.id
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
+                  className={`
+                    group relative flex flex-col items-center justify-center gap-3 p-6 rounded-3xl 
+                    font-bold transition-all duration-300 overflow-hidden
+                    ${isActive
+                      ? 'bg-gradient-to-br from-[#10b981] via-[#14b8a6] to-[#06b6d4] text-white shadow-2xl shadow-emerald-500/40 scale-105 ring-4 ring-emerald-300/50'
+                      : 'bg-white/80 text-gray-700 hover:bg-white hover:shadow-xl border-2 border-gray-200/50'
+                    }
+                  `}
+                  style={{
+                    fontFamily: "'Poppins', 'Inter', sans-serif",
+                    transform: isActive ? 'translateY(-4px)' : 'translateY(0)',
+                  }}
                 >
-                  <Icon className="text-sm" />
-                  {category.name}
-                  <span className={`px-2 py-0.5 rounded-full text-xs ${
-                    selectedCategory === category.id ? 'bg-white/20' : 'bg-gray-200'
-                  }`}>
-                    {category.count}
+                  {/* Animated Gradient Background for Active */}
+                  {isActive && (
+                    <>
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 opacity-90"
+                        animate={{
+                          background: [
+                            'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
+                            'linear-gradient(135deg, #14b8a6 0%, #10b981 100%)',
+                            'linear-gradient(135deg, #06b6d4 0%, #14b8a6 100%)',
+                            'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
+                          ]
+                        }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "linear"
+                        }}
+                      />
+                      {/* Glow Pulse */}
+                      <motion.div
+                        className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/30 to-transparent"
+                        animate={{
+                          opacity: [0.3, 0.6, 0.3],
+                          scale: [1, 1.05, 1]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      />
+                      {/* Shimmer Wave */}
+                      <motion.div
+                        className="absolute inset-0 rounded-3xl"
+                        style={{
+                          background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%)',
+                        }}
+                        animate={{
+                          x: ['-200%', '200%']
+                        }}
+                        transition={{
+                          duration: 2.5,
+                          repeat: Infinity,
+                          ease: "linear",
+                          repeatDelay: 1
+                        }}
+                      />
+                    </>
+                  )}
+                  
+                  {/* Icon with Bounce Animation */}
+                  <motion.div
+                    animate={isActive ? {
+                      scale: [1, 1.2, 1],
+                      rotate: [0, 5, -5, 0]
+                    } : {}}
+                    transition={{
+                      duration: 0.6,
+                      ease: "easeOut"
+                    }}
+                    className="relative z-10"
+                  >
+                    <Icon className={`text-3xl ${isActive ? 'text-white drop-shadow-2xl' : 'text-gray-600 group-hover:text-gray-800'}`} />
+                  </motion.div>
+                  
+                  {/* Label */}
+                  <span className={`relative z-10 text-xs font-extrabold tracking-wider text-center leading-tight ${isActive ? 'text-white' : 'text-gray-800'}`}>
+                    {category.label}
                   </span>
-                </button>
+
+                  {/* Active Checkmark Badge */}
+                  {isActive && (
+                    <motion.div
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      className="absolute -top-2 -right-2 w-7 h-7 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full relative z-10 shadow-xl shadow-emerald-400/50 flex items-center justify-center"
+                    >
+                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </motion.div>
+                  )}
+
+                  {/* Hover Glow for Inactive Cards */}
+                  {!isActive && (
+                    <motion.div
+                      className="absolute inset-0 rounded-3xl bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                  )}
+                </motion.button>
               );
             })}
           </div>
+        </div>
+      </div>
 
-          {/* Filters Row */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-            {/* Level Filter */}
-            <div className="flex flex-col">
-              <label className="text-xs font-medium text-gray-600 mb-1">Cấp độ</label>
-              <select
-                value={selectedLevel}
-                onChange={(e) => setSelectedLevel(e.target.value)}
-                className="px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none text-sm"
-              >
-                <option value="all">Tất cả</option>
-                <option value="Beginner">Cơ bản</option>
-                <option value="Intermediate">Trung cấp</option>
-                <option value="Advanced">Nâng cao</option>
-              </select>
-            </div>
-
-            {/* Price Filter */}
-            <div className="flex flex-col">
-              <label className="text-xs font-medium text-gray-600 mb-1">Giá</label>
-              <select
-                value={priceRange}
-                onChange={(e) => setPriceRange(e.target.value)}
-                className="px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none text-sm"
-              >
-                <option value="all">Tất cả</option>
-                <option value="free">Miễn phí</option>
-                <option value="under-100">Dưới $100</option>
-                <option value="100-150">$100 - $150</option>
-                <option value="over-150">Trên $150</option>
-              </select>
-            </div>
-
-            {/* Sort By */}
-            <div className="flex flex-col">
-              <label className="text-xs font-medium text-gray-600 mb-1">Sắp xếp</label>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:outline-none text-sm"
-              >
-                <option value="popular">Phổ biến</option>
-                <option value="rating">Đánh giá cao</option>
-                <option value="newest">Mới nhất</option>
-                <option value="price-low">Giá thấp</option>
-                <option value="price-high">Giá cao</option>
-              </select>
-            </div>
-
-            {/* Results Count */}
-            <div className="flex flex-col justify-end">
-              <div className="px-3 py-2 bg-blue-50 rounded-lg border border-blue-100">
-                <p className="text-xs text-gray-600">Kết quả</p>
-                <p className="text-lg font-bold text-blue-600">{sortedCourses.length}</p>
-              </div>
-            </div>
+      {/* Courses Grid */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900">
+              {filteredCourses.length} courses
+            </h2>
+            <p className="text-gray-600 mt-1">
+              {selectedCategory === 'all' ? 'All categories' : categories.find(c => c.id === selectedCategory)?.label}
+            </p>
           </div>
         </div>
-      </section>
 
-      {/* Courses Grid - Clean 28Tech style */}
-      <section className="py-8 bg-gray-50">
-        <div className="container mx-auto px-4">
-          {sortedCourses.length === 0 ? (
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-16 bg-white rounded-lg"
-            >
-              <div className="text-5xl mb-3">📚</div>
-              <p className="text-xl font-bold text-gray-800 mb-1">Không tìm thấy khóa học</p>
-              <p className="text-gray-500">Thử điều chỉnh bộ lọc hoặc từ khóa tìm kiếm</p>
-            </motion.div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-              {sortedCourses.map((course, index) => (
-                <motion.div
-                  key={course.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.03 }}
-                  className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-200 relative"
-                >
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedCategory}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          >
+            {filteredCourses.map((course, index) => (
+              <motion.div
+                key={course.id}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -10, scale: 1.03 }}
+                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              >
+                {/* Course Image */}
+                <div className="relative overflow-hidden h-56">
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                  {/* Badge */}
+                  {course.badge && (
+                    <div className="absolute top-4 left-4">
+                      <span className={`px-4 py-2 rounded-full text-xs font-bold shadow-lg flex items-center gap-1 ${getBadgeStyles(course.badge)}`}>
+                        {course.badge === 'bestseller' && <FaFire />}
+                        {course.badge === 'new' && <FaAward />}
+                        {course.badge === 'trending' && <FaChartLine />}
+                        {getBadgeText(course.badge)}
+                      </span>
+                    </div>
+                  )}
+
                   {/* Favorite Button */}
                   <button
                     onClick={() => toggleFavorite(course.id)}
-                    className="absolute top-2 right-2 z-10 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow hover:bg-white transition-all hover:scale-110"
+                    className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all shadow-lg"
                   >
                     {favorites.includes(course.id) ? (
-                      <FaHeart className="text-red-500 text-sm" />
+                      <FaHeart className="text-red-500 text-lg" />
                     ) : (
-                      <FaRegHeart className="text-gray-600 text-sm" />
+                      <FaRegHeart className="text-gray-600 text-lg" />
                     )}
                   </button>
 
-                  {/* Course Image */}
-                  <div className="relative overflow-hidden h-44">
+                  {/* Level Badge */}
+                  <div className="absolute bottom-4 left-4">
+                    <span className="px-3 py-1 bg-blue-500 text-white text-xs font-semibold rounded-full">
+                      {course.level}
+                    </span>
+                  </div>
+
+                  {/* Play Button on Hover */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl">
+                      <FaPlay className="text-blue-600 text-xl ml-1" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Course Content */}
+                <div className="p-6">
+                  {/* Rating */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex items-center gap-1">
+                      <FaStar className="text-yellow-400 text-sm" />
+                      <span className="font-bold text-gray-900">{course.rating}</span>
+                    </div>
+                    <span className="text-gray-500 text-sm">({course.reviews.toLocaleString()} reviews)</span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors min-h-[56px]">
+                    {course.title}
+                  </h3>
+
+                  {/* Instructor */}
+                  <div className="flex items-center gap-3 mb-4 pb-4 border-b border-gray-100">
                     <img
-                      src={course.image}
-                      alt={course.title}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                      src={course.instructorAvatar}
+                      alt={course.instructor}
+                      className="w-8 h-8 rounded-full object-cover"
                     />
-                    
-                    {/* Badges */}
-                    <div className="absolute top-2 left-2 flex flex-col gap-1">
-                      {course.bestseller && (
-                        <span className="px-2 py-1 bg-yellow-500 text-white rounded text-xs font-bold shadow">
-                          <FaStar className="inline mr-1" />BESTSELLER
-                        </span>
-                      )}
-                      {course.new && (
-                        <span className="px-2 py-1 bg-green-500 text-white rounded text-xs font-bold shadow">
-                          🆕 NEW
-                        </span>
-                      )}
-                    </div>
+                    <p className="text-sm text-gray-600 font-medium">{course.instructor}</p>
+                  </div>
 
-                    {/* Level Badge */}
-                    <div className="absolute bottom-2 left-2">
-                      <span className="px-2 py-1 bg-blue-600 text-white rounded text-xs font-medium">
-                        {course.level}
-                      </span>
+                  {/* Stats */}
+                  <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
+                    <div className="flex items-center gap-1">
+                      <FaClock className="text-gray-400" />
+                      <span>{course.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <FaUsers className="text-gray-400" />
+                      <span>{course.students.toLocaleString()}</span>
                     </div>
                   </div>
 
-                  {/* Course Content */}
-                  <div className="p-4">
-                    {/* Category Tag */}
-                    <div className="mb-2">
-                      <span className="inline-block px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-xs font-medium">
-                        {categories.find(c => c.id === course.category)?.name}
-                      </span>
+                  {/* Features */}
+                  <div className="flex items-center gap-3 text-xs text-gray-500 mb-4">
+                    <div className="flex items-center gap-1">
+                      <FaCertificate className="text-green-500" />
+                      <span>Chứng chỉ</span>
                     </div>
-
-                    {/* Title */}
-                    <h3 className="text-base font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors min-h-[2.5rem]">
-                      {course.title}
-                    </h3>
-
-                    {/* Instructor */}
-                    <div className="flex items-center gap-2 mb-3 pb-3 border-b border-gray-100">
-                      <img
-                        src={course.instructorAvatar || '/img/team-1.jpg'}
-                        alt={course.instructor}
-                        className="w-6 h-6 rounded-full object-cover"
-                      />
-                      <p className="font-medium text-gray-700 text-xs truncate">{course.instructor}</p>
-                    </div>
-
-                    {/* Stats */}
-                    <div className="grid grid-cols-2 gap-2 mb-3">
-                      <div className="flex items-center gap-1 text-xs text-gray-600">
-                        <FaUsers className="text-blue-600" />
-                        <span>{course.students.toLocaleString()}</span>
-                      </div>
-                      <div className="flex items-center gap-1 text-xs text-gray-600">
-                        <FaClock className="text-green-600" />
-                        <span>{course.duration}</span>
-                      </div>
-                      <div className="flex items-center gap-1 text-xs text-gray-600">
-                        <FaChartLine className="text-purple-600" />
-                        <span>{course.lessons || 120} bài</span>
-                      </div>
-                      <div className="flex items-center gap-1 text-xs text-gray-600">
-                        <FaStar className="text-yellow-500" />
-                        <span className="font-bold">{course.rating}</span>
-                      </div>
-                    </div>
-
-                    {/* Price and CTA */}
-                    <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                      <div>
-                        <p className="text-xl font-bold text-gray-800">{course.price}</p>
-                      </div>
-                      <Link
-                        to={`/courses/${course.id}`}
-                        className="flex items-center gap-1 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-all text-sm"
-                      >
-                        Chi tiết
-                      </Link>
+                    <div className="flex items-center gap-1">
+                      <FaInfinity className="text-blue-500" />
+                      <span>Trọn đời</span>
                     </div>
                   </div>
-                </motion.div>
-              ))}
+
+                  {/* Price & Action */}
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-2xl font-black text-blue-600">${course.price}</span>
+                        <span className="text-sm text-gray-400 line-through">${course.originalPrice}</span>
+                      </div>
+                    </div>
+                    <Link
+                      to={`/courses/${course.id}`}
+                      className="p-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md hover:shadow-xl"
+                    >
+                      <FaShoppingCart className="text-lg" />
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* No Results */}
+        {filteredCourses.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-center py-20"
+          >
+            <div className="w-32 h-32 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <FaSearch className="text-6xl text-gray-400" />
             </div>
-          )}
-        </div>
-      </section>
+            <h3 className="text-2xl font-bold text-gray-800 mb-3">No courses found</h3>
+            <p className="text-gray-600 mb-6">Try searching with different keywords or select another category</p>
+            <button
+              onClick={() => {
+                setSearchQuery('');
+                setSelectedCategory('all');
+              }}
+              className="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg"
+            >
+              View All Courses
+            </button>
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 };
