@@ -8,7 +8,7 @@ const roadmaps = [
     title: 'Web Development',
     description: 'Path to become a Full Stack Web Developer',
     icon: FaCode,
-    color: 'bg-blue-500',
+    color: 'bg-emerald-500',
     courses: 12,
     duration: '6 months',
     image: '/img/course-1.jpg',
@@ -20,7 +20,7 @@ const roadmaps = [
     title: 'Mobile App Development',
     description: 'Cross-platform mobile application development with React Native & Flutter',
     icon: FaMobile,
-    color: 'bg-green-500',
+    color: 'bg-teal-500',
     courses: 10,
     duration: '5 months',
     image: '/img/course-2.jpg',
@@ -32,7 +32,7 @@ const roadmaps = [
     title: 'Data Science & Analytics',
     description: 'Master data analysis, visualization, and statistical modeling',
     icon: FaChartLine,
-    color: 'bg-purple-500',
+    color: 'bg-cyan-500',
     courses: 15,
     duration: '8 months',
     image: '/img/course-3.jpg',
@@ -44,7 +44,7 @@ const roadmaps = [
     title: 'AI & Machine Learning',
     description: 'Build intelligent systems with deep learning and neural networks',
     icon: FaRobot,
-    color: 'bg-red-500',
+    color: 'bg-emerald-600',
     courses: 14,
     duration: '9 months',
     image: '/img/team-1.jpg',
@@ -56,7 +56,7 @@ const roadmaps = [
     title: 'DevOps & Cloud Engineering',
     description: 'Master CI/CD, Docker, Kubernetes, and cloud platforms',
     icon: FaServer,
-    color: 'bg-yellow-600',
+    color: 'bg-teal-600',
     courses: 11,
     duration: '6 months',
     image: '/img/team-2.jpg',
@@ -68,7 +68,7 @@ const roadmaps = [
     title: 'Cloud Computing (AWS, Azure, GCP)',
     description: 'Become a certified cloud architect and solutions specialist',
     icon: FaCloud,
-    color: 'bg-cyan-500',
+    color: 'bg-cyan-600',
     courses: 13,
     duration: '7 months',
     image: '/img/team-3.jpg',
@@ -80,7 +80,7 @@ const roadmaps = [
     title: 'Cybersecurity Specialist',
     description: 'Learn ethical hacking, penetration testing, and security protocols',
     icon: FaShieldAlt,
-    color: 'bg-indigo-600',
+    color: 'bg-emerald-700',
     courses: 12,
     duration: '8 months',
     image: '/img/team-1.jpg',
@@ -92,7 +92,7 @@ const roadmaps = [
     title: 'UI/UX Design',
     description: 'Design beautiful user interfaces with Figma, Adobe XD, and user research',
     icon: FaPalette,
-    color: 'bg-pink-500',
+    color: 'bg-teal-700',
     courses: 9,
     duration: '4 months',
     image: '/img/team-2.jpg',
@@ -104,7 +104,7 @@ const roadmaps = [
     title: 'Game Development',
     description: 'Create games with Unity, Unreal Engine, and C#',
     icon: FaGamepad,
-    color: 'bg-orange-500',
+    color: 'bg-cyan-700',
     courses: 10,
     duration: '7 months',
     image: '/img/team-3.jpg',
@@ -116,7 +116,7 @@ const roadmaps = [
     title: 'Database Administration',
     description: 'Advanced SQL, NoSQL, database optimization, and management',
     icon: FaDatabase,
-    color: 'bg-teal-600',
+    color: 'bg-emerald-500',
     courses: 9,
     duration: '5 months',
     image: '/img/course-1.jpg',
@@ -129,7 +129,7 @@ const Roadmap = () => {
   return (
     <div className="pt-20 min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-cyan-50">
       {/* Header with Enhanced Design */}
-      <section className="relative bg-gradient-to-r from-[#0066FF] via-[#06BBCC] to-[#FF0000] text-white py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white py-24 overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.h1 

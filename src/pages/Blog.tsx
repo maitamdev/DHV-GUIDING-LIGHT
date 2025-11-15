@@ -125,13 +125,13 @@ const Blog = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-              Blog & Tin Tức
+              Blog & News
               <span className="block bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-400 bg-clip-text text-transparent mt-2">
                 DHV Guiding Light
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed">
-              Cập nhật kiến thức và xu hướng công nghệ mới nhất
+              Stay updated with the latest tech trends and knowledge
             </p>
 
             {/* Search Bar */}

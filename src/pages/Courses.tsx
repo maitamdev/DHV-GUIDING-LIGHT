@@ -1094,6 +1094,8 @@ const Courses = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [favorites, setFavorites] = useState<number[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const coursesPerPage = 12;
 
   const filteredCourses = coursesData.filter(course => {
     const matchesCategory = selectedCategory === 'all' || course.category === selectedCategory;
@@ -1101,6 +1103,17 @@ const Courses = () => {
                          course.instructor.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  // Pagination
+  const indexOfLastCourse = currentPage * coursesPerPage;
+  const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
+  const currentCourses = filteredCourses.slice(indexOfFirstCourse, indexOfLastCourse);
+  const totalPages = Math.ceil(filteredCourses.length / coursesPerPage);
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 400, behavior: 'smooth' });
+  };
 
   const toggleFavorite = (id: number) => {
     setFavorites(prev =>
@@ -1169,7 +1182,7 @@ const Courses = () => {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed">
-              Discover 300+ high-quality courses from top experts
+              Discover 54 high-quality courses from top experts worldwide
             </p>
 
             {/* Search Bar */}
@@ -1221,7 +1234,10 @@ const Courses = () => {
                     boxShadow: "0 20px 40px -10px rgba(79, 70, 229, 0.3)"
                   }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => setSelectedCategory(category.id)}
+                  onClick={() => {
+                    setSelectedCategory(category.id);
+                    setCurrentPage(1);
+                  }}
                   className={`
                     group relative flex flex-col items-center justify-center gap-3 p-6 rounded-3xl 
                     font-bold transition-all duration-300 overflow-hidden
@@ -1351,19 +1367,19 @@ const Courses = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
           >
-            {filteredCourses.map((course, index) => (
+            {currentCourses.map((course, index) => (
               <motion.div
                 key={course.id}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10, scale: 1.03 }}
-                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="group bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300"
               >
                 {/* Course Image */}
-                <div className="relative overflow-hidden h-56">
+                <div className="relative overflow-hidden h-64">
                   <img
                     src={course.image}
                     alt={course.title}
@@ -1411,7 +1427,7 @@ const Courses = () => {
                 </div>
 
                 {/* Course Content */}
-                <div className="p-6">
+                <div className="p-8">
                   {/* Rating */}
                   <div className="flex items-center gap-2 mb-3">
                     <div className="flex items-center gap-1">
@@ -1488,6 +1504,49 @@ const Courses = () => {
             ))}
           </motion.div>
         </AnimatePresence>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-2 mt-12">
+            <button
+              onClick={() => paginate(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+                currentPage === 1
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  : 'bg-white text-gray-700 hover:bg-blue-500 hover:text-white shadow-md'
+              }`}
+            >
+              Previous
+            </button>
+            
+            {[...Array(totalPages)].map((_, index) => (
+              <button
+                key={index + 1}
+                onClick={() => paginate(index + 1)}
+                className={`w-10 h-10 rounded-lg font-semibold transition-all ${
+                  currentPage === index + 1
+                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg scale-110'
+                    : 'bg-white text-gray-700 hover:bg-blue-100 shadow-md'
+                }`}
+              >
+                {index + 1}
+              </button>
+            ))}
+            
+            <button
+              onClick={() => paginate(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+                currentPage === totalPages
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  : 'bg-white text-gray-700 hover:bg-blue-500 hover:text-white shadow-md'
+              }`}
+            >
+              Next
+            </button>
+          </div>
+        )}
 
         {/* No Results */}
         {filteredCourses.length === 0 && (

@@ -453,9 +453,9 @@ const CourseDetail = () => {
       <div className="w-full bg-[#001f3f] py-12">
         <div className="container mx-auto px-4">
           <nav className="text-white/80 text-sm mb-6 flex items-center gap-2">
-            <Link to="/" className="hover:text-white">Trang chủ</Link>
+            <Link to="/" className="hover:text-white">Home</Link>
             <span>•</span>
-            <Link to="/courses" className="hover:text-white">Khóa học online</Link>
+            <Link to="/courses" className="hover:text-white">All Courses</Link>
             <span>•</span>
             <span className="text-white">{course.title}</span>
           </nav>
@@ -471,7 +471,7 @@ const CourseDetail = () => {
               {/* Course Title & Label */}
               <div>
                 <div className="inline-block px-4 py-1 bg-green-500 text-white rounded-full text-sm font-semibold mb-4">
-                  NỔI BẬT
+                  FEATURED
                 </div>
                 <h1 className="text-3xl font-bold text-[#001f3f] mb-4">
                   {course.title}
@@ -486,11 +486,11 @@ const CourseDetail = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <FaUsers className="text-gray-400" />
-                    <span>{course.totalRatings} bình luận</span>
+                    <span>{course.totalRatings} reviews</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <FaUsers className="text-gray-400" />
-                    <span>{course.students} học viên</span>
+                    <span>{course.students} students</span>
                   </div>
                 </div>
               </div>
@@ -500,19 +500,19 @@ const CourseDetail = () => {
                 <div className="border-b border-gray-200">
                   <div className="flex gap-8 px-6">
                     <button className="py-4 border-b-2 border-blue-500 text-blue-500 font-medium">
-                      Tổng quan
+                      Overview
                     </button>
                     <button className="py-4 text-gray-600 hover:text-blue-500">
-                      Nội dung khóa học
+                      Course Content
                     </button>
                     <button className="py-4 text-gray-600 hover:text-blue-500">
-                      Giảng viên
+                      Instructor
                     </button>
                     <button className="py-4 text-gray-600 hover:text-blue-500">
-                      Đánh giá
+                      Reviews
                     </button>
                     <button className="py-4 text-gray-600 hover:text-blue-500">
-                      Bình luận
+                      Comments
                     </button>
                   </div>
                 </div>
@@ -520,7 +520,7 @@ const CourseDetail = () => {
                 {/* Tab Content - What You'll Learn */}
                 <div className="p-8">
                   <h2 className="text-2xl font-bold text-[#001f3f] mb-6">
-                    Bạn sẽ học được gì?
+                    What You'll Learn
                   </h2>
                   <div className="space-y-3">
                     {course.whatYouLearn.map((item: string, index: number) => (
@@ -549,11 +549,11 @@ const CourseDetail = () => {
                   </div>
                   {/* Course Stats Overlay */}
                   <div className="absolute top-3 left-3 bg-blue-600 text-white px-3 py-1 rounded text-sm font-semibold">
-                    KHÓA HỌC LẬP TRÌNH C
+                    PROGRAMMING COURSE
                   </div>
                   <div className="absolute bottom-3 left-3 right-3 bg-white/95 p-2 rounded text-xs">
-                    <div className="font-semibold text-blue-600">QUA 130 VIDEO</div>
-                    <div className="text-gray-600">VÀ 310 BÀI TẬP HACKERRANK</div>
+                    <div className="font-semibold text-blue-600">OVER 130 VIDEOS</div>
+                    <div className="text-gray-600">AND 310 CODING EXERCISES</div>
                   </div>
                 </div>
 
@@ -573,7 +573,7 @@ const CourseDetail = () => {
                       to={`/roadmap/${course.category}`}
                       className="w-full block text-center px-6 py-4 bg-blue-500 text-white rounded-lg font-bold text-lg hover:bg-blue-600 transition-colors mb-4"
                     >
-                      Đăng Ký Học
+                      Enroll Now
                     </Link>
                   ) : (
                     <button
@@ -581,7 +581,7 @@ const CourseDetail = () => {
                       disabled={loading}
                       className="w-full px-6 py-4 bg-blue-500 text-white rounded-lg font-bold text-lg hover:bg-blue-600 transition-colors disabled:opacity-50 mb-4"
                     >
-                      {loading ? 'Processing...' : 'Đăng Ký Học'}
+                      {loading ? 'Processing...' : 'Enroll Now'}
                     </button>
                   )}
 
@@ -590,14 +590,14 @@ const CourseDetail = () => {
                     <div className="flex items-center justify-between py-2 border-b border-gray-100">
                       <div className="flex items-center gap-2 text-gray-600">
                         <FaBook className="text-gray-400" />
-                        <span>Bài giảng</span>
+                        <span>Lessons</span>
                       </div>
                       <span className="font-semibold text-gray-800">170</span>
                     </div>
                     <div className="flex items-center justify-between py-2 border-b border-gray-100">
                       <div className="flex items-center gap-2 text-gray-600">
                         <FaClock className="text-gray-400" />
-                        <span>Thời lượng</span>
+                        <span>Duration</span>
                       </div>
                       <span className="font-semibold text-gray-800">150 giờ</span>
                     </div>

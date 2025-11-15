@@ -66,9 +66,6 @@ const Navbar: React.FC = () => {
                 <span className="text-base font-bold text-white tracking-wide">
                   DHV GUIDING LIGHT
                 </span>
-                <span className="text-xs font-medium" style={{ color: '#00FF99' }}>
-                  Online Learning Platform
-                </span>
               </div>
             </Link>
 
