@@ -1,58 +1,32 @@
 import { motion } from 'framer-motion';
-import { FaStar, FaUsers, FaBook, FaClock } from 'react-icons/fa';
-
-const instructors = [
-  {
-    id: 1,
-    name: 'Nguyen Van A',
-    title: 'Senior Web Developer',
-    specialty: 'JavaScript, React, Node.js',
-    image: '/img/team-1.jpg',
-    rating: 4.9,
-    students: 1234,
-    courses: 12,
-    experience: '10+ years'
-  },
-  {
-    id: 2,
-    name: 'Tran Thi B',
-    title: 'Data Science Expert',
-    specialty: 'Python, Machine Learning, AI',
-    image: '/img/team-2.jpg',
-    rating: 4.8,
-    students: 856,
-    courses: 8,
-    experience: '8+ years'
-  },
-  {
-    id: 3,
-    name: 'Le Van C',
-    title: 'Mobile Developer',
-    specialty: 'React Native, Flutter, iOS',
-    image: '/img/team-3.jpg',
-    rating: 4.9,
-    students: 2341,
-    courses: 15,
-    experience: '12+ years'
-  },
-  {
-    id: 4,
-    name: 'Pham Thi D',
-    title: 'UX/UI Designer',
-    specialty: 'Figma, Adobe XD, User Research',
-    image: '/img/team-4.jpg',
-    rating: 5.0,
-    students: 678,
-    courses: 10,
-    experience: '7+ years'
-  }
-];
+import { FaStar, FaUsers, FaBook, FaClock, FaSearch, FaFilter } from 'react-icons/fa';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { instructors, type Instructor } from '../data/mentors';
 
 const Instructor = () => {
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedSkill, setSelectedSkill] = useState('All');
+
+  // Get all unique skills
+  const allSkills = ['All', ...new Set(instructors.flatMap(inst => inst.skills))];
+
+  // Filter instructors
+  const filteredInstructors = instructors.filter(instructor => {
+    const matchesSearch = instructor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         instructor.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         instructor.specialty.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    const matchesSkill = selectedSkill === 'All' || instructor.skills.includes(selectedSkill);
+    
+    return matchesSearch && matchesSkill;
+  });
+
   return (
     <>
       {/* Header */}
-      <div className="w-full bg-gradient-to-r from-[#06BBCC] to-[#05a3b3] py-20 mb-12">
+      <div className="w-full bg-gradient-to-r from-[#27E0A7] via-[#1BC6D5] to-[#06BBCC] py-20 mb-12">
         <div className="container mx-auto px-4 py-12">
           <motion.h1 
             initial={{ opacity: 0, y: -30 }}
@@ -60,26 +34,73 @@ const Instructor = () => {
             transition={{ duration: 0.6 }}
             className="text-5xl md:text-6xl text-white font-bold text-center mb-4"
           >
-            Our Expert Instructors
+            Find Your Perfect Mentor
           </motion.h1>
-          <p className="text-xl text-center text-white/90">
-            Learn from industry-leading professionals
+          <p className="text-xl text-center text-white/90 mb-8">
+            Connect with industry-leading professionals
           </p>
+
+          {/* Search and Filter */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="max-w-4xl mx-auto"
+          >
+            {/* Search Bar */}
+            <div className="relative mb-6">
+              <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60 text-xl" />
+              <input
+                type="text"
+                placeholder="Search by name, title, or expertise..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-14 pr-4 py-4 rounded-xl bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-white/60 transition-all text-lg"
+              />
+            </div>
+
+            {/* Skills Filter */}
+            <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
+              <FaFilter className="text-white flex-shrink-0" />
+              {allSkills.map((skill) => (
+                <button
+                  key={skill}
+                  onClick={() => setSelectedSkill(skill)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all ${
+                    selectedSkill === skill
+                      ? 'bg-white text-[#1BC6D5] shadow-lg'
+                      : 'bg-white/20 text-white hover:bg-white/30'
+                  }`}
+                >
+                  {skill}
+                </button>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
 
+      {/* Results Count */}
+      <div className="container mx-auto px-4 mb-6">
+        <p className="text-gray-600">
+          Found <span className="font-bold text-[#1BC6D5]">{filteredInstructors.length}</span> mentor{filteredInstructors.length !== 1 ? 's' : ''}
+          {selectedSkill !== 'All' && ` specializing in ${selectedSkill}`}
+        </p>
+      </div>
+
       {/* Instructors Grid */}
-      <div className="py-20">
+      <div className="py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {instructors.map((instructor, index) => (
+            {filteredInstructors.map((instructor, index) => (
               <motion.div
                 key={instructor.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+                onClick={() => navigate(`/mentor/${instructor.id}`)}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-105 border-2 border-transparent hover:border-[#1BC6D5]"
               >
                 <div className="relative">
                   <img 
@@ -113,13 +134,25 @@ const Instructor = () => {
                     </div>
                   </div>
 
-                  <button className="w-full py-3 bg-[#06BBCC] hover:bg-[#05a3b3] text-white font-semibold rounded-lg transition-colors">
-                    View Profile
+                  <button className="w-full py-3 bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] hover:shadow-xl text-white font-semibold rounded-lg transition-all">
+                    View Profile & Schedule
                   </button>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {filteredInstructors.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center py-20"
+            >
+              <div className="text-6xl mb-4">🔍</div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">No mentors found</h3>
+              <p className="text-gray-600">Try adjusting your search or filters</p>
+            </motion.div>
+          )}
         </div>
       </div>
     </>

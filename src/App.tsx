@@ -31,6 +31,7 @@ import HomeworkReminder from './pages/HomeworkReminder';
 import CompetencyProfile from './pages/CompetencyProfile';
 import AssignmentSubmission from './pages/AssignmentSubmission';
 import ForgotPassword from './pages/ForgotPassword';
+import MentorProfile from './pages/MentorProfile';
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
             <Route path="testimonial" element={<Testimonial />} />
             <Route path="team" element={<Team />} />
             <Route path="instructor" element={<Instructor />} />
+            <Route path="mentor/:id" element={<MentorProfile />} />
             <Route path="faq" element={<FAQ />} />
             <Route path="blog" element={
               <ProtectedRoute>

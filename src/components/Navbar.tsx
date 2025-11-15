@@ -31,6 +31,7 @@ const Navbar: React.FC = () => {
   const menuItems = [
     { label: 'HOME', path: '/' },
     { label: 'COURSES', path: '/courses' },
+    { label: 'MENTORS', path: '/instructor' },
     { label: 'ROADMAP', path: '/roadmap' },
     { label: 'ABOUT', path: '/about' },
     { label: 'BLOG', path: '/blog' },

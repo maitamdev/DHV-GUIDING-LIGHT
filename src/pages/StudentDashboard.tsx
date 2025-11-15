@@ -22,10 +22,10 @@ const StudentDashboard = () => {
   const [aiLoading, setAiLoading] = useState(false);
   const [aiSuggestions, setAiSuggestions] = useState<any>(null);
   const [profileData, setProfileData] = useState({
-    name: 'John Anderson',
-    email: 'student@email.com',
-    phone: '+84 901 234 567',
-    university: 'Hanoi University of Science and Technology',
+    name: 'Mai Tran Thien Tam',
+    email: 'maitamit062005@gmail.com',
+    phone: '+84 877 724 374',
+    university: 'Hung Vuong University',
     major: 'Computer Science',
     year: 'Junior (Year 3)',
     gpa: '3.5/4.0',
@@ -35,7 +35,7 @@ const StudentDashboard = () => {
     projects: 'E-commerce Website (React + Node.js), Personal Blog (Next.js), Task Management App (React Native)',
     certifications: 'AWS Cloud Practitioner, Google UX Design Certificate',
     languages: 'Vietnamese (Native), English (IELTS 7.0)',
-    achievements: '🏆 2nd Place Hackathon 2024\n🥇 Top 10% Outstanding Students\n📜 5+ Completed Projects'
+    achievements: ' 2nd Place Hackathon 2024\n Top 10% Outstanding Students\n 5+ Completed Projects'
   });
 
   // Mentor List
@@ -402,7 +402,7 @@ const StudentDashboard = () => {
           <div className="px-8 py-4 flex justify-between items-center">
             <div>
               <h1 className="text-2xl font-bold text-white">👋 Chào mừng {profileData.name}!</h1>
-              <p className="text-sm text-blue-100 mt-1">📅 Thứ 7, 15 Tháng 11 - Sách là người bạn đồng hành tuyệt vời nhất!</p>
+              <p className="text-sm text-blue-100 mt-1">📅 Saturday, November 15 – Books are the most wonderful companions!</p>
             </div>
 
             {/* Quick Actions - White buttons */}
@@ -729,7 +729,7 @@ const StudentDashboard = () => {
                   {/* Contact Info Grid */}
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
-                      <label className="block text-gray-600 font-semibold mb-3 text-sm uppercase">📧 Email</label>
+                      <label className="block text-gray-600 font-semibold mb-3 text-sm uppercase"> Email</label>
                       <input
                         type="email"
                         value={profileData.email}
@@ -739,7 +739,7 @@ const StudentDashboard = () => {
                       />
                     </div>
                     <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
-                      <label className="block text-gray-600 font-semibold mb-3 text-sm uppercase">📱 Phone Number</label>
+                      <label className="block text-gray-600 font-semibold mb-3 text-sm uppercase"> Phone Number</label>
                       <input
                         type="tel"
                         value={profileData.phone}
@@ -749,7 +749,7 @@ const StudentDashboard = () => {
                       />
                     </div>
                     <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
-                      <label className="block text-gray-600 font-semibold mb-3 text-sm uppercase">🌍 Languages</label>
+                      <label className="block text-gray-600 font-semibold mb-3 text-sm uppercase">Languages</label>
                       <input
                         type="text"
                         value={profileData.languages}
@@ -764,7 +764,7 @@ const StudentDashboard = () => {
                   {/* Skills & Bio Section */}
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="bg-gradient-to-br from-blue-50 to-cyan-100 rounded-xl p-6 shadow-lg">
-                      <label className="block text-gray-800 font-bold mb-4 text-lg">💡 Professional Skills</label>
+                      <label className="block text-gray-800 font-bold mb-4 text-lg"> Professional Skills</label>
                       <textarea
                         value={profileData.skills}
                         onChange={(e) => setProfileData({ ...profileData, skills: e.target.value })}
@@ -775,7 +775,7 @@ const StudentDashboard = () => {
                       />
                     </div>
                     <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-6 shadow-lg">
-                      <label className="block text-gray-800 font-bold mb-4 text-lg">📜 Certifications</label>
+                      <label className="block text-gray-800 font-bold mb-4 text-lg"> Certifications</label>
                       <textarea
                         value={profileData.certifications}
                         onChange={(e) => setProfileData({ ...profileData, certifications: e.target.value })}
@@ -789,7 +789,7 @@ const StudentDashboard = () => {
 
                   {/* Bio Section */}
                   <div className="bg-white rounded-xl p-8 shadow-lg">
-                    <label className="block text-gray-800 font-bold mb-4 text-xl">👤 About Me</label>
+                    <label className="block text-gray-800 font-bold mb-4 text-xl"> About Me</label>
                     <textarea
                       value={profileData.bio}
                       onChange={(e) => setProfileData({ ...profileData, bio: e.target.value })}
@@ -803,7 +803,7 @@ const StudentDashboard = () => {
                   {/* Goals & Projects Section */}
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-xl p-6 shadow-lg">
-                      <label className="block text-gray-800 font-bold mb-4 text-lg">🎯 Career Goals</label>
+                      <label className="block text-gray-800 font-bold mb-4 text-lg"> Career Goals</label>
                       <textarea
                         value={profileData.goals}
                         onChange={(e) => setProfileData({ ...profileData, goals: e.target.value })}
@@ -814,7 +814,7 @@ const StudentDashboard = () => {
                       />
                     </div>
                     <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-xl p-6 shadow-lg">
-                      <label className="block text-gray-800 font-bold mb-4 text-lg">🚀 Completed Projects</label>
+                      <label className="block text-gray-800 font-bold mb-4 text-lg"> Completed Projects</label>
                       <textarea
                         value={profileData.projects}
                         onChange={(e) => setProfileData({ ...profileData, projects: e.target.value })}
@@ -828,7 +828,7 @@ const StudentDashboard = () => {
 
                   {/* Achievements Section */}
                   <div className="bg-gradient-to-r from-amber-50 via-yellow-50 to-orange-50 rounded-xl p-8 shadow-lg border-l-4 border-yellow-500">
-                    <label className="block text-gray-800 font-bold mb-4 text-xl">🏆 Achievements & Awards</label>
+                    <label className="block text-gray-800 font-bold mb-4 text-xl"> Achievements & Awards</label>
                     <textarea
                       value={profileData.achievements}
                       onChange={(e) => setProfileData({ ...profileData, achievements: e.target.value })}
