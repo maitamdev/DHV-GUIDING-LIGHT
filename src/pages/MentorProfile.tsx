@@ -19,7 +19,7 @@ const MentorProfile = () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">Mentor not found</h2>
-          <button onClick={() => navigate('/instructor')} className="px-6 py-3 bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white rounded-xl font-bold">
+          <button onClick={() => navigate('/instructor')} className="px-6 py-3 bg-gradient-to-r from-[#001A66] to-[#003399] text-white rounded-xl font-bold">
             Back to Mentors
           </button>
         </div>
@@ -30,7 +30,7 @@ const MentorProfile = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       {/* Header with gradient */}
-      <div className="bg-gradient-to-r from-[#27E0A7] via-[#1BC6D5] to-[#06BBCC] py-8">
+      <div className="bg-gradient-to-r from-[#001A66] via-[#002080] to-[#003399] py-8">
         <div className="container mx-auto px-4">
           <button
             onClick={() => navigate('/instructor')}
@@ -73,7 +73,7 @@ const MentorProfile = () => {
 
               {/* Contact Links */}
               <div className="flex flex-wrap gap-3">
-                <a href={`mailto:${mentor.email}`} className="flex items-center gap-2 px-4 py-2 bg-white text-[#1BC6D5] rounded-lg font-semibold hover:shadow-xl transition-all">
+                <a href={`mailto:${mentor.email}`} className="flex items-center gap-2 px-4 py-2 bg-white text-[#001A66] rounded-lg font-semibold hover:shadow-xl transition-all">
                   <FaEnvelope /> Email
                 </a>
                 <a href={`https://${mentor.linkedin}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white text-[#0077b5] rounded-lg font-semibold hover:shadow-xl transition-all">
@@ -83,7 +83,7 @@ const MentorProfile = () => {
                   <FaGithub /> GitHub
                 </a>
                 {mentor.website && (
-                  <a href={`https://${mentor.website}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white text-[#1BC6D5] rounded-lg font-semibold hover:shadow-xl transition-all">
+                  <a href={`https://${mentor.website}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white text-[#001A66] rounded-lg font-semibold hover:shadow-xl transition-all">
                     <FaGlobe /> Website
                   </a>
                 )}
@@ -104,7 +104,7 @@ const MentorProfile = () => {
               className="bg-white rounded-2xl shadow-lg p-8"
             >
               <h2 className="text-3xl font-bold text-gray-800 mb-4 flex items-center gap-3">
-                <FaGraduationCap className="text-[#1BC6D5]" />
+                <FaGraduationCap className="text-[#001A66]" />
                 About Me
               </h2>
               <p className="text-gray-700 leading-relaxed text-lg">{mentor.bio}</p>
@@ -118,14 +118,14 @@ const MentorProfile = () => {
               className="bg-white rounded-2xl shadow-lg p-8"
             >
               <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                <FaBriefcase className="text-[#1BC6D5]" />
+                <FaBriefcase className="text-[#001A66]" />
                 Work Experience
               </h2>
               <div className="space-y-6">
                 {mentor.workExperience?.map((exp, index) => (
-                  <div key={index} className="border-l-4 border-[#1BC6D5] pl-6 pb-6">
+                  <div key={index} className="border-l-4 border-[#001A66] pl-6 pb-6">
                     <h3 className="text-xl font-bold text-gray-800">{exp.position}</h3>
-                    <p className="text-[#1BC6D5] font-semibold">{exp.company}</p>
+                    <p className="text-[#001A66] font-semibold">{exp.company}</p>
                     <p className="text-gray-600 text-sm mb-3">{exp.duration}</p>
                     <ul className="list-disc list-inside space-y-2 text-gray-700">
                       {exp.achievements.map((achievement, i) => (
@@ -217,10 +217,10 @@ const MentorProfile = () => {
                 </h2>
                 <div className="space-y-6">
                   {mentor.testimonials.map((testimonial, index) => (
-                    <div key={index} className="bg-gray-50 rounded-xl p-6 border-l-4 border-[#1BC6D5]">
+                    <div key={index} className="bg-gray-50 rounded-xl p-6 border-l-4 border-[#001A66]">
                       <p className="text-gray-700 mb-4 italic">"{testimonial.feedback}"</p>
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] rounded-full flex items-center justify-center text-white font-bold">
+                        <div className="w-12 h-12 bg-gradient-to-r from-[#001A66] to-[#003399] rounded-full flex items-center justify-center text-white font-bold">
                           {testimonial.studentName.charAt(0)}
                         </div>
                         <div>
@@ -248,7 +248,7 @@ const MentorProfile = () => {
                 {mentor.skills.map((skill, index) => (
                   <span
                     key={index}
-                    className="px-3 py-2 bg-gradient-to-r from-[#27E0A7]/10 to-[#1BC6D5]/10 text-[#1BC6D5] rounded-lg font-medium text-sm border border-[#1BC6D5]/20"
+                    className="px-3 py-2 bg-gradient-to-r from-[#001A66]/10 to-[#003399]/10 text-[#001A66] rounded-lg font-medium text-sm border border-[#001A66]/20"
                   >
                     {skill}
                   </span>
@@ -268,7 +268,7 @@ const MentorProfile = () => {
 
               {/* Availability */}
               <h3 className="text-2xl font-bold text-gray-800 mb-4 mt-6 flex items-center gap-2">
-                <FaCalendar className="text-[#1BC6D5]" />
+                <FaCalendar className="text-[#001A66]" />
                 Availability
               </h3>
               <div className="space-y-2 mb-6">
@@ -301,25 +301,25 @@ const MentorProfile = () => {
               <h3 className="text-2xl font-bold text-gray-800 mb-4 mt-6">Support Offered</h3>
               <div className="space-y-2 mb-6">
                 <div className="flex items-center gap-2 text-gray-700">
-                  <FaClock className="text-[#1BC6D5]" />
+                  <FaClock className="text-[#001A66]" />
                   <span className="text-sm">{mentor.mentoringSupport?.mode}</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-700">
-                  <FaUsers className="text-[#1BC6D5]" />
+                  <FaUsers className="text-[#001A66]" />
                   <span className="text-sm">Max {mentor.mentoringSupport?.maxMentees} mentees</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-700">
-                  <FaCalendar className="text-[#1BC6D5]" />
+                  <FaCalendar className="text-[#001A66]" />
                   <span className="text-sm">{mentor.mentoringSupport?.availability}</span>
                 </div>
               </div>
 
               {/* Action Buttons */}
               <div className="space-y-3 mt-6">
-                <button className="w-full py-3 bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white rounded-xl font-bold hover:shadow-xl transition-all">
+                <button className="w-full py-3 bg-gradient-to-r from-[#001A66] to-[#003399] text-white rounded-xl font-bold hover:shadow-xl transition-all">
                   Request 1-on-1 Session
                 </button>
-                <button className="w-full py-3 border-2 border-[#1BC6D5] text-[#1BC6D5] rounded-xl font-bold hover:bg-[#1BC6D5] hover:text-white transition-all">
+                <button className="w-full py-3 border-2 border-[#001A66] text-[#001A66] rounded-xl font-bold hover:bg-[#001A66] hover:text-white transition-all">
                   View Courses
                 </button>
                 <button className="w-full py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-bold hover:bg-gray-50 transition-all">

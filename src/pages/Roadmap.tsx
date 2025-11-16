@@ -177,7 +177,7 @@ const Roadmap = () => {
   return (
     <div className="pt-20 min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-cyan-50">
       {/* Header with Enhanced Design */}
-      <section className="relative bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-r from-[#001A66] via-[#002080] to-[#003399] text-white py-24 overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.h1 
@@ -290,7 +290,7 @@ const Roadmap = () => {
                       </div>
 
                       {/* CTA Button */}
-                      <div className="flex items-center justify-between py-4 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl font-bold text-lg hover:from-indigo-600 hover:to-purple-600 transition-all duration-500 shadow-lg">
+                      <div className="flex items-center justify-between py-4 px-6 bg-gradient-to-r from-[#001A66] to-[#003399] text-white rounded-2xl font-bold text-lg hover:from-[#002080] hover:to-[#004499] transition-all duration-500 shadow-lg">
                         <span>View Roadmap</span>
                         <FaArrowRight className="group-hover:translate-x-2 transition-transform duration-300" />
                       </div>
@@ -304,7 +304,7 @@ const Roadmap = () => {
       </section>
 
       {/* Enhanced CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#0066FF] via-[#06BBCC] to-[#FF0000] relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-[#001A66] via-[#002080] to-[#003399] relative overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.h2 

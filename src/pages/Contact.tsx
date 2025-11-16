@@ -2,7 +2,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
       {/* Left Side - Info (40%) */}
-      <div className="lg:w-2/5 bg-gradient-to-br from-[#27E0A7] via-[#1BC6D5] to-[#06BBCC] text-white p-12 lg:p-16 flex flex-col justify-center relative overflow-hidden">
+      <div className="lg:w-2/5 bg-gradient-to-br from-[#001A66] via-[#002080] to-[#003399] text-white p-12 lg:p-16 flex flex-col justify-center relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute w-96 h-96 bg-white/10 rounded-full blur-3xl -top-20 -left-20 animate-pulse"></div>
@@ -80,7 +80,7 @@ const Contact = () => {
                 <label className="block text-sm font-bold text-gray-700 mb-2">Last Name</label>
                 <input
                   type="text"
-                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#1BC6D5] focus:outline-none transition-all"
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#001A66] focus:outline-none transition-all"
                   placeholder="Doe"
                   required
                 />
@@ -91,7 +91,7 @@ const Contact = () => {
               <label className="block text-sm font-bold text-gray-700 mb-2">Email Address</label>
               <input
                 type="email"
-                className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#1BC6D5] focus:outline-none transition-all"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#001A66] focus:outline-none transition-all"
                 placeholder="john.doe@example.com"
                 required
               />
@@ -101,7 +101,7 @@ const Contact = () => {
               <label className="block text-sm font-bold text-gray-700 mb-2">Phone Number</label>
               <input
                 type="tel"
-                className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#1BC6D5] focus:outline-none transition-all"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#001A66] focus:outline-none transition-all"
                 placeholder="+84 123 456 789"
               />
             </div>
@@ -110,7 +110,7 @@ const Contact = () => {
               <label className="block text-sm font-bold text-gray-700 mb-2">Subject</label>
               <input
                 type="text"
-                className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#1BC6D5] focus:outline-none transition-all"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#001A66] focus:outline-none transition-all"
                 placeholder="How can we help you?"
                 required
               />
@@ -120,7 +120,7 @@ const Contact = () => {
               <label className="block text-sm font-bold text-gray-700 mb-2">Message</label>
               <textarea
                 rows={6}
-                className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#1BC6D5] focus:outline-none transition-all resize-none"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#001A66] focus:outline-none transition-all resize-none"
                 placeholder="Tell us more about your inquiry..."
                 required
               />
@@ -128,7 +128,7 @@ const Contact = () => {
 
             <button
               type="submit"
-              className="w-full py-4 bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white rounded-xl font-bold text-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="w-full py-4 bg-gradient-to-r from-[#001A66] to-[#003399] text-white rounded-xl font-bold text-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
               Send Message
             </button>
