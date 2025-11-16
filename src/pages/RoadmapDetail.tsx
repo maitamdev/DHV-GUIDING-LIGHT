@@ -125,6 +125,7 @@ const RoadmapDetail = () => {
                               if (!lesson.locked) {
                                 setSelectedVideo(lesson.videoUrl);
                                 setSelectedLesson(lesson);
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
                               }
                             }}
                             disabled={lesson.locked}

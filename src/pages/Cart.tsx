@@ -1,7 +1,7 @@
-import { useState } from 'react';
+  import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTrash, FaShoppingCart, FaArrowRight, FaTag, FaGift, FaClock, FaStar, FaCheckCircle } from 'react-icons/fa';
+import { FaTrash, FaShoppingCart, FaArrowRight, FaTag, FaGift, FaClock, FaStar, FaCheckCircle, FaUsers } from 'react-icons/fa';
 
 interface CartItem {
   id: number;
@@ -86,7 +86,7 @@ const Cart = () => {
         >
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-white rounded-full shadow-lg mb-6">
             <FaShoppingCart className="text-blue-600 text-2xl" />
-            <span className="text-sm font-bold text-gray-600 uppercase tracking-wider">Giỏ Hàng Của Bạn</span>
+            <span className="text-sm font-bold text-gray-600 uppercase tracking-wider">Your Shopping Cart</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
             Shopping Cart
@@ -166,7 +166,7 @@ const Cart = () => {
                               <span>{item.duration}</span>
                             </div>
                             <div className="flex items-center gap-1">
-                              <span className="text-gray-400">👥</span>
+                              <FaUsers className="text-gray-400" />
                               <span>{item.students.toLocaleString()} students</span>
                             </div>
                           </div>
@@ -180,7 +180,7 @@ const Cart = () => {
                               <span className="text-lg text-gray-400 line-through">${item.originalPrice}</span>
                             </div>
                             <span className="text-sm text-green-600 font-semibold">
-                              Tiết kiệm ${item.originalPrice - item.price}
+                              Save ${item.originalPrice - item.price}
                             </span>
                           </div>
                           <button
@@ -204,57 +204,57 @@ const Cart = () => {
                 animate={{ opacity: 1, x: 0 }}
                 className="bg-white rounded-2xl shadow-xl p-8 sticky top-24"
               >
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Tổng Đơn Hàng</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Order Summary</h2>
 
                 {/* Coupon Code */}
                 <div className="mb-6">
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     <FaGift className="inline mr-2 text-purple-500" />
-                    Mã Giảm Giá
+                    Discount Code
                   </label>
                   <div className="flex gap-2">
                     <input
                       type="text"
                       value={couponCode}
                       onChange={(e) => setCouponCode(e.target.value)}
-                      placeholder="Nhập mã giảm giá"
+                      placeholder="Enter discount code"
                       className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none"
                     />
                     <button
                       onClick={applyCoupon}
                       className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:scale-105"
                     >
-                      Áp Dụng
+                      Apply
                     </button>
                   </div>
                   {appliedCoupon && (
                     <div className="mt-3 flex items-center gap-2 text-green-600 text-sm font-semibold">
                       <FaCheckCircle />
-                      <span>Mã "{appliedCoupon}" đã được áp dụng!</span>
+                      <span>Code "{appliedCoupon}" applied successfully!</span>
                     </div>
                   )}
                   <div className="mt-3 space-y-1 text-xs text-gray-500">
-                    <p>💡 Thử: <code className="bg-gray-100 px-2 py-1 rounded">DHV20</code> (Giảm 20%)</p>
-                    <p>💡 Hoặc: <code className="bg-gray-100 px-2 py-1 rounded">FIRST50</code> (Giảm 50%)</p>
+                    <p>Try: <code className="bg-gray-100 px-2 py-1 rounded">DHV20</code> (20% off)</p>
+                    <p>Or: <code className="bg-gray-100 px-2 py-1 rounded">FIRST50</code> (50% off)</p>
                   </div>
                 </div>
 
                 {/* Price Breakdown */}
                 <div className="space-y-4 mb-6 pb-6 border-b border-gray-200">
                   <div className="flex justify-between text-gray-700">
-                    <span>Tạm tính:</span>
+                    <span>Subtotal:</span>
                     <span className="font-semibold">${subtotal.toFixed(2)}</span>
                   </div>
                   {discount > 0 && (
                     <div className="flex justify-between text-green-600">
-                      <span>Giảm giá ({(couponDiscount * 100).toFixed(0)}%):</span>
+                      <span>Discount ({(couponDiscount * 100).toFixed(0)}%):</span>
                       <span className="font-semibold">-${discount.toFixed(2)}</span>
                     </div>
                   )}
                   <div className="flex justify-between text-sm text-gray-600 bg-green-50 px-4 py-2 rounded-lg">
                     <span className="flex items-center gap-1">
                       <FaTag className="text-green-600" />
-                      Tổng tiết kiệm:
+                      Total Savings:
                     </span>
                     <span className="font-bold text-green-600">${totalSavings.toFixed(2)}</span>
                   </div>
@@ -262,14 +262,14 @@ const Cart = () => {
 
                 {/* Total */}
                 <div className="flex justify-between items-baseline mb-6">
-                  <span className="text-lg font-semibold text-gray-700">Tổng cộng:</span>
+                  <span className="text-lg font-semibold text-gray-700">Total:</span>
                   <span className="text-4xl font-black text-blue-600">${total.toFixed(2)}</span>
                 </div>
 
                 {/* Checkout Button */}
                 <button className="w-full py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white rounded-xl font-bold text-lg hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 transition-all shadow-xl hover:shadow-2xl hover:scale-105 mb-4">
                   <span className="flex items-center justify-center gap-2">
-                    Thanh Toán Ngay
+                    Checkout Now
                     <FaArrowRight />
                   </span>
                 </button>
@@ -279,7 +279,7 @@ const Cart = () => {
                   to="/courses"
                   className="block w-full py-3 text-center text-blue-600 font-semibold hover:bg-blue-50 rounded-xl transition-all"
                 >
-                  ← Tiếp Tục Mua Sắm
+                  ← Continue Shopping
                 </Link>
 
                 {/* Benefits */}

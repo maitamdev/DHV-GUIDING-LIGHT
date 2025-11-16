@@ -312,7 +312,7 @@ const StudentDashboard = () => {
 
   const handleSaveProfile = () => {
     setEditMode(false);
-    alert('Profile updated successfully! ✅');
+    alert('Profile updated successfully!');
   };
 
   const filteredMentors = mentors.filter(mentor =>
@@ -1099,7 +1099,7 @@ const StudentDashboard = () => {
                       <button
                         onClick={async () => {
                           if (!aiFormData.skills || !aiFormData.goals) {
-                            alert('⚠️ Please fill in at least Skills and Career Goals!');
+                            alert('Please fill in at least Skills and Career Goals!');
                             return;
                           }
                           
@@ -1136,7 +1136,7 @@ const StudentDashboard = () => {
                       </button>
                       
                       <p className="text-xs text-gray-500 text-center mt-2">
-                        🤖 Powered by Google Gemini AI
+                        Powered by Google Gemini AI
                       </p>
                     </div>
                   </div>
@@ -1152,7 +1152,7 @@ const StudentDashboard = () => {
                       <div className="text-center py-12">
                         <FaRobot className="text-6xl text-gray-400 mx-auto mb-4" />
                         <p className="text-gray-600 text-lg mb-2">
-                          Ready to find your perfect mentor! 🎯
+                          Ready to find your perfect mentor!
                         </p>
                         <p className="text-gray-500 text-sm">
                           Fill in your information and click the button to get personalized AI recommendations
@@ -1224,13 +1224,13 @@ const StudentDashboard = () => {
 
                               {/* Match Reasoning */}
                               <div className="bg-purple-50 rounded-lg p-4 mb-4">
-                                <p className="font-semibold text-purple-900 mb-2">✨ Why This Match:</p>
+                                <p className="font-semibold text-purple-900 mb-2">Why This Match:</p>
                                 <p className="text-purple-800 text-sm leading-relaxed">{rec.reasoning}</p>
                               </div>
 
                               {/* Skills */}
                               <div className="mb-4">
-                                <p className="font-semibold text-gray-700 mb-2 text-sm">🎯 Mentor Expertise:</p>
+                                <p className="font-semibold text-gray-700 mb-2 text-sm">Mentor Expertise:</p>
                                 <div className="flex flex-wrap gap-2">
                                   {rec.mentor.skills.slice(0, 6).map((skill: string) => (
                                     <span key={skill} className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
@@ -1242,7 +1242,7 @@ const StudentDashboard = () => {
 
                               {/* Suggested Topics */}
                               <div className="mb-4">
-                                <p className="font-semibold text-gray-700 mb-2 text-sm">📚 What You'll Learn:</p>
+                                <p className="font-semibold text-gray-700 mb-2 text-sm">What You'll Learn:</p>
                                 <ul className="space-y-1">
                                   {rec.suggestedTopics.map((topic: string, i: number) => (
                                     <li key={i} className="text-gray-600 text-sm flex items-start gap-2">
@@ -1255,7 +1255,7 @@ const StudentDashboard = () => {
 
                               {/* Learning Path */}
                               <div className="mb-4">
-                                <p className="font-semibold text-gray-700 mb-2 text-sm">🗺️ Recommended Learning Path:</p>
+                                <p className="font-semibold text-gray-700 mb-2 text-sm">Recommended Learning Path:</p>
                                 <div className="space-y-2">
                                   {rec.learningPath.map((step: string, i: number) => (
                                     <div key={i} className="flex items-start gap-3 text-sm">
@@ -1303,7 +1303,7 @@ const StudentDashboard = () => {
                             
                             {aiSuggestions.nextSteps && (
                               <div className="mt-4">
-                                <p className="font-semibold text-gray-800 mb-2">📝 Next Steps:</p>
+                                <p className="font-semibold text-gray-800 mb-2">Next Steps:</p>
                                 <ul className="space-y-2">
                                   {aiSuggestions.nextSteps.map((step: string, i: number) => (
                                     <li key={i} className="text-gray-700 text-sm flex items-start gap-2">
@@ -1369,7 +1369,7 @@ const StudentDashboard = () => {
 
                       {/* Availability */}
                       <div className="mb-6">
-                        <label className="block text-gray-700 font-semibold mb-3">📅 Mentor's Available Times:</label>
+                        <label className="block text-gray-700 font-semibold mb-3">Mentor's Available Times:</label>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                           {selectedMentor.availability.map((slot: any, i: number) => (
                             <button
@@ -1395,7 +1395,7 @@ const StudentDashboard = () => {
                       {/* Meeting Form */}
                       <div className="space-y-4">
                         <div>
-                          <label className="block text-gray-700 font-semibold mb-2">📌 Meeting Topic:</label>
+                          <label className="block text-gray-700 font-semibold mb-2">Meeting Topic:</label>
                           <input
                             type="text"
                             value={meetingForm.topic}
@@ -1406,7 +1406,7 @@ const StudentDashboard = () => {
                         </div>
 
                         <div>
-                          <label className="block text-gray-700 font-semibold mb-2">💬 Additional Message:</label>
+                          <label className="block text-gray-700 font-semibold mb-2">Additional Message:</label>
                           <textarea
                             value={meetingForm.message}
                             onChange={(e) => setMeetingForm({ ...meetingForm, message: e.target.value })}
@@ -1419,7 +1419,7 @@ const StudentDashboard = () => {
                         <button
                           onClick={async () => {
                             if (!meetingForm.preferredTime || !meetingForm.topic) {
-                              alert('⚠️ Please select a time slot and enter a meeting topic!');
+                              alert('Please select a time slot and enter a meeting topic!');
                               return;
                             }
 
@@ -1436,7 +1436,7 @@ const StudentDashboard = () => {
                             setMeetingLoading(false);
 
                             if (result.success) {
-                              alert(`✅ Meeting request sent successfully!\n\nMeeting ID: ${result.meetingId}\n\nThe mentor will contact you via email to confirm the meeting.`);
+                              alert(`Meeting request sent successfully!\n\nMeeting ID: ${result.meetingId}\n\nThe mentor will contact you via email to confirm the meeting.`);
                               setShowMeetingModal(false);
                               setMeetingForm({ preferredTime: '', topic: '', message: '' });
                             } else {
@@ -1596,7 +1596,7 @@ const StudentDashboard = () => {
                           
                           <div className="mb-4">
                             <div className="flex justify-between text-sm text-gray-600 mb-2">
-                              <span>📚 {course.completedLessons} / {course.totalLessons} lessons</span>
+                              <span>{course.completedLessons} / {course.totalLessons} lessons</span>
                               <span>⏱️ {course.hours}h</span>
                             </div>
                             <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">

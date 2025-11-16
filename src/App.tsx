@@ -3,6 +3,7 @@ import { AuthProvider } from './context/AuthContext';
 import { DarkModeProvider } from './context/DarkModeContext';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import About from './pages/About';
 import Courses from './pages/Courses';
@@ -38,6 +39,7 @@ function App() {
     <DarkModeProvider>
       <AuthProvider>
         <Router>
+          <ScrollToTop />
           <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={
