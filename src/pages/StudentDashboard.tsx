@@ -35,7 +35,15 @@ const StudentDashboard = () => {
     projects: 'E-commerce Website (React + Node.js), Personal Blog (Next.js), Task Management App (React Native)',
     certifications: 'AWS Cloud Practitioner, Google UX Design Certificate',
     languages: 'Vietnamese (Native), English (IELTS 7.0)',
-    achievements: ' 2nd Place Hackathon 2024\n Top 10% Outstanding Students\n 5+ Completed Projects'
+    achievements: ' 2nd Place Hackathon 2024\n Top 10% Outstanding Students\n 5+ Completed Projects',
+    linkedin: 'linkedin.com/in/maitam',
+    github: 'github.com/maitam',
+    portfolio: 'maitam.dev',
+    location: 'Ho Chi Minh City, Vietnam',
+    birthday: '06/20/2005',
+    softSkills: 'Leadership, Problem Solving, Communication, Teamwork, Time Management',
+    hobbies: 'Coding, Reading Tech Blogs, Photography, Gaming',
+    availability: 'Available for freelance/internship'
   });
 
   // Mentor List
@@ -828,15 +836,162 @@ const StudentDashboard = () => {
 
                   {/* Achievements Section */}
                   <div className="bg-gradient-to-r from-amber-50 via-yellow-50 to-orange-50 rounded-xl p-8 shadow-lg border-l-4 border-yellow-500">
-                    <label className="block text-gray-800 font-bold mb-4 text-xl"> Achievements & Awards</label>
+                    <label className="block text-gray-800 font-bold mb-4 text-xl flex items-center gap-2">
+                      <FaStar className="text-yellow-500" />
+                      🏆 Achievements & Awards
+                    </label>
                     <textarea
                       value={profileData.achievements}
                       onChange={(e) => setProfileData({ ...profileData, achievements: e.target.value })}
                       disabled={!editMode}
                       rows={4}
                       className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800 text-lg"
-                      placeholder="VD:  Giải Nhì Hackathon 2024..."
+                      placeholder="e.g., 2nd Place Hackathon 2024, Top 10% Outstanding Students..."
                     />
+                  </div>
+
+                  {/* Personal Info & Social Links */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Personal Details */}
+                    <div className="bg-white rounded-xl p-6 shadow-lg">
+                      <h4 className="font-bold text-xl text-gray-800 mb-4 flex items-center gap-2">
+                        <FaUser className="text-blue-500" />
+                        Personal Details
+                      </h4>
+                      <div className="space-y-3">
+                        <div>
+                          <label className="block text-gray-600 font-semibold mb-2 text-sm">📍 Location</label>
+                          <input
+                            type="text"
+                            value={profileData.location}
+                            onChange={(e) => setProfileData({ ...profileData, location: e.target.value })}
+                            disabled={!editMode}
+                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50"
+                            placeholder="City, Country"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-gray-600 font-semibold mb-2 text-sm">🎂 Birthday</label>
+                          <input
+                            type="text"
+                            value={profileData.birthday}
+                            onChange={(e) => setProfileData({ ...profileData, birthday: e.target.value })}
+                            disabled={!editMode}
+                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50"
+                            placeholder="MM/DD/YYYY"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-gray-600 font-semibold mb-2 text-sm">💼 Availability</label>
+                          <input
+                            type="text"
+                            value={profileData.availability}
+                            onChange={(e) => setProfileData({ ...profileData, availability: e.target.value })}
+                            disabled={!editMode}
+                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50"
+                            placeholder="e.g., Available for internship"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Social & Portfolio Links */}
+                    <div className="bg-white rounded-xl p-6 shadow-lg">
+                      <h4 className="font-bold text-xl text-gray-800 mb-4 flex items-center gap-2">
+                        <FaGraduationCap className="text-indigo-500" />
+                        Social & Portfolio
+                      </h4>
+                      <div className="space-y-3">
+                        <div>
+                          <label className="block text-gray-600 font-semibold mb-2 text-sm">LinkedIn Profile</label>
+                          <input
+                            type="text"
+                            value={profileData.linkedin}
+                            onChange={(e) => setProfileData({ ...profileData, linkedin: e.target.value })}
+                            disabled={!editMode}
+                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50"
+                            placeholder="linkedin.com/in/yourname"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-gray-600 font-semibold mb-2 text-sm">GitHub Profile</label>
+                          <input
+                            type="text"
+                            value={profileData.github}
+                            onChange={(e) => setProfileData({ ...profileData, github: e.target.value })}
+                            disabled={!editMode}
+                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50"
+                            placeholder="github.com/yourname"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-gray-600 font-semibold mb-2 text-sm">Portfolio Website</label>
+                          <input
+                            type="text"
+                            value={profileData.portfolio}
+                            onChange={(e) => setProfileData({ ...profileData, portfolio: e.target.value })}
+                            disabled={!editMode}
+                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50"
+                            placeholder="yourportfolio.com"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Soft Skills & Hobbies */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-gradient-to-br from-rose-50 to-pink-100 rounded-xl p-6 shadow-lg">
+                      <label className="block text-gray-800 font-bold mb-4 text-lg flex items-center gap-2">
+                        <FaLightbulb className="text-pink-500" />
+                        💪 Soft Skills
+                      </label>
+                      <textarea
+                        value={profileData.softSkills}
+                        onChange={(e) => setProfileData({ ...profileData, softSkills: e.target.value })}
+                        disabled={!editMode}
+                        rows={4}
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
+                        placeholder="e.g., Leadership, Communication, Teamwork..."
+                      />
+                    </div>
+                    <div className="bg-gradient-to-br from-teal-50 to-cyan-100 rounded-xl p-6 shadow-lg">
+                      <label className="block text-gray-800 font-bold mb-4 text-lg flex items-center gap-2">
+                        <FaGraduationCap className="text-teal-500" />
+                        🎨 Hobbies & Interests
+                      </label>
+                      <textarea
+                        value={profileData.hobbies}
+                        onChange={(e) => setProfileData({ ...profileData, hobbies: e.target.value })}
+                        disabled={!editMode}
+                        rows={4}
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
+                        placeholder="e.g., Reading, Photography, Gaming..."
+                      />
+                    </div>
+                  </div>
+
+                  {/* Quick Stats Dashboard */}
+                  <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-8 shadow-2xl text-white">
+                    <h4 className="font-bold text-2xl mb-6">📊 Your Progress Dashboard</h4>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                      <div className="bg-white/20 backdrop-blur-lg rounded-xl p-4 text-center">
+                        <div className="text-4xl font-black mb-2">12</div>
+                        <div className="text-sm opacity-90">Courses Enrolled</div>
+                      </div>
+                      <div className="bg-white/20 backdrop-blur-lg rounded-xl p-4 text-center">
+                        <div className="text-4xl font-black mb-2">8</div>
+                        <div className="text-sm opacity-90">Completed</div>
+                      </div>
+                      <div className="bg-white/20 backdrop-blur-lg rounded-xl p-4 text-center">
+                        <div className="text-4xl font-black mb-2">5</div>
+                        <div className="text-sm opacity-90">Certifications</div>
+                      </div>
+                      <div className="bg-white/20 backdrop-blur-lg rounded-xl p-4 text-center">
+                        <div className="text-4xl font-black mb-2">4</div>
+                        <div className="text-sm opacity-90">Active Mentors</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
