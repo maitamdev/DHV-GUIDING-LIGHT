@@ -22,10 +22,10 @@ const roadmapData: { [key: string]: Course[] } = {
   'web-development': [
     {
       id: 1,
-      title: 'HTML & CSS Cơ bản',
+      title: 'HTML & CSS Basics',
       lessons: [
-        { id: 1, title: 'Giới thiệu về HTML', duration: '15:30', videoUrl: 'https://www.youtube.com/watch?v=UB1O30fR-EE', completed: false, locked: false },
-        { id: 2, title: 'CSS Styling cơ bản', duration: '20:45', videoUrl: 'https://www.youtube.com/watch?v=yfoY53QXEnI', completed: false, locked: false },
+        { id: 1, title: 'Introduction to HTML', duration: '15:30', videoUrl: 'https://www.youtube.com/watch?v=UB1O30fR-EE', completed: false, locked: false },
+        { id: 2, title: 'Basic CSS Styling', duration: '20:45', videoUrl: 'https://www.youtube.com/watch?v=yfoY53QXEnI', completed: false, locked: false },
         { id: 3, title: 'Flexbox Layout', duration: '18:20', videoUrl: 'https://www.youtube.com/watch?v=JJSoEo8JSnc', completed: false, locked: false },
         { id: 4, title: 'Grid Layout', duration: '22:10', videoUrl: 'https://www.youtube.com/watch?v=EiNiSFIPIQE', completed: false, locked: true },
       ],
@@ -90,9 +90,9 @@ const RoadmapDetail = () => {
     return (
       <div className="pt-20 min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-dark mb-4">Lộ trình đang được cập nhật</h2>
+          <h2 className="text-3xl font-bold text-dark mb-4">Roadmap is being updated</h2>
           <Link to="/roadmap" className="text-[#06BBCC] hover:underline">
-            ← Quay lại danh sách lộ trình
+            ← Back to roadmap list
           </Link>
         </div>
       </div>
@@ -104,14 +104,14 @@ const RoadmapDetail = () => {
       <div className="container mx-auto px-4 py-8">
         <Link to="/roadmap" className="inline-flex items-center text-[#06BBCC] hover:underline mb-6">
           <i className="fas fa-arrow-left mr-2"></i>
-          Quay lại lộ trình
+          Back to Roadmaps
         </Link>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Course Content - Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-lg p-6 sticky top-24">
-              <h2 className="text-2xl font-bold text-dark mb-6">Nội dung khóa học</h2>
+              <h2 className="text-2xl font-bold text-dark mb-6">Course Content</h2>
               
               <div className="space-y-4 max-h-[600px] overflow-y-auto">
                 {courses.map((course) => (
@@ -184,22 +184,22 @@ const RoadmapDetail = () => {
                       </span>
                       <span className="flex items-center gap-2">
                         <i className="fas fa-eye"></i>
-                        1,234 lượt xem
+                        1,234 views
                       </span>
                     </div>
                     <div className="prose max-w-none">
-                      <h3 className="text-xl font-semibold mb-3">Mô tả bài học</h3>
+                      <h3 className="text-xl font-semibold mb-3">Lesson Description</h3>
                       <p className="text-gray-700">
-                        Trong bài học này, bạn sẽ học được những kiến thức cơ bản và nâng cao về {selectedLesson?.title}.
-                        Chúng tôi sẽ đi qua từng khái niệm một cách chi tiết và dễ hiểu.
+                        In this lesson, you will learn the basics and advanced concepts about {selectedLesson?.title}.
+                        We will go through each concept in detail and make it easy to understand.
                       </p>
                       
-                      <h3 className="text-xl font-semibold mt-6 mb-3">Nội dung chính</h3>
+                      <h3 className="text-xl font-semibold mt-6 mb-3">Main Content</h3>
                       <ul className="list-disc pl-6 text-gray-700">
-                        <li>Giới thiệu tổng quan</li>
-                        <li>Các khái niệm cơ bản</li>
-                        <li>Thực hành với ví dụ</li>
-                        <li>Bài tập và quiz</li>
+                        <li>Overview introduction</li>
+                        <li>Basic concepts</li>
+                        <li>Practice with examples</li>
+                        <li>Exercises and quizzes</li>
                       </ul>
 
                       <div className="mt-8 flex gap-4">
@@ -212,13 +212,13 @@ const RoadmapDetail = () => {
                               : 'bg-[#06BBCC] text-white hover:bg-[#05a3b3]'
                           }`}
                         >
-                          {selectedLesson && completedLessons.includes(selectedLesson.id) ? '✓ Đã hoàn thành' : 'Đánh dấu đã hoàn thành'}
+                          {selectedLesson && completedLessons.includes(selectedLesson.id) ? '✓ Completed' : 'Mark as Completed'}
                         </button>
                         <Link
                           to="/meeting"
                           className="px-6 py-3 border-2 border-[#06BBCC] text-[#06BBCC] rounded-full font-semibold hover:bg-[#06BBCC] hover:text-white transition-all duration-300"
                         >
-                          Tham gia phòng học
+                          Join Study Room
                         </Link>
                       </div>
                     </div>
@@ -228,10 +228,10 @@ const RoadmapDetail = () => {
                 <div className="p-20 text-center">
                   <FaPlayCircle className="text-8xl text-gray-300 mx-auto mb-6" />
                   <h3 className="text-2xl font-semibold text-gray-600 mb-2">
-                    Chọn một bài học để bắt đầu
+                    Select a lesson to start
                   </h3>
                   <p className="text-gray-500">
-                    Chọn bài học từ danh sách bên trái để xem video
+                    Choose a lesson from the left sidebar to watch the video
                   </p>
                 </div>
               )}
