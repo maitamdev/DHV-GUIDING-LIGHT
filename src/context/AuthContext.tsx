@@ -5,7 +5,10 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  updateProfile
+  updateProfile,
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence
 } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../config/firebase';
@@ -24,7 +27,7 @@ interface AuthContextType {
   userData: UserData | null;
   loading: boolean;
   signup: (email: string, password: string, displayName: string, role: string) => Promise<void>;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string, rememberMe?: boolean) => Promise<void>;
   logout: () => Promise<void>;
   purchaseCourse: (courseId: string) => Promise<void>;
 }
@@ -60,7 +63,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     await setDoc(doc(db, 'users', user.uid), userDoc);
   };
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string, rememberMe: boolean = false) => {
+    // Set persistence based on rememberMe
+    await setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
     await signInWithEmailAndPassword(auth, email, password);
   };
 

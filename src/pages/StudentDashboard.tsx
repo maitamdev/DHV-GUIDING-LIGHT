@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap, FaRobot, FaPaperPlane, FaLightbulb, FaChartLine, FaBriefcase, FaTasks, FaBookOpen, FaEye } from 'react-icons/fa';
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
+  const { currentUser, userData } = useAuth();
   const [activeTab, setActiveTab] = useState<'profile' | 'mentors' | 'aiSuggest' | 'schedule' | 'courses' | 'myCourses'>('profile');
   const [editMode, setEditMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -20,8 +22,8 @@ const StudentDashboard = () => {
   const [aiLoading, setAiLoading] = useState(false);
   const [aiSuggestions, setAiSuggestions] = useState<any>(null);
   const [profileData, setProfileData] = useState({
-    name: 'Mai Tran Thien Tam',
-    email: 'maitamit062005@gmail.com',
+    name: '',
+    email: '',
     phone: '+84 877 724 374',
     university: 'Hung Vuong University',
     major: 'Computer Science',
@@ -43,6 +45,17 @@ const StudentDashboard = () => {
     hobbies: 'Coding, Reading Tech Blogs, Photography, Gaming',
     availability: 'Available for freelance/internship'
   });
+
+  // Load user data when component mounts
+  useEffect(() => {
+    if (userData && currentUser) {
+      setProfileData(prev => ({
+        ...prev,
+        name: userData.displayName || currentUser.displayName || '',
+        email: userData.email || currentUser.email || ''
+      }));
+    }
+  }, [userData, currentUser]);
 
   // Mentor List
   const mentors = [

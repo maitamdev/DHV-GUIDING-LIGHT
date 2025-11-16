@@ -40,7 +40,11 @@ function App() {
         <Router>
           <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
+            <Route index element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            } />
             <Route path="about" element={<About />} />
             <Route path="courses" element={
               <ProtectedRoute>
@@ -57,12 +61,36 @@ function App() {
                 <Cart />
               </ProtectedRoute>
             } />
-            <Route path="contact" element={<Contact />} />
-            <Route path="testimonial" element={<Testimonial />} />
-            <Route path="team" element={<Team />} />
-            <Route path="instructor" element={<Instructor />} />
-            <Route path="mentor/:id" element={<MentorProfile />} />
-            <Route path="faq" element={<FAQ />} />
+            <Route path="contact" element={
+              <ProtectedRoute>
+                <Contact />
+              </ProtectedRoute>
+            } />
+            <Route path="testimonial" element={
+              <ProtectedRoute>
+                <Testimonial />
+              </ProtectedRoute>
+            } />
+            <Route path="team" element={
+              <ProtectedRoute>
+                <Team />
+              </ProtectedRoute>
+            } />
+            <Route path="instructor" element={
+              <ProtectedRoute>
+                <Instructor />
+              </ProtectedRoute>
+            } />
+            <Route path="mentor/:id" element={
+              <ProtectedRoute>
+                <MentorProfile />
+              </ProtectedRoute>
+            } />
+            <Route path="faq" element={
+              <ProtectedRoute>
+                <FAQ />
+              </ProtectedRoute>
+            } />
             <Route path="blog" element={
               <ProtectedRoute>
                 <Blog />
