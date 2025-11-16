@@ -8,25 +8,25 @@ const About = () => {
       icon: FaUsers,
       title: 'Build Community',
       description: 'DHV Guiding Light aims to help students and new programmers entering the IT field become excellent developers',
-      image: '/img/team-1.jpg'
+      image: '/img/comu.jpg'
     },
     {
       icon: FaChartLine,
       title: 'Enhance Quality',
       description: 'Our team continuously improves skills, teaching methods, and attitudes to enhance the quality of current and future courses',
-      image: '/img/team-2.jpg'
+      image: '/img/enc.png'
     },
     {
       icon: FaShieldAlt,
       title: 'Advanced Platform',
       description: 'We use modern learning management systems and automatic grading platforms to provide the best experience',
-      image: '/img/team-3.jpg'
+      image: '/img/ava.png'
     },
     {
       icon: FaHeart,
       title: 'Student Trust',
       description: 'This is our top priority. We aspire to connect, support, and be the trusted platform for students nationwide',
-      image: '/img/team-4.jpg'
+      image: '/img/stu.png'
     }
   ];
 
@@ -239,7 +239,7 @@ const About = () => {
               className="relative overflow-hidden rounded-3xl shadow-2xl"
             >
               <img 
-                src="/img/team-1.jpg" 
+                src="/img/tec.jpg" 
                 alt="Teacher" 
                 className="w-full h-96 object-cover"
               />
