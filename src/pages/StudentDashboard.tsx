@@ -1,12 +1,10 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap, FaRobot, FaPaperPlane, FaLightbulb, FaChartLine, FaCog, FaSignOutAlt, FaHome, FaBriefcase, FaTasks, FaBookOpen, FaEye } from 'react-icons/fa';
+import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap, FaRobot, FaPaperPlane, FaLightbulb, FaChartLine, FaBriefcase, FaTasks, FaBookOpen, FaEye } from 'react-icons/fa';
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
-  const { logout } = useAuth();
   const [activeTab, setActiveTab] = useState<'profile' | 'mentors' | 'aiSuggest' | 'schedule' | 'courses' | 'myCourses'>('profile');
   const [editMode, setEditMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -301,106 +299,10 @@ const StudentDashboard = () => {
     mentor.skills.some(skill => skill.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
-  // Sidebar menu configuration
-  const sidebarMenu = [
-    { id: 'profile', icon: FaUser, label: 'My Profile' },
-    { id: 'myCourses', icon: FaBook, label: 'My Courses' },
-    { id: 'mentors', icon: FaSearch, label: 'Find Mentors' },
-    { id: 'aiSuggest', icon: FaRobot, label: 'AI Mentor' },
-    { id: 'schedule', icon: FaCalendar, label: 'Meeting Schedule' },
-  ];
-
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      {/* Sidebar - White like DHV image */}
-      <motion.aside
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        className="fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 z-50 overflow-y-auto"
-      >
-        {/* Logo */}
-        <div className="p-6 border-b border-gray-100">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-[#0066CC] shadow-md flex items-center justify-center">
-              <FaGraduationCap className="text-2xl text-white" />
-            </div>
-            <div>
-              <h2 className="text-lg font-bold text-gray-800">DHV Learning</h2>
-              <p className="text-xs text-gray-500">Student Portal</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Menu Items */}
-        <nav className="p-4 space-y-2">
-          {sidebarMenu.map((item) => (
-            <motion.button
-              key={item.id}
-              onClick={() => setActiveTab(item.id as any)}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all font-medium text-sm ${
-                activeTab === item.id
-                  ? 'bg-[#0066CC] text-white shadow-md'
-                  : 'text-gray-600 hover:bg-gray-50'
-              }`}
-            >
-              <item.icon className="text-lg" />
-              <span className="text-sm">{item.label}</span>
-            </motion.button>
-          ))}
-          
-          <div className="my-4 border-t border-gray-200/50"></div>
-          
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all font-medium text-sm"
-          >
-            <FaHome className="text-lg" />
-            <span>Dashboard</span>
-          </motion.button>
-          
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all font-medium text-sm"
-          >
-            <FaBell className="text-lg" />
-            <span>Notifications</span>
-          </motion.button>
-          
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50 transition-all font-medium text-sm"
-          >
-            <FaCog className="text-lg" />
-            <span>Settings</span>
-          </motion.button>
-        </nav>
-
-        {/* Logout Button */}
-        <div className="absolute bottom-6 left-4 right-4">
-          <button
-            onClick={async () => {
-              try {
-                await logout();
-                navigate('/login');
-              } catch (error) {
-                console.error('Logout error:', error);
-              }
-            }}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-500 hover:bg-red-50 transition-all font-medium text-sm"
-          >
-            <FaSignOutAlt className="text-lg" />
-            <span>Logout</span>
-          </button>
-        </div>
-      </motion.aside>
-
+    <div className="min-h-screen bg-gray-50">
       {/* Main Content */}
-      <div className="ml-64 flex-1 min-h-screen">
+      <div className="flex-1 min-h-screen">
         {/* Top Header - Blue like DHV image */}
         <motion.header
           initial={{ y: -50, opacity: 0 }}
