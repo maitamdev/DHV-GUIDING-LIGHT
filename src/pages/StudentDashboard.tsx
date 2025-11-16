@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { FaUser, FaCalendar, FaBook, FaSearch, FaStar, FaBell, FaEdit, FaSave, FaVideo, FaClock, FaCheckCircle, FaGraduationCap, FaRobot, FaPaperPlane, FaLightbulb, FaChartLine, FaBriefcase, FaTasks, FaBookOpen, FaEye } from 'react-icons/fa';
+import { getAIMentorRecommendations, scheduleMentorMeeting } from '../services/aiMentorService';
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
@@ -21,6 +22,14 @@ const StudentDashboard = () => {
   });
   const [aiLoading, setAiLoading] = useState(false);
   const [aiSuggestions, setAiSuggestions] = useState<any>(null);
+  const [showMeetingModal, setShowMeetingModal] = useState(false);
+  const [selectedMentor, setSelectedMentor] = useState<any>(null);
+  const [meetingForm, setMeetingForm] = useState({
+    preferredTime: '',
+    topic: '',
+    message: ''
+  });
+  const [meetingLoading, setMeetingLoading] = useState(false);
   const [profileData, setProfileData] = useState({
     name: '',
     email: '',
@@ -1016,7 +1025,7 @@ const StudentDashboard = () => {
                   AI-Powered Mentor Recommendations
                 </h3>
                 <p className="text-gray-600 mb-8">
-                   Enter your skills, interests, and goals. AI will analyze and suggest the best mentors for you!
+                   Enter your skills, interests, and goals. Our AI will analyze and match you with the perfect mentors!
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-8 mb-8">
@@ -1044,7 +1053,7 @@ const StudentDashboard = () => {
                         <textarea
                           value={aiFormData.interests}
                           onChange={(e) => setAiFormData({ ...aiFormData, interests: e.target.value })}
-                          placeholder="e.g., Web Development, Mobile Apps, AI/ML, Game Development..."
+                          placeholder="e.g., Web Development, Mobile Apps, AI/ML, Data Science..."
                           rows={3}
                           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
                         />
@@ -1055,34 +1064,34 @@ const StudentDashboard = () => {
                         <textarea
                           value={aiFormData.goals}
                           onChange={(e) => setAiFormData({ ...aiFormData, goals: e.target.value })}
-                          placeholder="e.g., Become a Full Stack Developer, Work at a major tech company..."
+                          placeholder="e.g., Become a Full Stack Developer, Get hired at FAANG companies..."
                           rows={3}
                           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2"> Current Level</label>
+                        <label className="block text-gray-700 font-semibold mb-2"> Experience Level</label>
                         <select
                           value={aiFormData.experience}
                           onChange={(e) => setAiFormData({ ...aiFormData, experience: e.target.value })}
                           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
                         >
-                          <option value="">-- Select level --</option>
-                          <option value="beginner">Beginner</option>
-                          <option value="intermediate">Intermediate</option>
-                          <option value="advanced">Advanced</option>
-                          <option value="expert">Expert</option>
+                          <option value="">-- Select your level --</option>
+                          <option value="beginner">Beginner (Just started)</option>
+                          <option value="intermediate">Intermediate (1-2 years)</option>
+                          <option value="advanced">Advanced (3+ years)</option>
+                          <option value="expert">Expert (5+ years)</option>
                         </select>
                       </div>
 
                       <div>
-                        <label className="block text-gray-700 font-semibold mb-2"> Preferred Fields</label>
+                        <label className="block text-gray-700 font-semibold mb-2"> Preferred Specialization</label>
                         <input
                           type="text"
                           value={aiFormData.preferredFields}
                           onChange={(e) => setAiFormData({ ...aiFormData, preferredFields: e.target.value })}
-                          placeholder="e.g., Backend, Frontend, DevOps, Data Science..."
+                          placeholder="e.g., Backend, Frontend, DevOps, Mobile Development..."
                           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
                         />
                       </div>
@@ -1090,68 +1099,24 @@ const StudentDashboard = () => {
                       <button
                         onClick={async () => {
                           if (!aiFormData.skills || !aiFormData.goals) {
-                            alert('⚠️ Please enter at least Skills and Goals!');
+                            alert('⚠️ Please fill in at least Skills and Career Goals!');
                             return;
                           }
                           
                           setAiLoading(true);
+                          setAiSuggestions(null);
+                          
                           try {
-                            // Call Groq API
-                            const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-                              method: 'POST',
-                              headers: {
-                                'Content-Type': 'application/json',
-                                'Authorization': `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`
-                              },
-                              body: JSON.stringify({
-                                model: 'mixtral-8x7b-32768',
-                                messages: [{
-                                  role: 'user',
-                                  content: `You are a career counseling expert. Based on the following mentee information, suggest 3 most suitable mentors:
-                                  
-Skills: ${aiFormData.skills}
-Interests: ${aiFormData.interests}
-Goals: ${aiFormData.goals}
-Level: ${aiFormData.experience}
-Preferred Fields: ${aiFormData.preferredFields}
-
-Please respond in JSON format:
-{
-  "suggestions": [
-    {
-      "mentorName": "Mentor name",
-      "title": "Title",
-      "reason": "Why suitable",
-      "focus": "Area of expertise",
-      "recommendation": "Learning recommendations"
-    }
-  ],
-  "overallAdvice": "General advice for mentee"
-}`
-                                }],
-                                temperature: 0.7,
-                                max_tokens: 1500
-                              })
-                            });
-
-                            const data = await response.json();
-                            const content = data.choices[0].message.content;
-                            
-                            // Parse JSON from response
-                            const jsonMatch = content.match(/\{[\s\S]*\}/);
-                            if (jsonMatch) {
-                              const result = JSON.parse(jsonMatch[0]);
-                              setAiSuggestions(result);
-                            } else {
-                              setAiSuggestions({ error: 'Unable to parse results', raw: content });
-                            }
+                            const recommendations = await getAIMentorRecommendations(aiFormData);
+                            setAiSuggestions(recommendations);
                           } catch (error: any) {
-                            console.error('Groq API Error:', error);
+                            console.error('AI Recommendation Error:', error);
                             setAiSuggestions({ 
-                              error: 'Error connecting to AI',
+                              error: 'Failed to get recommendations',
                               message: error.message 
                             });
                           }
+                          
                           setAiLoading(false);
                         }}
                         disabled={aiLoading}
@@ -1160,87 +1125,343 @@ Please respond in JSON format:
                         {aiLoading ? (
                           <>
                             <div className="animate-spin w-6 h-6 border-4 border-white border-t-transparent rounded-full"></div>
-                            Analyzing...
+                            Analyzing with AI...
                           </>
                         ) : (
                           <>
                             <FaPaperPlane />
-                            Get Mentor Recommendations
+                             Get AI Recommendations
                           </>
                         )}
                       </button>
+                      
+                      <p className="text-xs text-gray-500 text-center mt-2">
+                        🤖 Powered by Google Gemini AI
+                      </p>
                     </div>
                   </div>
 
                   {/* AI Results */}
-                  <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl p-8 shadow-xl">
+                  <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl p-8 shadow-xl max-h-[800px] overflow-y-auto">
                     <h4 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
                       <FaStar className="text-yellow-500" />
-                      AI Recommendations
+                      AI Analysis & Recommendations
                     </h4>
 
                     {!aiSuggestions ? (
                       <div className="text-center py-12">
                         <FaRobot className="text-6xl text-gray-400 mx-auto mb-4" />
-                        <p className="text-gray-600 text-lg">
-                          Fill in the information on the left and click the button to get AI recommendations! 🤖
+                        <p className="text-gray-600 text-lg mb-2">
+                          Ready to find your perfect mentor! 🎯
+                        </p>
+                        <p className="text-gray-500 text-sm">
+                          Fill in your information and click the button to get personalized AI recommendations
                         </p>
                       </div>
                     ) : aiSuggestions.error ? (
                       <div className="bg-red-100 border-l-4 border-red-500 p-6 rounded-lg">
                         <p className="text-red-700 font-semibold mb-2">❌ {aiSuggestions.error}</p>
-                        <p className="text-red-600 text-sm">{aiSuggestions.message || aiSuggestions.raw}</p>
+                        <p className="text-red-600 text-sm">{aiSuggestions.message}</p>
                       </div>
                     ) : (
                       <div className="space-y-6">
-                        {aiSuggestions.suggestions?.map((suggestion: any, index: number) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.2 }}
-                            className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500"
-                          >
-                            <div className="flex items-start gap-4 mb-4">
-                              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                                {index + 1}
-                              </div>
-                              <div className="flex-1">
-                                <h5 className="text-xl font-bold text-gray-800 mb-1">{suggestion.mentorName}</h5>
-                                <p className="text-[#06BBCC] font-semibold">{suggestion.title}</p>
-                              </div>
-                            </div>
-                            
-                            <div className="space-y-3 pl-16">
-                              <div>
-                                <span className="font-semibold text-gray-700">✅ Why Suitable:</span>
-                                <p className="text-gray-600 mt-1">{suggestion.reason}</p>
-                              </div>
-                              <div>
-                                <span className="font-semibold text-gray-700">🎯 Expertise:</span>
-                                <p className="text-gray-600 mt-1">{suggestion.focus}</p>
-                              </div>
-                              <div>
-                                <span className="font-semibold text-gray-700">💡 Recommendations:</span>
-                                <p className="text-gray-600 mt-1">{suggestion.recommendation}</p>
-                              </div>
-                            </div>
-                          </motion.div>
-                        ))}
+                        {/* Analysis */}
+                        {aiSuggestions.analysis && (
+                          <div className="bg-blue-100 border-l-4 border-blue-500 p-5 rounded-lg">
+                            <h5 className="font-bold text-blue-900 mb-2 flex items-center gap-2">
+                              <FaLightbulb className="text-blue-600" />
+                              Profile Analysis
+                            </h5>
+                            <p className="text-blue-800 leading-relaxed">{aiSuggestions.analysis}</p>
+                          </div>
+                        )}
 
-                        {aiSuggestions.overallAdvice && (
+                        {/* Recommendations */}
+                        <div className="space-y-5">
+                          <h5 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+                            <FaStar className="text-yellow-500" />
+                            Top 3 Recommended Mentors
+                          </h5>
+                          
+                          {aiSuggestions.recommendations?.map((rec: any, index: number) => (
+                            <motion.div
+                              key={rec.mentorId}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: index * 0.2 }}
+                              className="bg-white rounded-xl p-6 shadow-lg border-2 border-purple-200 hover:border-purple-400 transition-all"
+                            >
+                              {/* Mentor Header */}
+                              <div className="flex items-start gap-4 mb-4">
+                                <div className="relative">
+                                  <img 
+                                    src={rec.mentor.image} 
+                                    alt={rec.mentor.name}
+                                    className="w-20 h-20 rounded-full object-cover border-4 border-purple-300"
+                                  />
+                                  <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                    #{index + 1}
+                                  </div>
+                                </div>
+                                <div className="flex-1">
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <h6 className="text-xl font-bold text-gray-800">{rec.mentor.name}</h6>
+                                    <span className="bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                                      {rec.matchScore}% Match
+                                    </span>
+                                  </div>
+                                  <p className="text-[#06BBCC] font-semibold mb-1">{rec.mentor.title}</p>
+                                  <p className="text-gray-600 text-sm">{rec.mentor.company} • {rec.mentor.experience}</p>
+                                  <div className="flex items-center gap-3 mt-2 text-sm">
+                                    <span className="flex items-center gap-1 text-yellow-600">
+                                      <FaStar /> {rec.mentor.rating}
+                                    </span>
+                                    <span className="text-gray-600">•</span>
+                                    <span className="text-gray-600">{rec.mentor.students} students</span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Match Reasoning */}
+                              <div className="bg-purple-50 rounded-lg p-4 mb-4">
+                                <p className="font-semibold text-purple-900 mb-2">✨ Why This Match:</p>
+                                <p className="text-purple-800 text-sm leading-relaxed">{rec.reasoning}</p>
+                              </div>
+
+                              {/* Skills */}
+                              <div className="mb-4">
+                                <p className="font-semibold text-gray-700 mb-2 text-sm">🎯 Mentor Expertise:</p>
+                                <div className="flex flex-wrap gap-2">
+                                  {rec.mentor.skills.slice(0, 6).map((skill: string) => (
+                                    <span key={skill} className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
+                                      {skill}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+
+                              {/* Suggested Topics */}
+                              <div className="mb-4">
+                                <p className="font-semibold text-gray-700 mb-2 text-sm">📚 What You'll Learn:</p>
+                                <ul className="space-y-1">
+                                  {rec.suggestedTopics.map((topic: string, i: number) => (
+                                    <li key={i} className="text-gray-600 text-sm flex items-start gap-2">
+                                      <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                                      <span>{topic}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              {/* Learning Path */}
+                              <div className="mb-4">
+                                <p className="font-semibold text-gray-700 mb-2 text-sm">🗺️ Recommended Learning Path:</p>
+                                <div className="space-y-2">
+                                  {rec.learningPath.map((step: string, i: number) => (
+                                    <div key={i} className="flex items-start gap-3 text-sm">
+                                      <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
+                                        {i + 1}
+                                      </div>
+                                      <p className="text-gray-600 pt-0.5">{step}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+
+                              {/* Contact & Schedule */}
+                              <div className="flex flex-wrap gap-3 pt-4 border-t border-gray-200">
+                                <button
+                                  onClick={() => {
+                                    setSelectedMentor(rec.mentor);
+                                    setShowMeetingModal(true);
+                                  }}
+                                  className="flex-1 px-4 py-3 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white rounded-lg font-bold hover:from-blue-600 hover:to-purple-600 transition-all flex items-center justify-center gap-2"
+                                >
+                                  <FaCalendar />
+                                  Schedule Meeting
+                                </button>
+                                <button
+                                  onClick={() => navigate(`/mentor/${rec.mentor.id}`)}
+                                  className="flex-1 px-4 py-3 bg-white border-2 border-[#06BBCC] text-[#06BBCC] rounded-lg font-bold hover:bg-blue-50 transition-all flex items-center justify-center gap-2"
+                                >
+                                  <FaUser />
+                                  View Profile
+                                </button>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+
+                        {/* Career Advice */}
+                        {aiSuggestions.careerAdvice && (
                           <div className="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-xl p-6 border-l-4 border-yellow-500">
                             <h5 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
                               <FaLightbulb className="text-yellow-600" />
-                              Overall Advice
+                              Career Guidance for You
                             </h5>
-                            <p className="text-gray-700 leading-relaxed">{aiSuggestions.overallAdvice}</p>
+                            <p className="text-gray-700 leading-relaxed mb-4">{aiSuggestions.careerAdvice}</p>
+                            
+                            {aiSuggestions.nextSteps && (
+                              <div className="mt-4">
+                                <p className="font-semibold text-gray-800 mb-2">📝 Next Steps:</p>
+                                <ul className="space-y-2">
+                                  {aiSuggestions.nextSteps.map((step: string, i: number) => (
+                                    <li key={i} className="text-gray-700 text-sm flex items-start gap-2">
+                                      <span className="text-orange-500 font-bold">{i + 1}.</span>
+                                      <span>{step}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>
                     )}
                   </div>
                 </div>
+
+                {/* Meeting Scheduling Modal */}
+                {showMeetingModal && selectedMentor && (
+                  <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+                    >
+                      <div className="flex items-center justify-between mb-6">
+                        <h3 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
+                          <FaCalendar className="text-[#06BBCC]" />
+                          Schedule Meeting with {selectedMentor.name}
+                        </h3>
+                        <button
+                          onClick={() => {
+                            setShowMeetingModal(false);
+                            setMeetingForm({ preferredTime: '', topic: '', message: '' });
+                          }}
+                          className="text-gray-500 hover:text-gray-700 text-2xl"
+                        >
+                          ×
+                        </button>
+                      </div>
+
+                      {/* Mentor Info */}
+                      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-5 mb-6">
+                        <div className="flex items-center gap-4">
+                          <img 
+                            src={selectedMentor.image} 
+                            alt={selectedMentor.name}
+                            className="w-16 h-16 rounded-full object-cover border-4 border-white"
+                          />
+                          <div>
+                            <h4 className="font-bold text-gray-800 text-lg">{selectedMentor.name}</h4>
+                            <p className="text-[#06BBCC] font-semibold">{selectedMentor.title}</p>
+                            <div className="flex items-center gap-3 mt-1 text-sm text-gray-600">
+                              <span className="flex items-center gap-1">
+                                <FaStar className="text-yellow-500" /> {selectedMentor.rating}
+                              </span>
+                              <span>•</span>
+                              <span>{selectedMentor.students} students</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Availability */}
+                      <div className="mb-6">
+                        <label className="block text-gray-700 font-semibold mb-3">📅 Mentor's Available Times:</label>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          {selectedMentor.availability.map((slot: any, i: number) => (
+                            <button
+                              key={i}
+                              onClick={() => slot.available && setMeetingForm({ ...meetingForm, preferredTime: `${slot.day} ${slot.time}` })}
+                              disabled={!slot.available}
+                              className={`p-4 rounded-lg border-2 text-left transition-all ${
+                                slot.available
+                                  ? meetingForm.preferredTime === `${slot.day} ${slot.time}`
+                                    ? 'border-[#06BBCC] bg-blue-50'
+                                    : 'border-gray-300 hover:border-blue-400'
+                                  : 'border-gray-200 bg-gray-50 opacity-50 cursor-not-allowed'
+                              }`}
+                            >
+                              <div className="font-semibold text-gray-800">{slot.day}</div>
+                              <div className="text-sm text-gray-600">{slot.time}</div>
+                              {!slot.available && <div className="text-xs text-red-500 mt-1">Not Available</div>}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Meeting Form */}
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-gray-700 font-semibold mb-2">📌 Meeting Topic:</label>
+                          <input
+                            type="text"
+                            value={meetingForm.topic}
+                            onChange={(e) => setMeetingForm({ ...meetingForm, topic: e.target.value })}
+                            placeholder="e.g., React Project Review, Career Guidance, Technical Interview Prep..."
+                            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-gray-700 font-semibold mb-2">💬 Additional Message:</label>
+                          <textarea
+                            value={meetingForm.message}
+                            onChange={(e) => setMeetingForm({ ...meetingForm, message: e.target.value })}
+                            placeholder="Tell the mentor what you'd like to discuss, any specific questions, or goals for the meeting..."
+                            rows={4}
+                            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                          />
+                        </div>
+
+                        <button
+                          onClick={async () => {
+                            if (!meetingForm.preferredTime || !meetingForm.topic) {
+                              alert('⚠️ Please select a time slot and enter a meeting topic!');
+                              return;
+                            }
+
+                            setMeetingLoading(true);
+                            
+                            const result = await scheduleMentorMeeting(selectedMentor.id, {
+                              name: profileData.name,
+                              email: profileData.email,
+                              preferredTime: meetingForm.preferredTime,
+                              topic: meetingForm.topic,
+                              message: meetingForm.message
+                            });
+
+                            setMeetingLoading(false);
+
+                            if (result.success) {
+                              alert(`✅ Meeting request sent successfully!\n\nMeeting ID: ${result.meetingId}\n\nThe mentor will contact you via email to confirm the meeting.`);
+                              setShowMeetingModal(false);
+                              setMeetingForm({ preferredTime: '', topic: '', message: '' });
+                            } else {
+                              alert(`❌ Failed to schedule meeting: ${result.error}`);
+                            }
+                          }}
+                          disabled={meetingLoading}
+                          className="w-full px-8 py-4 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white rounded-xl font-bold text-lg hover:from-blue-600 hover:to-purple-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                        >
+                          {meetingLoading ? (
+                            <>
+                              <div className="animate-spin w-6 h-6 border-4 border-white border-t-transparent rounded-full"></div>
+                              Sending Request...
+                            </>
+                          ) : (
+                            <>
+                              <FaCheckCircle />
+                              Send Meeting Request
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </motion.div>
+                  </div>
+                )}
               </div>
             )}
 
