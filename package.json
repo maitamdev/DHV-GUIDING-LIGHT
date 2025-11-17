@@ -15,6 +15,8 @@
     "date-fns": "^2.30.0",
     "firebase": "^10.7.1",
     "framer-motion": "^12.23.24",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
