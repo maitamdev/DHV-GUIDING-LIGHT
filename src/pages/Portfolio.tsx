@@ -2,12 +2,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaGlobe, FaDownload, FaCertificate, FaTrophy, FaCode, FaStar, FaProjectDiagram, FaCalendar, FaEdit, FaSave, FaTimes, FaPlus, FaTrash, FaCheck } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaGlobe, FaDownload, FaCertificate, FaTrophy, FaCode, FaStar, FaProjectDiagram, FaCalendar, FaEdit, FaSave, FaTimes, FaPlus, FaTrash, FaCheck, FaEye } from 'react-icons/fa';
+import { CVTemplate, sampleCVData } from '../components/CVTemplate';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 const Portfolio = () => {
   const navigate = useNavigate();
   const { currentUser, userData } = useAuth();
-  const [activeTab, setActiveTab] = useState<'overview' | 'projects' | 'certificates' | 'skills'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'projects' | 'certificates' | 'skills' | 'cv'>('overview');
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -172,6 +175,36 @@ const Portfolio = () => {
       skills: prev.skills.filter((_, i) => i !== index),
       stats: { ...prev.stats, skillsMastered: Math.max(0, prev.stats.skillsMastered - 1) }
     }));
+  };
+
+  const handleDownloadCV = async () => {
+    const cvElement = document.getElementById('cv-preview');
+    if (!cvElement) return;
+
+    try {
+      const canvas = await html2canvas(cvElement, {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff'
+      });
+
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+      });
+
+      const imgWidth = 210; // A4 width in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      pdf.save(`${portfolioData.name.replace(/\s+/g, '_')}_CV.pdf`);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Failed to download CV. Please try again.');
+    }
   };
 
   return (
@@ -341,7 +374,8 @@ const Portfolio = () => {
               { id: 'overview', label: 'Overview', icon: FaStar },
               { id: 'projects', label: 'Projects', icon: FaProjectDiagram },
               { id: 'certificates', label: 'Certificates', icon: FaCertificate },
-              { id: 'skills', label: 'Skills', icon: FaCode }
+              { id: 'skills', label: 'Skills', icon: FaCode },
+              { id: 'cv', label: 'CV Preview', icon: FaEye }
             ].map((tab) => (
               <button key={tab.id} onClick={() => setActiveTab(tab.id as any)} className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${activeTab === tab.id ? 'bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white shadow-lg' : 'text-gray-600 hover:bg-gray-100'}`}>
                 <tab.icon /> {tab.label}
@@ -539,6 +573,69 @@ const Portfolio = () => {
                     </div>
                   );
                 })}
+              </div>
+            </div>
+          )}
+
+          {/* CV Preview Tab */}
+          {activeTab === 'cv' && (
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              <div className="flex justify-between items-center mb-6">
+                <div>
+                  <h3 className="text-3xl font-bold text-gray-800 mb-2">CV Preview</h3>
+                  <p className="text-gray-600">Professional resume in Canva style - Ready to download</p>
+                </div>
+                <button
+                  onClick={handleDownloadCV}
+                  className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#001A66] to-[#003399] text-white rounded-xl font-bold hover:shadow-xl transition-all"
+                >
+                  <FaDownload /> Download PDF
+                </button>
+              </div>
+
+              <div className="border-4 border-gray-200 rounded-lg overflow-hidden">
+                <div id="cv-preview" className="bg-white">
+                  <CVTemplate data={{
+                    ...sampleCVData,
+                    personal: {
+                      ...sampleCVData.personal,
+                      name: portfolioData.name,
+                      title: portfolioData.title,
+                      email: portfolioData.email,
+                      avatar: portfolioData.profileImage,
+                      website: portfolioData.website,
+                      phone: '+84 123 456 789',
+                      location: 'Ho Chi Minh City, Vietnam'
+                    },
+                    summary: portfolioData.bio,
+                    social: [
+                      { platform: 'GitHub', url: portfolioData.github, icon: '💻' },
+                      { platform: 'LinkedIn', url: portfolioData.linkedin, icon: '💼' },
+                      { platform: 'Website', url: portfolioData.website, icon: '🌐' }
+                    ],
+                    skills: portfolioData.skills.slice(0, 6).map(s => ({
+                      name: s.name,
+                      level: s.level
+                    })),
+                    projects: portfolioData.projects.slice(0, 2).map(p => ({
+                      name: p.title,
+                      description: p.description,
+                      technologies: p.technologies
+                    })),
+                    certificates: portfolioData.completedCourses.map(c => ({
+                      name: c.title,
+                      issuer: 'DHV Guiding Light',
+                      date: new Date(c.completedDate).getFullYear().toString()
+                    }))
+                  }} />
+                </div>
+              </div>
+
+              <div className="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                <p className="text-sm text-gray-700">
+                  <strong className="text-blue-700">💡 Tip:</strong> This CV is automatically generated from your portfolio data. 
+                  Update your profile, projects, and skills to see changes reflected in the CV!
+                </p>
               </div>
             </div>
           )}
