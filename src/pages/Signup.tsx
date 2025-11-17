@@ -187,7 +187,7 @@ const Signup = () => {
                   placeholder="Enter your name"
                   value={formData.displayName}
                   onChange={(e) => setFormData({ ...formData, displayName: e.target.value })}
-                  className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#1BC6D5] focus:outline-none transition-all bg-white"
+                  className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#001A66] focus:outline-none transition-all bg-white"
                   required
                 />
               </div>
@@ -203,7 +203,7 @@ const Signup = () => {
                   placeholder="Enter your email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#1BC6D5] focus:outline-none transition-all bg-white"
+                  className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#001A66] focus:outline-none transition-all bg-white"
                   required
                 />
               </div>
@@ -219,7 +219,7 @@ const Signup = () => {
                   placeholder="Create a password (min. 6 characters)"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#1BC6D5] focus:outline-none transition-all bg-white"
+                  className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#001A66] focus:outline-none transition-all bg-white"
                   required
                   minLength={6}
                 />
@@ -257,7 +257,7 @@ const Signup = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-gradient-to-r from-[#001A66] to-[#001A66] text-white py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -275,9 +275,9 @@ const Signup = () => {
             {/* Terms */}
             <p className="text-xs text-center text-gray-500 leading-relaxed">
               By creating an account, you agree to our{' '}
-              <Link to="/terms" className="text-[#1BC6D5] hover:underline">Terms of Service</Link>
+              <Link to="/terms" className="text-[#001A66] hover:underline">Terms of Service</Link>
               {' '}and{' '}
-              <Link to="/privacy" className="text-[#1BC6D5] hover:underline">Privacy Policy</Link>
+              <Link to="/privacy" className="text-[#001A66] hover:underline">Privacy Policy</Link>
             </p>
 
             {/* Divider */}
@@ -293,7 +293,7 @@ const Signup = () => {
             {/* Login Link */}
             <Link
               to="/login"
-              className="block w-full py-4 rounded-xl font-bold text-lg border-2 border-[#1BC6D5] text-[#1BC6D5] hover:bg-[#1BC6D5] hover:text-white transition-all text-center"
+              className="block w-full py-4 rounded-xl font-bold text-lg border-2 border-[#001A66] text-[#001A66] hover:bg-[#001A66] hover:text-white transition-all text-center"
             >
               Sign In
             </Link>

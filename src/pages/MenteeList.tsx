@@ -12,7 +12,7 @@ const mentees = [
 const MenteeList = () => {
   return (
     <>
-      <div className="w-full bg-gradient-to-r from-[#06BBCC] to-[#05a3b3] py-20 mb-12">
+      <div className="w-full bg-gradient-to-r from-[#001A66] to-[#001A66] py-20 mb-12">
         <div className="container mx-auto px-4 py-12">
           <motion.h1 
             initial={{ opacity: 0, y: -30 }}
@@ -38,7 +38,7 @@ const MenteeList = () => {
             <div className="bg-white shadow-xl rounded-lg overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-gradient-to-r from-[#06BBCC] to-[#05a3b3] text-white">
+                  <thead className="bg-gradient-to-r from-[#001A66] to-[#001A66] text-white">
                     <tr>
                       <th className="px-6 py-4 text-left">ID</th>
                       <th className="px-6 py-4 text-left">Họ tên</th>
@@ -60,25 +60,25 @@ const MenteeList = () => {
                         <td className="px-6 py-4">{mentee.id}</td>
                         <td className="px-6 py-4">
                           <div className="flex items-center">
-                            <FaUser className="text-[#06BBCC] mr-2" />
+                            <FaUser className="text-[#001A66] mr-2" />
                             <span className="font-medium">{mentee.name}</span>
                           </div>
                         </td>
                         <td className="px-6 py-4">
                           <div className="flex items-center text-gray-600">
-                            <FaEnvelope className="text-[#06BBCC] mr-2" />
+                            <FaEnvelope className="text-[#001A66] mr-2" />
                             {mentee.email}
                           </div>
                         </td>
                         <td className="px-6 py-4">
                           <div className="flex items-center text-gray-600">
-                            <FaPhone className="text-[#06BBCC] mr-2" />
+                            <FaPhone className="text-[#001A66] mr-2" />
                             {mentee.phone}
                           </div>
                         </td>
                         <td className="px-6 py-4">
                           <div className="flex items-center text-gray-600">
-                            <FaBook className="text-[#06BBCC] mr-2" />
+                            <FaBook className="text-[#001A66] mr-2" />
                             {mentee.course}
                           </div>
                         </td>

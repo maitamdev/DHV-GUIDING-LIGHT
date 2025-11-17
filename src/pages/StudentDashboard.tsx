@@ -667,7 +667,7 @@ const StudentDashboard = () => {
                         value={profileData.email}
                         onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
                         disabled={!editMode}
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50 font-semibold text-gray-800"
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-gray-50 font-semibold text-gray-800"
                       />
                     </div>
                     <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
@@ -677,7 +677,7 @@ const StudentDashboard = () => {
                         value={profileData.phone}
                         onChange={(e) => setProfileData({ ...profileData, phone: e.target.value })}
                         disabled={!editMode}
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50 font-semibold text-gray-800"
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-gray-50 font-semibold text-gray-800"
                       />
                     </div>
                     <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
@@ -687,7 +687,7 @@ const StudentDashboard = () => {
                         value={profileData.languages}
                         onChange={(e) => setProfileData({ ...profileData, languages: e.target.value })}
                         disabled={!editMode}
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50 font-semibold text-gray-800"
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-gray-50 font-semibold text-gray-800"
                         placeholder="e.g., Vietnamese, English..."
                       />
                     </div>
@@ -703,7 +703,7 @@ const StudentDashboard = () => {
                         disabled={!editMode}
                         rows={4}
                         placeholder="e.g., React, Node.js, Python, UI/UX Design..."
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-white/70 text-gray-800"
                       />
                     </div>
                     <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-6 shadow-lg">
@@ -714,7 +714,7 @@ const StudentDashboard = () => {
                         disabled={!editMode}
                         rows={4}
                         placeholder="e.g., AWS Cloud Practitioner, Google UX Design..."
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-white/70 text-gray-800"
                       />
                     </div>
                   </div>
@@ -727,7 +727,7 @@ const StudentDashboard = () => {
                       onChange={(e) => setProfileData({ ...profileData, bio: e.target.value })}
                       disabled={!editMode}
                       rows={4}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50 text-gray-800 text-lg"
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-gray-50 text-gray-800 text-lg"
                       placeholder="Brief introduction about yourself, interests and passions..."
                     />
                   </div>
@@ -741,7 +741,7 @@ const StudentDashboard = () => {
                         onChange={(e) => setProfileData({ ...profileData, goals: e.target.value })}
                         disabled={!editMode}
                         rows={5}
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-white/70 text-gray-800"
                         placeholder="Your short-term and long-term career goals..."
                       />
                     </div>
@@ -752,7 +752,7 @@ const StudentDashboard = () => {
                         onChange={(e) => setProfileData({ ...profileData, projects: e.target.value })}
                         disabled={!editMode}
                         rows={5}
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-white/70 text-gray-800"
                         placeholder="List your completed projects..."
                       />
                     </div>
@@ -769,7 +769,7 @@ const StudentDashboard = () => {
                       onChange={(e) => setProfileData({ ...profileData, achievements: e.target.value })}
                       disabled={!editMode}
                       rows={4}
-                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800 text-lg"
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-white/70 text-gray-800 text-lg"
                       placeholder="e.g., 2nd Place Hackathon 2024, Top 10% Outstanding Students..."
                     />
                   </div>
@@ -790,7 +790,7 @@ const StudentDashboard = () => {
                             value={profileData.location}
                             onChange={(e) => setProfileData({ ...profileData, location: e.target.value })}
                             disabled={!editMode}
-                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50"
+                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-gray-50"
                             placeholder="City, Country"
                           />
                         </div>
@@ -801,7 +801,7 @@ const StudentDashboard = () => {
                             value={profileData.birthday}
                             onChange={(e) => setProfileData({ ...profileData, birthday: e.target.value })}
                             disabled={!editMode}
-                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50"
+                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-gray-50"
                             placeholder="MM/DD/YYYY"
                           />
                         </div>
@@ -812,7 +812,7 @@ const StudentDashboard = () => {
                             value={profileData.availability}
                             onChange={(e) => setProfileData({ ...profileData, availability: e.target.value })}
                             disabled={!editMode}
-                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50"
+                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-gray-50"
                             placeholder="e.g., Available for internship"
                           />
                         </div>
@@ -833,7 +833,7 @@ const StudentDashboard = () => {
                             value={profileData.linkedin}
                             onChange={(e) => setProfileData({ ...profileData, linkedin: e.target.value })}
                             disabled={!editMode}
-                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50"
+                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-gray-50"
                             placeholder="linkedin.com/in/yourname"
                           />
                         </div>
@@ -844,7 +844,7 @@ const StudentDashboard = () => {
                             value={profileData.github}
                             onChange={(e) => setProfileData({ ...profileData, github: e.target.value })}
                             disabled={!editMode}
-                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50"
+                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-gray-50"
                             placeholder="github.com/yourname"
                           />
                         </div>
@@ -855,7 +855,7 @@ const StudentDashboard = () => {
                             value={profileData.portfolio}
                             onChange={(e) => setProfileData({ ...profileData, portfolio: e.target.value })}
                             disabled={!editMode}
-                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-gray-50"
+                            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-gray-50"
                             placeholder="yourportfolio.com"
                           />
                         </div>
@@ -875,7 +875,7 @@ const StudentDashboard = () => {
                         onChange={(e) => setProfileData({ ...profileData, softSkills: e.target.value })}
                         disabled={!editMode}
                         rows={4}
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-white/70 text-gray-800"
                         placeholder="e.g., Leadership, Communication, Teamwork..."
                       />
                     </div>
@@ -889,7 +889,7 @@ const StudentDashboard = () => {
                         onChange={(e) => setProfileData({ ...profileData, hobbies: e.target.value })}
                         disabled={!editMode}
                         rows={4}
-                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none disabled:bg-white/70 text-gray-800"
+                        className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none disabled:bg-white/70 text-gray-800"
                         placeholder="e.g., Reading, Photography, Gaming..."
                       />
                     </div>
@@ -925,7 +925,7 @@ const StudentDashboard = () => {
             {activeTab === 'mentors' && (
               <div>
                 <h3 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                  <FaSearch className="text-[#06BBCC]" />
+                  <FaSearch className="text-[#001A66]" />
                   Find & Select Mentor
                 </h3>
 
@@ -937,7 +937,7 @@ const StudentDashboard = () => {
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Search by name, skills, field..."
-                      className="w-full px-6 py-4 border-2 border-gray-300 rounded-full focus:border-[#06BBCC] focus:outline-none text-lg pl-14"
+                      className="w-full px-6 py-4 border-2 border-gray-300 rounded-full focus:border-[#001A66] focus:outline-none text-lg pl-14"
                     />
                     <FaSearch className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl" />
                   </div>
@@ -953,17 +953,17 @@ const StudentDashboard = () => {
                       key={mentor.id}
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all border-2 border-transparent hover:border-[#06BBCC]"
+                      className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all border-2 border-transparent hover:border-[#001A66]"
                     >
                       <div className="flex items-start gap-4 mb-4">
                         <img
                           src={mentor.avatar}
                           alt={mentor.name}
-                          className="w-20 h-20 rounded-full object-cover border-4 border-[#06BBCC]"
+                          className="w-20 h-20 rounded-full object-cover border-4 border-[#001A66]"
                         />
                         <div className="flex-1">
                           <h4 className="text-xl font-bold text-gray-800">{mentor.name}</h4>
-                          <p className="text-[#06BBCC] font-semibold">{mentor.title}</p>
+                          <p className="text-[#001A66] font-semibold">{mentor.title}</p>
                           <p className="text-gray-600 text-sm">{mentor.company}</p>
                         </div>
                         {mentor.available ? (
@@ -989,7 +989,7 @@ const StudentDashboard = () => {
 
                       <div className="grid grid-cols-3 gap-4 mb-4">
                         <div className="text-center">
-                          <p className="text-2xl font-bold text-[#06BBCC] flex items-center justify-center gap-1">
+                          <p className="text-2xl font-bold text-[#001A66] flex items-center justify-center gap-1">
                             <FaStar className="text-yellow-500" /> {mentor.rating}
                           </p>
                           <p className="text-xs text-gray-600">Rating</p>
@@ -1007,7 +1007,7 @@ const StudentDashboard = () => {
                       <button
                         onClick={() => navigate('/meeting')}
                         disabled={!mentor.available}
-                        className="w-full px-6 py-3 bg-gradient-to-r from-[#06BBCC] to-[#0066FF] text-white rounded-lg font-bold hover:from-[#0066FF] hover:to-[#FF0000] transition-all disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed"
+                        className="w-full px-6 py-3 bg-gradient-to-r from-[#001A66] to-[#0066FF] text-white rounded-lg font-bold hover:from-[#0066FF] hover:to-[#FF0000] transition-all disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed"
                       >
                         {mentor.available ? 'Schedule Meeting' : 'Currently Unavailable'}
                       </button>
@@ -1021,7 +1021,7 @@ const StudentDashboard = () => {
             {activeTab === 'aiSuggest' && (
               <div>
                 <h3 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                  <FaRobot className="text-[#06BBCC]" />
+                  <FaRobot className="text-[#001A66]" />
                   AI-Powered Mentor Recommendations
                 </h3>
                 <p className="text-gray-600 mb-8">
@@ -1044,7 +1044,7 @@ const StudentDashboard = () => {
                           onChange={(e) => setAiFormData({ ...aiFormData, skills: e.target.value })}
                           placeholder="e.g., React, Node.js, Python, UI/UX Design..."
                           rows={3}
-                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none text-gray-800"
                         />
                       </div>
 
@@ -1055,7 +1055,7 @@ const StudentDashboard = () => {
                           onChange={(e) => setAiFormData({ ...aiFormData, interests: e.target.value })}
                           placeholder="e.g., Web Development, Mobile Apps, AI/ML, Data Science..."
                           rows={3}
-                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none text-gray-800"
                         />
                       </div>
 
@@ -1066,7 +1066,7 @@ const StudentDashboard = () => {
                           onChange={(e) => setAiFormData({ ...aiFormData, goals: e.target.value })}
                           placeholder="e.g., Become a Full Stack Developer, Get hired at FAANG companies..."
                           rows={3}
-                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none text-gray-800"
                         />
                       </div>
 
@@ -1075,7 +1075,7 @@ const StudentDashboard = () => {
                         <select
                           value={aiFormData.experience}
                           onChange={(e) => setAiFormData({ ...aiFormData, experience: e.target.value })}
-                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none text-gray-800"
                         >
                           <option value="">-- Select your level --</option>
                           <option value="beginner">Beginner (Just started)</option>
@@ -1092,7 +1092,7 @@ const StudentDashboard = () => {
                           value={aiFormData.preferredFields}
                           onChange={(e) => setAiFormData({ ...aiFormData, preferredFields: e.target.value })}
                           placeholder="e.g., Backend, Frontend, DevOps, Mobile Development..."
-                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none text-gray-800"
+                          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none text-gray-800"
                         />
                       </div>
 
@@ -1120,7 +1120,7 @@ const StudentDashboard = () => {
                           setAiLoading(false);
                         }}
                         disabled={aiLoading}
-                        className="w-full px-8 py-4 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white rounded-xl font-bold text-lg hover:from-blue-600 hover:to-purple-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg"
+                        className="w-full px-8 py-4 bg-gradient-to-r from-[#001A66] to-blue-600 text-white rounded-xl font-bold text-lg hover:from-blue-600 hover:to-purple-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-lg"
                       >
                         {aiLoading ? (
                           <>
@@ -1210,7 +1210,7 @@ const StudentDashboard = () => {
                                       {rec.matchScore}% Match
                                     </span>
                                   </div>
-                                  <p className="text-[#06BBCC] font-semibold mb-1">{rec.mentor.title}</p>
+                                  <p className="text-[#001A66] font-semibold mb-1">{rec.mentor.title}</p>
                                   <p className="text-gray-600 text-sm">{rec.mentor.company} • {rec.mentor.experience}</p>
                                   <div className="flex items-center gap-3 mt-2 text-sm">
                                     <span className="flex items-center gap-1 text-yellow-600">
@@ -1275,14 +1275,14 @@ const StudentDashboard = () => {
                                     setSelectedMentor(rec.mentor);
                                     setShowMeetingModal(true);
                                   }}
-                                  className="flex-1 px-4 py-3 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white rounded-lg font-bold hover:from-blue-600 hover:to-purple-600 transition-all flex items-center justify-center gap-2"
+                                  className="flex-1 px-4 py-3 bg-gradient-to-r from-[#001A66] to-blue-600 text-white rounded-lg font-bold hover:from-blue-600 hover:to-purple-600 transition-all flex items-center justify-center gap-2"
                                 >
                                   <FaCalendar />
                                   Schedule Meeting
                                 </button>
                                 <button
                                   onClick={() => navigate(`/mentor/${rec.mentor.id}`)}
-                                  className="flex-1 px-4 py-3 bg-white border-2 border-[#06BBCC] text-[#06BBCC] rounded-lg font-bold hover:bg-blue-50 transition-all flex items-center justify-center gap-2"
+                                  className="flex-1 px-4 py-3 bg-white border-2 border-[#001A66] text-[#001A66] rounded-lg font-bold hover:bg-blue-50 transition-all flex items-center justify-center gap-2"
                                 >
                                   <FaUser />
                                   View Profile
@@ -1331,7 +1331,7 @@ const StudentDashboard = () => {
                     >
                       <div className="flex items-center justify-between mb-6">
                         <h3 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
-                          <FaCalendar className="text-[#06BBCC]" />
+                          <FaCalendar className="text-[#001A66]" />
                           Schedule Meeting with {selectedMentor.name}
                         </h3>
                         <button
@@ -1355,7 +1355,7 @@ const StudentDashboard = () => {
                           />
                           <div>
                             <h4 className="font-bold text-gray-800 text-lg">{selectedMentor.name}</h4>
-                            <p className="text-[#06BBCC] font-semibold">{selectedMentor.title}</p>
+                            <p className="text-[#001A66] font-semibold">{selectedMentor.title}</p>
                             <div className="flex items-center gap-3 mt-1 text-sm text-gray-600">
                               <span className="flex items-center gap-1">
                                 <FaStar className="text-yellow-500" /> {selectedMentor.rating}
@@ -1379,7 +1379,7 @@ const StudentDashboard = () => {
                               className={`p-4 rounded-lg border-2 text-left transition-all ${
                                 slot.available
                                   ? meetingForm.preferredTime === `${slot.day} ${slot.time}`
-                                    ? 'border-[#06BBCC] bg-blue-50'
+                                    ? 'border-[#001A66] bg-blue-50'
                                     : 'border-gray-300 hover:border-blue-400'
                                   : 'border-gray-200 bg-gray-50 opacity-50 cursor-not-allowed'
                               }`}
@@ -1401,7 +1401,7 @@ const StudentDashboard = () => {
                             value={meetingForm.topic}
                             onChange={(e) => setMeetingForm({ ...meetingForm, topic: e.target.value })}
                             placeholder="e.g., React Project Review, Career Guidance, Technical Interview Prep..."
-                            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none"
                           />
                         </div>
 
@@ -1412,7 +1412,7 @@ const StudentDashboard = () => {
                             onChange={(e) => setMeetingForm({ ...meetingForm, message: e.target.value })}
                             placeholder="Tell the mentor what you'd like to discuss, any specific questions, or goals for the meeting..."
                             rows={4}
-                            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none"
                           />
                         </div>
 
@@ -1444,7 +1444,7 @@ const StudentDashboard = () => {
                             }
                           }}
                           disabled={meetingLoading}
-                          className="w-full px-8 py-4 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white rounded-xl font-bold text-lg hover:from-blue-600 hover:to-purple-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                          className="w-full px-8 py-4 bg-gradient-to-r from-[#001A66] to-blue-600 text-white rounded-xl font-bold text-lg hover:from-blue-600 hover:to-purple-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                         >
                           {meetingLoading ? (
                             <>
@@ -1469,7 +1469,7 @@ const StudentDashboard = () => {
             {activeTab === 'schedule' && (
               <div>
                 <h3 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                  <FaCalendar className="text-[#06BBCC]" />
+                  <FaCalendar className="text-[#001A66]" />
                   Schedule Management & Reminders
                 </h3>
                 <p className="text-gray-600 mb-6">
@@ -1533,7 +1533,7 @@ const StudentDashboard = () => {
                           href={schedule.meetingLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-full px-6 py-3 bg-[#06BBCC] text-white rounded-lg font-bold hover:bg-[#0099AA] transition-colors flex items-center justify-center gap-2"
+                          className="w-full px-6 py-3 bg-[#001A66] text-white rounded-lg font-bold hover:bg-[#001A66] transition-colors flex items-center justify-center gap-2"
                         >
                           <FaVideo /> Join Meeting
                         </a>
@@ -1549,12 +1549,12 @@ const StudentDashboard = () => {
               <div>
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-3xl font-bold text-gray-800 flex items-center gap-3">
-                    <FaBook className="text-[#06BBCC]" />
+                    <FaBook className="text-[#001A66]" />
                     My Purchased Courses
                   </h3>
                   <button
                     onClick={() => navigate('/courses')}
-                    className="px-4 py-2 border-2 border-[#06BBCC] text-[#06BBCC] rounded-lg hover:bg-[#06BBCC] hover:text-white transition-colors font-semibold"
+                    className="px-4 py-2 border-2 border-[#001A66] text-[#001A66] rounded-lg hover:bg-[#001A66] hover:text-white transition-colors font-semibold"
                   >
                     Browse More Courses
                   </button>
@@ -1567,7 +1567,7 @@ const StudentDashboard = () => {
                     <p className="text-gray-500 mb-4">Start your learning journey by purchasing a course!</p>
                     <button
                       onClick={() => navigate('/courses')}
-                      className="px-6 py-3 bg-[#06BBCC] text-white rounded-lg font-bold hover:bg-[#05a3b3] transition-colors"
+                      className="px-6 py-3 bg-[#001A66] text-white rounded-lg font-bold hover:bg-[#001A66] transition-colors"
                     >
                       Explore Courses
                     </button>
@@ -1589,7 +1589,7 @@ const StudentDashboard = () => {
                               <h4 className="text-xl font-bold text-gray-800 mb-1">{course.title}</h4>
                               <p className="text-sm text-gray-600">👨‍🏫 {course.instructor}</p>
                             </div>
-                            <span className="px-4 py-2 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white rounded-full font-bold text-sm">
+                            <span className="px-4 py-2 bg-gradient-to-r from-[#001A66] to-blue-600 text-white rounded-full font-bold text-sm">
                               {course.progress}%
                             </span>
                           </div>
@@ -1604,12 +1604,12 @@ const StudentDashboard = () => {
                                 initial={{ width: 0 }}
                                 animate={{ width: `${course.progress}%` }}
                                 transition={{ duration: 1 }}
-                                className="bg-gradient-to-r from-[#06BBCC] to-blue-600 h-3 rounded-full"
+                                className="bg-gradient-to-r from-[#001A66] to-blue-600 h-3 rounded-full"
                               />
                             </div>
                           </div>
 
-                          <div className="bg-blue-50 border-l-4 border-[#06BBCC] p-3 rounded-lg mb-4">
+                          <div className="bg-blue-50 border-l-4 border-[#001A66] p-3 rounded-lg mb-4">
                             <p className="text-sm text-gray-600">Next Lesson:</p>
                             <p className="font-semibold text-gray-800">▶️ {course.nextLesson}</p>
                           </div>
@@ -1631,7 +1631,7 @@ const StudentDashboard = () => {
                                 e.stopPropagation();
                                 navigate(`/course/${course.id}`);
                               }}
-                              className="flex-1 px-6 py-3 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+                              className="flex-1 px-6 py-3 bg-gradient-to-r from-[#001A66] to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2"
                             >
                               <FaBook /> Continue Learning
                             </button>
@@ -1640,7 +1640,7 @@ const StudentDashboard = () => {
                                 e.stopPropagation();
                                 navigate(`/course/${course.id}`);
                               }}
-                              className="px-6 py-3 border-2 border-[#06BBCC] text-[#06BBCC] rounded-lg hover:bg-[#06BBCC] hover:text-white transition-all font-semibold flex items-center gap-2"
+                              className="px-6 py-3 border-2 border-[#001A66] text-[#001A66] rounded-lg hover:bg-[#001A66] hover:text-white transition-all font-semibold flex items-center gap-2"
                               title="Xem chi tiết khóa học"
                             >
                               <FaEye /> Chi tiết

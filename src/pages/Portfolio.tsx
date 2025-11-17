@@ -233,14 +233,14 @@ const Portfolio = () => {
         
         {/* Header Card */}
         <motion.div initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-          <div className="bg-gradient-to-r from-[#27E0A7] via-[#1BC6D5] to-[#06BBCC] rounded-3xl shadow-2xl p-8 text-white relative">
+          <div className="bg-gradient-to-r from-[#001A66] via-[#001A66] to-[#001A66] rounded-3xl shadow-2xl p-8 text-white relative">
             
             {/* Edit/Save Button */}
             <div className="absolute top-6 right-6 z-10">
               {!isEditing ? (
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="flex items-center gap-2 px-6 py-3 bg-white text-[#1BC6D5] rounded-xl font-bold hover:shadow-xl transition-all"
+                  className="flex items-center gap-2 px-6 py-3 bg-white text-[#001A66] rounded-xl font-bold hover:shadow-xl transition-all"
                 >
                   <FaEdit /> Edit Portfolio
                 </button>
@@ -255,11 +255,11 @@ const Portfolio = () => {
                   <button
                     onClick={handleSave}
                     disabled={isSaving}
-                    className="flex items-center gap-2 px-6 py-3 bg-white text-[#1BC6D5] rounded-xl font-bold hover:shadow-xl transition-all disabled:opacity-50"
+                    className="flex items-center gap-2 px-6 py-3 bg-white text-[#001A66] rounded-xl font-bold hover:shadow-xl transition-all disabled:opacity-50"
                   >
                     {isSaving ? (
                       <>
-                        <div className="w-5 h-5 border-3 border-[#1BC6D5] border-t-transparent rounded-full animate-spin"></div>
+                        <div className="w-5 h-5 border-3 border-[#001A66] border-t-transparent rounded-full animate-spin"></div>
                         Saving...
                       </>
                     ) : (
@@ -337,7 +337,7 @@ const Portfolio = () => {
                       <a href={`https://${portfolioData.website}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors">
                         <FaGlobe /> Website
                       </a>
-                      <button className="flex items-center gap-2 px-4 py-2 bg-white text-[#1BC6D5] hover:bg-gray-100 rounded-lg transition-colors font-semibold">
+                      <button className="flex items-center gap-2 px-4 py-2 bg-white text-[#001A66] hover:bg-gray-100 rounded-lg transition-colors font-semibold">
                         <FaDownload /> Download PDF
                       </button>
                     </div>
@@ -377,7 +377,7 @@ const Portfolio = () => {
               { id: 'skills', label: 'Skills', icon: FaCode },
               { id: 'cv', label: 'CV Preview', icon: FaEye }
             ].map((tab) => (
-              <button key={tab.id} onClick={() => setActiveTab(tab.id as any)} className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${activeTab === tab.id ? 'bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white shadow-lg' : 'text-gray-600 hover:bg-gray-100'}`}>
+              <button key={tab.id} onClick={() => setActiveTab(tab.id as any)} className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${activeTab === tab.id ? 'bg-gradient-to-r from-[#001A66] to-blue-600 text-white shadow-lg' : 'text-gray-600 hover:bg-gray-100'}`}>
                 <tab.icon /> {tab.label}
               </button>
             ))}
@@ -394,7 +394,7 @@ const Portfolio = () => {
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">Completed Courses</h3>
                 <div className="space-y-3">
                   {portfolioData.completedCourses.map((course) => (
-                    <div key={course.id} className="border-l-4 border-[#06BBCC] bg-blue-50 p-4 rounded-lg">
+                    <div key={course.id} className="border-l-4 border-[#001A66] bg-blue-50 p-4 rounded-lg">
                       <h4 className="font-bold text-gray-800">{course.title}</h4>
                       <div className="flex justify-between items-center mt-2 text-sm text-gray-600">
                         <span>Grade: {course.grade}%</span>
@@ -409,7 +409,7 @@ const Portfolio = () => {
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">Recent Projects</h3>
                 <div className="space-y-3">
                   {portfolioData.projects.slice(0, 3).map((project) => (
-                    <div key={project.id} className="border border-gray-200 p-4 rounded-lg hover:border-[#06BBCC] transition-colors">
+                    <div key={project.id} className="border border-gray-200 p-4 rounded-lg hover:border-[#001A66] transition-colors">
                       <h4 className="font-bold text-gray-800 mb-2">{project.title}</h4>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.slice(0, 3).map((tech, i) => (
@@ -434,15 +434,15 @@ const Portfolio = () => {
                     <p className="text-gray-600 mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech, i) => (
-                        <span key={i} className="px-3 py-1 bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white text-sm rounded-full">{tech}</span>
+                        <span key={i} className="px-3 py-1 bg-gradient-to-r from-[#001A66] to-blue-600 text-white text-sm rounded-full">{tech}</span>
                       ))}
                     </div>
                     <div className="flex gap-3">
-                      <a href={`https://${project.githubLink}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 border-2 border-[#06BBCC] text-[#06BBCC] rounded-lg hover:bg-[#06BBCC] hover:text-white transition-colors">
+                      <a href={`https://${project.githubLink}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 border-2 border-[#001A66] text-[#001A66] rounded-lg hover:bg-[#001A66] hover:text-white transition-colors">
                         <FaGithub /> Code
                       </a>
                       {project.liveLink && (
-                        <a href={`https://${project.liveLink}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-[#06BBCC] text-white rounded-lg hover:bg-[#05a3b3] transition-colors">
+                        <a href={`https://${project.liveLink}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-[#001A66] text-white rounded-lg hover:bg-[#001A66] transition-colors">
                           <FaGlobe /> Live Demo
                         </a>
                       )}
@@ -458,14 +458,14 @@ const Portfolio = () => {
             <div className="grid md:grid-cols-3 gap-6">
               {portfolioData.certificates.map((cert) => (
                 <motion.div key={cert.id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                  <div className="bg-gradient-to-br from-[#06BBCC] to-purple-600 p-6">
+                  <div className="bg-gradient-to-br from-[#001A66] to-purple-600 p-6">
                     <FaCertificate className="text-white text-5xl mb-4" />
                   </div>
                   <div className="p-6">
                     <h3 className="font-bold text-lg text-gray-800 mb-2">{cert.title}</h3>
                     <p className="text-sm text-gray-600 mb-1">Issued: {new Date(cert.issueDate).toLocaleDateString()}</p>
                     <p className="text-xs text-gray-500 mb-4">ID: {cert.credentialId}</p>
-                    <button className="w-full px-4 py-2 bg-[#06BBCC] text-white rounded-lg hover:bg-[#05a3b3] transition-colors flex items-center justify-center gap-2">
+                    <button className="w-full px-4 py-2 bg-[#001A66] text-white rounded-lg hover:bg-[#001A66] transition-colors flex items-center justify-center gap-2">
                       <FaDownload /> Download
                     </button>
                   </div>
@@ -489,7 +489,7 @@ const Portfolio = () => {
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
-                  className="bg-gradient-to-r from-[#27E0A7]/10 to-[#1BC6D5]/10 border-2 border-[#1BC6D5]/30 rounded-2xl p-6 mb-6"
+                  className="bg-gradient-to-r from-[#001A66]/10 to-[#001A66]/10 border-2 border-[#001A66]/30 rounded-2xl p-6 mb-6"
                 >
                   <h4 className="font-bold text-lg text-gray-800 mb-4">Add New Skill</h4>
                   <div className="grid md:grid-cols-4 gap-4">
@@ -497,13 +497,13 @@ const Portfolio = () => {
                       type="text"
                       value={newSkill.name}
                       onChange={(e) => setNewSkill(prev => ({ ...prev, name: e.target.value }))}
-                      className="px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-[#1BC6D5] focus:outline-none"
+                      className="px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-[#001A66] focus:outline-none"
                       placeholder="Skill name (e.g., Python)"
                     />
                     <select
                       value={newSkill.category}
                       onChange={(e) => setNewSkill(prev => ({ ...prev, category: e.target.value }))}
-                      className="px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-[#1BC6D5] focus:outline-none"
+                      className="px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-[#001A66] focus:outline-none"
                     >
                       <option value="Frontend">Frontend</option>
                       <option value="Backend">Backend</option>
@@ -522,11 +522,11 @@ const Portfolio = () => {
                         onChange={(e) => setNewSkill(prev => ({ ...prev, level: parseInt(e.target.value) }))}
                         className="flex-1"
                       />
-                      <span className="font-bold text-[#1BC6D5] w-12 text-center">{newSkill.level}%</span>
+                      <span className="font-bold text-[#001A66] w-12 text-center">{newSkill.level}%</span>
                     </div>
                     <button
                       onClick={handleAddSkill}
-                      className="px-6 py-3 bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white rounded-xl font-bold hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                      className="px-6 py-3 bg-gradient-to-r from-[#001A66] to-[#001A66] text-white rounded-xl font-bold hover:shadow-xl transition-all flex items-center justify-center gap-2"
                     >
                       <FaPlus /> Add
                     </button>
@@ -564,7 +564,7 @@ const Portfolio = () => {
                                 </div>
                               </div>
                               <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                                <motion.div initial={{ width: 0 }} animate={{ width: `${skill.level}%` }} transition={{ duration: 1, delay: i * 0.1 }} className="bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] h-full rounded-full" />
+                                <motion.div initial={{ width: 0 }} animate={{ width: `${skill.level}%` }} transition={{ duration: 1, delay: i * 0.1 }} className="bg-gradient-to-r from-[#001A66] to-[#001A66] h-full rounded-full" />
                               </div>
                             </div>
                           );

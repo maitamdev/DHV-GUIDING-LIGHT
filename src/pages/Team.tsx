@@ -16,7 +16,7 @@ const Team = () => {
   return (
     <>
       {/* Header */}
-      <div className="w-full bg-gradient-to-r from-[#06BBCC] to-[#05a3b3] py-20 mb-12">
+      <div className="w-full bg-gradient-to-r from-[#001A66] to-[#001A66] py-20 mb-12">
         <div className="container mx-auto px-4 py-12">
           <motion.h1 
             initial={{ opacity: 0, y: -30 }}
@@ -53,16 +53,16 @@ const Team = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                     <div className="flex space-x-3">
-                      <a href={member.social.facebook} className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#06BBCC] hover:text-white transition-colors">
+                      <a href={member.social.facebook} className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#001A66] hover:text-white transition-colors">
                         <FaFacebookF />
                       </a>
-                      <a href={member.social.twitter} className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#06BBCC] hover:text-white transition-colors">
+                      <a href={member.social.twitter} className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#001A66] hover:text-white transition-colors">
                         <FaTwitter />
                       </a>
-                      <a href={member.social.linkedin} className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#06BBCC] hover:text-white transition-colors">
+                      <a href={member.social.linkedin} className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#001A66] hover:text-white transition-colors">
                         <FaLinkedinIn />
                       </a>
-                      <a href={member.social.instagram} className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#06BBCC] hover:text-white transition-colors">
+                      <a href={member.social.instagram} className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#001A66] hover:text-white transition-colors">
                         <FaInstagram />
                       </a>
                     </div>
@@ -70,7 +70,7 @@ const Team = () => {
                 </div>
                 <div className="p-6 text-center">
                   <h4 className="text-xl font-bold text-gray-800 mb-2">{member.name}</h4>
-                  <p className="text-[#06BBCC] font-medium">{member.role}</p>
+                  <p className="text-[#001A66] font-medium">{member.role}</p>
                 </div>
               </motion.div>
             ))}

@@ -91,7 +91,7 @@ const RoadmapDetail = () => {
       <div className="pt-20 min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-dark mb-4">Roadmap is being updated</h2>
-          <Link to="/roadmap" className="text-[#06BBCC] hover:underline">
+          <Link to="/roadmap" className="text-[#001A66] hover:underline">
             ← Back to roadmap list
           </Link>
         </div>
@@ -102,7 +102,7 @@ const RoadmapDetail = () => {
   return (
     <div className="pt-20 min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
-        <Link to="/roadmap" className="inline-flex items-center text-[#06BBCC] hover:underline mb-6">
+        <Link to="/roadmap" className="inline-flex items-center text-[#001A66] hover:underline mb-6">
           <i className="fas fa-arrow-left mr-2"></i>
           Back to Roadmaps
         </Link>
@@ -133,7 +133,7 @@ const RoadmapDetail = () => {
                               lesson.locked
                                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                                 : selectedLesson?.id === lesson.id
-                                ? 'bg-[#06BBCC] text-white'
+                                ? 'bg-[#001A66] text-white'
                                 : 'hover:bg-gray-100'
                             }`}
                           >
@@ -210,14 +210,14 @@ const RoadmapDetail = () => {
                           className={`px-6 py-3 rounded-full font-semibold transition-colors duration-300 ${
                             selectedLesson && completedLessons.includes(selectedLesson.id)
                               ? 'bg-green-500 text-white cursor-not-allowed'
-                              : 'bg-[#06BBCC] text-white hover:bg-[#05a3b3]'
+                              : 'bg-[#001A66] text-white hover:bg-[#001A66]'
                           }`}
                         >
                           {selectedLesson && completedLessons.includes(selectedLesson.id) ? '✓ Completed' : 'Mark as Completed'}
                         </button>
                         <Link
                           to="/meeting"
-                          className="px-6 py-3 border-2 border-[#06BBCC] text-[#06BBCC] rounded-full font-semibold hover:bg-[#06BBCC] hover:text-white transition-all duration-300"
+                          className="px-6 py-3 border-2 border-[#001A66] text-[#001A66] rounded-full font-semibold hover:bg-[#001A66] hover:text-white transition-all duration-300"
                         >
                           Join Study Room
                         </Link>

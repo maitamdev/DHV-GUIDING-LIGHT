@@ -91,7 +91,7 @@ const MeetingRoom = () => {
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-gray-700">
                   <div className="text-center">
-                    <div className="w-24 h-24 bg-[#06BBCC] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-24 h-24 bg-[#001A66] rounded-full flex items-center justify-center mx-auto mb-4">
                       <span className="text-4xl font-bold text-white">B</span>
                     </div>
                     <p className="text-white text-xl">You</p>
@@ -109,7 +109,7 @@ const MeetingRoom = () => {
                 {participant.video ? (
                   <div className="w-full h-full bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-[#06BBCC] rounded-full flex items-center justify-center mx-auto mb-2">
+                      <div className="w-16 h-16 bg-[#001A66] rounded-full flex items-center justify-center mx-auto mb-2">
                         <span className="text-2xl font-bold text-white">
                           {participant.name.charAt(0)}
                         </span>
@@ -150,7 +150,7 @@ const MeetingRoom = () => {
               {messages.map((msg, index) => (
                 <div key={index} className="bg-gray-700 rounded-lg p-3">
                   <div className="flex justify-between items-start mb-1">
-                    <span className="text-[#06BBCC] font-semibold text-sm">{msg.user}</span>
+                    <span className="text-[#001A66] font-semibold text-sm">{msg.user}</span>
                     <span className="text-gray-400 text-xs">{msg.time}</span>
                   </div>
                   <p className="text-white text-sm">{msg.text}</p>
@@ -168,7 +168,7 @@ const MeetingRoom = () => {
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-[#06BBCC] text-white rounded-lg hover:bg-[#05a3b3] transition-colors"
+                  className="px-4 py-2 bg-[#001A66] text-white rounded-lg hover:bg-[#001A66] transition-colors"
                 >
                   Send
                 </button>
@@ -219,7 +219,7 @@ const MeetingRoom = () => {
         <button
           onClick={() => setShowChat(!showChat)}
           className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 ${
-            showChat ? 'bg-[#06BBCC] hover:bg-[#05a3b3]' : 'bg-gray-700 hover:bg-gray-600'
+            showChat ? 'bg-[#001A66] hover:bg-[#001A66]' : 'bg-gray-700 hover:bg-gray-600'
           }`}
           title={showChat ? 'Hide chat' : 'Show chat'}
         >

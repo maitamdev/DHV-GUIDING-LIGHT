@@ -71,7 +71,7 @@ const Contact = () => {
                 <label className="block text-sm font-bold text-gray-700 mb-2">First Name</label>
                 <input
                   type="text"
-                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#1BC6D5] focus:outline-none transition-all"
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#001A66] focus:outline-none transition-all"
                   placeholder="John"
                   required
                 />

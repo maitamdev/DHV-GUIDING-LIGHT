@@ -331,13 +331,13 @@ const Roadmap = () => {
           >
             <Link
               to="/contact"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-white text-[#06BBCC] rounded-full font-bold text-xl hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:scale-110 hover:shadow-[0_20px_50px_rgba(255,255,255,0.5)]"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-white text-[#001A66] rounded-full font-bold text-xl hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:scale-110 hover:shadow-[0_20px_50px_rgba(255,255,255,0.5)]"
             >
               <FaArrowRight /> Schedule Consultation Now
             </Link>
             <Link
               to="/courses"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-transparent border-4 border-white text-white rounded-full font-bold text-xl hover:bg-white hover:text-[#06BBCC] transition-all duration-300 shadow-2xl hover:scale-110"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-transparent border-4 border-white text-white rounded-full font-bold text-xl hover:bg-white hover:text-[#001A66] transition-all duration-300 shadow-2xl hover:scale-110"
             >
               <FaBook /> View All Courses
             </Link>

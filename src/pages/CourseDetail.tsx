@@ -428,7 +428,7 @@ const CourseDetail = () => {
       <div className="pt-20 min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">Course Not Found</h2>
-          <Link to="/courses" className="text-[#06BBCC] hover:underline">
+          <Link to="/courses" className="text-[#001A66] hover:underline">
             ← Back to Courses
           </Link>
         </div>
@@ -824,7 +824,7 @@ const CourseDetail = () => {
                 className="bg-white rounded-lg shadow-lg p-8"
               >
                 <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                  <FaBook className="text-[#06BBCC]" />
+                  <FaBook className="text-[#001A66]" />
                   What You'll Learn
                 </h2>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -847,12 +847,12 @@ const CourseDetail = () => {
                 className="bg-white rounded-lg shadow-lg p-8"
               >
                 <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                  <FaChalkboardTeacher className="text-[#06BBCC]" />
+                  <FaChalkboardTeacher className="text-[#001A66]" />
                   Course Curriculum
                 </h2>
                 <div className="space-y-4">
                   {course.curriculum.map((module: any, index: number) => (
-                    <div key={index} className="border-2 border-gray-200 rounded-lg p-4 hover:border-[#06BBCC] transition-colors">
+                    <div key={index} className="border-2 border-gray-200 rounded-lg p-4 hover:border-[#001A66] transition-colors">
                       <h3 className="font-bold text-lg text-gray-800 mb-2">{module.module}</h3>
                       <div className="flex flex-wrap gap-4 text-sm text-gray-600">
                         <span>{module.lessons} lessons</span>
@@ -876,7 +876,7 @@ const CourseDetail = () => {
                   <ul className="space-y-3">
                     {course.projects.map((project: string, index: number) => (
                       <li key={index} className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
-                        <span className="text-[#06BBCC] text-xl font-bold">{index + 1}</span>
+                        <span className="text-[#001A66] text-xl font-bold">{index + 1}</span>
                         <span className="text-gray-700 font-medium">{project}</span>
                       </li>
                     ))}
@@ -895,7 +895,7 @@ const CourseDetail = () => {
                 <ul className="space-y-3">
                   {course.requirements.map((req: string, index: number) => (
                     <li key={index} className="flex items-start gap-3">
-                      <span className="text-[#06BBCC] text-xl">•</span>
+                      <span className="text-[#001A66] text-xl">•</span>
                       <span className="text-gray-700">{req}</span>
                     </li>
                   ))}
@@ -907,7 +907,7 @@ const CourseDetail = () => {
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg shadow-lg p-6 sticky top-24">
                 <div className="text-center mb-6">
-                  <div className="text-4xl font-bold text-[#06BBCC] mb-2">
+                  <div className="text-4xl font-bold text-[#001A66] mb-2">
                     {course.priceDisplay}
                   </div>
                   <p className="text-gray-600">One-time payment</p>
@@ -924,7 +924,7 @@ const CourseDetail = () => {
                   <button
                     onClick={handlePurchase}
                     disabled={loading}
-                    className="w-full py-4 bg-[#06BBCC] hover:bg-[#05a3b3] text-white rounded-lg font-bold transition-colors mb-4 disabled:opacity-50"
+                    className="w-full py-4 bg-[#001A66] hover:bg-[#001A66] text-white rounded-lg font-bold transition-colors mb-4 disabled:opacity-50"
                   >
                     {loading ? 'Processing...' : 'Enroll Now'}
                   </button>
@@ -932,19 +932,19 @@ const CourseDetail = () => {
 
                 <div className="space-y-4 text-sm">
                   <div className="flex items-center gap-3 text-gray-700">
-                    <FaCertificate className="text-[#06BBCC]" />
+                    <FaCertificate className="text-[#001A66]" />
                     <span>Certificate upon completion</span>
                   </div>
                   <div className="flex items-center gap-3 text-gray-700">
-                    <FaClock className="text-[#06BBCC]" />
+                    <FaClock className="text-[#001A66]" />
                     <span>Learn anytime, anywhere</span>
                   </div>
                   <div className="flex items-center gap-3 text-gray-700">
-                    <FaChalkboardTeacher className="text-[#06BBCC]" />
+                    <FaChalkboardTeacher className="text-[#001A66]" />
                     <span>Direct instructor support</span>
                   </div>
                   <div className="flex items-center gap-3 text-gray-700">
-                    <FaUsers className="text-[#06BBCC]" />
+                    <FaUsers className="text-[#001A66]" />
                     <span>Join learning community</span>
                   </div>
                 </div>

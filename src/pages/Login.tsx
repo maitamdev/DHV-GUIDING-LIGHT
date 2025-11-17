@@ -231,7 +231,7 @@ const Login = () => {
                   placeholder="Enter your email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#1BC6D5] focus:outline-none transition-all bg-white"
+                  className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#001A66] focus:outline-none transition-all bg-white"
                   required
                 />
               </div>
@@ -247,7 +247,7 @@ const Login = () => {
                   placeholder="Enter your password"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full pl-12 pr-12 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#1BC6D5] focus:outline-none transition-all bg-white"
+                  className="w-full pl-12 pr-12 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#001A66] focus:outline-none transition-all bg-white"
                   required
                 />
                 <button
@@ -267,11 +267,11 @@ const Login = () => {
                   type="checkbox" 
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 rounded border-gray-300 text-[#1BC6D5] focus:ring-[#1BC6D5]" 
+                  className="w-4 h-4 rounded border-gray-300 text-[#001A66] focus:ring-[#001A66]" 
                 />
                 <span className="text-gray-600">Remember me</span>
               </label>
-              <Link to="/forgot-password" className="text-[#1BC6D5] hover:text-[#27E0A7] font-medium transition-colors">
+              <Link to="/forgot-password" className="text-[#001A66] hover:text-[#001A66] font-medium transition-colors">
                 Forgot Password?
               </Link>
             </div>
@@ -280,7 +280,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white py-5 rounded-xl font-bold text-xl hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-gradient-to-r from-[#001A66] to-[#001A66] text-white py-5 rounded-xl font-bold text-xl hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -308,7 +308,7 @@ const Login = () => {
             {/* Register Link */}
             <Link
               to="/signup"
-              className="block w-full py-4 rounded-xl font-bold text-lg border-2 border-[#1BC6D5] text-[#1BC6D5] hover:bg-[#1BC6D5] hover:text-white transition-all text-center"
+              className="block w-full py-4 rounded-xl font-bold text-lg border-2 border-[#001A66] text-[#001A66] hover:bg-[#001A66] hover:text-white transition-all text-center"
             >
               Register Now
             </Link>

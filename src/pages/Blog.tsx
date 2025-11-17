@@ -314,7 +314,7 @@ const Blog = () => {
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-[#06BBCC] text-white text-sm font-semibold rounded-full">
+                    <span className="px-3 py-1 bg-[#001A66] text-white text-sm font-semibold rounded-full">
                       {post.category}
                     </span>
                   </div>
@@ -332,7 +332,7 @@ const Blog = () => {
                     </div>
                   </div>
 
-                  <h2 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2 group-hover:text-[#06BBCC] transition-colors">
+                  <h2 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2 group-hover:text-[#001A66] transition-colors">
                     {post.title}
                   </h2>
 
@@ -347,7 +347,7 @@ const Blog = () => {
                     </div>
                     <Link
                       to={`/blog/${post.id}`}
-                      className="text-[#06BBCC] font-semibold flex items-center gap-2 hover:gap-3 transition-all"
+                      className="text-[#001A66] font-semibold flex items-center gap-2 hover:gap-3 transition-all"
                     >
                       Read more
                       <FaArrowRight className="text-sm" />
@@ -365,7 +365,7 @@ const Blog = () => {
             viewport={{ once: true }}
             className="mt-12 flex justify-center gap-2"
           >
-            <button className="px-4 py-2 bg-[#06BBCC] text-white rounded-lg font-semibold hover:bg-[#05a3b3] transition-colors">
+            <button className="px-4 py-2 bg-[#001A66] text-white rounded-lg font-semibold hover:bg-[#001A66] transition-colors">
               1
             </button>
             <button className="px-4 py-2 bg-white text-gray-700 rounded-lg font-semibold hover:bg-gray-100 transition-colors border-2">
@@ -400,12 +400,12 @@ const Blog = () => {
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 px-6 py-4 rounded-lg border-2 border-gray-300 focus:border-[#06BBCC] focus:outline-none"
+                className="flex-1 px-6 py-4 rounded-lg border-2 border-gray-300 focus:border-[#001A66] focus:outline-none"
                 required
               />
               <button
                 type="submit"
-                className="px-8 py-4 bg-[#06BBCC] text-white rounded-lg font-semibold hover:bg-[#05a3b3] transition-colors"
+                className="px-8 py-4 bg-[#001A66] text-white rounded-lg font-semibold hover:bg-[#001A66] transition-colors"
               >
                 Subscribe
               </button>

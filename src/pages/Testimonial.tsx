@@ -40,7 +40,7 @@ const Testimonial = () => {
   return (
     <>
       {/* Header */}
-      <div className="w-full bg-gradient-to-r from-[#06BBCC] to-[#05a3b3] py-20 mb-12">
+      <div className="w-full bg-gradient-to-r from-[#001A66] to-[#001A66] py-20 mb-12">
         <div className="container mx-auto px-4 py-12">
           <motion.h1 
             initial={{ opacity: 0, y: -30 }}
@@ -66,7 +66,7 @@ const Testimonial = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-white rounded-lg shadow-lg p-8 relative"
               >
-                <FaQuoteLeft className="text-4xl text-[#06BBCC] opacity-20 absolute top-4 right-4" />
+                <FaQuoteLeft className="text-4xl text-[#001A66] opacity-20 absolute top-4 right-4" />
                 
                 <div className="flex items-center mb-6">
                   <img 

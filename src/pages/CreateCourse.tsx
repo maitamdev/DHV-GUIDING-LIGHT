@@ -83,7 +83,7 @@ const CreateCourse = () => {
         >
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-4xl font-bold text-gray-800 flex items-center gap-3">
-              <FaBook className="text-[#06BBCC]" />
+              <FaBook className="text-[#001A66]" />
               Tạo Khóa Học Mới
             </h1>
             <button
@@ -97,7 +97,7 @@ const CreateCourse = () => {
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Basic Info */}
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-[#06BBCC] pb-2">
+              <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-[#001A66] pb-2">
                 Thông Tin Cơ Bản
               </h3>
 
@@ -107,7 +107,7 @@ const CreateCourse = () => {
                   type="text"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none"
                   placeholder="VD: Web Development từ Zero đến Hero"
                   required
                 />
@@ -119,7 +119,7 @@ const CreateCourse = () => {
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   rows={4}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none"
                   placeholder="Mô tả chi tiết về khóa học..."
                   required
                 />
@@ -131,7 +131,7 @@ const CreateCourse = () => {
                   <select
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none"
                   >
                     <option>Web Development</option>
                     <option>Mobile Development</option>
@@ -147,7 +147,7 @@ const CreateCourse = () => {
                   <select
                     value={formData.level}
                     onChange={(e) => setFormData({ ...formData, level: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none"
                   >
                     <option>Beginner</option>
                     <option>Intermediate</option>
@@ -159,28 +159,28 @@ const CreateCourse = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2 flex items-center gap-2">
-                    <FaClock className="text-[#06BBCC]" />
+                    <FaClock className="text-[#001A66]" />
                     Thời Lượng (giờ)
                   </label>
                   <input
                     type="number"
                     value={formData.duration}
                     onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none"
                     placeholder="VD: 40"
                   />
                 </div>
 
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2 flex items-center gap-2">
-                    <FaDollarSign className="text-[#06BBCC]" />
+                    <FaDollarSign className="text-[#001A66]" />
                     Giá (VND)
                   </label>
                   <input
                     type="number"
                     value={formData.price}
                     onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none"
                     placeholder="VD: 2990000"
                   />
                 </div>
@@ -192,7 +192,7 @@ const CreateCourse = () => {
                   type="text"
                   value={formData.thumbnail}
                   onChange={(e) => setFormData({ ...formData, thumbnail: e.target.value })}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none"
                   placeholder="/img/course-1.jpg"
                 />
               </div>
@@ -200,7 +200,7 @@ const CreateCourse = () => {
 
             {/* What You'll Learn */}
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-[#06BBCC] pb-2">
+              <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-[#001A66] pb-2">
                 Bạn Sẽ Học Được Gì
               </h3>
               {formData.whatYouLearn.map((item, index) => (
@@ -209,7 +209,7 @@ const CreateCourse = () => {
                     type="text"
                     value={item}
                     onChange={(e) => handleItemChange('whatYouLearn', index, e.target.value)}
-                    className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                    className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none"
                     placeholder="VD: Xây dựng website hoàn chỉnh"
                   />
                   <button
@@ -224,7 +224,7 @@ const CreateCourse = () => {
               <button
                 type="button"
                 onClick={() => handleAddItem('whatYouLearn')}
-                className="px-6 py-2 bg-[#06BBCC] text-white rounded-lg hover:bg-[#0099AA] transition-colors"
+                className="px-6 py-2 bg-[#001A66] text-white rounded-lg hover:bg-[#001A66] transition-colors"
               >
                 + Thêm Mục
               </button>
@@ -232,7 +232,7 @@ const CreateCourse = () => {
 
             {/* Requirements */}
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-[#06BBCC] pb-2">
+              <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-[#001A66] pb-2">
                 Yêu Cầu
               </h3>
               {formData.requirements.map((item, index) => (
@@ -241,7 +241,7 @@ const CreateCourse = () => {
                     type="text"
                     value={item}
                     onChange={(e) => handleItemChange('requirements', index, e.target.value)}
-                    className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                    className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none"
                     placeholder="VD: Biết sử dụng máy tính cơ bản"
                   />
                   <button
@@ -256,7 +256,7 @@ const CreateCourse = () => {
               <button
                 type="button"
                 onClick={() => handleAddItem('requirements')}
-                className="px-6 py-2 bg-[#06BBCC] text-white rounded-lg hover:bg-[#0099AA] transition-colors"
+                className="px-6 py-2 bg-[#001A66] text-white rounded-lg hover:bg-[#001A66] transition-colors"
               >
                 + Thêm Yêu Cầu
               </button>
@@ -264,8 +264,8 @@ const CreateCourse = () => {
 
             {/* Curriculum */}
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-[#06BBCC] pb-2 flex items-center gap-2">
-                <FaListAlt className="text-[#06BBCC]" />
+              <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-[#001A66] pb-2 flex items-center gap-2">
+                <FaListAlt className="text-[#001A66]" />
                 Chương Trình Học
               </h3>
               {formData.curriculum.map((module, moduleIndex) => (
@@ -274,17 +274,17 @@ const CreateCourse = () => {
                     type="text"
                     value={module.title}
                     onChange={(e) => handleModuleTitleChange(moduleIndex, e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none font-semibold"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none font-semibold"
                     placeholder={`Module ${moduleIndex + 1}: Tên chương`}
                   />
                   {module.lessons.map((lesson, lessonIndex) => (
                     <div key={lessonIndex} className="flex gap-2 ml-6">
-                      <FaVideo className="text-[#06BBCC] mt-3" />
+                      <FaVideo className="text-[#001A66] mt-3" />
                       <input
                         type="text"
                         value={lesson}
                         onChange={(e) => handleLessonChange(moduleIndex, lessonIndex, e.target.value)}
-                        className="flex-1 px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                        className="flex-1 px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none"
                         placeholder={`Bài ${lessonIndex + 1}: Tên bài học`}
                       />
                     </div>
@@ -301,7 +301,7 @@ const CreateCourse = () => {
               <button
                 type="button"
                 onClick={handleAddModule}
-                className="px-6 py-2 bg-[#06BBCC] text-white rounded-lg hover:bg-[#0099AA] transition-colors"
+                className="px-6 py-2 bg-[#001A66] text-white rounded-lg hover:bg-[#001A66] transition-colors"
               >
                 + Thêm Module
               </button>
@@ -312,7 +312,7 @@ const CreateCourse = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 bg-[#06BBCC] text-white py-4 rounded-lg font-bold text-lg hover:bg-[#0099AA] transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                className="flex-1 bg-[#001A66] text-white py-4 rounded-lg font-bold text-lg hover:bg-[#001A66] transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
               >
                 {loading ? 'Đang Tạo Khóa Học...' : 'Tạo Khóa Học'}
               </button>

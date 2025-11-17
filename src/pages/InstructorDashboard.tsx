@@ -46,7 +46,7 @@ const InstructorDashboard = () => {
         
         {/* 🎓 MENTOR DASHBOARD HEADER - COMPLETELY DIFFERENT FROM STUDENT */}
         <motion.div initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-          <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-[#06BBCC] rounded-3xl shadow-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-[#001A66] rounded-3xl shadow-2xl p-8 text-white">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-2">🎓 Professional Mentor Dashboard</h1>
@@ -101,7 +101,7 @@ const InstructorDashboard = () => {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${
                   activeTab === tab.id
-                    ? 'bg-gradient-to-r from-[#06BBCC] to-blue-600 text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-[#001A66] to-blue-600 text-white shadow-lg'
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
@@ -123,14 +123,14 @@ const InstructorDashboard = () => {
               <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-6">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-                    <FaCalendar className="text-[#06BBCC]" />
+                    <FaCalendar className="text-[#001A66]" />
                     Upcoming Sessions
                   </h3>
-                  <button className="text-[#06BBCC] hover:text-[#05a3b3] font-semibold">View All</button>
+                  <button className="text-[#001A66] hover:text-[#001A66] font-semibold">View All</button>
                 </div>
                 <div className="space-y-4">
                   {upcomingSessions.map((session) => (
-                    <div key={session.id} className="border-l-4 border-[#06BBCC] bg-gradient-to-r from-blue-50 to-white p-4 rounded-lg hover:shadow-md transition-shadow">
+                    <div key={session.id} className="border-l-4 border-[#001A66] bg-gradient-to-r from-blue-50 to-white p-4 rounded-lg hover:shadow-md transition-shadow">
                       <div className="flex justify-between items-start mb-2">
                         <div>
                           <h4 className="font-bold text-gray-800">{session.topic}</h4>
@@ -148,10 +148,10 @@ const InstructorDashboard = () => {
                         <span>⏱️ {session.duration}</span>
                       </div>
                       <div className="flex gap-2">
-                        <button className="flex-1 bg-[#06BBCC] text-white px-4 py-2 rounded-lg hover:bg-[#05a3b3] transition-colors font-semibold">
+                        <button className="flex-1 bg-[#001A66] text-white px-4 py-2 rounded-lg hover:bg-[#001A66] transition-colors font-semibold">
                           Start Session
                         </button>
-                        <button className="px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-[#06BBCC] transition-colors">
+                        <button className="px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-[#001A66] transition-colors">
                           Reschedule
                         </button>
                       </div>
@@ -163,13 +163,13 @@ const InstructorDashboard = () => {
               {/* Recent Activities */}
               <div className="bg-white rounded-2xl shadow-lg p-6">
                 <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                  <FaBell className="text-[#06BBCC]" />
+                  <FaBell className="text-[#001A66]" />
                   Recent Activity
                 </h3>
                 <div className="space-y-4">
                   {recentActivities.map((activity, index) => (
                     <div key={index} className="flex items-start gap-3 pb-4 border-b border-gray-100 last:border-0">
-                      <div className="bg-gradient-to-br from-[#06BBCC] to-blue-600 p-2 rounded-lg text-white">
+                      <div className="bg-gradient-to-br from-[#001A66] to-blue-600 p-2 rounded-lg text-white">
                         <activity.icon />
                       </div>
                       <div className="flex-1">

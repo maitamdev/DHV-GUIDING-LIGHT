@@ -146,7 +146,7 @@ const HomeworkReminder = () => {
         
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-          <div className="bg-gradient-to-r from-[#06BBCC] via-blue-600 to-purple-600 rounded-3xl shadow-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-[#001A66] via-blue-600 to-purple-600 rounded-3xl shadow-2xl p-8 text-white">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-2 flex items-center gap-3">
@@ -156,7 +156,7 @@ const HomeworkReminder = () => {
               </div>
               <button
                 onClick={() => alert('Add homework feature coming soon!')}
-                className="flex items-center gap-2 px-6 py-3 bg-white text-[#06BBCC] font-bold rounded-xl hover:shadow-2xl transition-all transform hover:scale-105"
+                className="flex items-center gap-2 px-6 py-3 bg-white text-[#001A66] font-bold rounded-xl hover:shadow-2xl transition-all transform hover:scale-105"
               >
                 <FaPlus /> Add Homework
               </button>
@@ -178,7 +178,7 @@ const HomeworkReminder = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1 }}
               onClick={() => setActiveFilter(stat.filter as any)}
-              className={`bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-all transform hover:scale-105 ${activeFilter === stat.filter ? 'ring-4 ring-[#06BBCC]' : ''}`}
+              className={`bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-all transform hover:scale-105 ${activeFilter === stat.filter ? 'ring-4 ring-[#001A66]' : ''}`}
             >
               <div className={`bg-gradient-to-br ${stat.color} w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3`}>
                 <stat.icon className="text-white text-xl" />
@@ -221,7 +221,7 @@ const HomeworkReminder = () => {
                     <div className="flex-1">
                       <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
                         <div>
-                          <span className="text-sm text-[#06BBCC] font-semibold">{homework.courseName}</span>
+                          <span className="text-sm text-[#001A66] font-semibold">{homework.courseName}</span>
                           <h3 className="text-xl font-bold text-gray-800">{homework.title}</h3>
                         </div>
                         <span className={`px-3 py-1 rounded-full text-xs font-bold ${getStatusColor(homework.status)}`}>
@@ -233,7 +233,7 @@ const HomeworkReminder = () => {
                       
                       <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
                         <div className="flex items-center gap-2">
-                          <FaCalendarAlt className="text-[#06BBCC]" />
+                          <FaCalendarAlt className="text-[#001A66]" />
                           <span>Due: {new Date(homework.dueDate).toLocaleDateString()}</span>
                           {homework.status !== 'completed' && (
                             <span className={`ml-2 px-2 py-1 rounded-full text-xs font-bold ${
@@ -248,7 +248,7 @@ const HomeworkReminder = () => {
                           )}
                         </div>
                         <div className="flex items-center gap-2">
-                          <FaClock className="text-[#06BBCC]" />
+                          <FaClock className="text-[#001A66]" />
                           <span>Est. {homework.estimatedTime}</span>
                         </div>
                       </div>
@@ -263,7 +263,7 @@ const HomeworkReminder = () => {
                             <FaCheckCircle /> Mark Complete
                           </button>
                         )}
-                        <button className="flex items-center gap-2 px-4 py-2 border-2 border-[#06BBCC] text-[#06BBCC] rounded-lg hover:bg-[#06BBCC] hover:text-white transition-colors">
+                        <button className="flex items-center gap-2 px-4 py-2 border-2 border-[#001A66] text-[#001A66] rounded-lg hover:bg-[#001A66] hover:text-white transition-colors">
                           <FaEdit /> Edit
                         </button>
                         <button

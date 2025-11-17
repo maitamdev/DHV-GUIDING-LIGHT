@@ -291,7 +291,7 @@ const AssignmentSubmission = () => {
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">{assignment.title}</h3>
-                    <p className="text-[#06BBCC] font-semibold mb-2">{assignment.course}</p>
+                    <p className="text-[#001A66] font-semibold mb-2">{assignment.course}</p>
                     <p className="text-gray-600 mb-3">{assignment.description}</p>
                     <div className="flex items-center gap-4 text-sm text-gray-600">
                       <span className="flex items-center gap-2">
@@ -320,13 +320,13 @@ const AssignmentSubmission = () => {
                     <input
                       type="file"
                       onChange={(e) => handleFileSelect(e, assignment.id)}
-                      className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] focus:outline-none"
+                      className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none"
                       accept=".pdf,.doc,.docx,.zip,.rar"
                     />
                     <button
                       onClick={() => handleSubmit(assignment.id)}
                       disabled={uploadingFor !== assignment.id || !selectedFile}
-                      className="px-6 py-3 bg-[#06BBCC] hover:bg-[#05a3b3] text-white rounded-lg font-semibold transition-all disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center gap-2"
+                      className="px-6 py-3 bg-[#001A66] hover:bg-[#001A66] text-white rounded-lg font-semibold transition-all disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center gap-2"
                     >
                       <FaPaperPlane /> Submit
                     </button>
@@ -365,7 +365,7 @@ const AssignmentSubmission = () => {
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">{assignment.title}</h3>
-                    <p className="text-[#06BBCC] font-semibold mb-2">{assignment.course}</p>
+                    <p className="text-[#001A66] font-semibold mb-2">{assignment.course}</p>
                     <p className="text-gray-600 mb-3">{assignment.description}</p>
                   </div>
                   {getStatusBadge(assignment.status)}

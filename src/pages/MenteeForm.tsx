@@ -23,7 +23,7 @@ const MenteeForm = () => {
 
   return (
     <>
-      <div className="w-full bg-gradient-to-r from-[#06BBCC] to-[#05a3b3] py-20 mb-12">
+      <div className="w-full bg-gradient-to-r from-[#001A66] to-[#001A66] py-20 mb-12">
         <div className="container mx-auto px-4 py-12">
           <motion.h1 
             initial={{ opacity: 0, y: -30 }}
@@ -58,7 +58,7 @@ const MenteeForm = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] outline-none"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] outline-none"
                     placeholder="Enter your full name"
                     required
                   />
@@ -71,7 +71,7 @@ const MenteeForm = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] outline-none"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] outline-none"
                     placeholder="Enter your email"
                     required
                   />
@@ -84,7 +84,7 @@ const MenteeForm = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] outline-none"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] outline-none"
                     placeholder="Enter your phone number"
                     required
                   />
@@ -96,7 +96,7 @@ const MenteeForm = () => {
                     name="course"
                     value={formData.course}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] outline-none"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] outline-none"
                     required
                   >
                     <option value="">Select a course</option>
@@ -114,7 +114,7 @@ const MenteeForm = () => {
                     name="experience"
                     value={formData.experience}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] outline-none"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] outline-none"
                   >
                     <option value="">Select level</option>
                     <option value="beginner">Beginner</option>
@@ -130,14 +130,14 @@ const MenteeForm = () => {
                     value={formData.goals}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#06BBCC] outline-none"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-[#001A66] outline-none"
                     placeholder="Share your learning goals..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-[#06BBCC] hover:bg-[#05a3b3] text-white font-semibold py-3 rounded-lg transition-colors duration-300"
+                  className="w-full bg-[#001A66] hover:bg-[#001A66] text-white font-semibold py-3 rounded-lg transition-colors duration-300"
                 >
                   Register Now
                 </button>

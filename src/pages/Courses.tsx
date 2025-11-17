@@ -1241,7 +1241,7 @@ const Courses = () => {
                     font-medium transition-all duration-250 flex-shrink-0 snap-start
                     cursor-pointer touch-manipulation
                     ${isActive
-                      ? 'bg-gradient-to-br from-[#27E0A7] to-[#1BC6D5] text-white shadow-lg'
+                      ? 'bg-gradient-to-br from-[#001A66] to-[#001A66] text-white shadow-lg'
                       : 'bg-white text-gray-700 hover:shadow-md border border-[#E8E8E8] active:bg-gray-50'
                     }
                   `}
@@ -1260,7 +1260,7 @@ const Courses = () => {
                   {/* Icon */}
                   <div className="relative z-10">
                     <Icon className={`text-2xl transition-colors duration-250 ${
-                      isActive ? 'text-white' : 'text-[#3A4750] group-hover:text-[#27E0A7]'
+                      isActive ? 'text-white' : 'text-[#3A4750] group-hover:text-[#001A66]'
                     }`} />
                   </div>
                   
@@ -1279,7 +1279,7 @@ const Courses = () => {
                       transition={{ type: 'spring', stiffness: 500, damping: 20 }}
                       className="absolute -top-1 -right-1 w-5 h-5 bg-white rounded-full shadow-md flex items-center justify-center"
                     >
-                      <svg className="w-3 h-3 text-[#27E0A7]" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-3 h-3 text-[#001A66]" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     </motion.div>

@@ -166,10 +166,10 @@ const MeetingSchedule = () => {
             initial={{ opacity: 0, scale: 0.8, y: 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 50 }}
-            className="fixed bottom-8 right-8 z-50 bg-white rounded-2xl shadow-2xl p-6 max-w-md border-2 border-[#1BC6D5]"
+            className="fixed bottom-8 right-8 z-50 bg-white rounded-2xl shadow-2xl p-6 max-w-md border-2 border-[#001A66]"
           >
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] rounded-full flex items-center justify-center flex-shrink-0 animate-pulse">
+              <div className="w-12 h-12 bg-gradient-to-r from-[#001A66] to-[#001A66] rounded-full flex items-center justify-center flex-shrink-0 animate-pulse">
                 <FaBell className="text-white text-xl" />
               </div>
               <div className="flex-1">
@@ -185,7 +185,7 @@ const MeetingSchedule = () => {
                       handleJoinMeeting(reminderMeeting.meetLink);
                       setShowReminder(false);
                     }}
-                    className="flex-1 py-2 bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white rounded-lg font-bold hover:shadow-lg transition-all"
+                    className="flex-1 py-2 bg-gradient-to-r from-[#001A66] to-[#001A66] text-white rounded-lg font-bold hover:shadow-lg transition-all"
                   >
                     Join Now
                   </button>
@@ -208,7 +208,7 @@ const MeetingSchedule = () => {
         )}
       </AnimatePresence>
 
-      <div className="w-full bg-gradient-to-r from-[#27E0A7] via-[#1BC6D5] to-[#06BBCC] py-20 mb-12">
+      <div className="w-full bg-gradient-to-r from-[#001A66] via-[#001A66] to-[#001A66] py-20 mb-12">
         <div className="container mx-auto px-4 py-12">
           <motion.h1 
             initial={{ opacity: 0, y: -30 }}
@@ -236,7 +236,7 @@ const MeetingSchedule = () => {
                 onClick={() => setViewMode('calendar')}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
                   viewMode === 'calendar'
-                    ? 'bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-[#001A66] to-[#001A66] text-white shadow-lg'
                     : 'text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -246,7 +246,7 @@ const MeetingSchedule = () => {
                 onClick={() => setViewMode('list')}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
                   viewMode === 'list'
-                    ? 'bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-[#001A66] to-[#001A66] text-white shadow-lg'
                     : 'text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -257,7 +257,7 @@ const MeetingSchedule = () => {
           {userRole === 'instructor' && (
             <button
               onClick={() => setShowCreateModal(true)}
-              className="px-6 py-3 bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white rounded-lg font-semibold hover:shadow-xl transition-all flex items-center gap-2"
+              className="px-6 py-3 bg-gradient-to-r from-[#001A66] to-[#001A66] text-white rounded-lg font-semibold hover:shadow-xl transition-all flex items-center gap-2"
             >
               <FaPlus />
               Create New Session
@@ -321,8 +321,8 @@ const MeetingSchedule = () => {
                       whileHover={{ scale: 1.05 }}
                       className={`aspect-square p-2 rounded-lg border-2 cursor-pointer transition-all ${
                         isToday
-                          ? 'border-[#1BC6D5] bg-[#1BC6D5]/10'
-                          : 'border-gray-200 hover:border-[#1BC6D5]/50'
+                          ? 'border-[#001A66] bg-[#001A66]/10'
+                          : 'border-gray-200 hover:border-[#001A66]/50'
                       }`}
                       onClick={() => {
                         if (dayMeetings.length > 0) {
@@ -331,7 +331,7 @@ const MeetingSchedule = () => {
                       }}
                     >
                       <div className="flex flex-col h-full">
-                        <span className={`text-sm font-bold mb-1 ${isToday ? 'text-[#1BC6D5]' : 'text-gray-700'}`}>
+                        <span className={`text-sm font-bold mb-1 ${isToday ? 'text-[#001A66]' : 'text-gray-700'}`}>
                           {day}
                         </span>
                         {dayMeetings.length > 0 && (
@@ -339,7 +339,7 @@ const MeetingSchedule = () => {
                             {dayMeetings.slice(0, 2).map((meeting) => (
                               <div
                                 key={meeting.id}
-                                className="bg-gradient-to-r from-[#27E0A7]/80 to-[#1BC6D5]/80 text-white text-xs p-1 rounded truncate"
+                                className="bg-gradient-to-r from-[#001A66]/80 to-[#001A66]/80 text-white text-xs p-1 rounded truncate"
                                 title={meeting.title}
                               >
                                 {meeting.time}
@@ -368,7 +368,7 @@ const MeetingSchedule = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {meetings.map((meeting) => (
             <div key={meeting.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="p-4 bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5]">
+              <div className="p-4 bg-gradient-to-r from-[#001A66] to-[#001A66]">
                 <FaVideo className="text-white text-xl" />
               </div>
               <div className="p-6">
@@ -389,15 +389,15 @@ const MeetingSchedule = () => {
                 </div>
                 <div className="bg-gray-50 rounded p-3 mb-4">
                   <div className="flex items-center gap-2 text-sm">
-                    <FaLink className="text-[#06BBCC]" />
-                    <a href={meeting.meetLink} target="_blank" rel="noopener noreferrer" className="text-[#06BBCC] hover:underline truncate">
+                    <FaLink className="text-[#001A66]" />
+                    <a href={meeting.meetLink} target="_blank" rel="noopener noreferrer" className="text-[#001A66] hover:underline truncate">
                       {meeting.meetLink}
                     </a>
                   </div>
                 </div>
                 <button
                   onClick={() => handleJoinMeeting(meeting.meetLink)}
-                  className="w-full py-3 bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] hover:shadow-xl text-white rounded-lg font-semibold transition-all"
+                  className="w-full py-3 bg-gradient-to-r from-[#001A66] to-[#001A66] hover:shadow-xl text-white rounded-lg font-semibold transition-all"
                 >
                   {meeting.status === 'live' ? 'Join Now' : 'Join'}
                 </button>
@@ -425,7 +425,7 @@ const MeetingSchedule = () => {
               onClick={(e) => e.stopPropagation()}
               className="bg-white rounded-2xl max-w-md w-full shadow-2xl overflow-hidden"
             >
-              <div className="bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] p-6 text-white">
+              <div className="bg-gradient-to-r from-[#001A66] to-[#001A66] p-6 text-white">
                 <button
                   onClick={() => setSelectedMeeting(null)}
                   className="float-right text-white/80 hover:text-white"
@@ -437,25 +437,25 @@ const MeetingSchedule = () => {
               </div>
               <div className="p-6 space-y-4">
                 <div className="flex items-center gap-3 text-gray-700">
-                  <FaCalendarAlt className="text-[#1BC6D5]" />
+                  <FaCalendarAlt className="text-[#001A66]" />
                   <span>{new Date(selectedMeeting.date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
                 </div>
                 <div className="flex items-center gap-3 text-gray-700">
-                  <FaClock className="text-[#1BC6D5]" />
+                  <FaClock className="text-[#001A66]" />
                   <span>{selectedMeeting.time} - {selectedMeeting.duration}</span>
                 </div>
                 <div className="flex items-center gap-3 text-gray-700">
-                  <FaUsers className="text-[#1BC6D5]" />
+                  <FaUsers className="text-[#001A66]" />
                   <span>{selectedMeeting.participants} participants</span>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
                   <div className="flex items-center gap-2 text-sm">
-                    <FaLink className="text-[#1BC6D5]" />
+                    <FaLink className="text-[#001A66]" />
                     <a
                       href={selectedMeeting.meetLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#1BC6D5] hover:underline truncate flex-1"
+                      className="text-[#001A66] hover:underline truncate flex-1"
                     >
                       {selectedMeeting.meetLink}
                     </a>
@@ -463,7 +463,7 @@ const MeetingSchedule = () => {
                 </div>
                 <button
                   onClick={() => handleJoinMeeting(selectedMeeting.meetLink)}
-                  className="w-full py-3 bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white rounded-xl font-bold hover:shadow-xl transition-all"
+                  className="w-full py-3 bg-gradient-to-r from-[#001A66] to-[#001A66] text-white rounded-xl font-bold hover:shadow-xl transition-all"
                 >
                   Join Meeting
                 </button>
@@ -485,27 +485,27 @@ const MeetingSchedule = () => {
             <form onSubmit={handleCreateMeeting} className="space-y-4">
               <div>
                 <label className="block text-gray-700 font-semibold mb-2">Title</label>
-                <input type="text" value={newMeeting.title} onChange={(e) => setNewMeeting({...newMeeting, title: e.target.value})} className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#1BC6D5] focus:outline-none" required />
+                <input type="text" value={newMeeting.title} onChange={(e) => setNewMeeting({...newMeeting, title: e.target.value})} className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none" required />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2">Date</label>
-                  <input type="date" value={newMeeting.date} onChange={(e) => setNewMeeting({...newMeeting, date: e.target.value})} className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#1BC6D5] focus:outline-none" required />
+                  <input type="date" value={newMeeting.date} onChange={(e) => setNewMeeting({...newMeeting, date: e.target.value})} className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none" required />
                 </div>
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2">Time</label>
-                  <input type="time" value={newMeeting.time} onChange={(e) => setNewMeeting({...newMeeting, time: e.target.value})} className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#1BC6D5] focus:outline-none" required />
+                  <input type="time" value={newMeeting.time} onChange={(e) => setNewMeeting({...newMeeting, time: e.target.value})} className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none" required />
                 </div>
               </div>
               <div>
                 <label className="block text-gray-700 font-semibold mb-2">Link Meeting</label>
-                <input type="url" value={newMeeting.meetLink} onChange={(e) => setNewMeeting({...newMeeting, meetLink: e.target.value})} className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#1BC6D5] focus:outline-none" placeholder="https://meet.google.com/abc-defg-hij" required />
+                <input type="url" value={newMeeting.meetLink} onChange={(e) => setNewMeeting({...newMeeting, meetLink: e.target.value})} className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-[#001A66] focus:outline-none" placeholder="https://meet.google.com/abc-defg-hij" required />
               </div>
               <div className="flex gap-3 pt-4">
                 <button type="button" onClick={() => setShowCreateModal(false)} className="flex-1 px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
                   Cancel
                 </button>
-                <button type="submit" className="flex-1 px-4 py-3 bg-gradient-to-r from-[#27E0A7] to-[#1BC6D5] text-white rounded-lg font-semibold hover:shadow-xl transition-all">
+                <button type="submit" className="flex-1 px-4 py-3 bg-gradient-to-r from-[#001A66] to-[#001A66] text-white rounded-lg font-semibold hover:shadow-xl transition-all">
                   Create Session
                 </button>
               </div>

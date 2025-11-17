@@ -230,7 +230,7 @@ ${competencyData.recommendations.map((r, i) => `${i + 1}. ${r}`).join('\n')}
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-100">
         <div className="text-center">
-          <div className="animate-spin w-16 h-16 border-4 border-[#06BBCC] border-t-transparent rounded-full mx-auto mb-4"></div>
+          <div className="animate-spin w-16 h-16 border-4 border-[#001A66] border-t-transparent rounded-full mx-auto mb-4"></div>
           <p className="text-xl text-gray-700">Analyzing your competency profile...</p>
         </div>
       </div>
@@ -268,7 +268,7 @@ ${competencyData.recommendations.map((r, i) => `${i + 1}. ${r}`).join('\n')}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="bg-gradient-to-r from-[#06BBCC] to-blue-600 rounded-3xl shadow-2xl p-8 mb-8 text-white"
+          className="bg-gradient-to-r from-[#001A66] to-blue-600 rounded-3xl shadow-2xl p-8 mb-8 text-white"
         >
           <div className="flex items-center justify-between">
             <div>
@@ -306,7 +306,7 @@ ${competencyData.recommendations.map((r, i) => `${i + 1}. ${r}`).join('\n')}
           className="bg-white rounded-2xl shadow-xl p-8 mb-8"
         >
           <h3 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-            <FaCode className="text-[#06BBCC]" />
+            <FaCode className="text-[#001A66]" />
             Technical Skills
           </h3>
           <div className="space-y-6">
@@ -317,11 +317,11 @@ ${competencyData.recommendations.map((r, i) => `${i + 1}. ${r}`).join('\n')}
                     <span className="font-semibold text-lg text-gray-800">{skill.name}</span>
                     <span className="ml-3 text-sm text-gray-500">({skill.category})</span>
                   </div>
-                  <span className="text-2xl font-bold text-[#06BBCC]">{skill.level}%</span>
+                  <span className="text-2xl font-bold text-[#001A66]">{skill.level}%</span>
                 </div>
                 <div className="bg-gray-200 rounded-full h-3 mb-2">
                   <div
-                    className="bg-gradient-to-r from-[#06BBCC] to-blue-600 rounded-full h-full transition-all duration-1000"
+                    className="bg-gradient-to-r from-[#001A66] to-blue-600 rounded-full h-full transition-all duration-1000"
                     style={{ width: `${skill.level}%` }}
                   ></div>
                 </div>
@@ -350,7 +350,7 @@ ${competencyData.recommendations.map((r, i) => `${i + 1}. ${r}`).join('\n')}
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             {competencyData.certificates.map((cert, index) => (
-              <div key={index} className="border-2 border-gray-200 rounded-xl p-6 hover:border-[#06BBCC] transition-all">
+              <div key={index} className="border-2 border-gray-200 rounded-xl p-6 hover:border-[#001A66] transition-all">
                 <div className="flex justify-between items-start mb-3">
                   <h4 className="font-bold text-xl text-gray-800">{cert.title}</h4>
                   {cert.verified && (
@@ -386,7 +386,7 @@ ${competencyData.recommendations.map((r, i) => `${i + 1}. ${r}`).join('\n')}
           </h3>
           <div className="space-y-6">
             {competencyData.achievements.map((achievement, index) => (
-              <div key={index} className="border-l-4 border-[#06BBCC] pl-6 py-4 bg-gradient-to-r from-blue-50 to-transparent rounded-r-xl">
+              <div key={index} className="border-l-4 border-[#001A66] pl-6 py-4 bg-gradient-to-r from-blue-50 to-transparent rounded-r-xl">
                 <div className="flex items-start gap-4">
                   <div className="text-4xl">
                     {achievement.type === 'award' && <FaAward className="text-yellow-500" />}
@@ -468,7 +468,7 @@ ${competencyData.recommendations.map((r, i) => `${i + 1}. ${r}`).join('\n')}
             {competencyData.recommendations.map((rec, index) => (
               <div key={index} className="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all">
                 <div className="flex items-start gap-3">
-                  <span className="text-2xl font-bold text-[#06BBCC]">{index + 1}</span>
+                  <span className="text-2xl font-bold text-[#001A66]">{index + 1}</span>
                   <p className="text-gray-700">{rec}</p>
                 </div>
               </div>
