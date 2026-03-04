@@ -1,0 +1,1 @@
+﻿export const appConfig = { name: 'DHV Guiding Light', version: '1.0.0', url: 'https://dhv-guiding-light.vercel.app', supportEmail: 'support@dhv.edu.vn', defaultLanguage: 'vi', defaultTheme: 'light' as const, features: { darkMode: true, notifications: true, aiMentor: true, portfolio: true, meetings: true, blog: true } };
