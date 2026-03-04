@@ -1,4 +1,4 @@
-# Dependencies
+﻿# Dependencies
 node_modules/
 /.pnp
 .pnp.js
@@ -34,3 +34,15 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# Testing
+coverage/
+
+# Build artifacts
+*.tsbuildinfo
+
