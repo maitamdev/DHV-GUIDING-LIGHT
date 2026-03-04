@@ -1,5 +1,5 @@
 ﻿import { db } from '../config/firebase';
-import { collection, doc, getDoc, getDocs, query, where, orderBy, limit, addDoc, updateDoc, increment } from 'firebase/firestore';
+import { collection, doc, getDocs, query, where, orderBy, limit, addDoc, updateDoc, increment } from 'firebase/firestore';
 import type { BlogPost, BlogComment } from '../types/blog';
 
 const BLOG_COLLECTION = 'blog_posts';

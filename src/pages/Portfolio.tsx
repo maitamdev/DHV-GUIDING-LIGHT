@@ -6,6 +6,7 @@ import { FaGithub, FaLinkedin, FaGlobe, FaDownload, FaCertificate, FaTrophy, FaC
 import { CVTemplate, sampleCVData } from '../components/CVTemplate';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { getOrCreatePortfolio, updateUserPortfolio, PortfolioData } from '../services/portfolioService';
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -13,171 +14,86 @@ const Portfolio = () => {
   const [activeTab, setActiveTab] = useState<'overview' | 'projects' | 'certificates' | 'skills' | 'cv'>('overview');
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [showSuccess, setShowSuccess] = useState(false);
   const [newSkill, setNewSkill] = useState({ name: '', level: 50, category: 'Frontend' });
+
+  // Initialize portfolio data from Firestore
+  const [portfolioData, setPortfolioData] = useState<PortfolioData | null>(null);
 
   useEffect(() => {
     if (!currentUser) {
       navigate('/login');
+      return;
     }
-  }, [currentUser, navigate]);
 
-  // Mock data - In production, fetch from Firestore
-  const [portfolioData, setPortfolioData] = useState({
-    name: (userData as any)?.name || 'Mai Tran Thien Tam',
-    title: 'Full Stack Developer | Data Science Enthusiast',
-    bio: 'Passionate learner on DHV Guiding Light platform. Completed multiple courses and built real-world projects in web development and data science.',
-    email: currentUser?.email || '',
-    github: 'github.com/student',
-    linkedin: 'linkedin.com/in/student',
-    website: 'studentportfolio.com',
-    profileImage: '/img/team-1.jpg',
-    
-    stats: {
-      coursesCompleted: 5,
-      projectsBuilt: 12,
-      certificatesEarned: 5,
-      totalHours: 340,
-      skillsMastered: 24
-    },
-
-    completedCourses: [
-      { 
-        id: 1, 
-        title: 'Web Development Full Stack', 
-        completedDate: '2024-11-01', 
-        grade: 95,
-        certificate: '/certificates/web-dev-cert.pdf'
-      },
-      { 
-        id: 2, 
-        title: 'React & Node.js Bootcamp', 
-        completedDate: '2024-10-15', 
-        grade: 92,
-        certificate: '/certificates/react-node-cert.pdf'
-      },
-      { 
-        id: 5, 
-        title: 'Data Science & Analytics', 
-        completedDate: '2024-09-20', 
-        grade: 88,
-        certificate: '/certificates/data-science-cert.pdf'
-      },
-    ],
-
-    projects: [
-      {
-        id: 1,
-        title: 'E-commerce Platform',
-        description: 'Full-stack e-commerce application with React, Node.js, and MongoDB. Features include user authentication, product catalog, shopping cart, and payment integration.',
-        technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-        image: '/img/course-1.jpg',
-        githubLink: 'github.com/student/ecommerce',
-        liveLink: 'ecommerce-demo.com',
-        completedDate: '2024-10-25'
-      },
-      {
-        id: 2,
-        title: 'Social Media Dashboard',
-        description: 'Real-time social media analytics dashboard with data visualization. Built with React, D3.js, and Firebase.',
-        technologies: ['React', 'D3.js', 'Firebase', 'Tailwind CSS'],
-        image: '/img/course-2.jpg',
-        githubLink: 'github.com/student/social-dashboard',
-        liveLink: 'social-dashboard-demo.com',
-        completedDate: '2024-10-10'
-      },
-      {
-        id: 3,
-        title: 'Weather Forecast App',
-        description: 'Mobile weather application using React Native with geolocation and weather API integration.',
-        technologies: ['React Native', 'APIs', 'Geolocation'],
-        image: '/img/course-3.jpg',
-        githubLink: 'github.com/student/weather-app',
-        liveLink: null,
-        completedDate: '2024-09-28'
-      },
-      {
-        id: 4,
-        title: 'Customer Churn Prediction',
-        description: 'Machine learning model to predict customer churn using Python, scikit-learn, and data analysis techniques.',
-        technologies: ['Python', 'Scikit-learn', 'Pandas', 'Matplotlib'],
-        image: '/img/course-1.jpg',
-        githubLink: 'github.com/student/churn-prediction',
-        liveLink: null,
-        completedDate: '2024-09-15'
+    // Load portfolio data from Firestore
+    const loadPortfolio = async () => {
+      try {
+        setIsLoading(true);
+        const data = await getOrCreatePortfolio(
+          currentUser.uid,
+          currentUser.email || '',
+          (userData as any)?.name
+        );
+        setPortfolioData(data);
+      } catch (error) {
+        console.error('Error loading portfolio:', error);
+      } finally {
+        setIsLoading(false);
       }
-    ],
+    };
 
-    skills: [
-      { name: 'JavaScript', level: 95, category: 'Frontend' },
-      { name: 'React.js', level: 92, category: 'Frontend' },
-      { name: 'Node.js', level: 88, category: 'Backend' },
-      { name: 'Python', level: 85, category: 'Data Science' },
-      { name: 'MongoDB', level: 82, category: 'Database' },
-      { name: 'HTML/CSS', level: 98, category: 'Frontend' },
-      { name: 'TypeScript', level: 87, category: 'Frontend' },
-      { name: 'Express.js', level: 85, category: 'Backend' },
-      { name: 'Pandas', level: 80, category: 'Data Science' },
-      { name: 'Git', level: 90, category: 'Tools' },
-      { name: 'Docker', level: 75, category: 'DevOps' },
-      { name: 'AWS', level: 70, category: 'Cloud' }
-    ],
-
-    certificates: [
-      { 
-        id: 1, 
-        title: 'Web Development Full Stack Certificate',
-        issueDate: '2024-11-01',
-        credentialId: 'DHV-WEB-2024-1234',
-        image: '/img/course-1.jpg'
-      },
-      { 
-        id: 2, 
-        title: 'React & Node.js Bootcamp Certificate',
-        issueDate: '2024-10-15',
-        credentialId: 'DHV-REACT-2024-5678',
-        image: '/img/course-2.jpg'
-      },
-      { 
-        id: 3, 
-        title: 'Data Science & Analytics Certificate',
-        issueDate: '2024-09-20',
-        credentialId: 'DHV-DATA-2024-9101',
-        image: '/img/course-3.jpg'
-      }
-    ]
-  });
+    loadPortfolio();
+  }, [currentUser, navigate, userData]);
 
   const handleSave = async () => {
+    if (!currentUser || !portfolioData) return;
+    
     setIsSaving(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSaving(false);
-    setIsEditing(false);
-    setShowSuccess(true);
-    setTimeout(() => setShowSuccess(false), 3000);
+    try {
+      await updateUserPortfolio(currentUser.uid, portfolioData);
+      setIsEditing(false);
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 3000);
+    } catch (error) {
+      console.error('Error saving portfolio:', error);
+      alert('Failed to save portfolio. Please try again.');
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const handleAddSkill = () => {
-    if (newSkill.name.trim()) {
-      setPortfolioData(prev => ({
+    if (!portfolioData || !newSkill.name.trim()) return;
+    
+    setPortfolioData(prev => {
+      if (!prev) return prev;
+      return {
         ...prev,
         skills: [...prev.skills, { ...newSkill }],
         stats: { ...prev.stats, skillsMastered: prev.stats.skillsMastered + 1 }
-      }));
-      setNewSkill({ name: '', level: 50, category: 'Frontend' });
-    }
+      };
+    });
+    setNewSkill({ name: '', level: 50, category: 'Frontend' });
   };
 
   const handleRemoveSkill = (index: number) => {
-    setPortfolioData(prev => ({
-      ...prev,
-      skills: prev.skills.filter((_, i) => i !== index),
-      stats: { ...prev.stats, skillsMastered: Math.max(0, prev.stats.skillsMastered - 1) }
-    }));
+    if (!portfolioData) return;
+    
+    setPortfolioData(prev => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        skills: prev.skills.filter((_, i) => i !== index),
+        stats: { ...prev.stats, skillsMastered: Math.max(0, prev.stats.skillsMastered - 1) }
+      };
+    });
   };
 
   const handleDownloadCV = async () => {
+    if (!portfolioData) return;
+    
     const cvElement = document.getElementById('cv-preview');
     if (!cvElement) return;
 
@@ -210,6 +126,20 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 py-8">
       <div className="container mx-auto px-4">
+        
+        {/* Loading State */}
+        {isLoading && (
+          <div className="flex items-center justify-center min-h-screen">
+            <div className="text-center">
+              <div className="w-16 h-16 border-4 border-[#001A66] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+              <p className="text-xl text-gray-600">Loading your portfolio...</p>
+            </div>
+          </div>
+        )}
+
+        {/* Portfolio Content */}
+        {!isLoading && portfolioData && (
+          <>
         
         {/* Success Notification */}
         <AnimatePresence>
@@ -280,20 +210,20 @@ const Portfolio = () => {
                     <input
                       type="text"
                       value={portfolioData.name}
-                      onChange={(e) => setPortfolioData(prev => ({ ...prev, name: e.target.value }))}
+                      onChange={(e) => setPortfolioData(prev => prev ? { ...prev, name: e.target.value } : prev)}
                       className="w-full px-4 py-3 text-4xl font-bold bg-white/20 border-2 border-white/50 rounded-xl focus:border-white focus:outline-none text-white placeholder-white/70"
                       placeholder="Your Name"
                     />
                     <input
                       type="text"
                       value={portfolioData.title}
-                      onChange={(e) => setPortfolioData(prev => ({ ...prev, title: e.target.value }))}
+                      onChange={(e) => setPortfolioData(prev => prev ? { ...prev, title: e.target.value } : prev)}
                       className="w-full px-4 py-3 text-xl bg-white/20 border-2 border-white/50 rounded-xl focus:border-white focus:outline-none text-white placeholder-white/70"
                       placeholder="Your Title"
                     />
                     <textarea
                       value={portfolioData.bio}
-                      onChange={(e) => setPortfolioData(prev => ({ ...prev, bio: e.target.value }))}
+                      onChange={(e) => setPortfolioData(prev => prev ? { ...prev, bio: e.target.value } : prev)}
                       className="w-full px-4 py-3 bg-white/20 border-2 border-white/50 rounded-xl focus:border-white focus:outline-none text-white placeholder-white/70 resize-none"
                       placeholder="Your Bio"
                       rows={3}
@@ -302,21 +232,21 @@ const Portfolio = () => {
                       <input
                         type="text"
                         value={portfolioData.github}
-                        onChange={(e) => setPortfolioData(prev => ({ ...prev, github: e.target.value }))}
+                        onChange={(e) => setPortfolioData(prev => prev ? { ...prev, github: e.target.value } : prev)}
                         className="px-4 py-2 bg-white/20 border-2 border-white/50 rounded-xl focus:border-white focus:outline-none text-white placeholder-white/70"
                         placeholder="GitHub URL"
                       />
                       <input
                         type="text"
                         value={portfolioData.linkedin}
-                        onChange={(e) => setPortfolioData(prev => ({ ...prev, linkedin: e.target.value }))}
+                        onChange={(e) => setPortfolioData(prev => prev ? { ...prev, linkedin: e.target.value } : prev)}
                         className="px-4 py-2 bg-white/20 border-2 border-white/50 rounded-xl focus:border-white focus:outline-none text-white placeholder-white/70"
                         placeholder="LinkedIn URL"
                       />
                       <input
                         type="text"
                         value={portfolioData.website}
-                        onChange={(e) => setPortfolioData(prev => ({ ...prev, website: e.target.value }))}
+                        onChange={(e) => setPortfolioData(prev => prev ? { ...prev, website: e.target.value } : prev)}
                         className="px-4 py-2 bg-white/20 border-2 border-white/50 rounded-xl focus:border-white focus:outline-none text-white placeholder-white/70"
                         placeholder="Website URL"
                       />
@@ -640,6 +570,8 @@ const Portfolio = () => {
             </div>
           )}
         </motion.div>
+        </>
+        )}
       </div>
     </div>
   );
