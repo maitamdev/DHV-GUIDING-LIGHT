@@ -1,33 +1,3 @@
-﻿// Notification type definitions
-
-import { ID, Timestamps } from './common';
-
-export type NotificationType = 'info' | 'success' | 'warning' | 'error';
-export type NotificationCategory = 'course' | 'meeting' | 'assignment' | 'system' | 'social';
-
-export interface Notification extends Timestamps {
-  id: ID;
-  userId: ID;
-  title: string;
-  message: string;
-  type: NotificationType;
-  category: NotificationCategory;
-  isRead: boolean;
-  actionUrl?: string;
-  actionLabel?: string;
-  metadata?: Record<string, unknown>;
-  expiresAt?: Date | string;
-}
-
-export interface NotificationGroup {
-  date: string;
-  notifications: Notification[];
-}
-
-export interface NotificationSettings {
-  enabled: boolean;
-  sound: boolean;
-  desktop: boolean;
-  email: boolean;
-  categories: Record<NotificationCategory, boolean>;
-}
+﻿export type NotificationType = 'info' | 'success' | 'warning' | 'error' | 'mention' | 'assignment' | 'meeting';
+export interface Notification { id: string; type: NotificationType; title: string; message: string; timestamp: string; read: boolean; link?: string; sender?: { name: string; avatar: string; }; }
+export interface NotificationPreferences { email: boolean; push: boolean; inApp: boolean; digest: 'none' | 'daily' | 'weekly'; types: Record<NotificationType, boolean>; }
