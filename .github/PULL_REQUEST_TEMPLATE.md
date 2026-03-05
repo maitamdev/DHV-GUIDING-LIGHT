@@ -1,5 +1,5 @@
 ﻿## Description
-Brief description of changes.
+What does this PR do?
 
 ## Type of Change
 - [ ] Bug fix
@@ -8,10 +8,8 @@ Brief description of changes.
 - [ ] Documentation update
 
 ## Checklist
-- [ ] My code follows the project style guidelines
-- [ ] I have performed a self-review
-- [ ] I have added tests (if applicable)
-- [ ] Documentation has been updated
-
-## Screenshots (if applicable)
-Add screenshots here.
+- [ ] Code follows project style guide
+- [ ] Self-review completed
+- [ ] Tests added/updated
+- [ ] Documentation updated
+- [ ] No TypeScript errors
