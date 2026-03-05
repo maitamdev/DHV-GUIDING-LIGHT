@@ -1,27 +1,25 @@
 ﻿---
 name: Bug Report
 about: Report a bug to help us improve
-title: "[BUG] "
+title: '[BUG] '
 labels: bug
-assignees: ''
 ---
 
-**Describe the bug**
-A clear description of what the bug is.
+## Description
+A clear description of the bug.
 
-**To Reproduce**
-Steps to reproduce:
+## Steps to Reproduce
 1. Go to '...'
 2. Click on '...'
 3. See error
 
-**Expected behavior**
+## Expected Behavior
 What you expected to happen.
 
-**Screenshots**
+## Screenshots
 If applicable, add screenshots.
 
-**Environment:**
-- OS: [e.g. Windows 11]
+## Environment
 - Browser: [e.g. Chrome 120]
-- Version: [e.g. 1.2.0]
+- OS: [e.g. Windows 11]
+- Version: [e.g. 2.0.0]
