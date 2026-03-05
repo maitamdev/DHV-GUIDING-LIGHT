@@ -1,0 +1,3 @@
+﻿export interface FormField { name: string; label: string; type: 'text' | 'email' | 'password' | 'number' | 'textarea' | 'select' | 'checkbox' | 'radio' | 'date' | 'file'; required?: boolean; placeholder?: string; validation?: ValidationRule[]; options?: { value: string; label: string }[]; }
+export interface ValidationRule { type: 'required' | 'email' | 'minLength' | 'maxLength' | 'pattern' | 'custom'; value?: number | string | RegExp; message: string; validator?: (value: unknown) => boolean; }
+export interface FormState<T> { values: T; errors: Partial<Record<keyof T, string>>; touched: Partial<Record<keyof T, boolean>>; isSubmitting: boolean; isValid: boolean; }
