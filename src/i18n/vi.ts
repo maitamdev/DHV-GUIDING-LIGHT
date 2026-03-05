@@ -1,0 +1,6 @@
+﻿export const vi = {
+  common: { home: 'Trang chu', courses: 'Khoa hoc', about: 'Ve chung toi', contact: 'Lien he', login: 'Dang nhap', signup: 'Dang ky', logout: 'Dang xuat', search: 'Tim kiem', settings: 'Cai dat', profile: 'Ho so', save: 'Luu', cancel: 'Huy', delete: 'Xoa', edit: 'Chinh sua', loading: 'Dang tai...', error: 'Co loi xay ra', success: 'Thanh cong', back: 'Quay lai', next: 'Tiep theo', previous: 'Truoc do', submit: 'Gui', close: 'Dong', },
+  dashboard: { welcome: 'Chao mung', streak: 'Chuoi hoc', courses: 'Khoa hoc', completed: 'Hoan thanh', certificates: 'Chung chi', hours: 'Gio hoc', quickActions: 'Thao tac nhanh', recentActivity: 'Hoat dong gan day', deadlines: 'Han chot', progress: 'Tien do', },
+  course: { catalog: 'Danh sach khoa hoc', details: 'Chi tiet', syllabus: 'Noi dung', reviews: 'Danh gia', instructor: 'Giang vien', addToCart: 'Them vao gio', enroll: 'Ghi danh', price: 'Gia', free: 'Mien phi', students: 'Hoc vien', lessons: 'Bai hoc', duration: 'Thoi luong', },
+  auth: { loginTitle: 'Dang nhap tai khoan', signupTitle: 'Tao tai khoan moi', email: 'Email', password: 'Mat khau', confirmPassword: 'Xac nhan mat khau', forgotPassword: 'Quen mat khau?', rememberMe: 'Ghi nho dang nhap', noAccount: 'Chua co tai khoan?', hasAccount: 'Da co tai khoan?', },
+};
