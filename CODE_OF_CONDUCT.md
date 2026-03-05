@@ -1,21 +1,20 @@
 ﻿# Code of Conduct
 
 ## Our Pledge
-We are committed to providing a welcoming and inclusive environment for everyone.
+
+We are committed to providing a friendly, safe, and welcoming environment for all contributors.
 
 ## Our Standards
-- Be respectful and constructive
-- Welcome newcomers and help them learn
+
+- Be respectful and inclusive
+- Accept constructive criticism gracefully
 - Focus on what is best for the community
 - Show empathy towards others
 
-## Unacceptable Behavior
-- Harassment, trolling, insults
-- Publishing others private information
-- Any conduct inappropriate in a professional setting
-
 ## Enforcement
-Violations may be reported to the project maintainers at contact@dhv.edu.vn.
+
+Instances of unacceptable behavior may be reported to the project maintainers.
 
 ## Attribution
-This Code of Conduct is adapted from the Contributor Covenant, version 2.1.
+
+This Code of Conduct is adapted from the Contributor Covenant.
