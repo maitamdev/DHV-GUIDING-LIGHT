@@ -1,7 +1,15 @@
-﻿// Barrel export file for all utilities
-
-export * from './formatters';
+﻿export * from './formatters';
 export * from './validators';
 export * from './storage';
-export * from './cn';
+export { cn, classMap } from './cn';
 export * from './helpers';
+export * from './dateUtils';
+export * from './stringUtils';
+export * from './numberUtils';
+export * from './arrayUtils';
+export * from './colorUtils';
+export * from './scrollUtils';
+export * from './performance';
+export { logger } from './logger';
+export { appEvents } from './eventEmitter';
+export { appCache } from './cacheUtils';
