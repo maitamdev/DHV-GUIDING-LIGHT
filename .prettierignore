@@ -2,6 +2,5 @@
 dist
 build
 coverage
-.env*
 *.min.js
 *.min.css
