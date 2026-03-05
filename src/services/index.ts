@@ -6,3 +6,8 @@ export * from './notificationService';
 export * from './analyticsService';
 export * from './aiMentorService';
 export * from './portfolioService';
+export * from './storageService';
+export * from './searchService';
+export * from './certificateService';
+export * from './bookmarkService';
+export * from './eventService';
