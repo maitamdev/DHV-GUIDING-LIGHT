@@ -11,7 +11,7 @@
   CERTIFICATES: '/certificates', HELP: '/help', BOOKMARKS: '/bookmarks',
   ANALYTICS: '/analytics', COMMUNITY: '/community', EVENTS: '/events',
   RESOURCES: '/resources', CHANGELOG: '/changelog', PROFILE: '/profile',
-  PRIVACY: '/privacy-policy', TERMS: '/terms-of-service',
+  PRIVACY: '/privacy-policy', PRIVACY_POLICY: '/privacy-policy', TERMS: '/terms-of-service', TERMS_OF_SERVICE: '/terms-of-service',
   PRICING: '/pricing', FEEDBACK: '/feedback', SITEMAP: '/sitemap',
   TEAM: '/team', INSTRUCTOR: '/instructor', TESTIMONIAL: '/testimonial',
   CREATE_COURSE: '/create-course', NOT_FOUND: '*',

@@ -1,13 +1,12 @@
-﻿import React, { useState, useRef } from 'react';
+﻿import { useState } from 'react';
 import { useClickOutside } from '../../hooks/useClickOutside';
 interface DropdownItem { label: string; value: string; icon?: React.ReactNode; }
 interface Props { trigger: React.ReactNode; items: DropdownItem[]; onSelect: (value: string) => void; className?: string; }
 const Dropdown: React.FC<Props> = ({ trigger, items, onSelect, className = '' }) => {
   const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  useClickOutside(ref, () => setOpen(false));
+  const ref = useClickOutside<HTMLDivElement>(() => setOpen(false), open);
   return (
-    <div ref={ref} className={'relative inline-block ' + className}>
+    <div ref={ref as React.RefObject<HTMLDivElement>} className={'relative inline-block ' + className}>
       <div onClick={() => setOpen(!open)}>{trigger}</div>
       {open && (
         <div className='absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 py-1 z-50'>

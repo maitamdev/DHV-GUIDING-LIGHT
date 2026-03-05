@@ -272,7 +272,7 @@ const MentorProfile = () => {
                 Availability
               </h3>
               <div className="space-y-2 mb-6">
-                {mentor.availability.map((slot, index) => (
+                {mentor.availability?.map((slot: { day: string; time: string; available: boolean }, index: number) => (
                   <div
                     key={index}
                     className={`flex items-center justify-between p-3 rounded-lg ${

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { FaStar, FaUsers, FaBook, FaClock, FaSearch, FaFilter } from 'react-icons/fa';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { instructors, type Instructor } from '../data/mentors';
+import { instructors } from '../data/mentors';
 
 const Instructor = () => {
   const navigate = useNavigate();
@@ -104,7 +104,7 @@ const Instructor = () => {
               >
                 <div className="relative">
                   <img 
-                    src={instructor.image} 
+                    src={instructor.avatar} 
                     alt={instructor.name}
                     className="w-full h-64 object-cover"
                   />
@@ -126,7 +126,7 @@ const Instructor = () => {
                     </div>
                     <div className="flex items-center text-gray-600">
                       <FaBook className="mr-2 text-[#001A66]" />
-                      <span>{instructor.courses} courses</span>
+                      <span>{instructor.courseCount} courses</span>
                     </div>
                     <div className="flex items-center text-gray-600 col-span-2">
                       <FaClock className="mr-2 text-[#001A66]" />

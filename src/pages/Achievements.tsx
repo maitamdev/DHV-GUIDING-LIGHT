@@ -1,4 +1,4 @@
-﻿import React from 'react';
+
 import { usePageTitle } from '../hooks/usePageTitle';
 import { motion } from 'framer-motion';
 const achievements = [

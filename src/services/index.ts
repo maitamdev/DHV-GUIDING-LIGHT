@@ -9,5 +9,5 @@ export * from './portfolioService';
 export * from './storageService';
 export * from './searchService';
 export * from './certificateService';
-export * from './bookmarkService';
+export { getUserBookmarks, addBookmark, removeBookmark } from './bookmarkService';
 export * from './eventService';

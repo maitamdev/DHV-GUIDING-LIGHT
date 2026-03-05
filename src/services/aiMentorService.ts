@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { instructors, Instructor } from '../data/mentors';
+import { instructors, type InstructorData } from '../data/mentors';
 
 // Initialize Gemini AI
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || 'AIzaSyDSR8xFqOVz9vLKhPxLxJxKxJxKxJxKxJx'; // Replace with your API key
@@ -15,7 +15,7 @@ interface MenteeRequest {
 
 interface AIRecommendation {
   mentorId: number;
-  mentor: Instructor;
+  mentor: InstructorData;
   matchScore: number;
   reasoning: string;
   suggestedTopics: string[];
@@ -32,21 +32,18 @@ interface AIResponse {
 /**
  * Create a comprehensive prompt for AI to analyze mentee needs and recommend mentors
  */
-function createPrompt(request: MenteeRequest, mentorsData: Instructor[]): string {
+function createPrompt(request: MenteeRequest, mentorsData: InstructorData[]): string {
   const mentorSummaries = mentorsData.map(m => ({
     id: m.id,
     name: m.name,
     title: m.title,
     specialty: m.specialty,
-    company: m.company,
     skills: m.skills,
     experience: m.experience,
     rating: m.rating,
     students: m.students,
     bio: m.bio,
-    mentoringAreas: m.mentoringAreas,
-    mentoringPhilosophy: m.mentoringPhilosophy,
-    softSkills: m.softSkills
+    mentoringAreas: m.mentoringAreas
   }));
 
   return `You are an AI Career Advisor for DHV Learning Platform. Analyze the mentee's profile and recommend the TOP 3 most suitable mentors from our database.

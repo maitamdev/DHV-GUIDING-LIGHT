@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import { useState } from 'react';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { FaHeart, FaTrash, FaShoppingCart } from 'react-icons/fa';
 const initialWishlist = [

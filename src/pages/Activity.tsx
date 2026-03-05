@@ -1,4 +1,4 @@
-﻿import React from 'react';
+
 import { usePageTitle } from '../hooks/usePageTitle';
 import { FaBook, FaCode, FaAward, FaVideo, FaPlay, FaComment } from 'react-icons/fa';
 const activities = [

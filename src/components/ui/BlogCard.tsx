@@ -1,9 +1,9 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaClock, FaEye } from 'react-icons/fa';
 interface Props { id: number; title: string; excerpt: string; coverImage: string; author: string; authorAvatar: string; category: string; readingTime: number; publishedAt: string; views: number; slug: string; }
-const BlogCard: React.FC<Props> = ({ title, excerpt, coverImage, author, authorAvatar, category, readingTime, publishedAt, views, slug }) => (
+const BlogCard: React.FC<Props> = ({ title, excerpt, coverImage, author, authorAvatar, category, readingTime, views, slug }) => (
   <motion.article whileHover={{ y: -3 }} className='bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow'>
     <Link to={'/blog/' + slug}>
       <img src={coverImage} alt={title} className='w-full h-48 object-cover' />

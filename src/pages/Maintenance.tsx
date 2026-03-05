@@ -1,4 +1,4 @@
-﻿import React from 'react';
+
 import { FaTools } from 'react-icons/fa';
 const Maintenance = () => (
   <div className='min-h-screen bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center px-4'>

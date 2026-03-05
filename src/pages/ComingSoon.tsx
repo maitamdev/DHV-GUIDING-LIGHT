@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FaRocket, FaBell } from 'react-icons/fa';
 const ComingSoon = () => {
   const target = new Date('2025-06-01').getTime();
