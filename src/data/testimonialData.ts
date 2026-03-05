@@ -1,0 +1,9 @@
+﻿export interface Testimonial { id: number; name: string; avatar: string; role: string; company: string; rating: number; comment: string; course: string; }
+export const testimonials: Testimonial[] = [
+  { id: 1, name: 'Nguyen Van An', avatar: '/img/team-1.jpg', role: 'Junior Developer', company: 'Tech Corp', rating: 5, comment: 'DHV Guiding Light completely changed my career path. The courses are well-structured and the mentors are incredibly supportive.', course: 'Full Stack Development' },
+  { id: 2, name: 'Tran Thi Binh', avatar: '/img/team-2.jpg', role: 'Data Analyst', company: 'DataCo', rating: 5, comment: 'The AI mentor matching feature is amazing! I was paired with a mentor who perfectly understood my learning goals.', course: 'Data Science with Python' },
+  { id: 3, name: 'Le Duc Cuong', avatar: '/img/team-1.jpg', role: 'UI Designer', company: 'DesignLab', rating: 4, comment: 'Great platform for learning. The portfolio builder helped me showcase my skills to employers effectively.', course: 'UI/UX Design' },
+  { id: 4, name: 'Pham Thi Dung', avatar: '/img/team-2.jpg', role: 'Backend Developer', company: 'CloudSys', rating: 5, comment: 'The learning roadmaps gave me a clear direction. I went from zero to a full-time developer in 6 months!', course: 'Backend with Node.js' },
+  { id: 5, name: 'Hoang Van Em', avatar: '/img/team-1.jpg', role: 'ML Engineer', company: 'AI Solutions', rating: 5, comment: 'Exceptional course quality and the community support is unmatched. Highly recommend for anyone in tech.', course: 'Machine Learning' },
+  { id: 6, name: 'Vo Thi Fen', avatar: '/img/team-2.jpg', role: 'DevOps Engineer', company: 'InfraCo', rating: 4, comment: 'The hands-on projects and real-world assignments prepared me well for my current role. Worth every penny!', course: 'DevOps Engineering' },
+];
