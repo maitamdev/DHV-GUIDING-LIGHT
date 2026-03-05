@@ -1,0 +1,6 @@
+﻿export const en = {
+  common: { home: 'Home', courses: 'Courses', about: 'About', contact: 'Contact', login: 'Login', signup: 'Sign Up', logout: 'Logout', search: 'Search', settings: 'Settings', profile: 'Profile', save: 'Save', cancel: 'Cancel', delete: 'Delete', edit: 'Edit', loading: 'Loading...', error: 'An error occurred', success: 'Success', back: 'Back', next: 'Next', previous: 'Previous', submit: 'Submit', close: 'Close', },
+  dashboard: { welcome: 'Welcome', streak: 'Day Streak', courses: 'Courses', completed: 'Completed', certificates: 'Certificates', hours: 'Hours Learned', quickActions: 'Quick Actions', recentActivity: 'Recent Activity', deadlines: 'Deadlines', progress: 'Progress', },
+  course: { catalog: 'Course Catalog', details: 'Details', syllabus: 'Syllabus', reviews: 'Reviews', instructor: 'Instructor', addToCart: 'Add to Cart', enroll: 'Enroll Now', price: 'Price', free: 'Free', students: 'Students', lessons: 'Lessons', duration: 'Duration', },
+  auth: { loginTitle: 'Sign in to your account', signupTitle: 'Create a new account', email: 'Email', password: 'Password', confirmPassword: 'Confirm Password', forgotPassword: 'Forgot password?', rememberMe: 'Remember me', noAccount: 'No account yet?', hasAccount: 'Already have an account?', },
+};
