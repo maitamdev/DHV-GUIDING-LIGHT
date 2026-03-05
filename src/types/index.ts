@@ -1,12 +1,8 @@
-﻿// Barrel export file for all type definitions
-
-export * from './common';
-export * from './user';
-export * from './course';
-export * from './mentor';
-export * from './blog';
-export * from './meeting';
-export * from './portfolio';
-export * from './assignment';
-export * from './cart';
-export * from './notification';
+﻿export type { User, UserProfile, UserRole, UserSettings } from './user';
+export type { Course, CourseCategory, Lesson, CourseReview, EnrollmentStatus } from './course';
+export type { BlogPost, BlogComment, BlogCategory } from './blog';
+export type { Meeting, MeetingRoom, Participant } from './meeting';
+export type { DashboardStats, CourseProgress, Deadline, ActivityItem, WeeklyGoal } from './dashboard';
+export type { Mentor, MentorMatch, MentorReview, MentorAvailability } from './mentor';
+export type { Notification, NotificationType, NotificationPreferences } from './notification';
+export type { LearningAnalytics, ChartData, SkillProgress, LeaderboardEntry } from './analytics';
