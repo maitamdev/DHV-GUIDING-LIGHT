@@ -1,0 +1,15 @@
+﻿export const ERROR_MESSAGES = {
+  NETWORK: 'Network error. Please check your connection.',
+  UNAUTHORIZED: 'You need to sign in to access this page.',
+  FORBIDDEN: 'You do not have permission to perform this action.',
+  NOT_FOUND: 'The requested resource was not found.',
+  SERVER: 'Something went wrong on our end. Please try again later.',
+  VALIDATION: 'Please check the form and fix any errors.',
+  UPLOAD_SIZE: 'File size exceeds the maximum limit.',
+  UPLOAD_TYPE: 'This file type is not supported.',
+  LOGIN_FAILED: 'Invalid email or password.',
+  EMAIL_EXISTS: 'An account with this email already exists.',
+  WEAK_PASSWORD: 'Password must be at least 8 characters with a number.',
+  SESSION_EXPIRED: 'Your session has expired. Please sign in again.',
+  RATE_LIMIT: 'Too many requests. Please slow down.',
+} as const;
