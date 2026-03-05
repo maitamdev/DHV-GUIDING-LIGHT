@@ -1,27 +1,19 @@
-﻿import React from 'react';
-import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
-
-interface RatingProps { value: number; max?: number; size?: 'sm' | 'md' | 'lg'; showValue?: boolean; count?: number; className?: string; onChange?: (value: number) => void; }
-const sizes = { sm: 'text-sm', md: 'text-lg', lg: 'text-2xl' };
-
-const Rating: React.FC<RatingProps> = ({ value, max = 5, size = 'md', showValue, count, className = '', onChange }) => {
-  const stars = Array.from({ length: max }, (_, i) => {
-    if (i + 1 <= Math.floor(value)) return 'full';
-    if (i + 0.5 <= value) return 'half';
-    return 'empty';
-  });
-
+﻿import React, { useState } from 'react';
+import { FaStar } from 'react-icons/fa';
+interface Props { value: number; onChange?: (value: number) => void; max?: number; size?: 'sm' | 'md' | 'lg'; readonly?: boolean; }
+const sizes = { sm: 'text-sm', md: 'text-xl', lg: 'text-3xl' };
+const Rating: React.FC<Props> = ({ value, onChange, max = 5, size = 'md', readonly = false }) => {
+  const [hover, setHover] = useState(0);
   return (
-    <div className={`inline-flex items-center gap-1 ${className}`}>
-      {stars.map((type, i) => {
-        const Icon = type === 'full' ? FaStar : type === 'half' ? FaStarHalfAlt : FaRegStar;
-        return <Icon key={i} className={`${sizes[size]} text-yellow-400 ${onChange ? 'cursor-pointer hover:scale-110 transition-transform' : ''}`}
-          onClick={() => onChange?.(i + 1)} />;
-      })}
-      {showValue && <span className="ml-1 font-semibold text-gray-700">{value.toFixed(1)}</span>}
-      {count !== undefined && <span className="ml-1 text-gray-500 text-sm">({count.toLocaleString()})</span>}
+    <div className='flex gap-1'>
+      {Array.from({ length: max }, (_, i) => i + 1).map(star => (
+        <button key={star} type='button' disabled={readonly}
+          onClick={() => onChange?.(star)} onMouseEnter={() => !readonly && setHover(star)} onMouseLeave={() => setHover(0)}
+          className={sizes[size] + ' transition-colors ' + (!readonly ? 'cursor-pointer' : 'cursor-default')}>
+          <FaStar className={(hover || value) >= star ? 'text-yellow-400' : 'text-gray-300'} />
+        </button>
+      ))}
     </div>
   );
 };
-
 export default Rating;
