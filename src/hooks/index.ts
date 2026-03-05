@@ -1,6 +1,4 @@
-﻿// Barrel export file for all custom hooks
-
-export { useLocalStorage } from './useLocalStorage';
+﻿export { useLocalStorage } from './useLocalStorage';
 export { useDebounce } from './useDebounce';
 export { useMediaQuery, useIsMobile, useIsTablet, useIsDesktop } from './useMediaQuery';
 export { useScrollPosition } from './useScrollPosition';
@@ -18,3 +16,5 @@ export { useKeyPress, useHotkey } from './useKeyPress';
 export { usePreviousValue } from './usePreviousValue';
 export { useFormValidation } from './useFormValidation';
 export { useScrollToTop } from './useScrollToTop';
+export { useDarkMode, useDarkClass } from './useDarkMode';
+export { useAuth } from './useAuth';
